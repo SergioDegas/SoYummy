@@ -1,4 +1,8 @@
 {
+  "name": "soyummy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
   "dependencies": {
     "axios": "^1.3.4",
     "create-react-app": "^5.0.1",
@@ -7,5 +11,20 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
     "style-components": "^0.1.0"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergioDegas/SoYummy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergioDegas/SoYummy/issues"
+  },
+  "homepage": "https://github.com/SergioDegas/SoYummy#readme",
+  "description": ""
 }
