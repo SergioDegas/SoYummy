@@ -53,6 +53,6 @@ export const themeLight = {
 
     shadows: {
         simple: "0px 4px 48px rgba(0, 0, 0, 0.1)",
-        pagination: "0px 4px 4px rgba(135, 135, 135, 0.2);",
+        pagination: "0px 4px 4px rgba(135, 135, 135, 0.2)",
     },
 };
