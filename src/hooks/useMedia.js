@@ -2,11 +2,11 @@ import {
   TABLET_SCREEN,
   LG_DESKTOP_SCREEN,
   RESOLUTIONS_LIST,
-} from 'enums/breakPointConstants';
-import { useEffect, useState } from 'react';
+} from "enums/breakPointConstants";
+import { useEffect, useState } from "react";
 
 export const useMedia = () => {
-  const [screenType, setScreenType] = useState('');
+  const [screenType, setScreenType] = useState("");
   const [isMobileScreen, setIsMobileScreen] = useState(
     window.innerWidth < TABLET_SCREEN
   );
@@ -25,6 +25,7 @@ export const useMedia = () => {
     }
   };
   useEffect(() => {
+    const handlers = [];
     RESOLUTIONS_LIST.forEach(({ type, size }, idx) => {
       let rule = `(min-width: ${size}px)`;
       if (RESOLUTIONS_LIST[idx + 1]?.size) {
@@ -34,9 +35,15 @@ export const useMedia = () => {
 
       const MQ = window.matchMedia(rule);
       setMatched(type, size, MQ);
+      const listener = (e) => setMatched(type, size, e);
 
-      MQ.addEventListener('change', e => setMatched(type, size, e));
+      MQ.addEventListener("change", listener);
+      handlers.push({ el: MQ, listener });
     });
-  });
+    return () =>
+      handlers.forEach(({ el, listener }) =>
+        el.removeEventListener("change", listener)
+      );
+  }, []);
   return { screenType, isMobileScreen, isTabletScreen, isDesktopScreen };
 };
