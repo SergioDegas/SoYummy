@@ -1,0 +1,40 @@
+import {
+  PopularSection,
+  Title,
+  PopularList,
+  PopularItem,
+  PopularImage,
+  PopularSubtitle,
+  PopularText,
+} from "./PopularPreview.styled";
+import recipePhoto from "../../images/recipe-photo-small.png";
+
+export const Popular = () => {
+  return (
+    <PopularSection>
+      <Title>Popular recipe</Title>
+      <PopularList>
+        <PopularItem>
+          <PopularImage src={recipePhoto} alt="dish" />
+          <div>
+            <PopularSubtitle>Banana Pancakes</PopularSubtitle>
+            <PopularText>
+              In a bowl, mash the banana with a fork until it resembles a thick
+              purée...
+            </PopularText>
+          </div>
+        </PopularItem>
+        <PopularItem>
+          <PopularImage src={recipePhoto} alt="dish" />
+          <div>
+            <PopularSubtitle>Banana Pancakes</PopularSubtitle>
+            <PopularText>
+              In a bowl, mash the banana with a fork until it resembles a thick
+              purée...
+            </PopularText>
+          </div>
+        </PopularItem>
+      </PopularList>
+    </PopularSection>
+  );
+};
