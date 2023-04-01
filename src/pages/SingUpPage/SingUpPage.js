@@ -47,7 +47,7 @@ const SingUpPage = () => {
                 >Sign up</button>
               </Form>
             </Formik>
-            <Link >Sign in</Link>
+            <Link to='/signin'>Sign in</Link>
            </SingUpForm>
         </BgImg>
       </div>
