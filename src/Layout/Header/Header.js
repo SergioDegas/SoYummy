@@ -1,4 +1,4 @@
-import { Router } from "react-router-dom";
+import { NavLink, Router } from "react-router-dom";
 import SwitchToggle from "./SwitchToggle";
 import { useState, useEffect } from "react";
 import {
@@ -28,7 +28,6 @@ const Header = () => {
       setPhotoUrl(userData.photoUrl);
     } catch (error) {
       console.error(error);
-     
     }
   };
 
@@ -37,48 +36,46 @@ const Header = () => {
   }, []);
   return (
     <header>
-    
+      <HeaderContainer>
+        <NavLink to="/">
         
-          <HeaderContainer>
-            <LogoContainer>
-              <LogoIcon />
-            </LogoContainer>
-            <NavContainer>
-              <NavLinksContainer>
-                <div>
-                  <Link href="/CategoriesPage">Categories</Link>
-                </div>
-                <div>
-                  <Link href="/AddRecipePage">Add Recipe</Link>
-                </div>
-                <div>
-                  <Link href="/MyRecipesPage">My Recipes</Link>
-                </div>
-                <div>
-                  <Link href="/FavoritePage">Favorites</Link>
-                </div>
-                <div>
-                  <Link href="/ShoppingPage">Shopping List</Link>
-                </div>
-                <div>
-                  <Link
-                    href={{ pathname: "/SearchPage", search: "?type=query" }}
-                  >
-                    <SearchIcon />
-                  </Link>
-                </div>
-              </NavLinksContainer>
-            </NavContainer>
-            <ProfileContainer>
-              <ProfileDetailsContainer>
-                <ProfileImage style={{ backgroundImage: `url(${photoUrl})` }} />
-                <ProfileName>{name}</ProfileName>
-              </ProfileDetailsContainer>
-              <SwitchToggle />
-            </ProfileContainer>
-          </HeaderContainer>
-     
-      
+          <LogoContainer>
+            <LogoIcon />
+          </LogoContainer>
+        </NavLink>
+
+        <NavContainer>
+          <NavLinksContainer>
+            <div>
+              <Link to="/CategoriesPage">Categories</Link>
+            </div>
+            <div>
+              <Link to="/AddRecipePage">Add Recipe</Link>
+            </div>
+            <div>
+              <Link to="/MyRecipesPage">My Recipes</Link>
+            </div>
+            <div>
+              <Link to="/FavoritePage">Favorites</Link>
+            </div>
+            <div>
+              <Link to="/ShoppingPage">Shopping List</Link>
+            </div>
+            <div>
+              <Link to={{ pathname: "/SearchPage", search: "?type=query" }}>
+                <SearchIcon />
+              </Link>
+            </div>
+          </NavLinksContainer>
+        </NavContainer>
+        <ProfileContainer>
+          <ProfileDetailsContainer>
+            <ProfileImage style={{ backgroundImage: `url(${photoUrl})` }} />
+            <ProfileName>{name}</ProfileName>
+          </ProfileDetailsContainer>
+          <SwitchToggle />
+        </ProfileContainer>
+      </HeaderContainer>
     </header>
   );
 };
