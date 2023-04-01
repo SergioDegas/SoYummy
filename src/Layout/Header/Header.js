@@ -1,50 +1,84 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Router } from "react-router-dom";
 import SwitchToggle from "./SwitchToggle";
+import { useState, useEffect } from "react";
+import {
+  Container,
+  HeaderContainer,
+  LogoContainer,
+  LogoIcon,
+  NavContainer,
+  Link,
+  NavLinksContainer,
+  ProfileContainer,
+  ProfileDetailsContainer,
+  ProfileImage,
+  ProfileName,
+  SearchIcon,
+} from "./SwitchToggleStyled";
 
 const Header = () => {
+  const [name, setName] = useState("Name");
+  const [photoUrl, setPhotoUrl] = useState();
+
+  const fetchUserData = async () => {
+    try {
+      const res = await fetch();
+      const userData = await res.json();
+      setName(userData.name);
+      setPhotoUrl(userData.photoUrl);
+    } catch (error) {
+      console.error(error);
+     
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
   return (
     <header>
-      <div style={{ display: "flex" }}>
-        <div>logo</div>
-        <nav>
-          <div style={{ display: "flex" }}>
-            <div>
-              <a to="/CategoriesPage">Categories</a>
-            </div>
-            <div>
-              <a to="/AddRecipePage">Add Recipe</a>
-            </div>
-            <div>
-              <a to="/MyRecipesPage">My Recipes</a>
-            </div>
-            <div>
-              <a to="/FavoritePage">Favorites</a>
-            </div>
-            <div>
-              <a to="/ShoppingPage">Shopping List</a>
-            </div>
-            <div>
-              <a to={{ pathname: "/SearchPage", search: "?type=query" }}>
-                <i></i>
-              </a>
-            </div>
-          </div>
-        </nav>
-        <div style={{ display: "flex" }}>
-          <div
-            style={{
-              display: "block",
-              backgroundColor: "red",
-              width: "44px",
-              height: "44px",
-              borderRadius: "50%",
-            }}
-          ></div>
-          <div>name</div>
-          <SwitchToggle />
-        </div>
-      </div>
+      <Router>
+        <Container>
+          <HeaderContainer>
+            <LogoContainer>
+              <LogoIcon />
+            </LogoContainer>
+            <NavContainer>
+              <NavLinksContainer>
+                <div>
+                  <Link href="/CategoriesPage">Categories</Link>
+                </div>
+                <div>
+                  <Link href="/AddRecipePage">Add Recipe</Link>
+                </div>
+                <div>
+                  <Link href="/MyRecipesPage">My Recipes</Link>
+                </div>
+                <div>
+                  <Link href="/FavoritePage">Favorites</Link>
+                </div>
+                <div>
+                  <Link href="/ShoppingPage">Shopping List</Link>
+                </div>
+                <div>
+                  <Link
+                    href={{ pathname: "/SearchPage", search: "?type=query" }}
+                  >
+                    <SearchIcon />
+                  </Link>
+                </div>
+              </NavLinksContainer>
+            </NavContainer>
+            <ProfileContainer>
+              <ProfileDetailsContainer>
+                <ProfileImage style={{ backgroundImage: `url(${photoUrl})` }} />
+                <ProfileName>{name}</ProfileName>
+              </ProfileDetailsContainer>
+              <SwitchToggle />
+            </ProfileContainer>
+          </HeaderContainer>
+        </Container>
+      </Router>
     </header>
   );
 };
