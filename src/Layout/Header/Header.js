@@ -37,8 +37,8 @@ const Header = () => {
   }, []);
   return (
     <header>
-      <Router>
-        <Container>
+    
+        
           <HeaderContainer>
             <LogoContainer>
               <LogoIcon />
@@ -77,8 +77,8 @@ const Header = () => {
               <SwitchToggle />
             </ProfileContainer>
           </HeaderContainer>
-        </Container>
-      </Router>
+     
+      
     </header>
   );
 };
