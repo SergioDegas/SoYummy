@@ -1,17 +1,18 @@
-import { Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
-import Header from 'Layout/Header/Header';
-import Footer from 'Layout/Footer';
+import { Outlet } from "react-router-dom";
+import { Suspense } from "react";
+import Header from "Layout/Header/Header";
+import Footer from "Layout/Footer";
+import Container from "./SharedLayout.styled";
 
 const Layout = () => {
   return (
-    <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 100px' }}>
-      <Header/>
+    <Container>
+      <Header />
       <Suspense fallback={null}>
         <Outlet />
-          </Suspense>
-          <Footer/>
-    </div>
+      </Suspense>
+      <Footer />
+    </Container>
   );
 };
 
