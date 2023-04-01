@@ -45,10 +45,42 @@ export const Calculator = styled.div`
   }
 `;
 
-export const CalcButton = styled.button`
+export const CalcButtonMinus = styled.button`
   background-color: transparent;
   border: none;
+  display: flex;
+  align-items: center;
   /* border-radius: ${(p) => p.theme.radius.round}; */
+
+  svg {
+    height: 14px;
+    width: 14px;
+    color: rgba(51, 51, 51, 0.3);
+
+    @media screen and (min-width: 768px) {
+      width: 18px;
+      height: 18px;
+    }
+  }
+`;
+
+export const CalcButtonPlus = styled.button`
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  /* border-radius: ${(p) => p.theme.radius.round}; */
+
+  svg {
+    width: 14px;
+    height: 14px;
+    color: ${(p) => p.theme.colors.accent};
+
+    @media screen and (min-width: 768px) {
+      width: 18px;
+      height: 18px;
+    }
+  }
 `;
 
 export const Number = styled.p`
@@ -111,7 +143,7 @@ export const IngrNumberLabel = styled.label`
   position: relative;
   width: 84px;
   height: 53px;
-  margin-right: 33px;
+  margin-right: 22px;
 
   @media screen and (min-width: 768px) {
     width: 97px;
@@ -180,6 +212,8 @@ export const UnitSelect = styled.select`
 export const DeleteButton = styled.button`
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 50%;
@@ -187,5 +221,16 @@ export const DeleteButton = styled.button`
 
   :hover {
     border-color: #8baa36;
+  }
+
+  svg {
+    height: 16px;
+    width: 16px;
+    color: #1f242e;
+
+    @media screen and (min-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;

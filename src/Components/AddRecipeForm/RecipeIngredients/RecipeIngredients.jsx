@@ -1,12 +1,13 @@
-import { ReactComponent as MinusSvg } from "../../../images/Minus.svg";
-import { ReactComponent as PlusSvg } from "../../../images/Plus.svg";
-import { ReactComponent as DeleteSvg } from "../../../images/X.svg";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { GrClose } from "react-icons/gr";
+
 import {
   IngredientsWrap,
   FormSubtitle,
   CalcWrap,
   Calculator,
-  CalcButton,
+  CalcButtonMinus,
+  CalcButtonPlus,
   Number,
   IngredientItem,
   IngrInput,
@@ -22,13 +23,13 @@ export const RecipeIngredients = () => {
       <CalcWrap>
         <FormSubtitle>Ingredients</FormSubtitle>
         <Calculator>
-          <CalcButton type="button">
-            <MinusSvg />
-          </CalcButton>
+          <CalcButtonMinus type="button">
+            <AiOutlineMinus />
+          </CalcButtonMinus>
           <Number>1</Number>
-          <CalcButton type="button">
-            <PlusSvg />
-          </CalcButton>
+          <CalcButtonPlus type="button">
+            <AiOutlinePlus />
+          </CalcButtonPlus>
         </Calculator>
       </CalcWrap>
 
@@ -51,7 +52,7 @@ export const RecipeIngredients = () => {
           </IngrNumberLabel>
 
           <DeleteButton type="button">
-            <DeleteSvg />
+            <GrClose />
           </DeleteButton>
         </IngredientItem>
       </ul>
