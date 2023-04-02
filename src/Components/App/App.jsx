@@ -40,7 +40,7 @@ export const App = () => {
   return !isAuth ? (
     <Suspense>
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
+        <Route index element={<WelcomePage />} />
         <Route path="/register" element={<SignUpPage />} />
         <Route path="/signin" element={<LoginPage />} />
       </Routes>
