@@ -20,9 +20,12 @@ const SingUpPage = () => {
                 };
                 try {
                   const response = await axios.post('http://localhost:4000/auth/register', authData);
-                  console.log(response);
+                  if (response) {
+                    localStorage.setItem('token', response.data.token);
+                    window.location = '/';
+                  }
                 } catch (e) {
-                  console.log(e)
+                  console.log(e.response.data.message)
                 }
               }}
             >

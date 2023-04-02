@@ -11,18 +11,20 @@ const LoginPage = () => {
         <BgImg>
           <SingUpForm>
             <Formik
-              initialValues={{ name: '', email: '', password: '' }}
+              initialValues={{ email: '', password: '' }}
               onSubmit={async (values) => {
                 const authData = {
-                  name: values.name,
                   email: values.email,
                   password: values.password
                 };
                 try {
-                  const response = await axios.post('http://localhost:4000/auth/register', authData);
-                  console.log(response);
+                  const response = await axios.post('http://localhost:4000/auth/login', authData);
+                  if (response) {
+                    localStorage.setItem('token', response.data.token);
+                    window.location = '/';
+                  }
                 } catch (e) {
-                  console.log(e)
+                  console.log(e.response.data.message);
                 }
               }}
             >
