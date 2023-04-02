@@ -14,7 +14,7 @@ export const Popular = () => {
     <PopularSection>
       <Title>Popular recipe</Title>
       <PopularList>
-        <PopularItem>
+        <PopularItem to="/">
           <PopularImage src={recipePhoto} alt="dish" />
           <div>
             <PopularSubtitle>Banana Pancakes</PopularSubtitle>
@@ -24,7 +24,7 @@ export const Popular = () => {
             </PopularText>
           </div>
         </PopularItem>
-        <PopularItem>
+        <PopularItem to="/">
           <PopularImage src={recipePhoto} alt="dish" />
           <div>
             <PopularSubtitle>Banana Pancakes</PopularSubtitle>
