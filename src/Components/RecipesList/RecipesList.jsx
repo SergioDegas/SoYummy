@@ -1,11 +1,15 @@
-import { RecipeItem, RecipeList } from "./RecipeList.styled";
+import { RecipeList, RecipeCard } from "./RecipeList.styled";
+import { RecipeItem } from "Components/RecipeItem/RecipeItem";
 
-export const MyRecipeList = () => {
+export const RecipesList = () => {
 	return (
 		<RecipeList>
-			<RecipeItem>
-				
-			</RecipeItem>
+			<RecipeCard>
+			<RecipeItem/>
+			</RecipeCard>
+			<RecipeCard>
+			<RecipeItem/>
+			</RecipeCard>
 		</RecipeList>
 	)
 }

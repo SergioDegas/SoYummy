@@ -16,7 +16,7 @@ const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
 
 export const App = () => {
-  const isAuth = true;
+  const isAuth = false;
 
   return !isAuth ? (
     <>
