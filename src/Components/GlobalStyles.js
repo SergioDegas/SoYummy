@@ -16,6 +16,12 @@ ul,
 ol {
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+a{
+ text-decoration: none;
+    color: black
 }
 
 img{ 
@@ -32,5 +38,9 @@ body {
   font-weight: ${(p) => p.theme.fontWeights.regular};
 
   background-color: ${(p) => p.theme.colors.backgroundPrimary};
+}
+
+#root {
+  height: 100vh,
 }
 `;
