@@ -21,6 +21,7 @@ const LoginPage = () => {
                   const response = await axios.post('http://localhost:4000/auth/login', authData);
                   if (response) {
                     localStorage.setItem('token', response.data.token);
+                    localStorage.setItem('user', response.data.user)
                     window.location = '/';
                   }
                 } catch (e) {

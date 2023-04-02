@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "Layout/SharedLayout";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 
 const WelcomePage = lazy(() => import("pages/WellcomePage/"));
@@ -20,18 +20,22 @@ export const App = () => {
   const [isAuth, setIsAuth] = useState(false);
 
   const token = localStorage.getItem('token');
-  const check = async () => {
-    const authCheck = await axios.get('http://localhost:4000/auth/current', {
-      headers: {
-      'Authorization': `Bearer ${token}`
-      }
-    });
-    if (authCheck) {
-      setIsAuth(true)
-    }
-  }
-
-  check()
+  
+  useEffect(() => {
+    if (token) {
+      const check = async () => {
+        const authCheck = await axios.get('http://localhost:4000/auth/current', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (authCheck) {
+          setIsAuth(true)
+        };
+      };
+      check();
+    };
+  }, [token]) 
 
   return !isAuth ? (
     <Suspense>
