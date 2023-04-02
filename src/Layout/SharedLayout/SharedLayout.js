@@ -5,7 +5,7 @@ import Footer from 'Layout/Footer';
 
 const Layout = () => {
   return (
-    <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 100px' }}>
+    <div>
       <Header/>
       <Suspense fallback={null}>
         <Outlet />
