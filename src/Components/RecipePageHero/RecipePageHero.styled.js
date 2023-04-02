@@ -29,7 +29,7 @@ export const SectionHero = styled.section`
       background-image: url(${bgTabX2});
     }
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1240px) {
     background-image: url(${bgDeskX1});
     padding-top: 102px;
     @media (min-device-pixel-ratio: 2),
@@ -69,7 +69,7 @@ export const SectionHeroDesc = styled.p`
     max-width: 506px;
     font-size: 18px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1240px) {
     max-width: 656px;
     margin-bottom: 30px;
   }
@@ -93,7 +93,7 @@ export const SectionHeroBtn = styled.button`
     margin-bottom: 60px;
     border: 2px solid ${({ theme }) => `${theme.colors.accent}`};
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1240px) {
     margin-bottom: 48px;
   }
   :hover,

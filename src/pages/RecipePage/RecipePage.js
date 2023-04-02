@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 import RecipePageHero from "Components/RecipePageHero";
+import RecipePreparation from "Components/RecipePreparation";
 
 import recipies from "db/recipes.json";
 
@@ -10,7 +12,6 @@ import recipies from "db/recipes.json";
 //cповіщення помилка
 //якщо айді не правильний чи не передали доробити
 //додати дефолтні значення і заглушки
-
 
 const getRecipeById = (recipeId) => {
   const res = recipies.filter((recipe) => recipe._id.$oid === recipeId);
@@ -28,24 +29,31 @@ const RecipePage = () => {
         // setIsLoading(true);
         const [result] = await getRecipeById(recipeId);
         if (!result) {
+          toast.error('Oops! Something went wrong! Please try again.');
           return; //якщо айді не правильний чи не передали
         }
         setRecipe(result);
         // setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
-        // toast.error('Oops! Something went wrong! Please try again.');
+        toast.error('Oops! Something went wrong! Please try again.');
       }
     }
     getRecipe();
   }, [recipeId]);
 
-  const { title, description, favorites, time } = recipe;
+  const { title, description, favorites, time, instructions, thumb } = recipe;
   // const backLinkHref = location.state?.from ?? "/";
   return (
     <>
       {/* <Link to={backLinkHref}>Go back</Link> */}
-      <RecipePageHero title={title} description={description} favorites={favorites} time={time} />
+      <RecipePageHero
+        title={title}
+        description={description}
+        favorites={favorites}
+        time={time}
+      />
+      <RecipePreparation description={instructions} foto={thumb} />
+      <Toaster/>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Container } from "Layout/Header/SwitchToggleStyled";
+import Container from "../Container";
 import {
   SectionHero,
   SectionHeroTitle,
@@ -13,17 +13,29 @@ const RecipePageHero = ({ title, description, favorites, time }) => {
   //TO DO
   //порівняти айді юзера з айді овнерів з масиву favorites і від того рендерити кнопку
   //можливо робити в головному компоненті ресіпіпейдж, бо проблеми з рендером
-  
-//якщо рецепт власний то кнопку не показувати взагалі
-//Клік по кнопці AddtoFavorite повинен виконувати запит і додавати даний рецепт в список улюблених
-//Якщо такий рецепт вже є в списку улюблених, то на місці AddtoFavorite повинна бути кнопка RemoveFromFavorite,
-  
+  //логіка додавання в фейворіт
+  //якщо рецепт власний то кнопку не показувати взагалі
+  //Клік по кнопці AddtoFavorite повинен виконувати запит і додавати даний рецепт в список улюблених
+  //Якщо такий рецепт вже є в списку улюблених, то на місці AddtoFavorite повинна бути кнопка RemoveFromFavorite,
+
+  const addToFavorite = () => {
+    console.log("add");
+  };
+
   return (
     <SectionHero>
       <Container>
         <SectionHeroTitle children={title} />
         <SectionHeroDesc>{description}</SectionHeroDesc>
-        {favorites && <SectionHeroBtn>Add to favorite recipes</SectionHeroBtn>}
+        {favorites && (
+          <SectionHeroBtn
+            onClick={() => {
+              addToFavorite();
+            }}
+          >
+            Add to favorite recipes
+          </SectionHeroBtn>
+        )}
         <TimeBlock>
           <BsClock size="14px" fill="#23262A" />
           <TimeText>{time} min</TimeText>

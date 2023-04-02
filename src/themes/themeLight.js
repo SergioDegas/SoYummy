@@ -23,7 +23,7 @@ export const themeLight = {
 
   colors: {
     mainLight: "#ffffff",
-    mainDark: "#000000",
+    mainDark: "rgba(0, 0, 0, 0.8)",
     accent: "#8BAA36",
 
     backgroundPrimary: "#FAFAFA",
