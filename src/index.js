@@ -10,7 +10,7 @@ import { GlobalStyle } from "./Components/GlobalStyles";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename="/SoYummy">
+    <BrowserRouter basename="/">
       <ThemeProvider theme={themeLight}>
         <GlobalStyle />
         <App />
