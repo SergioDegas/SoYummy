@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "Layout/SharedLayout";
-import { lazy } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import axios from "axios";
 
 const WelcomePage = lazy(() => import("pages/WellcomePage/"));
 const SignUpPage = lazy(() => import("pages/SingUpPage"));
@@ -16,16 +17,34 @@ const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
 
 export const App = () => {
-  const isAuth = true;
+  const [isAuth, setIsAuth] = useState(false);
+
+  const token = localStorage.getItem('token');
+  
+  useEffect(() => {
+    if (token) {
+      const check = async () => {
+        const authCheck = await axios.get('http://localhost:4000/auth/current', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (authCheck) {
+          setIsAuth(true)
+        };
+      };
+      check();
+    };
+  }, [token]) 
 
   return !isAuth ? (
-    <>
+    <Suspense>
       <Routes>
         <Route index element={<WelcomePage />} />
         <Route path="/register" element={<SignUpPage />} />
         <Route path="/signin" element={<LoginPage />} />
       </Routes>
-    </>
+    </Suspense>
   ) : (
     <>
       <Routes>

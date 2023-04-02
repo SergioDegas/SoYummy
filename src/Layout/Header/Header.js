@@ -20,9 +20,15 @@ const Header = () => {
   const [name, setName] = useState("Name");
   const [photoUrl, setPhotoUrl] = useState();
 
+  const token = localStorage.getItem('token');
+
   const fetchUserData = async () => {
     try {
-      const res = await fetch();
+      const res = await fetch('http://localhost:4000/auth/current', {
+      headers: {
+      'Authorization': `Bearer ${token}`
+      }
+    });
       const userData = await res.json();
       setName(userData.name);
       setPhotoUrl(userData.photoUrl);
