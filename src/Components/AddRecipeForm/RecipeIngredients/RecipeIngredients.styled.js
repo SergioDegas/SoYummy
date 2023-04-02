@@ -246,6 +246,11 @@ export const UnitSelect = styled.div`
 
   svg {
     color: ${(p) => p.theme.colors.accent};
+
+    @media screen and (min-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 
@@ -312,13 +317,11 @@ export const DeleteButton = styled.button`
   }
 
   svg {
-    height: 16px;
-    width: 16px;
     color: #1f242e;
 
     @media screen and (min-width: 768px) {
       width: 20px;
-      height: 20px;
+      height: 60px;
     }
   }
 `;
