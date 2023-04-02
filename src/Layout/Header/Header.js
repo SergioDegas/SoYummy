@@ -38,7 +38,6 @@ const Header = () => {
     <header>
       <HeaderContainer>
         <NavLink to="/">
-        
           <LogoContainer>
             <LogoIcon />
           </LogoContainer>
@@ -50,7 +49,7 @@ const Header = () => {
               <Link to="/CategoriesPage">Categories</Link>
             </div>
             <div>
-              <Link to="/AddRecipePage">Add Recipe</Link>
+              <Link to="/add">Add Recipe</Link>
             </div>
             <div>
               <Link to="/MyRecipesPage">My Recipes</Link>
