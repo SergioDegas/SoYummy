@@ -5,7 +5,7 @@ export const themeDark = {
         main: "Poppins, sans-serif",
     },
 
-    fontSizes: {xs: 8, s: 14, m: 16, l: 18, xl: 22, xxl: 30 },
+    fontSizes: { xs: 8, s: 14, m: 16, l: 18, xl: 22, xxl: 30 },
 
     fontWeights: {
         regular: 400,
@@ -42,6 +42,8 @@ export const themeDark = {
         textSubTitle: "#FAFAFA",
         textGrey: "rgba(250, 250, 250, 0.6)",
         textDarckGrey: "#FAFAFA",
+
+        underline: "rgba(250, 250, 250, 0.2)",
     },
 
     radii: {
