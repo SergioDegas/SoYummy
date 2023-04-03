@@ -44,7 +44,6 @@ const Header = () => {
     <header>
       <HeaderContainer>
         <NavLink to="/">
-        
           <LogoContainer>
             <LogoIcon />
           </LogoContainer>

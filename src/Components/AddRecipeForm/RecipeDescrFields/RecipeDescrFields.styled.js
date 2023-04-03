@@ -101,6 +101,7 @@ export const SelectWrap = styled.div`
 
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     width: 393px;
@@ -109,7 +110,7 @@ export const SelectWrap = styled.div`
   }
 `;
 
-export const DescrLabel = styled.label`
+export const DescrLabel = styled.div`
   font-size: ${(p) => p.theme.fontSizes.s}px;
   line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
@@ -121,21 +122,35 @@ export const DescrLabel = styled.label`
   }
 `;
 
-export const DescrSelect = styled.select`
+export const DescrSelect = styled.div`
   width: 85px;
+  height: 43px;
+  padding-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  font-size: 12px;
+  /* font-size: 12px;
   line-height: ${(p) => p.theme.lineHeights.single};
-  color: ${(p) => p.theme.colors.mainDark};
+  color: ${(p) => p.theme.colors.mainDark}; */
   background-color: transparent;
   border: none;
 
-  appearance: none;
+  /* appearance: none;
   overflow: hidden;
   background-image: url(${arror});
   background-repeat: no-repeat;
   background-position: right;
-  background-size: 16px;
+  background-size: 16px; */
+
+  svg {
+    color: ${(p) => p.theme.colors.accent};
+
+    @media screen and (min-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
 
   @media screen and (min-width: 768px) {
     width: 94px;
@@ -143,21 +158,101 @@ export const DescrSelect = styled.select`
   }
 `;
 
-export const DescrOption = styled.option`
-  font-size: 12px;
+export const SelectText = styled.span`
+  font-size: ${(p) => p.theme.fontSizes.s}px;
   line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
+  color: ${(p) => p.theme.colors.textPrimary};
 
-  color: ${(p) => p.theme.colors.mainDark};
-  opacity: 0.5;
-
-  width: 123px;
-  height: 144px;
-  background: ${(p) => p.theme.colors.mainLight};
-  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
-  border-radius: ${(p) => p.theme.radius.small};
-
-  @media screen and (min-width: 1440px) {
-    font-size: ${(p) => p.theme.fontSizes.s}px;
+  @media screen and (min-width: 768px) {
+    font-size: ${(p) => p.theme.fontSizes.m}px;
   }
 `;
+
+export const CategoryList = styled.ul`
+  width: 123px;
+  height: 144px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 70%;
+  padding: 8px 14px;
+  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+  border-radius: 6px;
+  overflow-y: scroll;
+  z-index: 3;
+
+  @media screen and (min-width: 768px) {
+    width: 132px;
+    height: 162px;
+  }
+`;
+
+export const CategoryItem = styled.li`
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.5;
+
+  :not(:last-child) {
+    margin-bottom: 4px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+export const TimeList = styled.ul`
+  width: 85px;
+  height: 144px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 70%;
+  padding: 8px 14px;
+  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+  border-radius: 6px;
+  overflow-y: scroll;
+
+  @media screen and (min-width: 768px) {
+    width: 93px;
+    height: 162px;
+  }
+`;
+
+export const TimeItem = styled.li`
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.5;
+
+  :not(:last-child) {
+    margin-bottom: 4px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+// export const DescrOption = styled.option`
+//   font-size: 12px;
+//   line-height: ${(p) => p.theme.lineHeights.large};
+//   letter-spacing: -0.02em;
+
+//   color: ${(p) => p.theme.colors.mainDark};
+//   opacity: 0.5;
+
+//   width: 123px;
+//   height: 144px;
+//   background: ${(p) => p.theme.colors.mainLight};
+//   box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+//   border-radius: ${(p) => p.theme.radius.small};
+
+//   @media screen and (min-width: 1440px) {
+//     font-size: ${(p) => p.theme.fontSizes.s}px;
+//   }
+// `;

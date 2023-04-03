@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const PopularSection = styled.div`
   /* padding-bottom: 100px;
@@ -36,7 +37,7 @@ export const PopularList = styled.ul`
   }
 `;
 
-export const PopularItem = styled.li`
+export const PopularItem = styled(Link)`
   width: 343px;
   height: 98px;
   display: flex;
