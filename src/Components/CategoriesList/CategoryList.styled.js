@@ -18,10 +18,9 @@ export const ListStyled = styled.ul`
 
 export const ItemStyled = styled.li`
     position: relative;
-    padding: ${(p) => p.theme.space[1] * 2.5}px ${(p) => p.theme.space[1] * 3}px;
-    margin-left: ${(p) => p.theme.space[1] * 5}px;
+    padding: ${(p) => p.theme.space[1] * 2.5}px 0;
 
-    :first-child: {
+    &:first-child {
         margin-left: ${(p) => p.theme.space[1] * 5}px;
     }
 `;
