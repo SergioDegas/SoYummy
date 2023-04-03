@@ -47,14 +47,13 @@ export const Switch = styled.label`
     transform: translateX(34px);
   }
 `;
-export const Container = styled.div`
+export const ContainerFor = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 100px;
 
-  @media (max-width: 1200px) {
-    padding: 0 50px;
+  @media (max-width: 1240px) {
+    padding: 0 100px;
   }
 
   @media (max-width: 992px) {
@@ -120,7 +119,6 @@ export const SearchIcon = styled(FiSearch)`
   width: 24px;
   height: 24px;
 `;
-
 export const ProfileContainer = styled.div`
   display: flex;
   gap: 50px;
@@ -129,10 +127,12 @@ export const ProfileContainer = styled.div`
 `;
 
 export const ProfileDetailsContainer = styled.div`
+  position: relative;
   display: flex;
   gap: 14px;
   align-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const ProfileImage = styled.div`
@@ -147,15 +147,87 @@ export const ProfileImage = styled.div`
     width: 100%;
     height: 100%;
     background-color: gray;
+
     border-radius: 50%;
   }
 `;
 
 export const ProfileName = styled.div`
   font-weight: bold;
+  padding: 12px 0;
 
   &::before {
-    content: "Name";
+    content: "";
     color: gray;
   }
+`;
+
+export const HoverText = styled.div`
+  opacity: 0;
+  background-color: #fafafa;
+  position: absolute;
+  width: 177px;
+  height: 134px;
+  right: 20px;
+  top: 53px;
+  border-radius: 8px;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    pointer-events: auto;
+  }
+`;
+
+export const HoverContainer = styled.div`
+  width: 177px;
+  height: 134px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const LogOut = styled.div`
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 141px;
+  border-radius: 30px;
+  transform: skewX(10deg);
+  display: inline-block;
+  background-color: #8baa36;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const LogOutText = styled.p`
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: white;
+  transform: skewX(-10deg);
+  padding: 12px 20px;
+`;
+
+export const EditText = styled.p`
+  margin-right: 53px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+`;
+
+export const EditContainer = styled.div`
+  display: flex;
+  margin-bottom: 32px;
 `;
