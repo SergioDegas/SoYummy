@@ -28,7 +28,7 @@ const RecipePageHero = ({ title, description, favorites, time }) => {
         <SectionHeroTitle children={title} />
         <SectionHeroDesc>{description}</SectionHeroDesc>
         {favorites && (
-          <SectionHeroBtn
+          <SectionHeroBtn type="button" aria-label="Add to favorite"
             onClick={() => {
               addToFavorite();
             }}
