@@ -24,7 +24,7 @@ export const TextTumb = styled.div`
   }
 `;
 
-export const SectionPreparationTitle = styled.h2`
+export const SectionPreparationTitle = styled.h3`
   font-family: "Poppins";
   color: ${({ theme }) => `${theme.colors.textSubTitle}`};
   font-weight: ${({ theme }) => `${theme.fontWeights.semibold}`};

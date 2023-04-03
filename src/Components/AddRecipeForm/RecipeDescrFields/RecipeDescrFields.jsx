@@ -1,6 +1,8 @@
+import { useState } from "react";
 import cookingTime from "../../AddRecipeForm/cookingTime.json";
 import imageS from "../../../images/file-input-mob.png";
 import imageL from "../../../images/file-input-desk.png";
+import { IoIosArrowDown } from "react-icons/io";
 import {
   DescrWrap,
   FileInputWrap,
@@ -11,10 +13,52 @@ import {
   SelectWrap,
   DescrLabel,
   DescrSelect,
-  DescrOption,
+  SelectText,
+  CategoryList,
+  CategoryItem,
+  TimeList,
+  TimeItem,
 } from "./RecipeDescrFields.styled";
 
 export const RecipeDescrFields = () => {
+  const [time, setTime] = useState("30 min");
+  const [timeIsActive, setTimeIsActive] = useState(false);
+  const [category, setCategory] = useState("breakfast");
+  const [categoryIsActive, setCategoryIsActive] = useState(false);
+
+  const toggleTimeList = () => {
+    setTimeIsActive(!timeIsActive);
+  };
+
+  const toggleCategory = () => {
+    setCategoryIsActive(!categoryIsActive);
+  };
+
+  const onTimeSet = (value) => {
+    setTime(value);
+    setTimeIsActive(false);
+  };
+
+  const onCategorySet = (value) => {
+    setCategory(value);
+    setCategoryIsActive(false);
+  };
+
+  const categoryList = [
+    "breakfast",
+    "lunch",
+    "dinner",
+    "breakfast",
+    "lunch",
+    "dinner",
+    "breakfast",
+    "lunch",
+    "dinner",
+    "breakfast",
+    "lunch",
+    "dinner",
+  ];
+
   return (
     <DescrWrap>
       <FileInputWrap>
@@ -40,17 +84,43 @@ export const RecipeDescrFields = () => {
           name="about"
           placeholder="Enter about recipe"
         />
-        <SelectWrap>
-          <DescrLabel htmlFor="category">Category</DescrLabel>
-          <DescrSelect name="category" id="category">
+        <SelectWrap onClick={toggleCategory}>
+          <DescrLabel>Category</DescrLabel>
+          <DescrSelect>
+            <SelectText>{category}</SelectText>
+            <IoIosArrowDown size="18" />
+          </DescrSelect>
+          {categoryIsActive && (
+            <CategoryList>
+              {categoryList.map((item) => (
+                <CategoryItem key={item} onClick={() => onCategorySet(item)}>
+                  {item}
+                </CategoryItem>
+              ))}
+            </CategoryList>
+          )}
+
+          {/* <DescrSelect name="category" id="category">
             <DescrOption value="breakfast">breakfast</DescrOption>
             <DescrOption value="lunch">lunch</DescrOption>
             <DescrOption value="dinner">dinner</DescrOption>
-          </DescrSelect>
+          </DescrSelect> */}
         </SelectWrap>
-        <SelectWrap>
-          <DescrLabel htmlFor="time">Cooking time</DescrLabel>
-          <DescrSelect name="time" id="time">
+        <SelectWrap onClick={toggleTimeList}>
+          <DescrLabel>Cooking time</DescrLabel>
+          <DescrSelect>
+            <SelectText>{time}</SelectText>
+            <IoIosArrowDown size="18" />
+          </DescrSelect>
+          {timeIsActive && (
+            <TimeList>
+              {cookingTime.map((item) => (
+                <TimeItem onClick={() => onTimeSet(item)}>{item}</TimeItem>
+              ))}
+            </TimeList>
+          )}
+
+          {/* <DescrSelect name="time" id="time">
             {cookingTime.map((time) => {
               return (
                 <DescrOption value={time} key={time}>
@@ -58,7 +128,7 @@ export const RecipeDescrFields = () => {
                 </DescrOption>
               );
             })}
-          </DescrSelect>
+          </DescrSelect> */}
         </SelectWrap>
       </InputWrap>
     </DescrWrap>

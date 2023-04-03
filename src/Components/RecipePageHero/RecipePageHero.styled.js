@@ -11,7 +11,7 @@ export const SectionHero = styled.section`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding-top: 84px;
+  padding-top: 144px;
   padding-bottom: 90px;
   text-align: center;
   @media (min-device-pixel-ratio: 2),
@@ -21,7 +21,7 @@ export const SectionHero = styled.section`
   }
   @media (min-width: 768px) {
     background-image: url(${bgTabX1});
-    padding-top: 73px;
+    padding-top: 136px;
     padding-bottom: 32px;
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -31,7 +31,7 @@ export const SectionHero = styled.section`
   }
   @media (min-width: 1240px) {
     background-image: url(${bgDeskX1});
-    padding-top: 102px;
+    padding-top: 164px;
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {

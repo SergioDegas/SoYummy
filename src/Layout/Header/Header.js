@@ -66,6 +66,7 @@ const Header = () => {
 
   return (
     <header>
+
       <ContainerFor>
         <HeaderContainer>
           <NavLink to="/">
@@ -110,6 +111,8 @@ const Header = () => {
                       <EditText>Edit profile</EditText>
                       <HiOutlinePencil />
                     </EditContainer>
+
+ 
 
                     <LogOut onClick={openLogoutModal}>
                       <LogOutText>Log out</LogOutText>
