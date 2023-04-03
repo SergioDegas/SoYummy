@@ -23,4 +23,11 @@ export const LinksList = styled.ul`
   height: 26px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+`;
+
+export const LinkItem = styled.li`
+  svg {
+    color: ${(p) => p.theme.colors.accent};
+  }
 `;

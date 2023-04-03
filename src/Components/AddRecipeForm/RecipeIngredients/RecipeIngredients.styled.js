@@ -50,7 +50,6 @@ export const CalcButtonMinus = styled.button`
   border: none;
   display: flex;
   align-items: center;
-  /* border-radius: ${(p) => p.theme.radius.round}; */
 
   svg {
     height: 14px;
@@ -69,7 +68,6 @@ export const CalcButtonPlus = styled.button`
   border: none;
   display: flex;
   align-items: center;
-  /* border-radius: ${(p) => p.theme.radius.round}; */
 
   svg {
     width: 14px;
@@ -120,7 +118,8 @@ export const IngrInput = styled.input`
   height: 53px;
   margin-right: 14px;
   padding: 16px;
-  background-color: rgba(245, 245, 245, 1);
+  /* background-color: rgba(245, 245, 245, 1); */
+  background-color: rgba(217, 217, 217, 0.25);
   border-radius: ${(p) => p.theme.radius.small};
   border: none;
   outline: none;
@@ -139,7 +138,45 @@ export const IngrInput = styled.input`
   }
 `;
 
-export const IngrNumberLabel = styled.label`
+export const IngrList = styled.ul`
+  width: 194px;
+  height: 154px;
+  position: absolute;
+  z-index: 3;
+  background: #ffffff;
+  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+  border-radius: 6px;
+  overflow-y: scroll;
+  padding: 8px 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 398px;
+    height: 172px;
+  }
+`;
+
+export const IngrItem = styled.li`
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.5;
+
+  :not(:last-child) {
+    margin-bottom: 6px;
+  }
+
+  :hover,
+  :focus {
+    color: rgba(139, 170, 54, 1);
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+export const IngrNumberLabel = styled.div`
   position: relative;
   width: 84px;
   height: 53px;
@@ -159,7 +196,7 @@ export const IngrNumberLabel = styled.label`
 export const NumberInput = styled.input`
   width: 84px;
   height: 53px;
-  padding: 16px 0 16px 16px;
+  padding: 16px 0 16px 10px;
   background-color: #f5f5f5;
   outline: none;
   border: none;
@@ -177,35 +214,91 @@ export const NumberInput = styled.input`
   }
 `;
 
-export const UnitSelect = styled.select`
+export const UnitSelect = styled.div`
   position: absolute;
   right: 0;
+  top: 0;
+  padding: 16px 8px 16px 0;
 
-  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 50px;
   height: 53px;
-  padding: 16px 0;
   background-color: #f5f5f5;
   outline: none;
   border: none;
   border-radius: ${(p) => p.theme.radius.small};
 
+  /* appearance: none;
+  overflow: hidden;
+  background-image: url(${arror});
+  background-repeat: no-repeat;
+  background-position: 26px 19px;
+  background-size: 16px; */
+
+  @media screen and (min-width: 768px) {
+    width: 55px;
+    height: 59px;
+    background-position: 28px 22px;
+  }
+
+  svg {
+    color: ${(p) => p.theme.colors.accent};
+
+    @media screen and (min-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+`;
+
+export const SelectText = styled.span`
   font-size: ${(p) => p.theme.fontSizes.s}px;
   line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
   color: ${(p) => p.theme.colors.textPrimary};
 
-  appearance: none;
-  overflow: hidden;
-  background-image: url(${arror});
-  background-repeat: no-repeat;
-  background-position: 26px 19px;
-  background-size: 16px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+`;
+
+export const UnitList = styled.ul`
+  width: 84px;
+  height: 112px;
+  padding: 12px 28px;
+  background-color: #ffffff;
+  box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
+  border-radius: 6px;
+  z-index: 5;
+  position: absolute;
 
   @media screen and (min-width: 768px) {
-    width: 52px;
-    height: 59px;
-    font-size: 18px;
-    background-position: 28px 22px;
+    width: 97px;
+    height: 128px;
+  }
+`;
+
+export const UnitItem = styled.li`
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #000000;
+  opacity: 0.5;
+
+  :not(:last-child) {
+    margin-bottom: 4px;
+  }
+
+  :hover,
+  :focus {
+    color: rgba(139, 170, 54, 1);
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
   }
 `;
 
@@ -224,13 +317,11 @@ export const DeleteButton = styled.button`
   }
 
   svg {
-    height: 16px;
-    width: 16px;
     color: #1f242e;
 
     @media screen and (min-width: 768px) {
       width: 20px;
-      height: 20px;
+      height: 60px;
     }
   }
 `;
