@@ -7,15 +7,20 @@ import {
   Backdrop,
   Button,
   ButtonClose,
+  ButtonList,
   CircleImage,
   EditContainer,
   IconPen,
   Input,
   InputContainer,
   InputIcon,
+  LogOutButton,
+  LogOutContainer,
+  LogOutText,
   ModalWindow,
 } from "./ModalStyled";
 import nonePhoto from "../../images/recipe-photo-small.png";
+import axios from "axios";
 
 const modalRoot = document.querySelector("#modal-root");
 const CustomModal = ({ children, onClose }) => {
@@ -117,11 +122,29 @@ export const EditProfileModal = ({ onClose, photoUrl, UserName }) => {
 };
 
 export const LogoutModal = ({ onClose }) => {
+  const handleLogout = async () => {
+    try {
+    await axios.post("http://localhost:4000/auth/logout");
+      localStorage.removeItem("token"); 
+      window.location.reload(); 
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <div>
-      <h2>Log Out</h2>
-      {/* Add any confirmation messages or other content for the modal here */}
-      <button onClick={onClose}>Close</button>
-    </div>
+    <LogOutContainer>
+      <LogOutText>Are you sure you want to log out?</LogOutText>
+      <ButtonList>
+        {" "}
+        <LogOutButton
+          style={{ background: "#D9D9D9", color: "#23262A" }}
+          onClick={handleLogout}
+        >
+          Log out
+        </LogOutButton>
+        <LogOutButton onClick={onClose}>Cancel</LogOutButton>
+      </ButtonList>
+    </LogOutContainer>
   );
 };
