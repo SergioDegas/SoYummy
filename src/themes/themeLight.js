@@ -5,7 +5,7 @@ export const themeLight = {
         main: "Poppins, sans-serif",
     },
 
-    fontSizes: { xs: 8, s: 14, m: 16, l: 18, xl: 22, xxl: 30 },
+    fontSizes: { xs: 8, s: 14, m: 16, l: 18, xl: 22,  xxl: 30 },
 
     fontWeights: {
         regular: 400,
