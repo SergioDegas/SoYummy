@@ -7,6 +7,7 @@ import {
   DescrWrap,
   FileInputWrap,
   FileInput,
+  RecipeImage,
   Image,
   InputWrap,
   DescrInput,
@@ -20,10 +21,32 @@ import {
   TimeItem,
 } from "./RecipeDescrFields.styled";
 
-export const RecipeDescrFields = () => {
-  const [time, setTime] = useState("30 min");
+export const RecipeDescrFields = ({
+  image,
+  time,
+  category,
+  onFileInputChange,
+  onTitleChange,
+  onDescriptionChange,
+  onTimeSet,
+  onCategorySet,
+}) => {
+  const categoryList = [
+    "Beef",
+    "Breakfast",
+    "Dessert",
+    "Goat",
+    "Lamb",
+    "Miscellaneous",
+    "Vegan",
+    "Chicken",
+    "Pasta",
+    "Pork",
+    "SeaFood",
+    "Side",
+  ];
+
   const [timeIsActive, setTimeIsActive] = useState(false);
-  const [category, setCategory] = useState("breakfast");
   const [categoryIsActive, setCategoryIsActive] = useState(false);
 
   const toggleTimeList = () => {
@@ -34,34 +57,19 @@ export const RecipeDescrFields = () => {
     setCategoryIsActive(!categoryIsActive);
   };
 
-  const onTimeSet = (value) => {
-    setTime(value);
+  const setTime = (value) => {
+    onTimeSet(value);
     setTimeIsActive(false);
   };
 
-  const onCategorySet = (value) => {
-    setCategory(value);
+  const setCategory = (value) => {
+    onCategorySet(value);
     setCategoryIsActive(false);
   };
 
-  const categoryList = [
-    "breakfast",
-    "lunch",
-    "dinner",
-    "breakfast",
-    "lunch",
-    "dinner",
-    "breakfast",
-    "lunch",
-    "dinner",
-    "breakfast",
-    "lunch",
-    "dinner",
-  ];
-
   return (
     <DescrWrap>
-      <FileInputWrap>
+      <FileInputWrap onChange={onFileInputChange}>
         <label htmlFor="photo">
           <Image>
             <source srcSet={imageS} media="(max-width: 1439px)" />
@@ -70,6 +78,7 @@ export const RecipeDescrFields = () => {
           </Image>
         </label>
         <FileInput type="file" accept=".jpg, .jpeg, .png" id="photo" />
+        {image && <RecipeImage src={image} alt="recipeImage"></RecipeImage>}
       </FileInputWrap>
       <InputWrap>
         <DescrInput
@@ -77,12 +86,14 @@ export const RecipeDescrFields = () => {
           id="title"
           name="title"
           placeholder="Enter item title"
+          onChange={(e) => onTitleChange(e.target.value)}
         />
         <DescrInput
           type="text"
           id="about"
           name="about"
           placeholder="Enter about recipe"
+          onChange={(e) => onDescriptionChange(e.target.value)}
         />
         <SelectWrap onClick={toggleCategory}>
           <DescrLabel>Category</DescrLabel>
@@ -93,18 +104,12 @@ export const RecipeDescrFields = () => {
           {categoryIsActive && (
             <CategoryList>
               {categoryList.map((item) => (
-                <CategoryItem key={item} onClick={() => onCategorySet(item)}>
+                <CategoryItem key={item} onClick={() => setCategory(item)}>
                   {item}
                 </CategoryItem>
               ))}
             </CategoryList>
           )}
-
-          {/* <DescrSelect name="category" id="category">
-            <DescrOption value="breakfast">breakfast</DescrOption>
-            <DescrOption value="lunch">lunch</DescrOption>
-            <DescrOption value="dinner">dinner</DescrOption>
-          </DescrSelect> */}
         </SelectWrap>
         <SelectWrap onClick={toggleTimeList}>
           <DescrLabel>Cooking time</DescrLabel>
@@ -115,20 +120,12 @@ export const RecipeDescrFields = () => {
           {timeIsActive && (
             <TimeList>
               {cookingTime.map((item) => (
-                <TimeItem onClick={() => onTimeSet(item)}>{item}</TimeItem>
+                <TimeItem key={item} onClick={() => setTime(item)}>
+                  {item}
+                </TimeItem>
               ))}
             </TimeList>
           )}
-
-          {/* <DescrSelect name="time" id="time">
-            {cookingTime.map((time) => {
-              return (
-                <DescrOption value={time} key={time}>
-                  {time}
-                </DescrOption>
-              );
-            })}
-          </DescrSelect> */}
         </SelectWrap>
       </InputWrap>
     </DescrWrap>

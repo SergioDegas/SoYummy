@@ -17,25 +17,28 @@ const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
 
 export const App = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
 
-  const token = localStorage.getItem('token');
-  
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     if (token) {
       const check = async () => {
-        const authCheck = await axios.get('http://localhost:4000/auth/current', {
-          headers: {
-            'Authorization': `Bearer ${token}`
+        const authCheck = await axios.get(
+          "http://localhost:4000/auth/current",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
+        );
         if (authCheck) {
-          setIsAuth(true)
-        };
+          setIsAuth(true);
+        }
       };
       check();
-    };
-  }, [token]) 
+    }
+  }, [token]);
 
   return !isAuth ? (
     <Suspense>
@@ -48,15 +51,18 @@ export const App = () => {
   ) : (
     <>
       <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/main" element={<MainPage />} />
-            <Route path="/categories/:categoryName" element={<CategoriesPage />} />
-            <Route path="/add" element={<AddRecipePage />} />
-            <Route path="/favorite" element={<FavoritesPage />} />
-            <Route path="/recipe/:recipeId" element={<RecipePage />} />
-            <Route path="/my" element={<MyRecipesPage />} />
-            <Route path="/shopping-list" element={<ShoppingPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/main" element={<MainPage />} />
+          <Route
+            path="/categories/:categoryName"
+            element={<CategoriesPage />}
+          />
+          <Route path="/add" element={<AddRecipePage />} />
+          <Route path="/favorite" element={<FavoritesPage />} />
+          <Route path="/recipe/:recipeId" element={<RecipePage />} />
+          <Route path="/my" element={<MyRecipesPage />} />
+          <Route path="/shopping-list" element={<ShoppingPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>

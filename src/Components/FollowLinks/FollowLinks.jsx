@@ -15,9 +15,9 @@ export const FollowLinks = () => {
           <a
             href="https://uk-ua.facebook.com/"
             target="blank"
-            nofollow
-            noreferrer
-            noopener
+            nofollow="true"
+            noreferrer="true"
+            noopener="true"
           >
             <SiFacebook size="26" />
           </a>
@@ -26,9 +26,9 @@ export const FollowLinks = () => {
           <a
             href="https://www.youtube.com/"
             target="blank"
-            nofollow
-            noreferrer
-            noopener
+            nofollow="true"
+            noreferrer="true"
+            noopener="true"
           >
             <SiYoutube size="28" />
           </a>
@@ -37,9 +37,9 @@ export const FollowLinks = () => {
           <a
             href="https://twitter.com/"
             target="blank"
-            nofollow
-            noreferrer
-            noopener
+            nofollow="true"
+            noreferrer="true"
+            noopener="true"
           >
             <SiTwitter size="25" />
           </a>
@@ -48,9 +48,9 @@ export const FollowLinks = () => {
           <a
             href="https://www.instagram.com/"
             target="blank"
-            nofollow
-            noreferrer
-            noopener
+            nofollow="true"
+            noreferrer="true"
+            noopener="true"
           >
             <SiInstagram size="24" />
           </a>
