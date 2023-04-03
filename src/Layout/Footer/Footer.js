@@ -26,9 +26,6 @@ import {
   Container,
 } from "./FooterStyled";
 
-// ці іконки соцмереж використовую вже на інший сторінці, щоб були однакові
-// import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from "react-icons/si";
-
 const Footer = () => {
   return (
     <FooterContainer>

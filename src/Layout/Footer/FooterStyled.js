@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import { GiEvilFork } from "react-icons/gi";
 import { MdOutlineEmail } from 'react-icons/md';
-import {BsFacebook} from 'react-icons/bs'
-import {BsYoutube} from 'react-icons/bs'
-import {BsTwitter} from 'react-icons/bs'
-import {BsInstagram} from 'react-icons/bs'
+import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from "react-icons/si";
 
 export const Container = styled.div`
 width: 1440px;
@@ -168,25 +165,25 @@ border-radius: ${({theme})=>`${theme.radius.small}`};
 border: none;
 color: ${({theme})=>`${theme.colors.backgroundPrimary}`};
 `
-export const FacebookIcon = styled(BsFacebook)`
+export const FacebookIcon = styled(SiFacebook)`
  color:${({theme})=>`${theme.colors.accent}`};
  width: 20px;
  height:20px;
 `;
 
-export const YTIcon = styled(BsYoutube)`
+export const YTIcon = styled(SiYoutube)`
  color:${({theme})=>`${theme.colors.accent}`};
  width: 20px;
  height:20px;
 `;
 
-export const TwitterIcon = styled(BsTwitter)`
+export const TwitterIcon = styled(SiTwitter)`
  color:${({theme})=>`${theme.colors.accent}`};
  width: 20px;
  height:20px;
 `;
 
-export const InstIcon = styled(BsInstagram)`
+export const InstIcon = styled(SiInstagram)`
  color:${({theme})=>`${theme.colors.accent}`};
  width: 20px;
  height:20px;
@@ -199,4 +196,3 @@ margin-top: 40px;
 padding-bottom: 50px;
 gap:20px;
 `
-
