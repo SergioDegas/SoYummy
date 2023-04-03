@@ -1,6 +1,11 @@
-import { ItemStyled, ListStyled, NavLinkStyled } from "./CategoryList.styled";
+import {
+    ItemStyled,
+    ListStyled,
+    NavLinkStyled,
+    StyledWrapper,
+} from "./CategoryList.styled";
 
-export const CategoriesList = ({ categories, onClick }) => {
+export const CategoriesList = ({ categories }) => {
     return (
         <ListStyled>
             {categories.map((category) => {
@@ -14,4 +19,8 @@ export const CategoriesList = ({ categories, onClick }) => {
             })}
         </ListStyled>
     );
+};
+
+export const CategoriesTitleWrapper = ({ children }) => {
+    return <StyledWrapper>{children}</StyledWrapper>;
 };

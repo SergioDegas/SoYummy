@@ -1,14 +1,19 @@
-import { CategoriesList } from "Components/CategoriesList/CategoriesList";
+import {
+    CategoriesList,
+    CategoriesTitleWrapper,
+} from "Components/CategoriesList/CategoriesList";
 import Container from "Components/Container/Container.styled";
+import { PageTitle } from "Components/PageTitle/PageTitle";
 import { RecipesCategoryList } from "Components/RecipesCategoryList/RecipesCategoryList";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 axios.defaults.baseURL = "http://localhost:4000";
-axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
-    "token"
-)}`;
+const token = localStorage.getItem("token");
+console.log(token);
+
+axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
 const getCategoriesList = async () => {
     const { data } = await axios.get(`/recipes/category-list`);
@@ -46,7 +51,9 @@ const CategoriesPage = () => {
         <main>
             <Container>
                 <section>
-                    <h1>Categories</h1>
+                    <CategoriesTitleWrapper>
+                        <PageTitle>Categories</PageTitle>
+                    </CategoriesTitleWrapper>
                     <CategoriesList categories={categories} />
                     <RecipesCategoryList recipes={recipes} />
                 </section>
