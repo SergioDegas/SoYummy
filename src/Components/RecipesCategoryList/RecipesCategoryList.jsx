@@ -12,7 +12,10 @@ export const RecipesCategoryList = ({ recipes }) => {
             {recipes.map((recipe) => {
                 return (
                     <ItemStyled key={recipe._id}>
-                        <Link to={`${recipe._id}`} state={{ from: location }}>
+                        <Link
+                            to={`/recipe/${recipe._id}`}
+                            state={{ from: location }}
+                        >
                             <RecipeCard recipe={recipe} />
                         </Link>
                     </ItemStyled>
