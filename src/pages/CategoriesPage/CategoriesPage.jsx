@@ -6,7 +6,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 axios.defaults.baseURL = "http://localhost:4000";
-axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mjk5NzAwNjU4NDRjZDJjZTE4MmZkYiIsImVtYWlsIjoidXNlckBtYWlsLmNvbSIsImlhdCI6MTY4MDU0NTEzNCwiZXhwIjoxNjgwNjI3OTM0fQ.Hnv0syQhMjn5Pe7hfJR7To1sfzRabrRZdsXfg9SiCgc`;
+axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
+    "token"
+)}`;
 
 const getCategoriesList = async () => {
     const { data } = await axios.get(`/recipes/category-list`);
