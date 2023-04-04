@@ -1,9 +1,4 @@
-import {
-    ItemStyled,
-    ListStyled,
-    NavLinkStyled,
-    StyledWrapper,
-} from "./CategoryList.styled";
+import { ItemStyled, ListStyled, NavLinkStyled } from "./CategoryList.styled";
 
 export const CategoriesList = ({ categories }) => {
     return (
@@ -19,8 +14,4 @@ export const CategoriesList = ({ categories }) => {
             })}
         </ListStyled>
     );
-};
-
-export const CategoriesTitleWrapper = ({ children }) => {
-    return <StyledWrapper>{children}</StyledWrapper>;
 };
