@@ -1,12 +1,7 @@
-
-
-
 import { useState, useEffect } from "react";
 import {
-  HeaderContainer,
-  
+  HeaderContainer,  
   ContainerFor,
-
 } from "../../Components/ComponentsHeader/SwitchToggle/SwitchToggleStyled";
 
 import CustomModal from "Components/CustomModal/CustomModal";
@@ -50,10 +45,19 @@ const Header = () => {
       } catch (error) {
         console.error(error);
       }
+
     };
 
-    fetchUserData();
-  }, []);
+    const [activeModal, setActiveModal] = useState(null);
+
+    const openEditModal = () => setActiveModal("edit");
+    const openLogoutModal = () => setActiveModal("logout");
+    const closeModal = () => setActiveModal(null);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            return;
+        }
 
   return (
     <header>
@@ -83,6 +87,8 @@ const Header = () => {
       </ContainerFor>
     </header>
   );
+
+
 };
 
 export default Header;

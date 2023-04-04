@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Container from "../Container";
 
 export const StyledContainer = styled(Container)`
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     display: flex;
   }
 `;
@@ -14,12 +14,12 @@ export const SectionPreparation = styled.section`
     padding-top: 96px;
     padding-bottom: 200px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
   }
 `;
 
 export const TextTumb = styled.div`
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     width: 757px;
   }
 `;
@@ -46,7 +46,7 @@ justify-content: center;
     width: 433px;
     height: 332px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     margin-left: 50px;
   }
 `;

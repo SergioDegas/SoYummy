@@ -36,7 +36,8 @@ export const RecipeIngredients = () => {
   const [ingrIsActive, setIngrIsActive] = useState(
     new Array(ingredients.length).fill(false)
   );
-  const [ingredientsList, setIngredientsList] = useState([
+
+  const [ingredientsList,   setIngredientsList ] = useState([
     "banana",
     "avocado",
     "meat",

@@ -21,7 +21,7 @@ export const TitleWrap = styled.div`
     margin-bottom: 32px;
     padding: 21px 32px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     padding: 21px 40px;
     margin-bottom: 50px;
   }
@@ -55,7 +55,7 @@ export const TitleTextWrap = styled.div`
   @media (min-width: 768px) {
     gap: 38px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     gap: 109px;
   }
 `;
@@ -96,7 +96,7 @@ export const IngedientsImg = styled.img`
     height: 112px;
     margin-right: 40px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     width: 128px;
     height: 128px;
     margin-right: 66px;
@@ -115,7 +115,7 @@ export const IngedientsTitle = styled.p`
     font-size: 24px;
     line-height: 1;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     max-width: 420px;
   }
 `;
@@ -136,7 +136,7 @@ export const IngedientsMeasure = styled.span`
     padding: 4px 8px;
     margin-right: 78px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     margin-right: 151px;
   }
 `;
