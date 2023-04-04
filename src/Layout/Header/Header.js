@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  HeaderContainer,  
+  HeaderContainer,
   ContainerFor,
 } from "../../Components/ComponentsHeader/SwitchToggle/SwitchToggleStyled";
 
@@ -14,18 +14,16 @@ const Header = () => {
   const [name, setName] = useState("Name");
   const [photoUrl, setPhotoUrl] = useState("");
   const [hovered, setHovered] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
 
   const handleHover = () => {
     setHovered(!hovered);
   };
 
-    const openEditModal = () => setActiveModal("edit");
-    const openLogoutModal = () => setActiveModal("logout");
-  const [activeModal, setActiveModal] = useState(null);
+  const openEditModal = () => setActiveModal("edit");
+  const openLogoutModal = () => setActiveModal("logout");
+  const closeModal = () => setActiveModal(null);
 
- const closeModal = () => setActiveModal(null);
-
- 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -45,19 +43,9 @@ const Header = () => {
       } catch (error) {
         console.error(error);
       }
-
     };
-
-    const [activeModal, setActiveModal] = useState(null);
-
-    const openEditModal = () => setActiveModal("edit");
-    const openLogoutModal = () => setActiveModal("logout");
-    const closeModal = () => setActiveModal(null);
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (!token) {
-            return;
-        }
+    fetchUserData();
+  }, []);
 
   return (
     <header>
@@ -87,8 +75,6 @@ const Header = () => {
       </ContainerFor>
     </header>
   );
-
-
 };
 
 export default Header;
