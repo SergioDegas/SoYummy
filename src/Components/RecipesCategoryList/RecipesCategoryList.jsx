@@ -1,8 +1,8 @@
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
 import { RecipeCard } from "Components/RecipeCard/RecipeCard";
 import { ItemStyled, ListStyled } from "./RecipesCategoryList.styled";
-import { Link } from "react-router-dom";
 
 export const RecipesCategoryList = ({ recipes }) => {
     const location = useLocation();

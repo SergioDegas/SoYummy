@@ -1,13 +1,13 @@
-import {
-    CategoriesList,
-    CategoriesTitleWrapper,
-} from "Components/CategoriesList/CategoriesList";
-import Container from "Components/Container/Container.styled";
-import { PageTitle } from "Components/PageTitle/PageTitle";
-import { RecipesCategoryList } from "Components/RecipesCategoryList/RecipesCategoryList";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+import { CategoriesList } from "Components/CategoriesList/CategoriesList";
+import { PageTitle } from "Components/PageTitle/PageTitle";
+import { RecipesCategoryList } from "Components/RecipesCategoryList/RecipesCategoryList";
+
+import Container from "Components/Container/Container.styled";
+import { StyledSection, StyledWrapper } from "./CategoriesPage.styled";
 
 axios.defaults.baseURL = "http://localhost:4000";
 const token = localStorage.getItem("token");
@@ -47,13 +47,13 @@ const CategoriesPage = () => {
     return (
         <main>
             <Container>
-                <section>
-                    <CategoriesTitleWrapper>
+                <StyledSection>
+                    <StyledWrapper>
                         <PageTitle>Categories</PageTitle>
-                    </CategoriesTitleWrapper>
+                    </StyledWrapper>
                     <CategoriesList categories={categories} />
                     <RecipesCategoryList recipes={recipes} />
-                </section>
+                </StyledSection>
             </Container>
         </main>
     );
