@@ -1,21 +1,21 @@
 import styled from "styled-components";
-import backgroundImgS from "../../images/background-1x.png";
-import backgroundImgL from "../../images/background-2x.png";
+// import backgroundImgS from "../../images/background-1x.png";
+// import backgroundImgL from "../../images/background-2x.png";
 
 export const Container = styled.div`
   width: 375px;
   padding: 0 16px 100px;
   margin: 0 auto;
 
-  background-image: url(${backgroundImgS});
+  /* background-image: url();
   background-repeat: no-repeat;
-  background-position: 0 124%;
+  background-position: 0 124%; */
 
   @media screen and (min-width: 768px) {
     width: 768px;
     padding: 0 32px 200px;
-    background-image: url(${backgroundImgL});
-    background-position: 0 175%;
+    /* background-image: url();
+    background-position: 0 175%; */
   }
 
   @media screen and (min-width: 1440px) {

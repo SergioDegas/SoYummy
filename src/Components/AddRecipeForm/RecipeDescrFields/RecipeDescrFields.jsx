@@ -22,6 +22,8 @@ import {
 } from "./RecipeDescrFields.styled";
 
 export const RecipeDescrFields = ({
+  title,
+  description,
   image,
   time,
   category,
@@ -87,6 +89,7 @@ export const RecipeDescrFields = ({
           name="title"
           placeholder="Enter item title"
           onChange={(e) => onTitleChange(e.target.value)}
+          value={title}
         />
         <DescrInput
           type="text"
@@ -94,6 +97,7 @@ export const RecipeDescrFields = ({
           name="about"
           placeholder="Enter about recipe"
           onChange={(e) => onDescriptionChange(e.target.value)}
+          value={description}
         />
         <SelectWrap onClick={toggleCategory}>
           <DescrLabel>Category</DescrLabel>
