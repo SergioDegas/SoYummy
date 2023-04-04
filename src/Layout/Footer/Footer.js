@@ -1,3 +1,5 @@
+import Container from "Components/Container/Container.styled";
+
 import {
   LogoContainer,
   LogoIcon,
@@ -23,7 +25,7 @@ import {
   TwitterIcon,
   InstIcon,
   SocialContainer,
-  Container,
+  Link,
 } from "./FooterStyled";
 
 const Footer = () => {
@@ -39,9 +41,6 @@ const Footer = () => {
             <FooterTitle>So Yummy</FooterTitle>
           </HeadContainer>
           <BenefitsList>
-            <BenefitsItem>
-              <Dot>&#8226;</Dot>Database of recipes that can be replenished
-            </BenefitsItem>
             <BenefitsItem>
               <Dot>&#8226;</Dot>Database of recipes that can be replenished{" "}
             </BenefitsItem>
@@ -59,11 +58,11 @@ const Footer = () => {
           </BenefitsList>
         </InfoContainer>
         <MenuList>
-          <MenuItem>Ingredients</MenuItem>
-          <MenuItem>Add recipes</MenuItem>
-          <MenuItem>My recipes</MenuItem>
-          <MenuItem>Favorite</MenuItem>
-          <MenuItem>Shopping list</MenuItem>
+          <MenuItem><Link to='/' >Ingredients</Link></MenuItem>
+          <MenuItem><Link to='/add'>Add recipes</Link></MenuItem>
+          <MenuItem><Link to='/my'>My recipes</Link></MenuItem>
+          <MenuItem><Link to='/favorite'>Favorite</Link></MenuItem>
+          <MenuItem><Link to='/shopping-list'>Shopping list</Link></MenuItem>
         </MenuList>
         <div>
         <EmailTitle>Subscribe to our Newsletter</EmailTitle>
@@ -77,7 +76,7 @@ const Footer = () => {
         /> 
         <MailIcon />
         </MailContainer>  
-        <MailBtn type="button">Subscribe</MailBtn>
+        <MailBtn type="submit">Subscribe</MailBtn>
       </div>
       </MainContainer>
       
