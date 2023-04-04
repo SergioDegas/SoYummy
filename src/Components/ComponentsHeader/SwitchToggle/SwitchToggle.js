@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Switch } from "./SwitchToggleStyled";
 
-
 const SwitchToggle = ({ isOn, handleToggle }) => {
   const [on, setOn] = useState(isOn);
 
