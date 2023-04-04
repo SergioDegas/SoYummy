@@ -26,6 +26,7 @@ const getRecipeByCategory = async (category) => {
 const CategoriesPage = () => {
     const [categories, setCategories] = useState([]);
     const [recipes, setRecipes] = useState([]);
+    const [error, setError] = useState(null);
 
     const { categoryName } = useParams();
 
@@ -37,6 +38,13 @@ const CategoriesPage = () => {
 
         const getRecipesByCategories = async (categoryName) => {
             const recipes = await getRecipeByCategory(categoryName);
+
+            if (!recipes || recipes.length === 0) {
+                setError(
+                    "We are sorry, but the recipes in category you were looking can’t be found.."
+                );
+            }
+
             setRecipes(recipes);
         };
 
@@ -52,7 +60,9 @@ const CategoriesPage = () => {
                         <PageTitle>Categories</PageTitle>
                     </StyledWrapper>
                     <CategoriesList categories={categories} />
-                    <RecipesCategoryList recipes={recipes} />
+
+                    {error && <div>{error}</div>}
+                    {!error && <RecipesCategoryList recipes={recipes} />}
                 </StyledSection>
             </Container>
         </main>
