@@ -9,7 +9,7 @@ export const SectionPreparationDesc = styled.ul`
   @media (min-width: 768px) {
     margin-bottom: 50px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     margin-bottom: 0;
   }
 `;
