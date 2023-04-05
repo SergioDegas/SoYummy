@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import Container from "../Container";
 import {
   SectionIngredients,
@@ -19,27 +18,10 @@ import {
 } from "./RecipeIngredientsList.styled";
 import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
 
-import ingridientList from "db/ingredients.json"; //робимо запит за всіма інгрідієнтами useEffect
-
 //TODO
 //по кліку на чекбокс додаємо або видаляємо з шопінг ліста інгрідієнти
 
 const RecipeIngredientsList = ({ ingredients }) => {
-  const getFilteredIngedients = () => {
-    if (!ingredients) {
-      return;
-    }
-    try {
-      const filteredArr = ingridientList.filter((obj1) => {
-        return ingredients.some((obj2) => obj2.id === obj1._id.$oid);
-      });
-      return filteredArr;
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-  const filteredIngedients = getFilteredIngedients();
-
   return (
     <SectionIngredients>
       <Container>
@@ -52,25 +34,22 @@ const RecipeIngredientsList = ({ ingredients }) => {
         </TitleWrap>
         <IngedientsList>
           {ingredients &&
-            filteredIngedients.map((item) => {
+            ingredients.map(({ image, _id, measure, name }) => {
               return (
-                <IngedientsItem key={item._id.$oid}>
+                <IngedientsItem key={_id}>
                   <Wrap>
                     {
                       <IngedientsImg
-                        src={item.thb ? item.thb : DefaultIngredientsImg}
+                        src={image ? image : DefaultIngredientsImg}
                         alt="Ingredient"
                       />
                     }
-                    <IngedientsTitle>{item.ttl}</IngedientsTitle>
+                    <IngedientsTitle>{name}</IngedientsTitle>
                   </Wrap>
                   <Wrap>
-                    <IngedientsMeasure>
-                      {ingredients &&
-                        ingredients.find((i) => i.id === item._id.$oid).measure}
-                    </IngedientsMeasure>
-                    <CheckBoxLabel htmlFor={item.ttl}>
-                      <IngedientsCheck type="checkbox" id={item.ttl} />
+                    <IngedientsMeasure>{measure}</IngedientsMeasure>
+                    <CheckBoxLabel htmlFor={name}>
+                      <IngedientsCheck type="checkbox" id={name} />
                       <CheckBoxWrap>
                         <CheckMarkIcon />
                       </CheckBoxWrap>
