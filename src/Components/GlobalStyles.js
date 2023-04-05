@@ -39,8 +39,4 @@ body {
 
   background-color: ${(p) => p.theme.colors.backgroundPrimary};
 }
-
-#root {
-  height: 100vh,
-}
 `;

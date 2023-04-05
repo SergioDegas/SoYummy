@@ -1,15 +1,17 @@
 import axios from "axios";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
-import { Img, Page, BgImg, SingUpForm } from "./SingUpPage.styled";
+import { Img, Page, BgImg, SingUpForm, Title, Input, Button } from "./SingUpPage.styled";
+import authPic from '../../images/authPic.svg'
 
 const SingUpPage = () => {
   return (
     <Page>
-      <Img alt="" src="https://res.cloudinary.com/dtv1xlisg/image/upload/v1680302456/so_yummy/auth/OrderFood-pana1_moqvfj.svg" />
-      <div>
-        <BgImg>
-          <SingUpForm>
+      <Img alt="" src={authPic} />
+      <BgImg>
+        <SingUpForm>
+          <div style={{ margin: "0px 28px" }}>
+            <Title>Registration</Title>
             <Formik
               initialValues={{ name: '', email: '', password: '' }}
               onSubmit={async (values) => {
@@ -30,31 +32,31 @@ const SingUpPage = () => {
                 }
               }}
             >
-              <Form>
-                <Field
+              <Form style={{ display: "flex", flexDirection: "column" }}>
+                <Input
                   type='text'
                   name='name'
                   placeholder='Name'
                 />
-                <Field
+                <Input
                   type='email'
                   name='email'
                   placeholder='Email'
                 />
-                <Field
+                <Input
                   type='password'
                   name='password'
                   placeholder='Password'
                 />
-                <button
+                  <Button
                   type="submit"
-                >Sign up</button>
+                >Sign up</Button>
               </Form>
             </Formik>
-            <Link to='/signin'>Sign in</Link>
-           </SingUpForm>
-        </BgImg>
-      </div>
+          </div>
+          <Link style={{ color: "white", textDecorationLine: "underline" }} to='/signin'>Sign in</Link>
+        </SingUpForm>
+      </BgImg>
     </Page>
   )
 };
