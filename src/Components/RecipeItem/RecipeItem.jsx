@@ -1,5 +1,7 @@
 // import { useDispatch } from "react-redux;
 
+
+
 import { 
 	DscrInstrWrp, 
 	RecipeInfoWrp,  
@@ -10,7 +12,7 @@ import {
 	RecipeTime, 
 	TitleWrp, 
 	TimeSeeWrapp,
-	// RecipeDescr,
+	RecipeDescr,
 } from "./RecipeItem.styled";
 import { Picture } from "Components/Picture/Picture";
 // import img from "../../images/file-input-mob.png"
@@ -26,6 +28,7 @@ export const RecipeItem = () => {
 // };
 
 
+
 	return(
 		<>
 			<Picture img="https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg"/>
@@ -38,7 +41,7 @@ export const RecipeItem = () => {
 			</TitleWrp>
 			<DscrInstrWrp>
 				<RecipeInstr>A delicious tart made with almond cream and fresh apples</RecipeInstr>
-				{/* <RecipeDescr>A delicious tart made with almond cream and fresh apples</RecipeDescr> */}
+				<RecipeDescr>A delicious tart made with almond cream and fresh apples</RecipeDescr>
 			</DscrInstrWrp>
 			<TimeSeeWrapp>
 				<RecipeTime>20 min</RecipeTime>
