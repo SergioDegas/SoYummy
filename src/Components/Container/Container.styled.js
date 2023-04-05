@@ -5,15 +5,15 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 0 16px;
   @media (min-width: 375px) {
-    width: 343px;
+    width: 375px;
   }
   @media (min-width: 768px) {
     padding: 0 32px;
     width: 768px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     padding: 0 100px;
-    width: 1240px;
+    width: 1440px;
   }
 `;
 
