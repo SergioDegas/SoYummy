@@ -2,7 +2,7 @@ import { Field } from "formik";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import bgAuth from '../../images/authPages/bgAuth.svg'
-import imgMobile from '../../images/authPages/authImgMobile.svg'
+import imgMobile from '../../images/authPages/authMobile2.svg'
 
 export const Page = styled.div`
 display: flex;
@@ -12,9 +12,10 @@ height: 100vh;
 `
 
 export const ImgContainer = styled.div`
-height: 250px;
-width: 285px;
 background-image: url(${imgMobile});
+
+height: 209px;
+width: 255px;
 margin-top: auto;
 `
 

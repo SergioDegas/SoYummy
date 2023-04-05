@@ -1,11 +1,14 @@
 import axios from "axios";
 import { Formik, Form } from "formik";
 import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, ImgContainer } from "./SingUpPage.styled";
+import imgMobile from '../../images/authPages/authMobile2.svg'
+
 
 const SingUpPage = () => {
   return (
     <Page>
       <ImgContainer>
+        <img alt="auth" src={imgMobile} />
       </ImgContainer>
       <Background>
         <SingUpForm>
