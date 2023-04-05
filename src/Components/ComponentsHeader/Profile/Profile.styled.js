@@ -21,13 +21,13 @@ export const ProfileImage = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 50%;
-
+  background-size: cover;
   &::before {
     content: "";
     display: block;
     width: 100%;
     height: 100%;
-    background-color: gray;
+    /* background-color: gray; */
 
     border-radius: 50%;
   }

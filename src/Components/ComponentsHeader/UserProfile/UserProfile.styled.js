@@ -27,7 +27,9 @@ export const CircleImage = styled.div`
   width: 103px;
   height: 103px;
   border-radius: 50%;
+
   background-size: cover;
+  /* background-size: contain; */
   background-position: center;
 `;
 

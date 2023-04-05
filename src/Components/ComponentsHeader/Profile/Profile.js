@@ -15,6 +15,7 @@ export const Profile = ({
   openEditModal,
   openLogoutModal,
 }) => {
+  console.log(photoUrl);
   return (
     <ProfileContainer>
       <ProfileDetailsContainer onClick={handleHover}>
