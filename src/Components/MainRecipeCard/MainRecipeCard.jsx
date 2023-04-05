@@ -1,19 +1,19 @@
 import {
     PictureThumb,
     PictureTitle,
-    PictureTitleWrap,
     RecipePicture,
-} from "./RecipeCard.styled";
+    Wrapper,
+} from "./MainRecipeCard.styled";
 
-export const RecipeCard = ({ recipe }) => {
+export const MainRecipeCard = ({ recipe }) => {
     const { thumb, title } = recipe;
 
     return (
         <PictureThumb>
             <RecipePicture src={thumb} alt={title} />
-            <PictureTitleWrap>
+            <Wrapper>
                 <PictureTitle>{title}</PictureTitle>
-            </PictureTitleWrap>
+            </Wrapper>
         </PictureThumb>
     );
 };
