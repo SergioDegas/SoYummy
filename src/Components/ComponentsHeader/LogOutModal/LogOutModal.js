@@ -9,8 +9,9 @@ import {
 export const LogoutModal = ({ onClose }) => {
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:4000/auth/logout");
+      await fetch("http://localhost:4000/user/logout");
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
       window.location.reload();
     } catch (err) {
       console.log(err);

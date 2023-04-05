@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import {
   AddPhotoButton,
@@ -12,38 +12,66 @@ import {
   InputContainer,
   InputIcon,
 } from "./UserProfile.styled";
-import nonePhoto from "../../../images/recipe-photo-small.png";
 
-export const UserProfile = ({ onClose, photoUrl, UserName }) => {
-  const [newName, setNewName] = useState(UserName);
-  const [newPhoto, setNewPhoto] = useState(photoUrl);
+export const UserProfile = ({ onClose, photoUrl, userName }) => {
+  const [newName, setNewName] = useState(userName);
+  console.log(newName);
+  
 
-  useEffect(() => {
-    setNewName(UserName);
-  }, [UserName]);
-  const handleNameChange = (event) => {
-    setNewName(event.target.value);
-  };
-
-  const handlePhotoChange = (event) => {
+  const handleChange = async (event) => {
     const formData = new FormData();
-    formData.append("file", event.target.files[0]);
+  
+    formData.append("image", event.target.files[0]);
+  
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        return;
+      }
 
-    axios
-      .post("http://localhost:4000/upload", formData)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+      const res = await axios.post(
+        "http://localhost:4000/user/updateAvatar",
+        formData,
+        
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+         
+          },
+        }
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+   const handleNameChange = async () => {
+   
+     try {
+       const token = localStorage.getItem("token");
+       if (!token) {
+         return;
+       }
 
+       const res = await axios.post(
+         "http://localhost:4000/user/updateAvatar",
+    
+
+         {
+           headers: {
+             Authorization: `Bearer ${token}`,
+           name: newName
+           },
+         }
+       );
+       console.log(res.data);
+     } catch (error) {
+       console.log(error);
+     }
+   };
   return (
     <EditContainer>
-      <CircleImage
-        style={{ backgroundImage: `url(${newPhoto ? newPhoto : nonePhoto})` }}
-      >
+      <CircleImage style={{ backgroundImage: `url(${photoUrl})` }}>
         <AddPhotoButton>
           <AiOutlinePlus
             style={{
@@ -51,21 +79,18 @@ export const UserProfile = ({ onClose, photoUrl, UserName }) => {
               height: "18px",
             }}
           />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handlePhotoChange}
-            hidden
-          />
+          <input type="file" accept="image/*" onChange={handleChange} hidden />
         </AddPhotoButton>
       </CircleImage>
 
       <InputContainer>
         <Input
           type="text"
-          placeholder="Name"
+          placeholder="name"
           value={newName}
-          onChange={handleNameChange}
+          onChange={(event) => {
+            setNewName(event.target.value);
+          }}
         />
 
         <InputIcon>
@@ -78,7 +103,7 @@ export const UserProfile = ({ onClose, photoUrl, UserName }) => {
         </InputIcon>
         <IconPen />
       </InputContainer>
-      <Button onClick={() => console.log("Save changes")}>Save changes</Button>
+      <Button onClick={handleNameChange}>Save changes</Button>
       <ButtonClose onClick={onClose} />
     </EditContainer>
   );
