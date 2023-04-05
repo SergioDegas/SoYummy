@@ -25,7 +25,7 @@ export const App = () => {
         if (token) {
             const check = async () => {
                 const authCheck = await axios.get(
-                    "http://localhost:4000/auth/current",
+                    "http://localhost:4000/user/current",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

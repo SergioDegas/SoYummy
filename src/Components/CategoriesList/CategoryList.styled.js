@@ -71,17 +71,3 @@ export const NavLinkStyled = styled(NavLink)`
         transition: transform 0.25s ease-out;
     }
 `;
-
-export const StyledWrapper = styled.div`
-    margin-top: ${(p) => p.theme.space[1] * 12.5}px;
-    margin-bottom: ${(p) => p.theme.space[1] * 15}px;
-
-    @media (min-width: 768px) {
-        margin-top: ${(p) => p.theme.space[1] * 18}px;
-    }
-
-    @media (min-width: 1440px) {
-        margin-top: ${(p) => p.theme.space[1] * 25}px;
-        margin-bottom: ${(p) => p.theme.space[1] * 27.5}px;
-    }
-`;
