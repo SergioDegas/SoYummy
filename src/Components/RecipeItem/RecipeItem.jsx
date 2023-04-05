@@ -1,6 +1,19 @@
-// import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux;
 
-import { RecipeInfoWrp,  RecipeTitle, RecipeBtnDelete, RecipeDescr, RecipeSeeLink, RecipeTime, TitleWrp, TimeSeeWrapp } from "./RecipeItem.styled";
+
+
+import { 
+	DscrInstrWrp, 
+	RecipeInfoWrp,  
+	RecipeTitle, 
+	RecipeBtnDelete, 
+	RecipeInstr,
+	RecipeSeeLink, 
+	RecipeTime, 
+	TitleWrp, 
+	TimeSeeWrapp,
+	RecipeDescr,
+} from "./RecipeItem.styled";
 import { Picture } from "Components/Picture/Picture";
 // import img from "../../images/file-input-mob.png"
 import { RiDeleteBinLine} from 'react-icons/ri';
@@ -14,6 +27,8 @@ export const RecipeItem = () => {
 // 	dispatch(deleteRicipe(id));
 // };
 
+
+
 	return(
 		<>
 			<Picture img="https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg"/>
@@ -24,7 +39,10 @@ export const RecipeItem = () => {
 					<RiDeleteBinLine size={20}/>
 				</RecipeBtnDelete>
 			</TitleWrp>
-			<RecipeDescr>A delicious tart made with almond cream and fresh apples.</RecipeDescr>
+			<DscrInstrWrp>
+				<RecipeInstr>A delicious tart made with almond cream and fresh apples</RecipeInstr>
+				<RecipeDescr>A delicious tart made with almond cream and fresh apples</RecipeDescr>
+			</DscrInstrWrp>
 			<TimeSeeWrapp>
 				<RecipeTime>20 min</RecipeTime>
 				<RecipeSeeLink to="/recipe/:recipeId" >See reecipe</RecipeSeeLink>

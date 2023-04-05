@@ -21,6 +21,7 @@ export const App = () => {
 
     const token = localStorage.getItem("token");
 
+
     useEffect(() => {
         if (token) {
             const check = async () => {
@@ -39,6 +40,7 @@ export const App = () => {
             check();
         }
     }, [token]);
+
 
     return !isAuth ? (
         <Suspense>
