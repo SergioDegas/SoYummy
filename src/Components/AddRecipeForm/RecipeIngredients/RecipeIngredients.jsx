@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { IoIosArrowDown } from "react-icons/io";
