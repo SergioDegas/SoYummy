@@ -28,7 +28,7 @@ export const App = () => {
           headers: {
             'Authorization': `Bearer ${token}`
           }
-        );
+        });
         if (authCheck) {
           setIsAuth(true);
         }
