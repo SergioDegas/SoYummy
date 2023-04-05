@@ -1,16 +1,15 @@
 import axios from "axios";
 import { Formik, Form } from "formik";
-import { Link } from "react-router-dom";
-import { Img, Page, BgImg, SingUpForm, Title, Input, Button } from "./SingUpPage.styled";
+import { Img, Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background } from "./SingUpPage.styled";
 import authPic from '../../images/authPic.svg'
 
 const SingUpPage = () => {
   return (
     <Page>
       <Img alt="" src={authPic} />
-      <BgImg>
+      <Background>
         <SingUpForm>
-          <div style={{ margin: "0px 28px" }}>
+          <div style={{ margin: "0px 28px", textAlign: "start" }}>
             <Title>Registration</Title>
             <Formik
               initialValues={{ name: '', email: '', password: '' }}
@@ -54,9 +53,11 @@ const SingUpPage = () => {
               </Form>
             </Formik>
           </div>
-          <Link style={{ color: "white", textDecorationLine: "underline" }} to='/signin'>Sign in</Link>
+          <LinkContainer>
+            <Link to='/signin'>Sign in</Link>
+          </LinkContainer>
         </SingUpForm>
-      </BgImg>
+      </Background>
     </Page>
   )
 };

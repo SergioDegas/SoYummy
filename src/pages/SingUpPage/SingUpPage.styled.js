@@ -1,5 +1,7 @@
 import { Field } from "formik";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import bgImg from '../../images/bgAuth.svg'
 
 export const Page = styled.div`
 display: flex;
@@ -12,41 +14,47 @@ export const Img = styled.img`
 margin-top: auto;
 margin-left: 45px;
 margin-right: 45px;
-max-width: 285px;
-`
-
-export const BgImg = styled.div`
-width: 100vw;
-height: 470px;
-background: #1E1F28;
-position: relative;
-&::before {
-  content: "";
-	position: absolute;
-	bottom: 0;
-	left: 0;    
-	border-top: 37px solid white;
-	border-left: 135px solid #1E1F28;
-	border-right: 135px solid #1E1F28;
-	width: 100vw;
-	height: 507px;
+width: 285px;
+@media (min-width: 768px) {
+  width: 409px;
+  margin-top: 96px;
 }
 `
 
+export const Background = styled.div`
+position: relative;
+background-image: url(${bgImg});
+background-repeat: no-repeat;
+background-size: cover;
+width: 100vw;
+height: 507px;
+`
+
+
 export const SingUpForm = styled.div`
+text-align: center;
 position: absolute;
 left: 5.5vw;
-top: -37px;
+top: 0;
 width: 89.3vw;
-height: 335px;
+height: 350px;
 background: #2A2C36;
 box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
 border-radius: 30px;
+@media (min-width: 768px) {
+  height: 481px;
+  width: 65vw;
+  left: 17.5vw;
+}
 `
 export const Title = styled.h2`
 color: ${p => p.theme.colors.textWhite};
 margin-top: 32px;
 margin-bottom: 18px;
+@media (min-width: 768px) {
+  margin-top: 44px;
+  margin-bottom: 32px;
+}
 `
 export const Input = styled(Field)`
 height: 45px;
@@ -58,6 +66,9 @@ margin-bottom: 12px;
   color: white;
   padding-left: 40px;
 }
+@media (min-width: 768px) {
+  margin-bottom: 24px;
+}
 `
 
 export const Button = styled.button`
@@ -67,4 +78,18 @@ border-radius: 6px;
 background-color: ${p => p.theme.colors.accent};
 color: ${p => p.theme.colors.textWhite};
 text-align: center;
+`
+export const LinkContainer = styled.div`
+width: 100%;
+height: 50px;
+position: absolute;
+left: 0;
+bottom: -68px;
+text-align: center;
+`
+
+export const Link = styled(NavLink)`
+color: ${p => p.theme.colors.textWhite};
+text-decoration: underline;
+
 `
