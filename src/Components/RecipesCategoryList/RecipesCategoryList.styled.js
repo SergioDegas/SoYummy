@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ListStyled = styled.ul`
-    margin-bottom: ${(p) => p.theme.space[1] * 25}px;
     display: flex;
     flex-direction: column;
     gap: ${(p) => p.theme.space[1] * 7}px;
@@ -9,7 +8,6 @@ export const ListStyled = styled.ul`
     @media (min-width: 768px) {
         flex-direction: row;
         flex-wrap: wrap;
-        margin-bottom: ${(p) => p.theme.space[1] * 50}px;
         gap: ${(p) => p.theme.space[1] * 8}px;
     }
 

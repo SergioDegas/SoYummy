@@ -10,6 +10,17 @@ export const ListStyled = styled.ul`
 
     overflow-x: scroll;
 
+    &::-webkit-scrollbar {
+        width: 1px;
+        border-radius: 1px;
+        height: 1px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: ${(p) => p.theme.colors.underline};
+        border-radius: 1px;
+    }
+
     @media (min-width: 768px) {
         gap: ${(p) => p.theme.space[3] * 3.5}px;
         margin-bottom: ${(p) => p.theme.space[1] * 13}px;
@@ -58,19 +69,5 @@ export const NavLinkStyled = styled(NavLink)`
         transform: scaleX(0);
 
         transition: transform 0.25s ease-out;
-    }
-`;
-
-export const StyledWrapper = styled.div`
-    margin-top: ${(p) => p.theme.space[1] * 12.5}px;
-    margin-bottom: ${(p) => p.theme.space[1] * 15}px;
-
-    @media (min-width: 768px) {
-        margin-top: ${(p) => p.theme.space[1] * 18}px;
-    }
-
-    @media (min-width: 1440px) {
-        margin-top: ${(p) => p.theme.space[1] * 25}px;
-        margin-bottom: ${(p) => p.theme.space[1] * 27.5}px;
     }
 `;
