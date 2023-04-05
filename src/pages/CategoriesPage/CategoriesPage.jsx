@@ -7,7 +7,7 @@ import { PageTitle } from "Components/PageTitle/PageTitle";
 import { MainRecipesList } from "Components/MainRecipesList/MainRecipesList";
 
 import Container from "Components/Container/Container.styled";
-import { Section, Wrapper } from "./CategoriesPage.styled";
+import { Error, Section, Wrapper } from "./CategoriesPage.styled";
 
 axios.defaults.baseURL = "http://localhost:4000";
 const token = localStorage.getItem("token");
@@ -38,11 +38,10 @@ const CategoriesPage = () => {
 
         const getRecipesByCategories = async (categoryName) => {
             const recipes = await getRecipeByCategory(categoryName);
-            console.log(recipes);
 
             if (!recipes || recipes.length === 0) {
                 setError(
-                    "We are sorry, but the recipes in category you were looking can’t be found.."
+                    "We are sorry, but the recipes in the category you were looking can’t be found."
                 );
             }
 
@@ -62,7 +61,7 @@ const CategoriesPage = () => {
                     </Wrapper>
                     <CategoriesList categories={categories} />
 
-                    {error && <div>{error}</div>}
+                    {error && <Error>{error}</Error>}
                     {!error && <MainRecipesList recipes={recipes} />}
                 </Section>
             </Container>

@@ -20,3 +20,19 @@ export const Wrapper = styled.div`
         margin-bottom: ${(p) => p.theme.space[1] * 27.5}px;
     }
 `;
+
+export const Error = styled.div`
+    margin: 0 auto;
+    text-align: center;
+    font-weight: ${(p) => p.theme.fontWeights.medium};
+    font-size: ${(p) => p.theme.fontSizes.l}px;
+    line-height: ${(p) => p.theme.lineHeights.heading};
+    letter-spacing: -0.02em;
+    color: ${(p) => p.theme.colors.mainDark};
+
+    width: 206px;
+
+    @media (min-width: 768px) {
+        width: 428px;
+    }
+`;
