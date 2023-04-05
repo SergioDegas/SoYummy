@@ -30,7 +30,7 @@ export const App = () => {
           }
         });
         if (authCheck) {
-          setIsAuth(true)
+          setIsAuth(false)
         };
       };
       check();
