@@ -1,4 +1,3 @@
-import { RecipesCategoryList } from "Components/RecipesCategoryList/RecipesCategoryList";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,6 +18,21 @@ export const StyledList = styled.ul`
 export const StyledItem = styled.li`
     display: flex;
     flex-direction: column;
+`;
+
+export const Wrapper = styled.div`
+    margin-top: ${(p) => p.theme.space[1] * 8}px;
+    margin-bottom: ${(p) => p.theme.space[1] * 6}px;
+
+    @media (min-width: 768px) {
+        margin-top: ${(p) => p.theme.space[1] * 10}px;
+        margin-bottom: ${(p) => p.theme.space[1] * 10}px;
+    }
+
+    @media (min-width: 1440px) {
+        margin-top: ${(p) => p.theme.space[1] * 12.5}px;
+        margin-bottom: ${(p) => p.theme.space[1] * 12.5}px;
+    }
 `;
 
 export const Button = styled(NavLink)`

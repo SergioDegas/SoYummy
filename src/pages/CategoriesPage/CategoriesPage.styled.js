@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSection = styled.section`
+export const Section = styled.section`
     padding-top: ${(p) => p.theme.space[1] * 12.5}px;
     padding-bottom: ${(p) => p.theme.space[1] * 25}px;
 
@@ -13,7 +13,7 @@ export const StyledSection = styled.section`
     }
 `;
 
-export const StyledWrapper = styled.div`
+export const Wrapper = styled.div`
     margin-bottom: ${(p) => p.theme.space[1] * 15}px;
 
     @media (min-width: 1440px) {

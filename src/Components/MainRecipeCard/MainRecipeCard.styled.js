@@ -15,7 +15,7 @@ export const RecipePicture = styled.img`
     object-fit: cover;
 `;
 
-export const PictureTitleWrap = styled.div`
+export const Wrapper = styled.div`
     position: absolute;
     left: ${(p) => p.theme.space[1] * 4.5}px;
     bottom: ${(p) => p.theme.space[1] * 6.5}px;

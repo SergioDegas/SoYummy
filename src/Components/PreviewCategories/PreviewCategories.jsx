@@ -1,40 +1,19 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import { PageTitle } from "Components/PageTitle/PageTitle";
-import { RecipesCategoryList } from "Components/RecipesCategoryList/RecipesCategoryList";
+import { MainRecipesList } from "Components/MainRecipesList/MainRecipesList";
 
 import Container from "Components/Container/Container.styled";
 import {
     Button,
-    RecipesCategoryListStyled,
     StyledItem,
     StyledList,
+    Wrapper,
 } from "./PreviewCategories.styled";
 import { useMedia } from "hooks";
 
-axios.defaults.baseURL = "http://localhost:4000";
-const token = localStorage.getItem("token");
-axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-const getMainPageSet = async () => {
-    const { data } = await axios.get(`/recipes/main-page`);
-    return data.result;
-};
-
-export const PreviewCategories = () => {
-    const [recipesSet, setRecipesSet] = useState(null);
+export const PreviewCategories = ({ recipes }) => {
     const location = useLocation();
-
-    useEffect(() => {
-        const getRecipes = async () => {
-            const recipes = await getMainPageSet();
-            setRecipesSet(recipes);
-        };
-
-        getRecipes();
-    }, []);
 
     const media = useMedia();
     const recipeListByMediaHandle = (recipes) => {
@@ -51,17 +30,19 @@ export const PreviewCategories = () => {
     return (
         <section>
             <Container>
-                {recipesSet && (
+                {recipes && (
                     <StyledList>
-                        {recipesSet.map(({ _id, recipes }) => {
+                        {recipes.map(({ _id, recipes }) => {
                             return (
                                 <StyledItem key={_id}>
                                     <PageTitle>{_id}</PageTitle>
-                                    <RecipesCategoryList
-                                        recipes={recipeListByMediaHandle(
-                                            recipes
-                                        )}
-                                    />
+                                    <Wrapper>
+                                        <MainRecipesList
+                                            recipes={recipeListByMediaHandle(
+                                                recipes
+                                            )}
+                                        />
+                                    </Wrapper>
                                     <Button
                                         to={`/categories/${_id}`}
                                         state={{ from: location }}
