@@ -1,12 +1,12 @@
 import axios from "axios";
 import { Formik, Form } from "formik";
-import { Img, Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background } from "./SingUpPage.styled";
-import authPic from '../../images/authPic.svg'
+import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, ImgContainer } from "./SingUpPage.styled";
 
 const SingUpPage = () => {
   return (
     <Page>
-      <Img alt="" src={authPic} />
+      <ImgContainer>
+      </ImgContainer>
       <Background>
         <SingUpForm>
           <div style={{ margin: "0px 28px", textAlign: "start" }}>

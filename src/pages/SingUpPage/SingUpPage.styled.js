@@ -1,7 +1,8 @@
 import { Field } from "formik";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import bgImg from '../../images/bgAuth.svg'
+import bgAuth from '../../images/authPages/bgAuth.svg'
+import imgMobile from '../../images/authPages/authImgMobile.svg'
 
 export const Page = styled.div`
 display: flex;
@@ -10,20 +11,16 @@ align-items: center;
 height: 100vh;
 `
 
-export const Img = styled.img`
-margin-top: auto;
-margin-left: 45px;
-margin-right: 45px;
+export const ImgContainer = styled.div`
+height: 250px;
 width: 285px;
-@media (min-width: 768px) {
-  width: 409px;
-  margin-top: 96px;
-}
+background-image: url(${imgMobile});
+margin-top: auto;
 `
 
 export const Background = styled.div`
 position: relative;
-background-image: url(${bgImg});
+background-image: url(${bgAuth});
 background-repeat: no-repeat;
 background-size: cover;
 width: 100vw;
