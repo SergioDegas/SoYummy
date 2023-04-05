@@ -14,6 +14,7 @@ export const DescrWrap = styled.div`
 export const FileInputWrap = styled.div`
   position: relative;
   width: 279px;
+  height: 268px;
   margin: 0 auto 32px;
 
   @media screen and (min-width: 768px) {
@@ -29,10 +30,21 @@ export const FileInputWrap = styled.div`
 export const FileInput = styled.input`
   width: 279px;
   height: 268px;
-  opacity: 0;
 
-  /* z-index: -1;
-  overflow: hidden; */
+  @media screen and (min-width: 1440px) {
+    width: 357px;
+    height: 344px;
+  }
+`;
+
+export const RecipeImage = styled.img`
+  width: 279px;
+  height: 268px;
+  object-fit: cover;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+
   @media screen and (min-width: 1440px) {
     width: 357px;
     height: 344px;
@@ -129,19 +141,8 @@ export const DescrSelect = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* font-size: 12px;
-  line-height: ${(p) => p.theme.lineHeights.single};
-  color: ${(p) => p.theme.colors.mainDark}; */
   background-color: transparent;
   border: none;
-
-  /* appearance: none;
-  overflow: hidden;
-  background-image: url(${arror});
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 16px; */
 
   svg {
     color: ${(p) => p.theme.colors.accent};
@@ -237,22 +238,3 @@ export const TimeItem = styled.li`
     font-size: 14px;
   }
 `;
-
-// export const DescrOption = styled.option`
-//   font-size: 12px;
-//   line-height: ${(p) => p.theme.lineHeights.large};
-//   letter-spacing: -0.02em;
-
-//   color: ${(p) => p.theme.colors.mainDark};
-//   opacity: 0.5;
-
-//   width: 123px;
-//   height: 144px;
-//   background: ${(p) => p.theme.colors.mainLight};
-//   box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
-//   border-radius: ${(p) => p.theme.radius.small};
-
-//   @media screen and (min-width: 1440px) {
-//     font-size: ${(p) => p.theme.fontSizes.s}px;
-//   }
-// `;
