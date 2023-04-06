@@ -4,7 +4,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import RecipePageHero from "Components/RecipePageHero";
 import RecipeIngredientsList from "Components/RecipeIngredientsList";
-import RecipePreparation from "Components/RecipePreparation";
+import RecipePreparation from "Components/RecipePreparation/RecipePreparation";
 
 //TO DO
 //додати лоадер
