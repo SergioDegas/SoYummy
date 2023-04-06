@@ -1,18 +1,15 @@
 import axios from "axios";
 import { Formik, Form } from "formik";
-import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, ImgContainer } from "./SingUpPage.styled";
-import imgMobile from '../../images/authPages/authMobile2.svg'
+import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container } from "./SingUpPage.styled";
 
 
 const SingUpPage = () => {
   return (
     <Page>
-      <ImgContainer>
-        <img alt="auth" src={imgMobile} />
-      </ImgContainer>
-      <Background>
-        <SingUpForm>
-          <div style={{ margin: "0px 28px", textAlign: "start" }}>
+      <div style={{height: 305}}>
+        <Container>
+          <Img/>
+          <SingUpForm>
             <Title>Registration</Title>
             <Formik
               initialValues={{ name: '', email: '', password: '' }}
@@ -23,7 +20,7 @@ const SingUpPage = () => {
                   password: values.password
                 };
                 try {
-                  const response = await axios.post('http://localhost:4000/auth/register', authData);
+                  const response = await axios.post('http://localhost:4000/auth/login', authData);
                   if (response) {
                     localStorage.setItem('token', response.data.token);
                     localStorage.setItem('user', JSON.stringify(response.data.user))
@@ -31,35 +28,40 @@ const SingUpPage = () => {
                   }
                 } catch (e) {
                   console.log(e.response.data.message)
+               
                 }
-              }}
+                }}
             >
+              
               <Form style={{ display: "flex", flexDirection: "column" }}>
                 <Input
-                  type='text'
-                  name='name'
-                  placeholder='Name'
-                />
-                <Input
-                  type='email'
-                  name='email'
-                  placeholder='Email'
-                />
-                <Input
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                />
+                    type='text'
+                    name='name'
+                    placeholder='Name'
+                  />
+                  <Input
+                    type='email'
+                    name='email'
+                    placeholder='Email'
+                  />
+                  <Input
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                  />
                   <Button
                   type="submit"
-                >Sign up</Button>
-              </Form>
-            </Formik>
-          </div>
-          <LinkContainer>
-            <Link to='/signin'>Sign in</Link>
-          </LinkContainer>
+                  >Sign up
+                  </Button>
+                </Form>
+              </Formik>
+              <LinkContainer>
+              <Link to='/signin'>Sign in</Link>
+              </LinkContainer>
         </SingUpForm>
+        </Container>
+      </div>
+      <Background>
       </Background>
     </Page>
   )
