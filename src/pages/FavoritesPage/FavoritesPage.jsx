@@ -45,6 +45,7 @@ const FavoritesPage = () => {
                     </Wrapper>
 
                     {recipes &&
+                        !error &&
                         recipes.map((recipe) => {
                             return (
                                 <ul>

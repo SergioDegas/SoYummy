@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const PictureTitle = styled.h2`
+    font-weight: ${(p) => p.theme.fontWeights.medium};
+    font-size: ${(p) => p.theme.fontSizes.m}px;
+    line-height: ${(p) => p.theme.lineHeights.heading};
+    letter-spacing: -0.02em;
+    color: ${(p) => p.theme.colors.textSubTitle};
+    white-space: nowrap;
+    overflow: hidden;
+
+    transition: color 0.25s ease-out;
+`;
+
 export const PictureThumb = styled.div`
     position: relative;
     border-radius: ${(p) => p.theme.radius.regular};
@@ -28,8 +40,7 @@ export const PictureThumb = styled.div`
             rgba(255, 255, 255, 0) 0%,
             rgba(255, 255, 255, 0.3) 100%
         );
-
-        transform: skewX(-25deg);
+        -webkit-transform: skewX(-25deg);
         transform: skewX(-25deg);
     }
 
@@ -38,7 +49,11 @@ export const PictureThumb = styled.div`
         animation: shine 0.75s;
     }
 
-    @keyframes shine {
+    &:hover ${PictureTitle} {
+        color: ${(p) => p.theme.colors.accent};
+    }
+
+    @-webkit-keyframes shine {
         100% {
             left: 125%;
         }
@@ -78,14 +93,4 @@ export const Wrapper = styled.div`
     @media (min-width: 1440px) {
         width: 268px;
     }
-`;
-
-export const PictureTitle = styled.h2`
-    font-weight: ${(p) => p.theme.fontWeights.medium};
-    font-size: ${(p) => p.theme.fontSizes.m}px;
-    line-height: ${(p) => p.theme.lineHeights.heading};
-    letter-spacing: -0.02em;
-    color: ${(p) => p.theme.colors.textSubTitle};
-    white-space: nowrap;
-    overflow: hidden;
 `;
