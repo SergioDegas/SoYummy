@@ -59,7 +59,7 @@ height: 507px;
 @media (min-width: 768px) {
   height: 606px;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   background-image: url(${bgAuth2});
   height: 325px;
 }
@@ -108,7 +108,7 @@ color: ${p => p.theme.colors.textWhite};
   margin-bottom: 24px;
   height: 59px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1440px) {
   min-width: 400px;
 }
 `
