@@ -10,9 +10,10 @@ const token = localStorage.getItem("token");
 axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
 const getRecipeByCategory = async () => {
-    const { data } = await axios.get(`/recipes/640cd5ac2d9fecf12e8897f5`);
-    console.log(data.recipe);
-    return data.recipe;
+    const {
+        data: { data },
+    } = await axios.get(`/user//favorites`);
+    return data.favoriteRecipes;
 };
 
 const FavoritesPage = () => {
@@ -25,7 +26,7 @@ const FavoritesPage = () => {
 
             if (!recipes || recipes.length === 0) {
                 setError(
-                    "We are sorry, but the recipes in the category you were looking can’t be found."
+                    "We are sorry, but the recipes you were looking for can’t be found."
                 );
             }
 
