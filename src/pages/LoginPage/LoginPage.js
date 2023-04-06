@@ -1,19 +1,21 @@
 import axios from "axios";
-import { Formik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
-import { Img, Page, BgImg, SingUpForm } from "./LoginPage.styled";
+import { Formik, Form } from "formik";
+import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container } from "./LoginPage.styled";
+
 
 const LoginPage = () => {
   return (
     <Page>
-      <Img alt="" src="https://res.cloudinary.com/dtv1xlisg/image/upload/v1680302456/so_yummy/auth/OrderFood-pana1_moqvfj.svg" />
-      <div>
-        <BgImg>
+      <div style={{height: 305}}>
+        <Container>
+          <Img/>
           <SingUpForm>
+            <Title>Sign In</Title>
             <Formik
-              initialValues={{ email: '', password: '' }}
+              initialValues={{ name: '', email: '', password: '' }}
               onSubmit={async (values) => {
                 const authData = {
+                  name: values.name,
                   email: values.email,
                   password: values.password
                 };
@@ -25,30 +27,37 @@ const LoginPage = () => {
                     window.location = '/';
                   }
                 } catch (e) {
-                  console.log(e.response.data.message);
+                  console.log(e.response.data.message)
+               
                 }
-              }}
+                }}
             >
-              <Form>
-                <Field
-                  type='email'
-                  name='email'
-                  placeholder='Email'
-                />
-                <Field
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                />
-                <button
+              
+              <Form style={{ display: "flex", flexDirection: "column" }}>
+                  <Input
+                    type='email'
+                    name='email'
+                    placeholder='Email'
+                  />
+                  <Input
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                  />
+                  <Button
                   type="submit"
-                >Sign in</button>
-              </Form>
-            </Formik>
-            <Link to='/register' >Registration</Link>
-           </SingUpForm>
-        </BgImg>
+                  >Sign up
+                  </Button>
+                </Form>
+              </Formik>
+              <LinkContainer>
+              <Link to='/register'>Registration</Link>
+              </LinkContainer>
+        </SingUpForm>
+        </Container>
       </div>
+      <Background>
+      </Background>
     </Page>
   )
 };

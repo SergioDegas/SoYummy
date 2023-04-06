@@ -1,5 +1,5 @@
 import React from "react";
-import RecipePreparationList from "Components/RecipePreparationList";
+import RecipePreparationList from "Components/RecipePreparationList/RecipePreparationList";
 import {
   StyledContainer,
   SectionPreparation,
