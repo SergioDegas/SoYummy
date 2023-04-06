@@ -10,7 +10,7 @@ const RecipePreparationList = ({ description }) => {
   return (
           <SectionPreparationDesc>
             {description &&
-              description.split(". ").map((el, i) => {
+              description.split("\n").map((el, i) => {
                 return (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start" }}>
                     <div>

@@ -36,11 +36,11 @@ const RecipePage = () => {
       try {
         // setIsLoading(true);
         const { recipe } = await getRecipeById(recipeId);
-        const resipeResult = recipe[0];
-        if (!resipeResult) {
+        // const resipeResult = recipe[0];
+        if (!recipe) {
           return; //якщо айді не правильний чи не передали
         }
-        setRecipe(resipeResult);
+        setRecipe(recipe);
         // setIsLoading(false);
       } catch (error) {
         toast.error("Oops! Something went wrong! Please try again.");
