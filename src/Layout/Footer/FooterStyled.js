@@ -40,7 +40,7 @@ export const MainContainer = styled.div`
   @media (min-width: 1240px) {
     display: flex;
     padding-top: ${({ theme }) => `${theme.space[5]}px`};
-    justify-content: space-between;
+    /* justify-content: space-between; */
   } ;
 `;
 export const MenuContainer = styled.div`
@@ -51,7 +51,8 @@ export const MenuContainer = styled.div`
   }
   @media (min-width: 1240px) {
     display: flex;
-    gap: 120px;
+    gap: 119px;
+    margin-right: 235px;
   } ;
 `;
 export const InfoContainer = styled.div``;
@@ -183,6 +184,7 @@ export const ContactBox = styled.div`
   @media (min-width: 1240px) {
     margin-top: 0;
     display: block;
+    margin-bottom:0;
   }
 `;
 

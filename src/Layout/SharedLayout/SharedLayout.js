@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Header from "Layout/Header/Header";
 import Footer from "Layout/Footer";
 import { LayoutStyled, PolicyWrap, StyledLink } from "./SharedLayout.styled";
+import Footerrr from "Layout/Footer/Footer2";
 
 const Layout = () => {
   return (
@@ -11,7 +12,7 @@ const Layout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-      <Footer />
+      <Footerrr />
       <PolicyWrap>
       <p>© 2023 All Rights Reserved.</p>
       <StyledLink>Terms of Service</StyledLink>
