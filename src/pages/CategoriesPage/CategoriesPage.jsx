@@ -27,7 +27,7 @@ const getRecipeByCategory = async (category, page) => {
     const { data } = await axios.get(
         `/recipes/category/${category}?page=${page}`
     );
-    console.log(data);
+
     return data;
 };
 
