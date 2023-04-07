@@ -4,7 +4,8 @@ import Container from "Components/Container/Container.styled";
 
 import { Section, Wrapper } from "./FavoritesPage.styled";
 import { useEffect, useState } from "react";
-import { FavoriteList } from "Components/FavoritesList/FavoriteList";
+
+import { RecipesList } from "Components/RecipesList/RecipesList";
 
 axios.defaults.baseURL = "http://localhost:4000";
 const token = localStorage.getItem("token");
@@ -72,7 +73,9 @@ const FavoritesPage = () => {
                         <PageTitle>Favorites</PageTitle>
                     </Wrapper>
 
-                    {recipes && !error && <FavoriteList recipes={recipes} />}
+                    {recipes && !error && (
+                        <RecipesList recipes={recipes} page="favorite" />
+                    )}
                 </Section>
             </Container>
         </main>

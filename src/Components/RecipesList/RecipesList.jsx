@@ -1,30 +1,14 @@
-// import { useSelector } from "react-redux";
-// import {selectRecipes} from """
-
-
-import { RecipeList, RecipeCard } from "./RecipeList.styled";
 import { RecipeItem } from "Components/RecipeItem/RecipeItem";
+import { List } from "./RecipeList.styled";
 
-
-
-export const RecipesList = () => {
-// const recipes = useSelector(selectRecipes)
-
-
-
-	return (
-		// recipes.map(recipe=> )
-
-		<RecipeList>
-			{/* key={recipe.id} */}
-
-			<RecipeCard>
-			{/* recipe={recipe} */}
-			<RecipeItem/>
-			</RecipeCard>
-			<RecipeCard>
-			<RecipeItem/>
-			</RecipeCard>
-		</RecipeList>
-	)
-}
+export const RecipesList = ({ recipes, page }) => {
+    return (
+        <List>
+            {recipes.map((recipe) => {
+                return (
+                    <RecipeItem key={recipe._id} recipe={recipe} page={page} />
+                );
+            })}
+        </List>
+    );
+};

@@ -1,53 +1,84 @@
-// import { useDispatch } from "react-redux;
+import { useNavigate } from "react-router-dom";
+import { RiDeleteBinLine } from "react-icons/ri";
 
+import { useMedia } from "hooks";
 
-
-import { 
-	DscrInstrWrp, 
-	RecipeInfoWrp,  
-	RecipeTitle, 
-	RecipeBtnDelete, 
-	RecipeInstr,
-	RecipeSeeLink, 
-	RecipeTime, 
-	TitleWrp, 
-	TimeSeeWrapp,
-	RecipeDescr,
+import {
+    DeleteButtonFav,
+    DeleteButtonMy,
+    Item,
+    Picture,
+    RecipeButtonFav,
+    RecipeButtonMy,
+    Text,
+    Title,
+    Wrapper,
 } from "./RecipeItem.styled";
-import { Picture } from "Components/Picture/Picture";
-// import img from "../../images/file-input-mob.png"
-import { RiDeleteBinLine} from 'react-icons/ri';
 
+export const RecipeItem = ({ recipe, page }) => {
+    const { thumb, title, description, time } = recipe;
 
-// {recipe}
-export const RecipeItem = () => {
-// const dispatch = useDispatch();
+    const splitDescription = description.split(". ");
 
-// const deleteRicipeHandler = () =>{
-// 	dispatch(deleteRicipe(id));
-// };
+    const navigate = useNavigate();
 
+    const media = useMedia();
+    const iconSize = () => {
+        if (media.isMobileScreen) {
+            return 14;
+        }
+        if (media.isTabletScreen) {
+            return 22;
+        }
+        if (media.isDesktopScreen) {
+            return 24;
+        }
+    };
 
+    const handleSubmit = () => {
+        navigate(`/recipe/${recipe._id}`);
+    };
 
-	return(
-		<>
-			<Picture img="https://www.themealdb.com/images/media/meals/sutysw1468247559.jpg"/>
-		<RecipeInfoWrp>
-			<TitleWrp>
-				<RecipeTitle>New Yourk Checake</RecipeTitle>
-				<RecipeBtnDelete type="button">
-					<RiDeleteBinLine size={20}/>
-				</RecipeBtnDelete>
-			</TitleWrp>
-			<DscrInstrWrp>
-				<RecipeInstr>A delicious tart made with almond cream and fresh apples</RecipeInstr>
-				<RecipeDescr>A delicious tart made with almond cream and fresh apples</RecipeDescr>
-			</DscrInstrWrp>
-			<TimeSeeWrapp>
-				<RecipeTime>20 min</RecipeTime>
-				<RecipeSeeLink to="/recipe/:recipeId" >See reecipe</RecipeSeeLink>
-			</TimeSeeWrapp>
-		</RecipeInfoWrp>
-		</>		
-	)
-}
+    return (
+        <Item>
+            <Picture src={thumb} alt={title} />
+            <Wrapper>
+                <div>
+                    <Title>{title}</Title>
+                    <div>
+                        {media.isMobileScreen ? (
+                            <Text>{description}</Text>
+                        ) : (
+                            splitDescription.map((elem) => {
+                                return <Text>{elem}</Text>;
+                            })
+                        )}
+                    </div>
+                </div>
+                <Text>{time} min</Text>
+            </Wrapper>
+            {page === "favorite" && (
+                <DeleteButtonFav type="button">
+                    <RiDeleteBinLine size={iconSize()} />
+                </DeleteButtonFav>
+            )}
+
+            {page === "favorite" && !media.isMobileScreen && (
+                <RecipeButtonFav type="button" onClick={handleSubmit}>
+                    See recipe
+                </RecipeButtonFav>
+            )}
+
+            {page === "my" && (
+                <>
+                    <DeleteButtonMy type="button">
+                        <RiDeleteBinLine size={iconSize()} />
+                    </DeleteButtonMy>
+                    <RecipeButtonMy type="button" onClick={handleSubmit}>
+                        See recipe
+                    </RecipeButtonMy>
+                </>
+            )}
+        </Item>
+    );
+};
