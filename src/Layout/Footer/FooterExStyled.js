@@ -11,7 +11,18 @@ width:100%;
   height:425px;
   }
 `
+export const MainContainer = styled.div`
+@media (min-width: 768px) {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  }
+`
 
+export const TitleContainer = styled.div`
+
+
+`
 export const TitleBox = styled.div`
 display: flex;
 padding-top: 28px;
@@ -19,7 +30,7 @@ align-items: center;
 justify-content: center;
 margin-bottom: 32px;
 @media (min-width: 768px) {
-  padding-top: 50px;
+  padding-top: 0;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 24px;
@@ -224,7 +235,10 @@ export const Dot = styled.span`
   margin-right: 5px;
 `;
 export const BenefitsList = styled.ul`
-gap: 10px;
+display: none;
+@media (min-width: 768px) {
+  display: block;
+  }
 `
 export const BenefitsItem = styled.li`
 font-family: ${({ theme }) => `${theme.fonts.main}`};
@@ -234,4 +248,9 @@ font-size: 14px;
 line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
 letter-spacing: -0.02em;
 color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+@media (min-width: 768px) {
+  &:not(:last-child){
+  margin-bottom:10px;
+  }
+  }
 `

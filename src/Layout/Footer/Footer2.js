@@ -23,6 +23,8 @@ import {
   BenefitsList,
   Dot,
   BenefitsItem,
+  TitleContainer,
+  MainContainer,
 } from "./FooterExStyled";
 
 const Footerrr = () => {
@@ -30,19 +32,21 @@ const Footerrr = () => {
     <>
     <FooterContainer>
       <Container>
+        <MainContainer>
+        <TitleContainer>
         <TitleBox>
           <LogoContainer>
             <LogoIcon />
           </LogoContainer>
           <Title>So Yummy</Title>
-          <BenefitsList>
+        </TitleBox>
+        <BenefitsList>
           <BenefitsItem><Dot>&#8226;</Dot>Database of recipes that can be replenished </BenefitsItem>
           <BenefitsItem><Dot>&#8226;</Dot>Flexible search for desired and unwanted ingredients</BenefitsItem>
           <BenefitsItem><Dot>&#8226;</Dot>Ability to add your own recipes with photos</BenefitsItem>
           <BenefitsItem><Dot>&#8226;</Dot>Convenient and easy to use</BenefitsItem>
         </BenefitsList>
-        </TitleBox>
-        
+        </TitleContainer>
         <MenuList>
           <MenuItem>
             <MenuLink to="/">Ingredients</MenuLink>
@@ -60,6 +64,7 @@ const Footerrr = () => {
             <MenuLink to="/shopping-list">Shopping list</MenuLink>
           </MenuItem>
         </MenuList>
+        </MainContainer>
         <EmailBox>
           <EmailInput type="email" 
             placeholder="Enter your email address" />
