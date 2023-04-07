@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import arror from "../../../images/chevron-down.png";
 
 export const IngredientsWrap = styled.div`
   margin-bottom: 44px;
@@ -16,7 +15,7 @@ export const FormSubtitle = styled.p`
   color: ${(p) => p.theme.colors.textSubTitle};
 `;
 
-export const CalcWrap = styled.div`
+export const CountWrap = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 28px;
@@ -30,7 +29,7 @@ export const CalcWrap = styled.div`
   }
 `;
 
-export const Calculator = styled.div`
+export const Counter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -45,11 +44,12 @@ export const Calculator = styled.div`
   }
 `;
 
-export const CalcButtonMinus = styled.button`
+export const MinusButton = styled.button`
   background-color: transparent;
   border: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   svg {
     height: 14px;
@@ -63,11 +63,12 @@ export const CalcButtonMinus = styled.button`
   }
 `;
 
-export const CalcButtonPlus = styled.button`
+export const PlusButton = styled.button`
   background-color: transparent;
   border: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   svg {
     width: 14px;
@@ -113,6 +114,11 @@ export const IngredientItem = styled.li`
   }
 `;
 
+export const InputWrap = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const IngrInput = styled.input`
   width: 194px;
   height: 53px;
@@ -143,9 +149,9 @@ export const IngrList = styled.ul`
   height: 154px;
   position: absolute;
   z-index: 3;
-  background: #ffffff;
+  background: ${(p) => p.theme.colors.mainLight};
   box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
-  border-radius: 6px;
+  border-radius: ${(p) => p.theme.radius.small};
   overflow-y: scroll;
   padding: 8px 18px;
 
@@ -157,7 +163,7 @@ export const IngrList = styled.ul`
 
 export const IngrItem = styled.li`
   font-size: 12px;
-  line-height: 1.5;
+  line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
   color: #000000;
   opacity: 0.5;
@@ -172,7 +178,7 @@ export const IngrItem = styled.li`
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: ${(p) => p.theme.fontSizes.s}px;
   }
 `;
 
@@ -181,6 +187,7 @@ export const IngrNumberLabel = styled.div`
   width: 84px;
   height: 53px;
   margin-right: 22px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 97px;
@@ -231,13 +238,6 @@ export const UnitSelect = styled.div`
   border: none;
   border-radius: ${(p) => p.theme.radius.small};
 
-  /* appearance: none;
-  overflow: hidden;
-  background-image: url(${arror});
-  background-repeat: no-repeat;
-  background-position: 26px 19px;
-  background-size: 16px; */
-
   @media screen and (min-width: 768px) {
     width: 55px;
     height: 59px;
@@ -261,7 +261,7 @@ export const SelectText = styled.span`
   color: ${(p) => p.theme.colors.textPrimary};
 
   @media screen and (min-width: 768px) {
-    font-size: 18px;
+    font-size: ${(p) => p.theme.fontSizes.l}px;
   }
 `;
 
@@ -269,9 +269,9 @@ export const UnitList = styled.ul`
   width: 84px;
   height: 112px;
   padding: 12px 28px;
-  background-color: #ffffff;
+  background-color: ${(p) => p.theme.colors.mainLight};
   box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
-  border-radius: 6px;
+  border-radius: ${(p) => p.theme.radius.small};
   z-index: 5;
   position: absolute;
 
@@ -283,7 +283,7 @@ export const UnitList = styled.ul`
 
 export const UnitItem = styled.li`
   font-size: 12px;
-  line-height: 1.5;
+  line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
   color: #000000;
   opacity: 0.5;
@@ -298,7 +298,7 @@ export const UnitItem = styled.li`
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: ${(p) => p.theme.fontSizes.s}px;
   }
 `;
 
@@ -309,12 +309,8 @@ export const DeleteButton = styled.button`
   align-items: center;
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 50%;
-  transition: border-color 250ms linear;
-
-  :hover {
-    border-color: #8baa36;
-  }
+  border-radius: ${(p) => p.theme.radius.round};
+  cursor: pointer;
 
   svg {
     color: #1f242e;
@@ -323,5 +319,27 @@ export const DeleteButton = styled.button`
       width: 20px;
       height: 60px;
     }
+  }
+`;
+
+export const Error = styled.p`
+  margin-top: 8px;
+  color: brown;
+  font-size: ${(p) => p.theme.fontSizes.s}px;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${(p) => p.theme.fontSizes.m}px;
+    margin-top: 12px;
+  }
+`;
+
+export const NumberError = styled.p`
+  margin-top: 8px;
+  color: brown;
+  font-size: 12px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    margin-top: 12px;
   }
 `;

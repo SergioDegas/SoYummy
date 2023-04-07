@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const PopularSection = styled.div`
-  /* padding-bottom: 100px;
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 200px;
-  } */
-`;
-
 export const Title = styled.h3`
   font-weight: ${(p) => p.theme.fontWeights.semibold};
   font-size: 24px;
@@ -77,7 +69,7 @@ export const PopularImage = styled.img`
 export const PopularSubtitle = styled.p`
   font-weight: ${(p) => p.theme.fontWeights.medium};
   font-size: ${(p) => p.theme.fontSizes.m}px;
-  line-height: 1.25;
+  line-height: ${(p) => p.theme.lineHeights.heading};
   letter-spacing: -0.24px;
   color: ${(p) => p.theme.colors.textSubTitle};
   width: 212px;

@@ -1,76 +1,68 @@
 import React from "react";
-import { useState, useMemo, useCallback } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
-// import debounce from "lodash.debounce";
-// import throttle from "lodash.throttle";
+import { schema } from "./schema";
 import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
 import { RecipeIngredients } from "./RecipeIngredients/RecipeIngredients";
 import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
 
 export const AddRecipeForm = () => {
-  const [ingredients, setIngredients] = useState(
-    JSON.parse(localStorage.getItem("ingredients")) || [
-      { id: nanoid(), unitValue: "tbs", unitNumber: "", ingredient: "" },
-    ]
-  );
+  const [ingredients, setIngredients] = useState([
+    { id: nanoid(), unitValue: "tbs", unitNumber: "", ingredient: "" },
+  ]);
   const [image, setImage] = useState("");
-  const [title, setTitle] = useState(localStorage.getItem("title") || "");
-  const [description, setDescription] = useState(
-    localStorage.getItem("description") || ""
-  );
-  const [cookingTime, setCookingTime] = useState(
-    localStorage.getItem("time") || "30 min"
-  );
-  const [category, setCategory] = useState(
-    localStorage.getItem("category") || "Breakfast"
-  );
-  const [preparation, setPreparation] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [cookingTime, setCookingTime] = useState("30 min");
+  const [category, setCategory] = useState("Breakfast");
+  const [preparation, setPreparation] = useState("");
+
+  // validation errors
+  const [errors, setErrors] = useState({});
+  const updateErrors = (value) => {
+    setErrors((prevState) => ({ ...prevState, [value]: "" }));
+  };
+  //
 
   const onFileInputChange = (event) => {
-    const file = event.target.files[0];
+    // const file = event.target.files[0];
+    // const reader = new FileReader();
+    // reader.addEventListener("load", (event) => {
+    //   const buffer = event.target.result;
+    //   const blob = new Blob([buffer], { type: file.type });
+    //   const url = URL.createObjectURL(blob);
+    //   setImage(url);
+    // });
+    // reader.readAsArrayBuffer(file);
 
-    const reader = new FileReader();
+    const formData = new FormData();
 
-    reader.addEventListener("load", (event) => {
-      const buffer = event.target.result;
-      const blob = new Blob([buffer], { type: file.type });
-      const url = URL.createObjectURL(blob);
-      setImage(url);
-    });
+    formData.append("image", event.target.files[0]);
 
-    reader.readAsArrayBuffer(file);
-  };
+    const imageFile = formData.get("image");
+    const imageUrl = URL.createObjectURL(imageFile);
 
-  const setLocalStorage = (name, value) => {
-    localStorage.setItem(name, value);
+    console.log(imageUrl);
+    setImage(imageUrl);
   };
 
   const onTitleChange = (value) => {
     setTitle(value);
-    setLocalStorage("title", value);
+    updateErrors("title");
   };
-
-  // const onTitleChange = useMemo(() => throttle(changeTitleHandler, 300), []);
 
   const onDescriptionChange = (value) => {
     setDescription(value);
-    setLocalStorage("description", value);
+    updateErrors("description");
   };
-
-  // const onDescriptionChange = useMemo(
-  //   () => debounce(changeDescrHandler, 300),
-  //   []
-  // );
 
   const onTimeSet = (value) => {
     setCookingTime(value);
-    setLocalStorage("time", value);
   };
 
   const onCategorySet = (value) => {
     setCategory(value);
-    setLocalStorage("category", value);
   };
 
   const incrementIngrList = () => {
@@ -99,18 +91,43 @@ export const AddRecipeForm = () => {
       newState[index][unit] = value;
       return newState;
     });
-    setLocalStorage("ingredients", JSON.stringify(ingredients));
   };
 
   const onPreparationSet = (data) => {
     setPreparation(data);
+    updateErrors("preparation");
   };
 
-  console.log(preparation);
+  // validation 
+  const initialValues = {
+    image,
+    title,
+    description,
+    cookingTime,
+    category,
+    ingredients,
+    preparation,
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    schema
+      .validate(initialValues, { abortEarly: false })
+      .then(() => {
+        console.log(initialValues);
+      })
+      .catch((err) => {
+        const errors = err.inner.reduce(
+          (acc, curr) => ({ ...acc, [curr.path]: curr.message }),
+          {}
+        );
+        setErrors(errors);
+      });
+  };
 
   return (
     <AddRecipeSection>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <RecipeDescrFields
           image={image}
           title={title}
@@ -122,6 +139,7 @@ export const AddRecipeForm = () => {
           onDescriptionChange={onDescriptionChange}
           onTimeSet={onTimeSet}
           onCategorySet={onCategorySet}
+          errors={errors}
         />
         <RecipeIngredients
           ingredients={ingredients}
@@ -129,10 +147,14 @@ export const AddRecipeForm = () => {
           decrementIngrList={decrementIngrList}
           deleteIngr={deleteIngr}
           updateIngr={updateIngr}
+          errors={errors}
+          updateErrors={updateErrors}
         />
+
         <RecipePreparation
           onPreparationSet={onPreparationSet}
           preparation={preparation}
+          errors={errors}
         />
         <AddButton type="submit">Add</AddButton>
       </Form>

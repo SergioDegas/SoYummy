@@ -1,0 +1,40 @@
+import axios from "axios";
+
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
+export const fetchRecipes = createAsyncThunk(
+	'user/own-recipes',
+	async (_, thunkAPI) => {
+		try {
+			const {data} = await axios.get('/user/own-recipes');
+			return data;
+		
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message)
+		};
+	}
+);
+
+export const addRecipe = createAsyncThunk(
+	'add/own-recipes',
+	async (credentials, thunkAPI) => {
+		try {
+			const {data} = await axios.post('user/own-recipes',credentials);
+			return data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message)
+		};
+	}
+);
+
+export const removeRecipe = createAsyncThunk(
+	'remove/own-recipes',
+	async (reecipeId, thunkApi) => {
+		try {
+			const {data} = await axios.delete('user/own-recipes');
+			return data;
+		} catch (error) {
+			return thunkApi.rejectWithValue(error.message)
+		};
+	}
+);

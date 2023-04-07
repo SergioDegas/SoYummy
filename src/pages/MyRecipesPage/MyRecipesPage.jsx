@@ -5,7 +5,6 @@ import { PageTitle } from "Components/PageTitle/PageTitle";
 
 const MyRecipesPage = () => {
     return (
-        // <div>MyRecipesPage</div>
         <Container>
             <PageTitle>My recipes</PageTitle>
             <RecipesList recipes={[]} page="my" />
