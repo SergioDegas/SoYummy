@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchShoppingList } from './operation';
+import { fetchShoppingList, updateShoppingList } from './operation';
 
 const extraActions = [ fetchShoppingList ];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));

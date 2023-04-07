@@ -1,18 +1,7 @@
-import React from "react";
-import { useState, useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectShoppingList } from "redux/shoppingList/selectors";
-import {
-  fetchShoppingList,
-  updateShoppingList,
-} from "redux/shoppingList/operation";
+import IngredientsTitle from "Components/IngredientsTitle/IngredientsTitle";
 import Container from "../Container";
 import {
   SectionIngredients,
-  TitleWrap,
-  Title,
-  TitleTextWrap,
-  TitleText,
   IngedientsList,
   IngedientsItem,
   Wrap,
@@ -27,47 +16,10 @@ import {
 import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
 
 const RecipeIngredientsList = ({ ingredients }) => {
-  const [selectedIngredientIds, setSelectedIngredientIds] = useState([]);
-  const shoppingList = useSelector(selectShoppingList);
-  const ids = useMemo(
-    () => shoppingList.map((item) => item._id),
-    [shoppingList]
-  );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchShoppingList());
-  }, [dispatch]);
-
-  useEffect(() => {
-    setSelectedIngredientIds(ids);
-  }, [ids]);
-
-  const handleInputChange = (evt) => {
-    const { id, checked } = evt.target;
-    setSelectedIngredientIds((prevSelectedIds) => {
-      if (checked) {
-        return [...prevSelectedIds, id];
-      } else {
-        return prevSelectedIds.filter((selectedId) => selectedId !== id);
-      }
-    });
-
-    const currentIngredient = ingredients.find((item) => item._id === id);
-    const { measure, _id } = currentIngredient;
-    const credentials = { measure: measure, ingredientId: _id };
-    dispatch(updateShoppingList(credentials));
-  };
-
   return (
     <SectionIngredients>
       <Container>
-        <TitleWrap>
-          <Title children="Ingedients" />
-          <TitleTextWrap>
-            <TitleText>Number</TitleText>
-            <TitleText>Add to list</TitleText>
-          </TitleTextWrap>
-        </TitleWrap>
+        <IngredientsTitle title="Ingedients" action="Add to list"/>
         <IngedientsList>
           {ingredients &&
             ingredients.map(({ image, _id, measure, name }) => {
@@ -84,14 +36,8 @@ const RecipeIngredientsList = ({ ingredients }) => {
                   </Wrap>
                   <Wrap>
                     <IngedientsMeasure>{measure}</IngedientsMeasure>
-                    <CheckBoxLabel htmlFor={_id}>
-                      <IngedientsCheck
-                        type="checkbox"
-                        checked={selectedIngredientIds.includes(_id)}
-                        id={_id}
-                        value={_id}
-                        onChange={handleInputChange}
-                      />
+                    <CheckBoxLabel htmlFor={name}>
+                      <IngedientsCheck type="checkbox" id={name} />
                       <CheckBoxWrap>
                         <CheckMarkIcon />
                       </CheckBoxWrap>
