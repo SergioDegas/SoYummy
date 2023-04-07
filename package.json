@@ -4,10 +4,9 @@
   "private": true,
   "homepage": "https://SergioDegas.github.io",
   "dependencies": {
+    "@hookform/resolvers": "^3.0.1",
     "axios": "^1.3.4",
     "formik": "^2.2.9",
-    "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
     "mp": "^2.0.3",
     "nanoid": "^4.0.2",
@@ -22,7 +21,8 @@
     "react-select": "^5.7.2",
     "redux": "^4.2.1",
     "styled-components": "^5.3.9",
-    "web-vitals": "^2.1.3"
+    "web-vitals": "^2.1.3",
+    "yup": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

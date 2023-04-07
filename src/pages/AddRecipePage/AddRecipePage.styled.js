@@ -1,29 +1,4 @@
 import styled from "styled-components";
-// import backgroundImgS from "../../images/background-1x.png";
-// import backgroundImgL from "../../images/background-2x.png";
-
-export const Container = styled.div`
-  width: 375px;
-  padding: 0 16px 100px;
-  margin: 0 auto;
-
-  /* background-image: url();
-  background-repeat: no-repeat;
-  background-position: 0 124%; */
-
-  @media screen and (min-width: 768px) {
-    width: 768px;
-    padding: 0 32px 200px;
-    /* background-image: url();
-    background-position: 0 175%; */
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
-    padding: 0 100px 200px;
-    background-position: 0 215%;
-  }
-`;
 
 export const Title = styled.h2`
   font-weight: ${(p) => p.theme.fontWeights.semibold};

@@ -73,7 +73,7 @@ word-break: break-all;
 &:not(:last-child){
 margin-bottom:12px;
 }
-}
+
 `;
 export const Dot = styled.span`
   margin-right: 5px;
