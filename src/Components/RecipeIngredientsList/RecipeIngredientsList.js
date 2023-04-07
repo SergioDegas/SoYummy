@@ -1,5 +1,13 @@
-import IngredientsTitle from "Components/IngredientsTitle/IngredientsTitle";
+import React from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectShoppingList } from "redux/shoppingList/selectors";
+import {
+  fetchShoppingList,
+  updateShoppingList,
+} from "redux/shoppingList/operation";
 import Container from "../Container";
+import IngredientsTitle from "Components/IngredientsTitle";
 import {
   SectionIngredients,
   IngedientsList,
@@ -16,6 +24,37 @@ import {
 import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
 
 const RecipeIngredientsList = ({ ingredients }) => {
+  const [selectedIngredientIds, setSelectedIngredientIds] = useState([]);
+  const shoppingList = useSelector(selectShoppingList);
+  const ids = useMemo(
+    () => shoppingList.map((item) => item._id),
+    [shoppingList]
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchShoppingList());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setSelectedIngredientIds(ids);
+  }, [ids]);
+
+  const handleInputChange = (evt) => {
+    const { id, checked } = evt.target;
+    setSelectedIngredientIds((prevSelectedIds) => {
+      if (checked) {
+        return [...prevSelectedIds, id];
+      } else {
+        return prevSelectedIds.filter((selectedId) => selectedId !== id);
+      }
+    });
+
+    const currentIngredient = ingredients.find((item) => item._id === id);
+    const { measure, _id } = currentIngredient;
+    const credentials = { measure: measure, ingredientId: _id };
+    dispatch(updateShoppingList(credentials));
+  };
+
   return (
     <SectionIngredients>
       <Container>
@@ -36,8 +75,14 @@ const RecipeIngredientsList = ({ ingredients }) => {
                   </Wrap>
                   <Wrap>
                     <IngedientsMeasure>{measure}</IngedientsMeasure>
-                    <CheckBoxLabel htmlFor={name}>
-                      <IngedientsCheck type="checkbox" id={name} />
+                    <CheckBoxLabel htmlFor={_id}>
+                      <IngedientsCheck
+                        type="checkbox"
+                        checked={selectedIngredientIds.includes(_id)}
+                        id={_id}
+                        value={_id}
+                        onChange={handleInputChange}
+                      />
                       <CheckBoxWrap>
                         <CheckMarkIcon />
                       </CheckBoxWrap>
