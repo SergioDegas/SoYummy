@@ -7,10 +7,13 @@ import {
 } from "./RecipePreparationList.styled";
 
 const RecipePreparationList = ({ description }) => {
+  if (!description) {
+    return
+  }
   return (
           <SectionPreparationDesc>
             {description &&
-              description.split(". ").map((el, i) => {
+              description.split("\r\n").filter((el) => el.trim() !== "").map((el, i) => {
                 return (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start" }}>
                     <div>

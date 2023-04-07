@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import Container from "../Container";
 import {
@@ -21,7 +22,7 @@ const RecipePageHero = ({ title, description, favorites, time }) => {
   //Якщо такий рецепт вже є в списку улюблених, то на місці AddtoFavorite повинна бути кнопка RemoveFromFavorite,
 
   const addToFavorite = () => {
-    favorite ? setFavorite(false) : setFavorite(true);
+    setFavorite(favorite => !favorite);
   };
 
   return (
