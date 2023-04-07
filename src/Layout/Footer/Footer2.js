@@ -18,10 +18,16 @@ import {
   TwitterIcon,
   InstIcon,
   SocialList,
+  Copyright,
+  CopyrightText,
+  BenefitsList,
+  Dot,
+  BenefitsItem,
 } from "./FooterExStyled";
 
 const Footerrr = () => {
   return (
+    <>
     <FooterContainer>
       <Container>
         <TitleBox>
@@ -29,8 +35,14 @@ const Footerrr = () => {
             <LogoIcon />
           </LogoContainer>
           <Title>So Yummy</Title>
+          <BenefitsList>
+          <BenefitsItem><Dot>&#8226;</Dot>Database of recipes that can be replenished </BenefitsItem>
+          <BenefitsItem><Dot>&#8226;</Dot>Flexible search for desired and unwanted ingredients</BenefitsItem>
+          <BenefitsItem><Dot>&#8226;</Dot>Ability to add your own recipes with photos</BenefitsItem>
+          <BenefitsItem><Dot>&#8226;</Dot>Convenient and easy to use</BenefitsItem>
+        </BenefitsList>
         </TitleBox>
-
+        
         <MenuList>
           <MenuItem>
             <MenuLink to="/">Ingredients</MenuLink>
@@ -76,11 +88,13 @@ const Footerrr = () => {
             </a>
           </li>
         </SocialList>
-        <p>
-          &copy; 2023 All Rights Reserved.<span>Terms of Service</span>
-        </p>
+       
       </Container>
     </FooterContainer>
+    <Copyright>
+    &copy; 2023 All Rights Reserved.<CopyrightText>Terms of Service</CopyrightText>
+    </Copyright>
+  </>
   );
 };
 

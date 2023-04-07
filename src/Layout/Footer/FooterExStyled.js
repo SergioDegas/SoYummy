@@ -7,6 +7,9 @@ export const FooterContainer = styled.div`
 background-color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};;
 height:435px;
 width:100%;
+@media (min-width: 768px) {
+  height:425px;
+  }
 `
 
 export const TitleBox = styled.div`
@@ -15,6 +18,12 @@ padding-top: 28px;
 align-items: center;
 justify-content: center;
 margin-bottom: 32px;
+@media (min-width: 768px) {
+  padding-top: 50px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 24px;
+  }
 `
 
 export const Title = styled.h1`
@@ -187,3 +196,42 @@ export const InstIcon = styled(SiInstagram)`
     color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
 `;
+export const Copyright = styled.p`
+display: flex;
+justify-content: center;
+margin-top: 28px;
+font-family: ${({ theme }) => `${theme.fonts.main}`};
+font-style: normal;
+font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
+font-size: 10px;
+line-height: ${({ theme }) => `${theme.lineHeights.single}`};
+letter-spacing: -0.01em;
+color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
+opacity: 0.5;
+`
+export const CopyrightText = styled.span`
+margin-left: 14px;
+font-family: ${({ theme }) => `${theme.fonts.main}`};
+font-style: normal;
+font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+font-size: 10px;
+line-height: ${({ theme }) => `${theme.lineHeights.single}`};
+letter-spacing: -0.01em;
+color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
+opacity: 0.5;
+`
+export const Dot = styled.span`
+  margin-right: 5px;
+`;
+export const BenefitsList = styled.ul`
+gap: 10px;
+`
+export const BenefitsItem = styled.li`
+font-family: ${({ theme }) => `${theme.fonts.main}`};
+font-style: normal;
+font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+font-size: 14px;
+line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
+letter-spacing: -0.02em;
+color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+`
