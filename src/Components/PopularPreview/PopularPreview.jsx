@@ -1,5 +1,4 @@
 import {
-  PopularSection,
   Title,
   PopularList,
   PopularItem,
@@ -11,7 +10,7 @@ import recipePhoto from "../../images/recipe-photo-small.png";
 
 export const Popular = () => {
   return (
-    <PopularSection>
+    <div>
       <Title>Popular recipe</Title>
       <PopularList>
         <PopularItem to="/">
@@ -35,6 +34,6 @@ export const Popular = () => {
           </div>
         </PopularItem>
       </PopularList>
-    </PopularSection>
+    </div>
   );
 };

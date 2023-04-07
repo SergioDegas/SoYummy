@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import arror from "../../../images/chevron-down.png";
 
 export const DescrWrap = styled.div`
   margin-bottom: 67px;
@@ -41,7 +40,7 @@ export const RecipeImage = styled.img`
   width: 279px;
   height: 268px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: ${(p) => p.theme.radius.regular};
   position: absolute;
   top: 0;
 
@@ -69,7 +68,6 @@ export const DescrInput = styled.input`
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 24px;
   padding-bottom: 18px;
   outline: none;
 
@@ -94,12 +92,7 @@ export const DescrInput = styled.input`
   @media screen and (min-width: 768px) {
     width: 393px;
     height: 43px;
-    margin-bottom: 32px;
     font-size: ${(p) => p.theme.fontSizes.m}px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 40px;
   }
 `;
 
@@ -143,6 +136,7 @@ export const DescrSelect = styled.div`
   justify-content: space-between;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 
   svg {
     color: ${(p) => p.theme.colors.accent};
@@ -164,6 +158,7 @@ export const SelectText = styled.span`
   line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
   color: ${(p) => p.theme.colors.textPrimary};
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     font-size: ${(p) => p.theme.fontSizes.m}px;
@@ -173,13 +168,13 @@ export const SelectText = styled.span`
 export const CategoryList = styled.ul`
   width: 123px;
   height: 144px;
-  background-color: #ffffff;
+  background-color: ${(p) => p.theme.colors.mainLight};
   position: absolute;
   right: 0;
   top: 70%;
   padding: 8px 14px;
   box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
-  border-radius: 6px;
+  border-radius: ${(p) => p.theme.radius.small};
   overflow-y: scroll;
   z-index: 3;
 
@@ -191,31 +186,37 @@ export const CategoryList = styled.ul`
 
 export const CategoryItem = styled.li`
   font-size: 12px;
-  line-height: 1.5;
+  line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
   color: #000000;
   opacity: 0.5;
+  cursor: pointer;
 
   :not(:last-child) {
     margin-bottom: 4px;
   }
 
+  :hover {
+    color: ${(p) => p.theme.colors.accent};
+  }
+
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: ${(p) => p.theme.fontSizes.s}px;
   }
 `;
 
 export const TimeList = styled.ul`
   width: 85px;
   height: 144px;
-  background-color: #ffffff;
+  background-color: ${(p) => p.theme.colors.mainLight};
   position: absolute;
   right: 0;
   top: 70%;
   padding: 8px 14px;
   box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
-  border-radius: 6px;
+  border-radius: ${(p) => p.theme.radius.small};
   overflow-y: scroll;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 93px;
@@ -225,7 +226,7 @@ export const TimeList = styled.ul`
 
 export const TimeItem = styled.li`
   font-size: 12px;
-  line-height: 1.5;
+  line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
   color: #000000;
   opacity: 0.5;
@@ -234,7 +235,32 @@ export const TimeItem = styled.li`
     margin-bottom: 4px;
   }
 
+  :hover {
+    color: ${(p) => p.theme.colors.accent};
+  }
+
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: ${(p) => p.theme.fontSizes.s}px;
+  }
+`;
+
+export const OneInputWrap = styled.div`
+  margin-bottom: 24px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 40px;
+  }
+`;
+
+export const Error = styled.p`
+  margin-top: 8px;
+  color: brown;
+  font-size: ${(p) => p.theme.fontSizes.s}px;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${(p) => p.theme.fontSizes.m}px;
   }
 `;

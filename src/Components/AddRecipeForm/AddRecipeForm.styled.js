@@ -40,9 +40,9 @@ export const AddButton = styled.button`
   border: none;
   background-color: ${(p) => p.theme.colors.textDarckGrey};
   color: ${(p) => p.theme.colors.backgroundPrimary};
-
   font-size: ${(p) => p.theme.fontSizes.m}px;
   line-height: ${(p) => p.theme.lineHeights.large};
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 161px;
