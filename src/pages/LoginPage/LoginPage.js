@@ -1,9 +1,22 @@
-import axios from "axios";
 import { Formik, Form } from "formik";
+import { useDispatch } from "react-redux";
+import { logIn } from "redux/auth/operation";
 import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container } from "./LoginPage.styled";
 
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    const { email, password } = e;
+    dispatch(
+      logIn({
+        email: email,
+        password: password,
+      })
+    );
+  };
+  
   return (
     <Page>
       <div style={{height: 305}}>
@@ -12,27 +25,9 @@ const LoginPage = () => {
           <SingUpForm>
             <Title>Sign In</Title>
             <Formik
-              initialValues={{ name: '', email: '', password: '' }}
-              onSubmit={async (values) => {
-                const authData = {
-                  name: values.name,
-                  email: values.email,
-                  password: values.password
-                };
-                try {
-                  const response = await axios.post('http://localhost:4000/auth/login', authData);
-                  if (response) {
-                    localStorage.setItem('token', response.data.token);
-                    localStorage.setItem('user', JSON.stringify(response.data.user))
-                    window.location = '/';
-                  }
-                } catch (e) {
-                  console.log(e.response.data.message)
-               
-                }
-                }}
+              initialValues={{ email: '', password: '' }}
+              onSubmit={handleSubmit}
             >
-              
               <Form style={{ display: "flex", flexDirection: "column" }}>
                   <Input
                     type='email'
