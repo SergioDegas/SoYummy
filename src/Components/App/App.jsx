@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "Layout/SharedLayout";
-import { lazy, Suspense, useEffect, useState } from "react";
-import axios from "axios";
+import { lazy, Suspense, useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks";
+import { refreshUser } from "redux/auth/operation";
 
 const WelcomePage = lazy(() => import("pages/WellcomePage/"));
 const SignUpPage = lazy(() => import("pages/SingUpPage"));
@@ -17,32 +19,14 @@ const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
 
 export const App = () => {
-    const [isAuth, setIsAuth] = useState(false);
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useAuth();
 
-    const token = localStorage.getItem("token");
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch])
 
-
-    useEffect(() => {
-        if (token) {
-            const check = async () => {
-                const authCheck = await axios.get(
-                    "http://localhost:4000/user/current",
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                if (authCheck) {
-                    setIsAuth(true);
-                }
-            };
-            check();
-        }
-    }, [token]);
-
-
-    return !isAuth ? (
+    return !isLoggedIn ? (
         <Suspense>
             <Routes>
                 <Route index element={<WelcomePage />} />
