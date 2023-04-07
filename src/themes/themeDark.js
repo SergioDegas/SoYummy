@@ -11,6 +11,7 @@ export const themeDark = {
         m: 16,
         l: 18,
         xl: 22,
+        xll: 24,
         xxl: 28,
         xxxl: 32,
         xxxxl: 44,

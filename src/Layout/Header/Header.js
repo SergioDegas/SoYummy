@@ -9,7 +9,7 @@ import { UserProfile } from "Components/ComponentsHeader/UserProfile/UserProfile
 import { LogoutModal } from "Components/ComponentsHeader/LogOutModal/LogOutModal";
 import { Profile } from "Components/ComponentsHeader/Profile/Profile";
 import { NavContainer } from "Components/ComponentsHeader/NavContainer/NavContainer";
-
+import nonePhoto from "../../images/recipe-photo-small.png";
 const Header = () => {
   const [name, setName] = useState("Name");
   const [photoUrl, setPhotoUrl] = useState("");
@@ -24,28 +24,34 @@ const Header = () => {
   const openLogoutModal = () => setActiveModal("logout");
   const closeModal = () => setActiveModal(null);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      return;
-    }
+ useEffect(() => {
+   const token = localStorage.getItem("token");
+   if (!token) {
+     return;
+   }
 
-    const fetchUserData = async () => {
-      try {
-        const res = await fetch("http://localhost:4000/auth/current", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const userData = await res.json();
-        setName(userData.name);
-        setPhotoUrl(userData.photoUrl);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchUserData();
-  }, []);
+   const fetchUserData = async () => {
+     try {
+       const res = await fetch("http://localhost:4000/user/current", {
+         headers: {
+           Authorization: `Bearer ${token}`,
+         },
+       });
+
+       const { name, avatarURL } = await res.json();
+
+       setName(name);
+       if (avatarURL) {
+         setPhotoUrl(avatarURL);
+       } else {
+         setPhotoUrl(nonePhoto);
+       }
+     } catch (error) {
+       console.error(error);
+     }
+   };
+   fetchUserData();
+ }, []);
 
   return (
     <header>
@@ -63,7 +69,11 @@ const Header = () => {
 
           {activeModal === "edit" && (
             <CustomModal onClose={closeModal}>
-              <UserProfile UserName={name} onClose={closeModal} />
+              <UserProfile
+                photoUrl={photoUrl}
+                userName={name}
+                onClose={closeModal}
+              />
             </CustomModal>
           )}
           {activeModal === "logout" && (

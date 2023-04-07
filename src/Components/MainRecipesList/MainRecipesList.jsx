@@ -1,10 +1,10 @@
 import { useLocation } from "react-router";
+
+import { MainRecipeCard } from "Components/MainRecipeCard/MainRecipeCard";
+import { ItemStyled, ListStyled } from "./MainRecipesList.styled";
 import { Link } from "react-router-dom";
 
-import { RecipeCard } from "Components/RecipeCard/RecipeCard";
-import { ItemStyled, ListStyled } from "./RecipesCategoryList.styled";
-
-export const RecipesCategoryList = ({ recipes }) => {
+export const MainRecipesList = ({ recipes }) => {
     const location = useLocation();
 
     return (
@@ -16,7 +16,7 @@ export const RecipesCategoryList = ({ recipes }) => {
                             to={`/recipe/${recipe._id}`}
                             state={{ from: location }}
                         >
-                            <RecipeCard recipe={recipe} />
+                            <MainRecipeCard recipe={recipe} />
                         </Link>
                     </ItemStyled>
                 );

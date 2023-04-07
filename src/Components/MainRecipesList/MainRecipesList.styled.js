@@ -11,7 +11,7 @@ export const ListStyled = styled.ul`
         gap: ${(p) => p.theme.space[1] * 8}px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1440px) {
         gap: ${(p) => p.theme.space[1] * 3.5}px;
     }
 `;

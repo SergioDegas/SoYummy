@@ -11,6 +11,12 @@ margin-right: 14px;
 	width: 228px;
 	height: 232px;
 	margin-right: 24px;
+};
+
+@media (min-width: 1440px) {
+	width: 318px;
+	height: 324px;
+	margin-right: 36px;
 }
 `
 

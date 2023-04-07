@@ -1,54 +1,58 @@
-import axios from "axios";
-import { Formik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
-import { Img, Page, BgImg, SingUpForm } from "./LoginPage.styled";
+import { Formik, Form } from "formik";
+import { useDispatch } from "react-redux";
+import { logIn } from "redux/auth/operation";
+import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container } from "./LoginPage.styled";
+
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    const { email, password } = e;
+    dispatch(
+      logIn({
+        email: email,
+        password: password,
+      })
+    );
+  };
+  
   return (
     <Page>
-      <Img alt="" src="https://res.cloudinary.com/dtv1xlisg/image/upload/v1680302456/so_yummy/auth/OrderFood-pana1_moqvfj.svg" />
-      <div>
-        <BgImg>
+      <div style={{height: 305}}>
+        <Container>
+          <Img/>
           <SingUpForm>
+            <Title>Sign In</Title>
             <Formik
               initialValues={{ email: '', password: '' }}
-              onSubmit={async (values) => {
-                const authData = {
-                  email: values.email,
-                  password: values.password
-                };
-                try {
-                  const response = await axios.post('http://localhost:4000/auth/login', authData);
-                  if (response) {
-                    localStorage.setItem('token', response.data.token);
-                    localStorage.setItem('user', JSON.stringify(response.data.user))
-                    window.location = '/';
-                  }
-                } catch (e) {
-                  console.log(e.response.data.message);
-                }
-              }}
+              onSubmit={handleSubmit}
             >
-              <Form>
-                <Field
-                  type='email'
-                  name='email'
-                  placeholder='Email'
-                />
-                <Field
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                />
-                <button
+              <Form style={{ display: "flex", flexDirection: "column" }}>
+                  <Input
+                    type='email'
+                    name='email'
+                    placeholder='Email'
+                  />
+                  <Input
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                  />
+                  <Button
                   type="submit"
-                >Sign in</button>
-              </Form>
-            </Formik>
-            <Link to='/register' >Registration</Link>
-           </SingUpForm>
-        </BgImg>
+                  >Sign up
+                  </Button>
+                </Form>
+              </Formik>
+              <LinkContainer>
+              <Link to='/register'>Registration</Link>
+              </LinkContainer>
+        </SingUpForm>
+        </Container>
       </div>
+      <Background>
+      </Background>
     </Page>
   )
 };

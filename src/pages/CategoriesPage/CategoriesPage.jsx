@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 
 import { CategoriesList } from "Components/CategoriesList/CategoriesList";
 import { PageTitle } from "Components/PageTitle/PageTitle";
-import { RecipesCategoryList } from "Components/RecipesCategoryList/RecipesCategoryList";
+import { MainRecipesList } from "Components/MainRecipesList/MainRecipesList";
 
 import Container from "Components/Container/Container.styled";
-import { StyledSection, StyledWrapper } from "./CategoriesPage.styled";
+import { Error, Section, Wrapper } from "./CategoriesPage.styled";
 
 axios.defaults.baseURL = "http://localhost:4000";
 const token = localStorage.getItem("token");
@@ -41,7 +41,7 @@ const CategoriesPage = () => {
 
             if (!recipes || recipes.length === 0) {
                 setError(
-                    "We are sorry, but the recipes in category you were looking can’t be found.."
+                    "We are sorry, but the recipes in the category you were looking can’t be found."
                 );
             }
 
@@ -55,15 +55,15 @@ const CategoriesPage = () => {
     return (
         <main>
             <Container>
-                <StyledSection>
-                    <StyledWrapper>
+                <Section>
+                    <Wrapper>
                         <PageTitle>Categories</PageTitle>
-                    </StyledWrapper>
+                    </Wrapper>
                     <CategoriesList categories={categories} />
 
-                    {error && <div>{error}</div>}
-                    {!error && <RecipesCategoryList recipes={recipes} />}
-                </StyledSection>
+                    {error && <Error>{error}</Error>}
+                    {!error && <MainRecipesList recipes={recipes} />}
+                </Section>
             </Container>
         </main>
     );

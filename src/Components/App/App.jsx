@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "Layout/SharedLayout";
-import { lazy, Suspense, useEffect, useState } from "react";
-import axios from "axios";
+import { lazy, Suspense, useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks";
+import { refreshUser } from "redux/auth/operation";
 
 const WelcomePage = lazy(() => import("pages/WellcomePage/"));
 const SignUpPage = lazy(() => import("pages/SingUpPage"));
@@ -17,54 +19,38 @@ const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
 
 export const App = () => {
-  const [isAuth, setIsAuth] = useState(false);
-
-  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    if (token) {
-      const check = async () => {
-        const authCheck = await axios.get(
-          "http://localhost:4000/auth/current",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        if (authCheck) {
-          setIsAuth(true);
-        }
-      };
-      check();
-    }
-  }, [token]);
+    dispatch(refreshUser());
+  }, [dispatch])
 
-  return !isAuth ? (
-    <Suspense>
-      <Routes>
-        <Route index element={<WelcomePage />} />
-        <Route path="/register" element={<SignUpPage />} />
-        <Route path="/signin" element={<LoginPage />} />
-      </Routes>
-    </Suspense>
-  ) : (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/main" element={<MainPage />} />
-          <Route
-            path="/categories/:categoryName"
-            element={<CategoriesPage />}
-          />
-          <Route path="/add" element={<AddRecipePage />} />
-          <Route path="/favorite" element={<FavoritesPage />} />
-          <Route path="/recipe/:recipeId" element={<RecipePage />} />
-          <Route path="/my" element={<MyRecipesPage />} />
-          <Route path="/shopping-list" element={<ShoppingPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </>
-  );
+    return !isLoggedIn ? (
+        <Suspense>
+            <Routes>
+                <Route index element={<WelcomePage />} />
+                <Route path="/register" element={<SignUpPage />} />
+                <Route path="/signin" element={<LoginPage />} />
+            </Routes>
+        </Suspense>
+    ) : (
+        <>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route path="/main" element={<MainPage />} />
+                    <Route
+                        path="/categories/:categoryName"
+                        element={<CategoriesPage />}
+                    />
+                    <Route path="/add" element={<AddRecipePage />} />
+                    <Route path="/favorite" element={<FavoritesPage />} />
+                    <Route path="/recipe/:recipeId" element={<RecipePage />} />
+                    <Route path="/my" element={<MyRecipesPage />} />
+                    <Route path="/shopping-list" element={<ShoppingPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                </Route>
+            </Routes>
+        </>
+    );
 };
