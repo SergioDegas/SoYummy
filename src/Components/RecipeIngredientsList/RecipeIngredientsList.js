@@ -1,7 +1,11 @@
 import React from "react";
-import axios from "axios";
-import toast, { Toaster } from 'react-hot-toast';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectShoppingList } from "redux/shoppingList/selectors";
+import {
+  fetchShoppingList,
+  updateShoppingList,
+} from "redux/shoppingList/operation";
 import Container from "../Container";
 import {
   SectionIngredients,
@@ -22,58 +26,21 @@ import {
 } from "./RecipeIngredientsList.styled";
 import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
 
-const token = localStorage.getItem("token");
-const getShoppingList = async () => {
-  try {
-    const { data } = await axios.get(
-      "http://localhost:4000/user/shopping-list",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return data.shoppingList;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const updateShoppingList = async (credentials) => {
-  try {
-    const response = await axios.patch(
-      "http://localhost:4000/user/shopping-list",
-      credentials,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
 const RecipeIngredientsList = ({ ingredients }) => {
   const [selectedIngredientIds, setSelectedIngredientIds] = useState([]);
+  const shoppingList = useSelector(selectShoppingList);
+  const ids = useMemo(
+    () => shoppingList.map((item) => item._id),
+    [shoppingList]
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
-    async function getIngredientsIds() {
-      try {
-        // setIsLoading(true);
-        const shoppingList = await getShoppingList();
-        const ids = shoppingList.map(item => { 
-          return item._id
-        });
-        setSelectedIngredientIds(ids);
-        // setIsLoading(false);
-      } catch (error) {
-        toast.error('Oops! Something went wrong! Please try again.');
-      }
-    }
-    getIngredientsIds();
-  }, []);
+    dispatch(fetchShoppingList());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setSelectedIngredientIds(ids);
+  }, [ids]);
 
   const handleInputChange = (evt) => {
     const { id, checked } = evt.target;
@@ -87,8 +54,8 @@ const RecipeIngredientsList = ({ ingredients }) => {
 
     const currentIngredient = ingredients.find((item) => item._id === id);
     const { measure, _id } = currentIngredient;
-    const credentials = { amount: measure, id: _id }
-    updateShoppingList(credentials);
+    const credentials = { measure: measure, ingredientId: _id };
+    dispatch(updateShoppingList(credentials));
   };
 
   return (
@@ -134,7 +101,6 @@ const RecipeIngredientsList = ({ ingredients }) => {
               );
             })}
         </IngedientsList>
-        <Toaster />
       </Container>
     </SectionIngredients>
   );
