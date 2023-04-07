@@ -13,7 +13,7 @@ export const Section = styled.section`
     }
 `;
 
-export const Wrapper = styled.div`
+export const WrapperTitle = styled.div`
     margin-bottom: ${(p) => p.theme.space[1] * 15}px;
 
     @media (min-width: 1440px) {
@@ -34,5 +34,14 @@ export const Error = styled.div`
 
     @media (min-width: 768px) {
         width: 428px;
+    }
+`;
+
+export const WrapperPagination = styled.div`
+    display: flex;
+    margin-top: ${(p) => p.theme.space[1] * 10}px;
+
+    @media (min-width: 768px) {
+        margin-top: ${(p) => p.theme.space[1] * 12.5}px;
     }
 `;
