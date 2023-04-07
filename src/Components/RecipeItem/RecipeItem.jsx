@@ -18,7 +18,7 @@ import {
 export const RecipeItem = ({ recipe, page }) => {
     const { thumb, title, description, time } = recipe;
 
-    const splitDescription = description.split(". ");
+    const splitDescription = description.split("\n");
 
     const navigate = useNavigate();
 
@@ -49,8 +49,8 @@ export const RecipeItem = ({ recipe, page }) => {
                         {media.isMobileScreen ? (
                             <Text>{description}</Text>
                         ) : (
-                            splitDescription.map((elem) => {
-                                return <Text>{elem}</Text>;
+                            splitDescription.map((elem, index) => {
+                                return <Text key={index}>{elem}</Text>;
                             })
                         )}
                     </div>
