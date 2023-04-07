@@ -18,6 +18,8 @@ export const PaginationButton = styled.button`
     color: ${(p) => p.theme.colors.pagination};
     opacity: 1;
 
+    cursor: pointer;
+
     &:disabled {
         opacity: 0.6;
     }
