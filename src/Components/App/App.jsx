@@ -1,9 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "Layout/SharedLayout";
+import { Toaster } from 'react-hot-toast';
 import { lazy, Suspense, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks";
 import { refreshUser } from "redux/auth/operation";
+
 
 const WelcomePage = lazy(() => import("pages/WellcomePage/"));
 const SignUpPage = lazy(() => import("pages/SingUpPage"));
@@ -51,6 +53,7 @@ export const App = () => {
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             </Routes>
+            <Toaster position="top-right" />
         </>
     );
 };
