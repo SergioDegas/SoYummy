@@ -55,6 +55,7 @@ export const themeLight = {
 
         underline: "#e0e0e0",
         pagination: "#656565",
+        errorMsg: "#000000",
     },
 
     radius: {
