@@ -87,10 +87,26 @@ export const LogoContainer = styled.div`
   }
 `;
 
+
 export const LogoIcon = styled(GiEvilFork)`
   width: 30px;
   height: 30px;
   color: ${({ theme }) => `${theme.colors.mainLight}`};
+=======
+export const BenefitsItem = styled.li`
+font-family: ${({ theme }) => `${theme.fonts.main}`};
+font-style: normal;
+font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+font-size: ${({ theme }) => `${theme.fontSizes.l}`};
+line-height: ${({ theme }) => `${theme.lineHeights.regular}`};
+letter-spacing: -0.02em;
+color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+word-break: break-all;
+&:not(:last-child){
+margin-bottom:12px;
+}
+
+
 `;
 
 export const MenuList = styled.ul`

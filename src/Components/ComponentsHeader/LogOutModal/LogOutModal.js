@@ -1,4 +1,5 @@
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logOut } from "redux/auth/operation";
 import {
   ButtonList,
   LogOutButton,
@@ -7,16 +8,8 @@ import {
 } from "./LogOutModal.styled";
 
 export const LogoutModal = ({ onClose }) => {
-  const handleLogout = async () => {
-    try {
-      await fetch("http://localhost:4000/user/logout");
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      window.location.reload();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const dispatch = useDispatch();
+  const handleLogout = () => dispatch(logOut());
 
   return (
     <LogOutContainer>

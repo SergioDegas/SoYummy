@@ -17,7 +17,7 @@ export const RecipeText = styled.textarea`
   background-color: rgba(245, 245, 245, 1);
   outline: none;
   border: none;
-  border-radius: 6px;
+  border-radius: ${(p) => p.theme.radius.small};
   resize: none;
 
   font-size: ${(p) => p.theme.fontSizes.s}px;
@@ -43,5 +43,16 @@ export const RecipeText = styled.textarea`
     ::placeholder {
       font-size: ${(p) => p.theme.fontSizes.l}px;
     }
+  }
+`;
+
+export const Error = styled.p`
+  margin-bottom: 18px;
+  color: brown;
+  font-size: ${(p) => p.theme.fontSizes.s}px;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${(p) => p.theme.fontSizes.m}px;
+    margin-bottom: 32px;
   }
 `;

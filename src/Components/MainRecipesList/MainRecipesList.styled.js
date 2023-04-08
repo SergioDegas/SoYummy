@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const ListStyled = styled.ul`
@@ -26,4 +27,8 @@ export const ItemStyled = styled.li`
     @media (min-width: 1440px) {
         flex-basis: calc((100% - (${(p) => p.theme.space[1] * 3.5}px*3)) / 4);
     }
+`;
+
+export const LinkStyled = styled(Link)`
+    outline-color: ${(p) => p.theme.colors.accent};
 `;

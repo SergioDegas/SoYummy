@@ -3,16 +3,16 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 16px 100px;
   @media (min-width: 375px) {
     width: 375px;
   }
   @media (min-width: 768px) {
-    padding: 0 32px;
+    padding: 0 32px 200px;
     width: 768px;
   }
   @media (min-width: 1440px) {
-    padding: 0 100px;
+    padding: 0 100px 200px;
     width: 1440px;
   }
 `;

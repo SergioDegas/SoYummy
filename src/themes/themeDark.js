@@ -54,6 +54,7 @@ export const themeDark = {
         textDarckGrey: "#FAFAFA",
 
         underline: "rgba(250, 250, 250, 0.2)",
+        pagination: "rgba(250, 250, 250, 0.6)",
     },
 
     radii: {
