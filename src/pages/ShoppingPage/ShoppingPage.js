@@ -18,14 +18,7 @@ const ShoppingPage = () => {
   useEffect(() => {
     dispatch(fetchShoppingList());
   }, [dispatch]);
-//   {
-//     "id": "640c2dd963a319ea671e36e3",
-//     "measure": "1 clove",
-//     "_id": "640c2dd963a319ea671e36e3",
-//     "name": "Garlic",
-//     "image": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564798/q4gnbvysfhkjv5husoxx.png",
-//     "family": ""
-// }
+
   return (
     <SectionShoppingList>
       <Container>
