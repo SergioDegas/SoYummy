@@ -1,10 +1,10 @@
-import React from "react";
-import SearchTypeSelector from "../SearchTypeSelector";
+// import React from "react";
+// import SearchTypeSelector from "../SearchTypeSelector";
 
-const SearchBar = () => {
-    return (
-        <SearchTypeSelector />
-    )
-}
+// const SearchBar = () => {
+//     return (
+//         <SearchTypeSelector />
+//     )
+// }
 
-export default SearchBar;
+// export default SearchBar;

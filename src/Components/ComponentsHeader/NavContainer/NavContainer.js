@@ -36,11 +36,7 @@ export const NavContainer = () => {
                     </div>
                     <div>
                         <Link
-                            to={{
-                                pathname: "/SearchPage",
-                                search: "?type=query",
-                            }}
-                        >
+                            to="/search">
                             <SearchIcon />
                         </Link>
                     </div>
