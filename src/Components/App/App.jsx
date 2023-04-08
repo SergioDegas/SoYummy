@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "Layout/SharedLayout";
 import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
+import { Toaster } from 'react-hot-toast';
 
 const WelcomePage = lazy(() => import("pages/WellcomePage/"));
 const SignUpPage = lazy(() => import("pages/SingUpPage"));
@@ -67,6 +68,7 @@ export const App = () => {
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             </Routes>
+            <Toaster position="top-right" />
         </>
     );
 };
