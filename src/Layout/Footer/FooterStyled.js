@@ -1,10 +1,138 @@
 import styled from "styled-components";
-import { GiEvilFork } from "react-icons/gi";
 import { MdOutlineEmail } from "react-icons/md";
 import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from "react-icons/si";
+import { GiEvilFork } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
+export const FooterContainer = styled.div`
+  background-color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
+  height: 435px;
+  width: 100%;
+  @media (min-width: 768px) {
+    height: 425px;
+  }
+`;
 
-export const Link = styled(NavLink)`
+export const MainBox = styled.div`
+@media (min-width: 1440px) {
+  padding-top: 64px;
+  display: flex;
+  justify-content: space-between;
+  }
+`
+
+export const MainContainer = styled.div`
+  @media (min-width: 768px) {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 1440px) {
+    padding-top: 0;
+    display: flex;
+    justify-content: none;
+  }
+`;
+
+
+
+export const TitleContainer = styled.div``;
+export const TitleBox = styled.div`
+  display: flex;
+  padding-top: 28px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  @media (min-width: 768px) {
+    padding-top: 0;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 1240px) {
+  }
+`;
+
+export const Title = styled.h1`
+  margin-left: 8px;
+  font-family: ${({ theme }) => `${theme.fonts.main}`};
+  font-style: normal;
+  font-weight: ${({ theme }) => `${theme.fontWeights.bold}`};
+  font-size: 18px;
+  line-height: ${({ theme }) => `${theme.lineHeights.single}`};
+  letter-spacing: 0.015em;
+  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
+  @media (min-width: 1240px) {
+  }
+`;
+export const LogoContainer = styled.div`
+  width: 32px;
+  height: 32px;
+  background-color: ${({ theme }) => `${theme.colors.accent}`};
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
+  @media (min-width: 1440px) {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+`;
+
+
+export const LogoIcon = styled(GiEvilFork)`
+  width: 30px;
+  height: 30px;
+  color: ${({ theme }) => `${theme.colors.mainLight}`};
+=======
+export const BenefitsItem = styled.li`
+font-family: ${({ theme }) => `${theme.fonts.main}`};
+font-style: normal;
+font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+font-size: ${({ theme }) => `${theme.fontSizes.l}`};
+line-height: ${({ theme }) => `${theme.lineHeights.regular}`};
+letter-spacing: -0.02em;
+color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+word-break: break-all;
+&:not(:last-child){
+margin-bottom:12px;
+}
+
+
+`;
+
+export const MenuList = styled.ul`
+  display: block;
+  text-align: center;
+  margin-bottom: 32px;
+  padding-right: 0;
+  @media (min-width: 768px) {
+    padding-right: 94px;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1440px) {
+    padding-right: 0;
+  }
+`;
+export const MenuItem = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 14px;
+  }
+  @media (min-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+`;
+export const MenuLink = styled(NavLink)`
   font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
   font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
@@ -19,216 +147,65 @@ export const Link = styled(NavLink)`
   }
 `;
 
-export const FooterContainer = styled.div`
-  background-color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
-  height: 435px;
-  @media (min-width: 768px) {
-    height: 425px;
-  }
-  @media (min-width: 1240px) {
-    height: 420px;
-  }
-  width: 100%;
-`;
-export const MainContainer = styled.div`
-  padding-top: 28px;
+export const EmailForm = styled.form`
   display: block;
+  margin-left: 0;
   @media (min-width: 768px) {
-    padding-top: 50px;
-    display: block;
-  }
-  @media (min-width: 1240px) {
-    display: flex;
-    padding-top: ${({ theme }) => `${theme.space[5]}px`};
-    justify-content: space-between;
-  } ;
-`;
-export const MenuContainer = styled.div`
-  display: block;
-  @media (min-width: 768px) {
-    display: flex;
-    justify-content: space-around;
-  }
-  @media (min-width: 1240px) {
-    display: flex;
-    gap: 120px;
-  } ;
-`;
-export const InfoContainer = styled.div``;
-export const HeadContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 32px;
-  @media (min-width: 768px) {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 24px;
-  }
-  @media (min-width: 1240px) {
-    gap: 12px;
-    justify-content: flex-start;
-    margin-bottom: 0;
-  } ;
-`;
-export const LogoContainer = styled.div`
-  width: 32px;
-  height: 32px;
-  background-color: ${({ theme }) => `${theme.colors.accent}`};
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media (min-width: 1240px) {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-  }
-`;
-
-export const LogoIcon = styled(GiEvilFork)`
-  width: 30px;
-  height: 30px;
-  color: ${({ theme }) => `${theme.colors.mainLight}`};
-`;
-export const FooterTitle = styled.h1`
-  width: 102px;
-  height: 18px;
-  font-size: 18px;
-  line-height: ${({ theme }) => `${theme.lineHeights.single}`};
-  font-family: ${({ theme }) => `${theme.fonts.main}`};
-  font-style: normal;
-  font-weight: ${({ theme }) => `${theme.fontWeights.bold}`};
-  line-height: ${({ theme }) => `${theme.lineHeights.single}`};
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
-  margin-top: auto;
-  margin-bottom: auto;
-  @media (min-width: 768px) {
-    width: 159px;
-    height: 28px;
-    font-size: 28px;
-    line-height: 28px;
-    letter-spacing: 0.015em;
-  }
-  @media (min-width: 1240px) {
-    width: 159px;
-    height: 28px;
-    font-size: 28px;
-    letter-spacing: 0.015em;
-  }
-`;
-export const BenefitsList = styled.ul`
-  display: none;
-  @media (min-width: 768px) {
-    display: block;
-  }
-  @media (min-width: 1240px) {
-    display: block;
-    margin-top: 40px;
-  }
-`;
-
-export const BenefitsItem = styled.li`
-font-family: ${({ theme }) => `${theme.fonts.main}`};
-font-style: normal;
-font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
-font-size: ${({ theme }) => `${theme.fontSizes.l}`};
-line-height: ${({ theme }) => `${theme.lineHeights.regular}`};
-letter-spacing: -0.02em;
-color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
-word-break: break-all;
-&:not(:last-child){
-margin-bottom:12px;
-}
-
-`;
-
-export const Dot = styled.span`
-  margin-right: 5px;
-`;
-export const BenefitText = styled.span`
-  @media (min-width: 768px) {
-    white-space: nowrap;
-  }
-  @media (min-width: 1240px) {
-    display: block;
-    text-indent: 13px;
-  }
-`;
-export const MenuList = styled.ul``;
-
-export const MenuItem = styled.li`
-display: block;
-text-align: center;
-&:not(:last-child) {
-    margin-bottom: 14px;
-  @media (min-width: 768px) {
-    margin-bottom: 20px;
-  }
-@media (min-width: 1240px) {
-  &:not(:last-child) {
-    margin-bottom: 24px;
-  };
-  }
-`;
-
-export const ContactBox = styled.div`
-  @media (min-width: 768px) {
-    gap: 12px;
-    margin-top: 72px;
     display: flex;
     justify-content: center;
-    margin-bottom: 38px;
+    margin-top: 72px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
+    display: block;
     margin-top: 0;
+    
+  }
+`;
+export const EmailBox = styled.div`
+  position: relative;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 1440px) {
     display: block;
   }
 `;
 
 export const EmailTitle = styled.h2`
-  display: none;
-  @media (min-width: 1240px) {
-    display: block;
-    &:not(:last-child) {
-      margin-bottom: 24px;
-      font-family: ${({ theme }) => `${theme.fonts.main}`};
-      font-style: normal;
-      font-weight: ${({ theme }) => `${theme.fontWeights.bold}`};
-      font-size: 18px;
-      line-height: ${({ theme }) => `${theme.lineHeights.large}`};
-      color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
-      margin-bottom: ${({ theme }) => `${theme.space[3]}px`};
-    }
+display: none;
+@media (min-width: 1440px) {
+    display: flex;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FAFAFA;
+    margin-bottom: 14px;
+
   }
-`;
+`
 
 export const EmailText = styled.p`
-  display: none;
-  
-  @media (min-width: 1240px) {
-    display: block;
-    font-family: ${({ theme }) => `${theme.fonts.main}`};
-    font-style: normal;
-    font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
-    font-size: 14px;
-    line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
-    letter-spacing: -0.02em;
-    color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
-    margin-bottom: ${({ theme }) => `${theme.space[4]}px`};
+display: none;
+@media (min-width: 1440px) {
+  display: flex;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 18px;
+letter-spacing: -0.02em;
+color: #FAFAFA;
+margin-bottom: 28px;
   }
-`;
+`
 
 export const EmailInput = styled.input`
-  width: 206px;
+  width: 204px;
   height: 38px;
-  background-color: transparent;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 42px;
-  padding-right: 42px;
-  margin-top: 32px;
   border: 1px solid #fafafa;
+  background-color: transparent;
   border-radius: 6px;
   font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
@@ -236,81 +213,73 @@ export const EmailInput = styled.input`
   font-size: 10px;
   line-height: ${({ theme }) => `${theme.lineHeights.large}`};
   letter-spacing: -0.02em;
-  margin-bottom: 8px;
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
-  cursor: pointer;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   ::placeholder {
     color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
+  padding: 12px 42px;
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => `${theme.colors.green}`};
+    box-shadow: 0 0 0 3px ${({ theme }) => `${theme.colors.green}20`};
+  }
+  &:focus::placeholder {
+    color: ${({ theme }) => `${theme.colors.accent}`};
+  }
+  &:not(:placeholder-shown) {
+    color: #FAFAFA
+  }
   @media (min-width: 768px) {
-    margin-top: 0px;
     width: 259px;
     height: 50px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 51px;
-    padding-right: 40px;
     font-size: 14px;
-    line-height: ${({ theme }) => `${theme.lineHeights.large}`};
-    margin-bottom:0;
+    padding-right:40px;
+    padding-left:51px;
+    padding-top:15px;
+    padding-bottom:15px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     width: 339px;
     height: 59px;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    padding-left: 52px;
-    padding-right: 71px;
-    margin-bottom: 16px;
     font-size: 18px;
+    padding-right:70px;
+    padding-left:50px;
+    padding-top:18px;
+    padding-bottom:18px;
   }
 `;
-
-export const MailContainer = styled.div`
-  position: relative;
-`;
-
-export const MailIcon = styled(MdOutlineEmail)`
+export const EmailIcon = styled(MdOutlineEmail)`
   position: absolute;
-  width: 20px;
-  height: 20px;
-  color: ${({ theme }) => `${theme.colors.mainLight}`};
-  top: 8px;
-  left: 75px;
-  cursor: pointer;
+  top: 27%;
+  left: 27%;
+  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   @media (min-width: 768px) {
-    left: 20px;
-    top: 15px;
-  }
-  @media (min-width: 1240px) {
-    top: 20px;
-    left: 20px;
-  }
+    top: 34%;
+    left:11%;
+  };
+  @media (min-width: 1440px) {
+    top: 35%;
+    left: 7%;
+  };
 `;
-export const MailBtn = styled.button`
+export const EmailBtn = styled.button`
+  cursor: pointer;
   font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
   font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
   font-size: 14px;
   line-height: ${({ theme }) => `${theme.lineHeights.single}`};
-  text-align: center;
   display: flex;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 46px;
-  cursor: pointer;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border: none;
   padding: 11px 71px;
-  width: 206px;
+  width: 204px;
   height: 38px;
   background: ${({ theme }) => `${theme.colors.accent}`};
-  border-radius: ${({ theme }) => `${theme.radius.small}`};
-  border: none;
+  border-radius: 6px;
+  margin-right: auto;
+  margin-left: auto;
   color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   transition: all 0.5s ease-in-out;
   &:hover {
@@ -318,18 +287,34 @@ export const MailBtn = styled.button`
     color: ${({ theme }) => `${theme.colors.accent}`};
     background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
+  background-color: ${props => props.disabled ? 'grey' : '#8BAA36'};
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  &:disabled {
+    opacity: 0.5;
+  }
   @media (min-width: 768px) {
-    margin: 0;
+    margin-right: 0;
+    margin-left: 12px;
     width: 171px;
     height: 50px;
-    font-size: 16px;
   }
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     width: 339px;
     height: 60px;
-    padding: 21px 138px;
+    margin-top:16px;
+    margin-left: 0;
     font-size: 16px;
-    margin-bottom: 0;
+    line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
+  }
+`;
+
+export const SocialList = styled.ul`
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 44px;
+  @media (min-width: 768px) {
+    margin-top: 40px;
   }
 `;
 export const FacebookIcon = styled(SiFacebook)`
@@ -379,53 +364,60 @@ export const InstIcon = styled(SiInstagram)`
     color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
 `;
-
-export const SocialContainer = styled.ul`
+export const Copyright = styled.p`
   display: flex;
   justify-content: center;
-  margin-top: 0;
-  /* padding-bottom: 20px; */
-  gap: 20px;
-  @media (min-width: 1240px) {
-    padding-bottom: 50px;
-    margin-top: 40px;
-  }
-`;
-
-export const Copyright = styled.div`
   margin-top: 28px;
-  display: flex;
-  justify-content: center;
-  font-family: "Poppins";
+  font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
-  font-weight: 500;
+  font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
   font-size: 10px;
-  line-height: 10px;
+  line-height: ${({ theme }) => `${theme.lineHeights.single}`};
   letter-spacing: -0.01em;
-  color: #22252a;
+  color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
   opacity: 0.5;
-  @media (min-width: 1240px) {
-    margin-top: 50px;
-    padding-bottom: 50px;
-    margin-top: 40px;
-    font-size: 14px;
-    line-height: 14px;
+`;
+export const CopyrightText = styled.span`
+  margin-left: 14px;
+  font-family: ${({ theme }) => `${theme.fonts.main}`};
+  font-style: normal;
+  font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+  font-size: 10px;
+  line-height: ${({ theme }) => `${theme.lineHeights.single}`};
+  letter-spacing: -0.01em;
+  color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
+  opacity: 0.5;
+`;
+export const Dot = styled.span`
+  margin-right: 5px;
+`;
+export const BenefitsList = styled.ul`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+export const BenefitsItem = styled.li`
+  font-family: ${({ theme }) => `${theme.fonts.main}`};
+  font-style: normal;
+  font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+  font-size: 14px;
+  line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
+  letter-spacing: -0.02em;
+  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  @media (min-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
   }
 `;
 
-export const CopyrightText = styled.span`
-  margin-left: 15px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 10px;
-  letter-spacing: -0.01em;
-  color: #22252a;
-  opacity: 0.5;
-  @media (min-width: 1240px) {
-    font-size: 14px;
-    line-height: 14px;
-    margin-left: 40px;
+export const BenefitText = styled.span`
+@media (min-width: 768px) {
+    white-space: nowrap;
   }
-`;
+  @media (min-width: 1440px) {
+    display: block;
+    text-indent: 13px;
+  }
+`
