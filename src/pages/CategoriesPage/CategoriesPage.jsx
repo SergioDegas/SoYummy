@@ -71,7 +71,7 @@ const CategoriesPage = () => {
                     {recipes.length > 0 && !isLoading && !error && (
                         <MainRecipesList recipes={recipes} />
                     )}
-                    {totalPages > 1 && (
+                    {totalPages > 1 && !isLoading && !error && (
                         <WrapperPagination>
                             <CategoryPagePagination
                                 currentPage={page}
