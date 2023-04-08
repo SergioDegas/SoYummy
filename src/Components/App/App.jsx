@@ -1,9 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "Layout/SharedLayout";
+import { Toaster } from 'react-hot-toast';
 import { lazy, Suspense, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks";
 import { refreshUser } from "redux/auth/operation";
+
 
 const WelcomePage = lazy(() => import("pages/WellcomePage/"));
 const SignUpPage = lazy(() => import("pages/SingUpPage"));
@@ -17,6 +19,7 @@ const RecipePage = lazy(() => import("pages/RecipePage"));
 const MyRecipesPage = lazy(() => import("pages/MyRecipesPage"));
 const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
+const SearchPage = lazy(() => import("pages/SearchPage"));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -48,9 +51,11 @@ export const App = () => {
                     <Route path="/recipe/:recipeId" element={<RecipePage />} />
                     <Route path="/my" element={<MyRecipesPage />} />
                     <Route path="/shopping-list" element={<ShoppingPage />} />
+                    <Route path="/search" element={<SearchPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             </Routes>
+            <Toaster position="top-right" />
         </>
     );
 };
