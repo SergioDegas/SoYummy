@@ -93,3 +93,11 @@ export const PopularText = styled.p`
     width: 196px;
   }
 `;
+
+export const NotFound = styled.p`
+  font-weight: ${(p) => p.theme.fontWeights.medium};
+  font-size: ${(p) => p.theme.fontSizes.m}px;
+  line-height: ${(p) => p.theme.lineHeights.heading};
+  letter-spacing: -0.24px;
+  color: ${(p) => p.theme.colors.textSubTitle};
+`;
