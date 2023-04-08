@@ -1,201 +1,281 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
-export const RecipeInfoWrp = styled.div``
+export const Item = styled.li`
+    position: relative;
+    display: flex;
+    gap: ${(p) => p.theme.space[1] * 3.5}px;
+    padding: ${(p) => p.theme.space[1] * 3.5}px;
+    background: ${(p) => p.theme.colors.mainLight};
 
+    @media (min-width: 768px) {
+        gap: ${(p) => p.theme.space[1] * 6}px;
+        padding: ${(p) => p.theme.space[1] * 7}px
+            ${(p) => p.theme.space[1] * 6}px;
+    }
 
+    @media (min-width: 1440px) {
+        gap: ${(p) => p.theme.space[1] * 10}px;
+        padding: ${(p) => p.theme.space[1] * 10}px;
+    }
+`;
 
+export const Picture = styled.img`
+    width: 124px;
+    height: 124px;
+    object-fit: cover;
+    border-radius: 8px;
 
-export const TitleWrp = styled.div`
-display: flex;
-margin-bottom: 14px;
-align-items: center;
+    @media (min-width: 768px) {
+        width: 228px;
+        height: 232px;
+    }
 
-@media(min-width: 768px) {
-	align-items: flex-start;
-};
+    @media (min-width: 1440px) {
+        width: 318px;
+        height: 324px;
+    }
+`;
 
-@media ( min-width: 1440px) {
-	margin-bottom: 20px;
-}
-`
+export const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`;
 
-export const RecipeBtnDelete = styled.button`
-display: flex;
-align-items: center;
-justify-content: center;
-border: none;
-width: 24px;
-height: 24px;
+export const Title = styled.h2`
+    margin-bottom: ${(p) => p.theme.space[1] * 3.5}px;
+    max-width: 145px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-background-color: ${p => p.theme.colors.accent};
-border-radius: ${p => p.theme.space[1]}px;
+    font-weight: ${(p) => p.theme.fontWeights.medium};
+    font-size: ${(p) => p.theme.fontSizes.s}px;
+    line-height: ${(p) => p.theme.lineHeights.single};
+    letter-spacing: -0.02em;
+    color: ${(p) => p.theme.colors.textSubTitle};
 
-color: ${p => p.theme.colors.backgroundPrimary};
+    @media (min-width: 768px) {
+        margin-bottom: ${(p) => p.theme.space[1] * 7}px;
+        max-width: none;
+        font-size: ${(p) => p.theme.fontSizes.xll}px;
+    }
 
-@media (min-width: 768px) {
-	width: 38px;
-	height: 38px;
-};
+    @media (min-width: 1440px) {
+        margin-bottom: ${(p) => p.theme.space[1] * 10}px;
+    }
+`;
 
-@media( min-width: 1440px) {
-	width: 44px;
-	height: 44px;
-}
-`
+export const Text = styled.p`
+    width: 163px;
 
-export const RecipeTitle = styled.h3`
-margin-right: 27px;
-font-family: ${p => p.theme.fonts.main};
-font-style: normal;
-font-weight: ${p => p.theme.fontWeights.medium};
-font-size: ${p => p.theme.fontSizes.s}px;
-line-height: ${p => p.theme.lineHeights.single};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 
-letter-spacing: -0.24px;
+    font-weight: ${(p) => p.theme.fontWeights.regular};
+    font-size: ${(p) => p.theme.fontSizes.xs}px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
 
-color: ${p => p.theme.colors.textSubTitle};
+    color: ${(p) => p.theme.colors.textPrimary};
 
-@media (min-width: 768px) {
-	font-size: ${p => p.theme.fontSizes.xll}px;
-	font-style: medium;
-	line-height: 24px;
-	margin-right: 122px;
-};
+    &:first-child {
+        margin-bottom: ${(p) => p.theme.space[1] * 3.5}px;
+        -webkit-line-clamp: 4;
+    }
 
-@media (min-width: 1440px) {
-	margin-right: 524px;
-}
-`
-export const DscrInstrWrp = styled.div`
-width: 163px;
-@media (min-width: 768px) {
-	width: 353px;
-};
+    @media (min-width: 768px) {
+        width: 353px;
 
-@media ( min-width: 1440px) {
-	width: 806px;
-}
-`
+        font-size: ${(p) => p.theme.fontSizes.s}px;
+        line-height: ${(p) => p.theme.lineHeights.heading};
+    }
 
-export const RecipeDescr = styled.p`
-text-indent: 100%;
-white-space: nowrap;
-overflow: hidden;
-height: 0px;
-font-size: ${p => p.theme.fontSizes.s}px;
-font-family: ${p => p.theme.fonts.main};
-font-style: regular
-line-height: 18px
-Letter spacing: -2%;
+    @media (min-width: 1440px) {
+        width: 679px;
+        display: block;
 
-@media(min-width: 768px) {
-text-overflow: ellipsis;
-text-indent: 0%;
-height: 21px;
-margin-top: 14px;
-};
+        font-size: ${(p) => p.theme.fontSizes.l}px;
+        line-height: ${(p) => p.theme.lineHeights.regular};
+    }
+`;
 
-@media ( min-width: 1440px) {
-	font-size: ${p => p.theme.fontSizes.l}px;
-	line-height: 24px;
-}
-`
+export const DeleteButtonFav = styled.button`
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
 
-export const RecipeInstr = styled.p`
-	font-family: ${p => p.theme.fonts.main};
-	font-style: normal;
-	font-weight: ${p => p.theme.fontWeights.regular};
-	font-size: ${p => p.theme.fontSizes.xs}px;
-	line-height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-	letter-spacing: -0.24px;
-	color: ${p =>p.theme.colors.textPrimary};
+    width: 24px;
+    height: 24px;
+    background: ${(p) => p.theme.colors.backgroundAccent};
+    border-radius: 4px;
+    border: transparent;
 
-	height: 39px;
+    color: ${(p) => p.theme.colors.textDarckGrey};
 
-	@media ( min-width: 768px) {
-		font-size: ${p => p.theme.fontSizes.s}px;
-		line-height: 18px;
-		height: 72px;
-	};
+    transition: all 0.25s ease-out;
 
-	@media ( min-width: 1440px) {
-		font-size: ${p => p.theme.fontSizes.l}px;
-		line-height: 24px;
-	}
-`
+    &:hover,
+    &:focus {
+        background: ${(p) => p.theme.colors.accent};
+        color: ${(p) => p.theme.colors.textWhite};
+    }
 
-export const TimeSeeWrapp = styled.div`
-display: flex;
-align-items: flex-end;
-margin-top: 20px;
+    @media (min-width: 768px) {
+        top: 28px;
+        right: 24px;
 
-@media ( min-width: 768px) {
-	margin-top: 28px;
-};
+        width: 38px;
+        height: 38px;
+    }
 
-@media ( min-width: 1440px) {
-	margin-top: 93px;
-}
-`
+    @media (min-width: 1440px) {
+        top: 40px;
+        right: 40px;
 
-export const RecipeTime = styled.span`
-margin-right: 74px;
-font-family: ${p => p.theme.fonts.main} ;
-font-style: normal;
-font-weight: ${p => p.theme.fontWeights.regular};
-font-size: ${p => p.theme.fontSizes.xs}px;
-line-height: ${p => p.theme.lineHeights.large};
+        width: 44px;
+        height: 44px;
+    }
+`;
 
-letter-spacing: -0.24px;
+export const DeleteButtonMy = styled.button`
+    position: absolute;
+    top: 14px;
+    right: 14px;
 
-color: ${p => p.theme.colors.textSubTitle};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-@media(min-width: 768px) {
-	font-size: ${p => p.theme.fontSizes.s}px;
-	font-weight: ${p => p.theme.fontWeights.medium};
-	line-height: 20px;
-	margin-right: 211px
-};
+    width: 24px;
+    height: 24px;
 
-@media ( min-width: 1440px) {
-	margin-right: 586px;
-}
-`
+    background: ${(p) => p.theme.colors.accent};
+    border-radius: 4px;
+    border: transparent;
 
-export const RecipeSeeLink = styled(NavLink)`
-display: inline-block;
-align-items: center;
-padding: ${p => p.theme.space[2]-2}px	${p => p.theme.space[3]-2}px;
-border-radius: 12px 25px;
-width: 87px;
-height: 27px;
-left: 80px;
-top: 97px;
+    color: ${(p) => p.theme.colors.textWhite};
 
-background: ${p => p.theme.colors.accent};
+    transition: all 0.25s ease-out;
 
-font-family: ${p => p.theme.fonts.main};
-font-style: normal;
-font-weight: ${p => p.theme.fontWeights.regular};
-font-size: 10px;
-line-height: ${p => p.theme.lineHeights.large};
+    &:hover,
+    &:focus {
+        background: ${(p) => p.theme.colors.backgroundSecondary};
+    }
 
-color: ${p => p.theme.colors.backgroundPrimary};
+    @media (min-width: 768px) {
+        top: 28px;
+        right: 24px;
 
-@media (min-width: 768px) {
-padding: ${p => p.theme.space[1]*3}px ${p => p.theme.space[4]-4}px;
-font-size: ${p => p.theme.fontSizes.s}px;
-width: 138px;
-height: 45px;
-};
+        width: 38px;
+        height: 38px;
+    }
 
-@media ( min-width: 1440px) {
-	width: 172px;
-	height: 59px;
-	padding: ${p => p.theme.space[3]+2}px ${p => p.theme.space[4]+12}px;
-	font-size: ${p => p.theme.fontSizes.s}px;
-	line-height: 24px;
-}
-`
+    @media (min-width: 1440px) {
+        top: 40px;
+        right: 40px;
+
+        width: 44px;
+        height: 44px;
+    }
+`;
+
+export const RecipeButtonFav = styled.button`
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+
+    width: 87px;
+    height: 27px;
+
+    background: ${(p) => p.theme.colors.backgroundSecondary};
+    font-weight: ${(p) => p.theme.fontWeights.regular};
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+
+    color: ${(p) => p.theme.colors.textWhite};
+    border-radius: 24px 44px;
+    border: transparent;
+
+    transition: background 0.25s ease-out;
+
+    &:hover,
+    &:focus {
+        background: ${(p) => p.theme.colors.accent};
+    }
+
+    @media (min-width: 768px) {
+        bottom: 28px;
+        right: 24px;
+
+        width: 138px;
+        height: 45px;
+
+        font-size: ${(p) => p.theme.fontSizes.s}px;
+    }
+
+    @media (min-width: 1440px) {
+        bottom: 40px;
+        right: 40px;
+
+        width: 160px;
+        height: 54px;
+
+        font-size: ${(p) => p.theme.fontSizes.m}px;
+    }
+`;
+
+export const RecipeButtonMy = styled.button`
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+
+    width: 87px;
+    height: 27px;
+
+    background: ${(p) => p.theme.colors.accent};
+
+    font-weight: ${(p) => p.theme.fontWeights.regular};
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+
+    color: ${(p) => p.theme.colors.textWhite};
+    border-radius: 24px 44px;
+    border: transparent;
+
+    transition: background 0.25s ease-out;
+
+    &:hover,
+    &:focus {
+        background: ${(p) => p.theme.colors.backgroundSecondary};
+    }
+
+    @media (min-width: 768px) {
+        bottom: 28px;
+        right: 24px;
+
+        width: 138px;
+        height: 45px;
+
+        font-size: ${(p) => p.theme.fontSizes.s}px;
+    }
+
+    @media (min-width: 1440px) {
+        bottom: 40px;
+        right: 40px;
+
+        width: 160px;
+        height: 54px;
+
+        font-size: ${(p) => p.theme.fontSizes.m}px;
+    }
+`;

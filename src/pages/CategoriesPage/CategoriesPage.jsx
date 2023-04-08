@@ -1,68 +1,85 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { CategoriesList } from "Components/CategoriesList/CategoriesList";
+import {
+    selectCategoryList,
+    selectCategoryRecipes,
+    selectCategoryTotalPages,
+    selectIsLoading,
+    selectError,
+} from "redux/categories/selectors";
+import {
+    fetchCategoryList,
+    fetchRecipesByCategory,
+} from "redux/categories/operations";
+
 import { PageTitle } from "Components/PageTitle/PageTitle";
+import { CategoriesList } from "Components/CategoriesList/CategoriesList";
 import { MainRecipesList } from "Components/MainRecipesList/MainRecipesList";
+import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
 
 import Container from "Components/Container/Container.styled";
-import { Error, Section, Wrapper } from "./CategoriesPage.styled";
-
-axios.defaults.baseURL = "http://localhost:4000";
-const token = localStorage.getItem("token");
-axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-const getCategoriesList = async () => {
-    const { data } = await axios.get(`/recipes/category-list`);
-    return data.categories;
-};
-
-const getRecipeByCategory = async (category) => {
-    const { data } = await axios.get(`/recipes/category/${category}`);
-    return data.recipes;
-};
+import {
+    Error,
+    Section,
+    WrapperPagination,
+    WrapperTitle,
+} from "./CategoriesPage.styled";
 
 const CategoriesPage = () => {
-    const [categories, setCategories] = useState([]);
-    const [recipes, setRecipes] = useState([]);
-    const [error, setError] = useState(null);
+    const [page, setPage] = useState(1);
+    const [currentCategory, setCurrentCategory] = useState(null);
 
-    const { categoryName } = useParams();
+    const { categoryName: category } = useParams();
+
+    const dispatch = useDispatch();
+    const categoryList = useSelector(selectCategoryList);
+    const recipes = useSelector(selectCategoryRecipes);
+    const totalPages = useSelector(selectCategoryTotalPages);
+    const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
 
     useEffect(() => {
-        const getCategories = async () => {
-            const categories = await getCategoriesList();
-            setCategories(categories);
-        };
+        dispatch(fetchCategoryList());
 
-        const getRecipesByCategories = async (categoryName) => {
-            const recipes = await getRecipeByCategory(categoryName);
+        if (category !== currentCategory) {
+            setPage(1);
+        }
+        setCurrentCategory(category);
 
-            if (!recipes || recipes.length === 0) {
-                setError(
-                    "We are sorry, but the recipes in the category you were looking can’t be found."
-                );
-            }
-
-            setRecipes(recipes);
-        };
-
-        getCategories();
-        getRecipesByCategories(categoryName);
-    }, [categoryName]);
+        dispatch(fetchRecipesByCategory({ category, page }));
+    }, [dispatch, category, page, currentCategory]);
 
     return (
         <main>
             <Container>
                 <Section>
-                    <Wrapper>
+                    <WrapperTitle>
                         <PageTitle>Categories</PageTitle>
-                    </Wrapper>
-                    <CategoriesList categories={categories} />
+                    </WrapperTitle>
+                    {categoryList.length > 0 && !isLoading && !error && (
+                        <CategoriesList categories={categoryList} />
+                    )}
 
-                    {error && <Error>{error}</Error>}
-                    {!error && <MainRecipesList recipes={recipes} />}
+                    {recipes.length === 0 && !isLoading && !error && (
+                        <Error>
+                            We are sorry, but the recipes in the category you
+                            are looking can’t be found.
+                        </Error>
+                    )}
+                    {recipes.length > 0 && !isLoading && !error && (
+                        <MainRecipesList recipes={recipes} />
+                    )}
+                    {totalPages > 1 && !isLoading && !error && (
+                        <WrapperPagination>
+                            <CategoryPagePagination
+                                currentPage={page}
+                                totalPages={totalPages}
+                                onPageChange={(page) => setPage(page)}
+                            />
+                        </WrapperPagination>
+                    )}
                 </Section>
             </Container>
         </main>

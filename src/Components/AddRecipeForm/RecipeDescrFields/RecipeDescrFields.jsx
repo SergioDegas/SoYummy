@@ -1,5 +1,6 @@
 import { useState } from "react";
 import cookingTime from "../../AddRecipeForm/cookingTime.json";
+import { schema } from "../schema";
 import imageS from "../../../images/file-input-mob.png";
 import imageL from "../../../images/file-input-desk.png";
 import { IoIosArrowDown } from "react-icons/io";
@@ -19,6 +20,8 @@ import {
   CategoryItem,
   TimeList,
   TimeItem,
+  OneInputWrap,
+  Error,
 } from "./RecipeDescrFields.styled";
 
 export const RecipeDescrFields = ({
@@ -32,6 +35,7 @@ export const RecipeDescrFields = ({
   onDescriptionChange,
   onTimeSet,
   onCategorySet,
+  errors,
 }) => {
   const categoryList = [
     "Beef",
@@ -83,22 +87,28 @@ export const RecipeDescrFields = ({
         {image && <RecipeImage src={image} alt="recipeImage"></RecipeImage>}
       </FileInputWrap>
       <InputWrap>
-        <DescrInput
-          type="text"
-          id="title"
-          name="title"
-          placeholder="Enter item title"
-          onChange={(e) => onTitleChange(e.target.value)}
-          value={title}
-        />
-        <DescrInput
-          type="text"
-          id="about"
-          name="about"
-          placeholder="Enter about recipe"
-          onChange={(e) => onDescriptionChange(e.target.value)}
-          value={description}
-        />
+        <OneInputWrap>
+          <DescrInput
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Enter item title"
+            onChange={(e) => onTitleChange(e.target.value)}
+            value={title}
+          />
+          {errors.title && <Error>{errors.title}</Error>}
+        </OneInputWrap>
+        <OneInputWrap>
+          <DescrInput
+            type="text"
+            id="about"
+            name="about"
+            placeholder="Enter about recipe"
+            onChange={(e) => onDescriptionChange(e.target.value)}
+            value={description}
+          />
+          {errors.description && <Error>{errors.description}</Error>}
+        </OneInputWrap>
         <SelectWrap onClick={toggleCategory}>
           <DescrLabel>Category</DescrLabel>
           <DescrSelect>
