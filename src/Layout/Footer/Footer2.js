@@ -25,6 +25,7 @@ import {
   BenefitsItem,
   TitleContainer,
   MainContainer,
+  EmailContainer,
 } from "./FooterExStyled";
 
 const Footerrr = () => {
@@ -65,12 +66,14 @@ const Footerrr = () => {
           </MenuItem>
         </MenuList>
         </MainContainer>
+        <EmailContainer>
         <EmailBox>
           <EmailInput type="email" 
             placeholder="Enter your email address" />
           <EmailIcon />
         </EmailBox>
         <EmailBtn type="submit">Subscribe</EmailBtn>
+        </EmailContainer>
         <SocialList>
           <li>
             <a href="/">

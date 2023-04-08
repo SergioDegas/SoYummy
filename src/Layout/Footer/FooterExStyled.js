@@ -77,6 +77,11 @@ export const MenuList = styled.ul`
 display: block;
 text-align: center;
 margin-bottom: 32px;
+padding-right: 0;
+@media (min-width: 768px) {
+  padding-right: 94px;
+  }
+
 `
 export const MenuItem = styled.li`
  &:not(:last-child) {
@@ -95,6 +100,15 @@ transition: all 0.5s ease-in-out;
   &:hover {
     transition: all 0.5s ease-in-out;
     color: ${({ theme }) => `${theme.colors.accent}`};
+  }
+`
+
+export const EmailContainer = styled.div`
+display: block;
+@media (min-width: 768px) {
+ display: flex;
+ justify-content: center;
+ margin-top: 72px;
   }
 `
 export const EmailBox = styled.div`
@@ -119,12 +133,21 @@ letter-spacing: -0.02em;
     color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
 padding: 12px 42px;
+@media (min-width: 768px) {
+width: 259px;
+height: 50px;
+font-size: 14px;
+  }
 `
 export const EmailIcon = styled(MdOutlineEmail)`
 position: absolute;
 top: 27%;
 left: 27%;
 color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+@media (min-width: 768px) {
+top: 32%;
+left: 8%;
+  }
 `
 export const EmailBtn = styled.button`
 cursor: pointer;
@@ -151,6 +174,10 @@ transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     color: ${({ theme }) => `${theme.colors.accent}`};
     background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  }
+  @media (min-width: 768px) {
+    margin-right: 0;
+    margin-left: 0;
   }
 `
 
