@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
 import {
     selectCategoryList,
@@ -51,6 +52,10 @@ const CategoriesPage = () => {
         dispatch(fetchRecipesByCategory({ category, page }));
     }, [dispatch, category, page, currentCategory]);
 
+    if (error) {
+        toast.error(error);
+    }
+
     return (
         <main>
             <Container>
@@ -65,7 +70,7 @@ const CategoriesPage = () => {
                     {recipes.length === 0 && !isLoading && !error && (
                         <Error>
                             We are sorry, but the recipes in the category you
-                            were looking can’t be found.
+                            are looking can’t be found.
                         </Error>
                     )}
                     {recipes.length > 0 && !isLoading && !error && (
@@ -82,6 +87,7 @@ const CategoriesPage = () => {
                     )}
                 </Section>
             </Container>
+            <Toaster />
         </main>
     );
 };
