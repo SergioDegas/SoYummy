@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
 import { shoppingListReducer } from './shoppingList/slice';
 import { ownRecipeReduser } from './recipes/slice';
+import { searchSlice  } from './search/slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -32,6 +33,7 @@ export const store = configureStore({
         auth: persistReducer(authPersistConfig, authReducer),
         shoppingList: shoppingListReducer,
         ownRecipe: ownRecipeReduser,
+        search: searchSlice,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
