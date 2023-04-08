@@ -4,13 +4,12 @@ import { RecipesList } from "Components/RecipesList/RecipesList";
 import { PageTitle } from "Components/PageTitle/PageTitle";
 
 const MyRecipesPage = () => {
-
-  return (
-      <Container>
-        <PageTitle>My recipes</PageTitle>
-        <RecipesList/>
-      </Container>
-  )
+    return (
+        <Container>
+            <PageTitle>My recipes</PageTitle>
+            <RecipesList recipes={[]} page="my" />
+        </Container>
+    );
 };
 
 export default MyRecipesPage;

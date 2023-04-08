@@ -54,6 +54,7 @@ export const themeLight = {
         textDarckGrey: "#22252A",
 
         underline: "#e0e0e0",
+        pagination: "#656565",
     },
 
     radius: {

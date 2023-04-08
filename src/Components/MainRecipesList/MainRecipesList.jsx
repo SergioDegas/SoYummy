@@ -1,8 +1,7 @@
 import { useLocation } from "react-router";
 
 import { MainRecipeCard } from "Components/MainRecipeCard/MainRecipeCard";
-import { ItemStyled, ListStyled } from "./MainRecipesList.styled";
-import { Link } from "react-router-dom";
+import { ItemStyled, LinkStyled, ListStyled } from "./MainRecipesList.styled";
 
 export const MainRecipesList = ({ recipes }) => {
     const location = useLocation();
@@ -12,12 +11,12 @@ export const MainRecipesList = ({ recipes }) => {
             {recipes.map((recipe) => {
                 return (
                     <ItemStyled key={recipe._id}>
-                        <Link
+                        <LinkStyled
                             to={`/recipe/${recipe._id}`}
                             state={{ from: location }}
                         >
                             <MainRecipeCard recipe={recipe} />
-                        </Link>
+                        </LinkStyled>
                     </ItemStyled>
                 );
             })}
