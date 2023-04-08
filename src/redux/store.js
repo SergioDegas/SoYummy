@@ -1,6 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
-
     persistStore,
     persistReducer,
     FLUSH,
@@ -15,7 +14,7 @@ import { authReducer } from "./auth/slice";
 import { shoppingListReducer } from "./shoppingList/slice";
 import { ownRecipeReduser } from "./recipes/slice";
 import { categoriesReducer } from "./categories/slice";
-
+import { favoritesReducer } from "./favorite/slice";
 
 const middleware = [
     ...getDefaultMiddleware({
@@ -35,13 +34,13 @@ export const store = configureStore({
         auth: persistReducer(authPersistConfig, authReducer),
         shoppingList: shoppingListReducer,
         categories: categoriesReducer,
+        favorite: favoritesReducer,
         ownRecipe: ownRecipeReduser,
 
         search: searchSlice,
-  },
-  middleware,
-  devTools: process.env.NODE_ENV === 'development',
-
+    },
+    middleware,
+    devTools: process.env.NODE_ENV === "development",
 });
 
 export const persistor = persistStore(store);
