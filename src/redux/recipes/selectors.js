@@ -1,3 +1,3 @@
-export const getRecipes = state => state.recipes.recipes;
-export const isLoading = state => state.recipes.isLoading
-export const getError = state => state.recipes.error
+export const getRecipes = state => state.ownRecipe.recipes;
+export const isLoading = state => state.ownRecipe.isLoading
+export const isError = state => state.ownRecipe.error

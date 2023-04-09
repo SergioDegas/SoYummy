@@ -15,7 +15,7 @@ import {
     Wrapper,
 } from "./RecipeItem.styled";
 
-export const RecipeItem = ({ recipe, page }) => {
+export const RecipeItem = ({ recipe, page, onDeleteOwnRecipe }) => {
     const { thumb, title, description, time } = recipe;
 
     const splitDescription = description.split("\n");
@@ -71,7 +71,7 @@ export const RecipeItem = ({ recipe, page }) => {
 
             {page === "my" && (
                 <>
-                    <DeleteButtonMy type="button">
+                    <DeleteButtonMy type="button" onClick={onDeleteOwnRecipe}>
                         <RiDeleteBinLine size={iconSize()} />
                     </DeleteButtonMy>
                     <RecipeButtonMy type="button" onClick={handleSubmit}>

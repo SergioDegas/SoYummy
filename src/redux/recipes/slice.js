@@ -8,9 +8,13 @@ import {
 } from "./operation";
 
 const initialState = {
-  recipes: [],
-  isLoading: false,
-  error: null,
+
+	recipes: [],
+	isLoading: false,
+	error: null,
+	currentPage: 1,
+	perPage: 5,
+
 };
 
 const handlePending = (state) => {
@@ -23,45 +27,43 @@ const handleRejected = (state, action) => {
 };
 
 const ownRecipeSlice = createSlice({
-  name: "recipes",
-  initialState,
-  extraReducers: {
-    [fetchRecipes.pending]: handlePending,
-    [fetchRecipes.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.recipes = action.payload;
-    },
-    [fetchRecipes.rejected]: handleRejected,
 
-    [addRecipe.pending]: handlePending,
-    [addRecipe.fulfilled](state, action) {
-      console.log(action.payload);
-      state.isLoading = false;
-      state.error = null;
-      state.recipes.push(action.payload);
-    },
-    [addRecipe.rejected]: handleRejected,
+	name: 'recipes',
+	initialState,
+	reducers: {
+		setCurrentPage: (state, action) => {
+			state.currentPage = action.payload;
+		},
+	},
+	extraReducers: {
+		[fetchRecipes.pending]: handlePending,
+		[fetchRecipes.fulfilled] (state, action) {
+			state.isLoading = false;
+			state.error = null;
+			state.recipes = action.payload;
+		},
+		[fetchRecipes.rejected]: handleRejected,
 
-    [removeRecipe.pending]: handlePending,
-    [removeRecipe.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      const index = state.recipes.findIndex(
-        (recipe) => recipe.id === action.payload.id
-      );
-      state.recipes.splice(index, 1);
-    },
-    [removeRecipe.rejected]: handleRejected,
+		[addRecipe.pending]: handlePending,
+		[addRecipe.fulfilled](state, action ) {
+			console.log(action.payload)
+			state.isLoading = false;
+			state.error = null;
+			state.recipes.push(action.payload);
+		},
+		[addRecipe.rejected]: handleRejected,
 
-    [addNewRecipe.pending]: handlePending,
-    [addNewRecipe.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.recipes.push(action.payload);
-    },
-    [addNewRecipe.rejected]: handleRejected,
-  },
-});
+		[removeRecipe.pending]: handlePending,
+		[removeRecipe.fulfilled] (state, action) {
+			state.isLoading = false;
+			state.error = null;
+			const index = state.recipes.findIndex (recipe => recipe.id === action.payload.id);
+			state.recipes.splice(index, 1);
+},
+	},
 
+})
+
+export const {setCurrentPage} = ownRecipeSlice.actions;
 export const ownRecipeReduser = ownRecipeSlice.reducer;
+
