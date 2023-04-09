@@ -14,6 +14,7 @@ import {
     Title,
     Wrapper,
 } from "./RecipeItem.styled";
+import notFound from "../../images/picture-not-found_300 .jpg";
 
 export const RecipeItem = ({ recipe, page, onDeleteOwnRecipe }) => {
     const { thumb, title, description, time } = recipe;
@@ -41,7 +42,7 @@ export const RecipeItem = ({ recipe, page, onDeleteOwnRecipe }) => {
 
     return (
         <Item>
-            <Picture src={thumb} alt={title} />
+            <Picture src={thumb ? thumb : notFound} alt={title} />
             <Wrapper>
                 <div>
                     <Title>{title}</Title>
