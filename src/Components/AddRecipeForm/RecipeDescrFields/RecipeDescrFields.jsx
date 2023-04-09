@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCategoryList } from "../../../redux/categories/selectors";
+import { fetchCategoryList } from "../../../redux/categories/operation";
 import cookingTime from "../../AddRecipeForm/cookingTime.json";
-import { schema } from "../schema";
 import imageS from "../../../images/file-input-mob.png";
 import imageL from "../../../images/file-input-desk.png";
 import { IoIosArrowDown } from "react-icons/io";
@@ -37,20 +39,12 @@ export const RecipeDescrFields = ({
   onCategorySet,
   errors,
 }) => {
-  const categoryList = [
-    "Beef",
-    "Breakfast",
-    "Dessert",
-    "Goat",
-    "Lamb",
-    "Miscellaneous",
-    "Vegan",
-    "Chicken",
-    "Pasta",
-    "Pork",
-    "SeaFood",
-    "Side",
-  ];
+  const dispatch = useDispatch();
+  const categoriesList = useSelector(getCategoryList);
+
+  useEffect(() => {
+    dispatch(fetchCategoryList());
+  }, [dispatch]);
 
   const [timeIsActive, setTimeIsActive] = useState(false);
   const [categoryIsActive, setCategoryIsActive] = useState(false);
@@ -117,7 +111,7 @@ export const RecipeDescrFields = ({
           </DescrSelect>
           {categoryIsActive && (
             <CategoryList>
-              {categoryList.map((item) => (
+              {categoriesList.map((item) => (
                 <CategoryItem key={item} onClick={() => setCategory(item)}>
                   {item}
                 </CategoryItem>

@@ -7,12 +7,9 @@ import {
   updateShoppingList,
 } from "redux/shoppingList/operation";
 import Container from "../Container";
+import IngredientsTitle from "Components/IngredientsTitle";
 import {
   SectionIngredients,
-  TitleWrap,
-  Title,
-  TitleTextWrap,
-  TitleText,
   IngedientsList,
   IngedientsItem,
   Wrap,
@@ -42,32 +39,29 @@ const RecipeIngredientsList = ({ ingredients }) => {
     setSelectedIngredientIds(ids);
   }, [ids]);
 
-  const handleInputChange = (evt) => {
+  const handleInputChange = async (evt) => {
     const { id, checked } = evt.target;
-    setSelectedIngredientIds((prevSelectedIds) => {
+    await setSelectedIngredientIds((prevSelectedIds) => {
       if (checked) {
         return [...prevSelectedIds, id];
       } else {
         return prevSelectedIds.filter((selectedId) => selectedId !== id);
       }
     });
+    
 
     const currentIngredient = ingredients.find((item) => item._id === id);
-    const { measure, _id } = currentIngredient;
-    const credentials = { measure: measure, ingredientId: _id };
-    dispatch(updateShoppingList(credentials));
+    if (currentIngredient) {
+  const { measure, _id } = currentIngredient;
+  const credentials = { measure: measure, ingredientId: _id };
+  dispatch(updateShoppingList(credentials));
+}
   };
 
   return (
     <SectionIngredients>
       <Container>
-        <TitleWrap>
-          <Title children="Ingedients" />
-          <TitleTextWrap>
-            <TitleText>Number</TitleText>
-            <TitleText>Add to list</TitleText>
-          </TitleTextWrap>
-        </TitleWrap>
+        <IngredientsTitle title="Ingedients" action="Add to list" />
         <IngedientsList>
           {ingredients &&
             ingredients.map(({ image, _id, measure, name }) => {
