@@ -7,11 +7,10 @@ export const LogOutContainer = styled.div`
   width: 500px;
   height: 215px;
 
-  background: ${({ theme }) => theme.colors.mainLight};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 50px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
   display: flex;
   flex-direction: column;
@@ -32,8 +31,7 @@ export const LogOutText = styled.p`
 
   text-align: center;
   letter-spacing: -0.02em;
-
-
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 export const LogOutButton = styled.div`
   display: flex;

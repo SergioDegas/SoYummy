@@ -11,7 +11,7 @@ export const DropContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.backgroundAccent};
+  background-color: ${({ theme }) => theme.colors.modal};
   z-index: 2;
 `;
 
@@ -67,6 +67,7 @@ export const Link = styled(NavLink).attrs({ activeClassName })`
   justify-content: center;
   align-items: center;
   letter-spacing: -0.02em;
+  color: ${({ theme }) => theme.colors.textPrimary};
 
   :hover {
     color: ${({ theme }) => theme.colors.accent};
@@ -77,6 +78,8 @@ export const Link = styled(NavLink).attrs({ activeClassName })`
 `;
 
 export const SearchIcon = styled(FiSearch)`
+  color: ${({ theme }) => theme.colors.textPrimary};
+
   width: ${({ theme }) => `${theme.fontSizes.l}px`};
   height: ${({ theme }) => `${theme.fontSizes.l}px`};
   margin-right: ${({ theme }) => `${theme.space[1]}px`};
@@ -86,6 +89,7 @@ export const ButtonClose = styled(AiOutlineClose)`
   width: ${({ theme }) => `${theme.space[4]}px`};
   height: ${({ theme }) => `${theme.space[4]}px`};
   color: ${({ theme }) => theme.colors.mainDark};
+  color: ${({ theme }) => theme.colors.textPrimary};
   cursor: pointer;
   :hover {
     color: ${({ theme }) => theme.colors.accent};

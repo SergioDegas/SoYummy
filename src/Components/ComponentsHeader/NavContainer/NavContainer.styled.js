@@ -39,7 +39,7 @@ export const NavigationContainer = styled.nav`
   margin-left: auto;
 `;
 
-export const NavLinksContainer = styled.div`
+export const NavLinksContainer = styled.ul`
   display: flex;
   gap: 30px;
 `;
@@ -56,6 +56,7 @@ export const Link = styled(NavLink).attrs({ activeClassName })`
   justify-content: center;
   align-items: center;
   letter-spacing: -0.02em;
+  color: ${({ theme }) => theme.colors.textPrimary};
 
   :hover {
     color: ${({ theme }) => theme.colors.accent};
@@ -66,7 +67,7 @@ export const Link = styled(NavLink).attrs({ activeClassName })`
 `;
 
 export const SearchIcon = styled(FiSearch)`
+  color: ${({ theme }) => theme.colors.textPrimary};
   width: ${({ theme }) => `${theme.fontSizes.xll}px`};
-  height: ${({ theme }) => `${theme.fontSizes.xll}px`};
- ;
+  height: ${({ theme }) => `${theme.fontSizes.xll}px`}; ;
 `;

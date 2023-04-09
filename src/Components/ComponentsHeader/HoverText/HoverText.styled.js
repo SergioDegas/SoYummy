@@ -1,14 +1,16 @@
+import { BsArrowRightShort } from "react-icons/bs";
+import { HiOutlinePencil } from "react-icons/hi";
 import styled from "styled-components";
 
 export const HoveredText = styled.div`
   opacity: 0;
-  background-color: #fafafa;
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
-position: absolute;
+  position: absolute;
   width: 177px;
   height: 134px;
-top: 63px;
-right: 35px;
+  top: 63px;
+  right: 35px;
   border-radius: 8px;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -56,6 +58,7 @@ export const EditText = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 22px;
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 export const LogOutText = styled.p`
   font-family: "Poppins";
@@ -66,4 +69,8 @@ export const LogOutText = styled.p`
   color: white;
   transform: skewX(-10deg);
   padding: 12px 20px;
+`;
+
+export const Pen = styled(HiOutlinePencil)`
+  color: ${({ theme }) => theme.colors.textWhite};
 `;

@@ -10,7 +10,7 @@ import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
 import { RecipeIngredients } from "./RecipeIngredients/RecipeIngredients";
 import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
-import { GiConsoleController } from "react-icons/gi";
+// import { GiConsoleController } from "react-icons/gi";
 
 export const AddRecipeForm = () => {
     const [image, setImage] = useState("");
@@ -77,14 +77,14 @@ export const AddRecipeForm = () => {
         ]);
     };
 
-    const decrementIngrList = () => {
-        const lastItem = ingredients[ingredients.length - 1];
-        setIngredients((prevState) =>
-            prevState.filter((item) => {
-                return item.id !== lastItem.id;
-            })
-        );
-    };
+  const decrementIngrList = () => {
+    const lastItem = ingredients[ingredients.length - 1];
+    setIngredients((prevState) =>
+      prevState.filter((item) => {
+        return item.id !== lastItem.id;
+      })
+    );
+  };
 
     const deleteIngr = (itemId) => {
         setIngredients(ingredients.filter((item) => item.id !== itemId));

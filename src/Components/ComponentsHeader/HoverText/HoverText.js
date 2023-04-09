@@ -7,6 +7,7 @@ import {
   HoveredText,
   LogOut,
   LogOutText,
+  Pen,
 } from "./HoverText.styled";
 
 export const HoverText = ({ hovered, openEditModal, openLogoutModal }) => {
@@ -15,12 +16,12 @@ export const HoverText = ({ hovered, openEditModal, openLogoutModal }) => {
       <HoverContainer>
         <EditContainer onClick={openEditModal}>
           <EditText>Edit profile</EditText>
-          <HiOutlinePencil />
+          <Pen />
         </EditContainer>
 
         <LogOut onClick={openLogoutModal}>
           <LogOutText>Log out</LogOutText>
-          <BsArrowRightShort style={{ height: "18px", width: "18px" }} />
+          <BsArrowRightShort />
         </LogOut>
       </HoverContainer>
     </HoveredText>
