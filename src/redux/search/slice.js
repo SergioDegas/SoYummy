@@ -4,7 +4,7 @@ import { searchRecipes } from "./operation";
 const searchSlice = createSlice({
   name: "search",
   initialState: {
-    data: [],
+    recipes: [],
     isLoading: false,
     error: null,
   },
@@ -12,17 +12,17 @@ const searchSlice = createSlice({
     builder
       .addCase(searchRecipes.pending, (state) => {
         state.isLoading = true;
-        state.data = [];
+        state.recipes = [];
         state.error = null;
       })
       .addCase(searchRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data = action.payload;
+        state.recipes = action.payload.data.recipes;
         state.error = null;
       })
       .addCase(searchRecipes.rejected, (state, action) => {
         state.isLoading = false;
-        state.data = [];
+        state.recipes = [];
         state.error = action.error.message;
       });
   },

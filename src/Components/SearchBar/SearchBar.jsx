@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import SearchForm from '../SearchForm';
 import SearchTypeSelector from '../SearchTypeSelector';
 import { searchRecipes } from '../../redux/search/operation';
 
-const SearchBar = () => {
+const SearchBar = ({ handleSearch, setSearchTerm }) => {
   const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSelectChange = (e) => {
     const searchBy = e.target.value;
-    dispatch(searchRecipes({ searchTerm, page: 1, limit: 10, searchBy }));
+    dispatch(searchRecipes({ searchTerm: '', page: 1, limit: 10, searchBy }));
   };
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    dispatch(searchRecipes({ searchTerm, page: 1, limit: 10 }));
+  const handleInputChange = (e) => {
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
   };
 
   return (
     <div>
-      <SearchForm searchBy="default" searchTerm={searchTerm} onSearch={handleSearch} setSearchTerm={setSearchTerm} />
+      <SearchForm searchBy="default" onChange={handleInputChange} onSubmit={handleSearch} />
       <SearchTypeSelector onChange={handleSelectChange} />
     </div>
   );

@@ -15,7 +15,7 @@ import { shoppingListReducer } from "./shoppingList/slice";
 import { ownRecipeReduser } from "./recipes/slice";
 import { categoriesReducer } from "./categories/slice";
 import { favoritesReducer } from "./favorite/slice";
-import { searchSlice } from "./search/slice";
+import { searchReducer } from "./search/slice";
 import { ingredientsReducer } from "./ingredients/slice";
 import { recipesReducer } from "./popular-recipes/slice";
 import { themeReducer } from "./theme/slice";
@@ -50,7 +50,7 @@ export const store = configureStore({
         ingredients: ingredientsReducer,
         recipes: recipesReducer,
         theme: persistReducer(themePersistConfig, themeReducer),
-        search: searchSlice,
+        search: searchReducer,
     },
     middleware,
     devTools: process.env.NODE_ENV === "development",

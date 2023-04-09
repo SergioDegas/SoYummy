@@ -7,16 +7,17 @@ export const searchRecipes = createAsyncThunk(
   "search",
   async ({searchTerm, page, limit, searchBy}, thunkAPI) => {
     try {
-      const {data} = await axios.get(`/search`, {
-        searchTerm, 
-        page, 
-        limit, 
-        searchBy
-        })
-        return {data};
+      const {recipes} = await axios.get(`/search`, {
+        params: {
+          searchTerm, 
+          page, 
+          limit, 
+          searchBy
+        }
+      });
+      return {recipes};
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-    
-    }
-  );  
+  }
+);

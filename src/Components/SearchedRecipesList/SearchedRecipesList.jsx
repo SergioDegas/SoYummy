@@ -8,7 +8,7 @@ import { ItemStyled, LinkStyled, ListStyled } from "./SearchedRecipesList.styled
 const SearchedRecipesList = () => {
     const location = useLocation();
     const recipes = useSelector(selectRecipes);
-
+    console.log(recipes)
     return (
         <ListStyled>
             {recipes.map((recipe) => {
