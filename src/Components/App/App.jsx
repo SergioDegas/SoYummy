@@ -29,6 +29,9 @@ const MyRecipesPage = lazy(() => import("pages/MyRecipesPage"));
 const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
 const SearchPage = lazy(() => import("pages/SearchPage"));
+const CategoriesRecipes = lazy(() =>
+    import("Components/CategoriesRecipes/CategoriesRecipes")
+);
 
 export const App = () => {
     const dispatch = useDispatch();
@@ -56,9 +59,14 @@ export const App = () => {
                         <Route path="/" element={<Layout />}>
                             <Route path="/main" element={<MainPage />} />
                             <Route
-                                path="/categories/:categoryName"
+                                path="/categories"
                                 element={<CategoriesPage />}
-                            />
+                            >
+                                <Route
+                                    path=":categoryName"
+                                    element={<CategoriesRecipes />}
+                                />
+                            </Route>
                             <Route path="/add" element={<AddRecipePage />} />
                             <Route
                                 path="/favorite"

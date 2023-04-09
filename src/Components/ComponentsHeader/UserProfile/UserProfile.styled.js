@@ -10,11 +10,10 @@ export const EditContainer = styled.div`
   width: 500px;
   height: 425px;
 
-  background: ${({ theme }) => theme.colors.textTitle};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 50px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
   display: flex;
   flex-direction: column;
@@ -56,7 +55,7 @@ export const StyledInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.textTitle};
   border-radius: 8px;
   width: 100%;
-
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   font-size: 14px;
   line-height: 21px;
 `;
@@ -75,6 +74,7 @@ export const InputIcon = styled.div`
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
+  color: ${({ theme }) => theme.colors.textPrimary}
 `;
 export const IconPen = styled(HiOutlinePencil)`
   position: absolute;
@@ -83,6 +83,7 @@ export const IconPen = styled(HiOutlinePencil)`
   width: 20px;
   height: 20px;
   transform: translateY(-50%);
+  color: ${({ theme }) => theme.colors.textPrimary}
 `;
 
 export const Input = styled.input`
@@ -93,7 +94,8 @@ export const Input = styled.input`
   height: 59px;
   font-size: 14px;
   line-height: 21px;
-
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+  color: ${({ theme }) => theme.colors.textPrimary};
   &:focus {
     outline: none;
     border: 2px solid ${({ theme }) => theme.colors.accent};
@@ -129,7 +131,7 @@ export const Button = styled.button`
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
-  color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.textWhite};
   cursor: pointer;
 `;
 export const ButtonClose = styled(AiOutlineClose)`
@@ -138,4 +140,5 @@ export const ButtonClose = styled(AiOutlineClose)`
   right: 30px;
   width: 24px;
   height: 24px;
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;

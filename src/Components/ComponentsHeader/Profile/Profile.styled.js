@@ -39,7 +39,7 @@ export const ProfileImage = styled.div`
 export const ProfileName = styled.div`
   font-weight: bold;
   padding: 12px 0;
-
+  color: ${({ theme }) => theme.colors.textPrimary};
   &::before {
     content: "";
     color: gray;

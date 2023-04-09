@@ -7,4 +7,5 @@ export const DropMenuButton = styled(AiOutlineMenu)`
   height: 28px;
   color: rgba(34, 37, 42, 1);
   margin-left: 24px;
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;

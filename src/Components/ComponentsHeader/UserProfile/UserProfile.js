@@ -44,6 +44,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
             style={{
               width: "18px",
               height: "18px",
+               
             }}
           />
           <input type="file" accept="image/*" onChange={uploadContent} hidden />
@@ -65,6 +66,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
             style={{
               width: "24px",
               height: "24px",
+              color: `${({ theme }) => theme.colors.textPrimary}`
             }}
           />
         </InputIcon>
