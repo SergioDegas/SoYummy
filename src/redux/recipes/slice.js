@@ -1,25 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { fetchRecipes, addRecipe, removeRecipe } from "./operation";
+import {
+  fetchRecipes,
+  addRecipe,
+  removeRecipe,
+  addNewRecipe,
+} from "./operation";
 
 const initialState = {
+
 	recipes: [],
 	isLoading: false,
 	error: null,
+	currentPage: 1,
+	perPage: 5,
+
 };
 
-const handlePending = state => {
-	state.isLoading = true;
+const handlePending = (state) => {
+  state.isLoading = true;
 };
 
 const handleRejected = (state, action) => {
-	state.isLoading = false;
-	state.error = action.payoad;
+  state.isLoading = false;
+  state.error = action.payoad;
 };
 
 const ownRecipeSlice = createSlice({
+
 	name: 'recipes',
 	initialState,
+	reducers: {
+		setCurrentPage: (state, action) => {
+			state.currentPage = action.payload;
+		},
+	},
 	extraReducers: {
 		[fetchRecipes.pending]: handlePending,
 		[fetchRecipes.fulfilled] (state, action) {
@@ -49,4 +64,6 @@ const ownRecipeSlice = createSlice({
 
 })
 
-export const ownRecipeReduser = ownRecipeSlice.reduser;
+export const {setCurrentPage} = ownRecipeSlice.actions;
+export const ownRecipeReduser = ownRecipeSlice.reducer;
+

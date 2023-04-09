@@ -40,6 +40,8 @@ export const themeDark = {
         backgroundSecondary: "#8BAA36",
         backgroundAccent: "#EBF3D4",
         backgroundButton: "#D9D9D9",
+        backgroundPagination: "#2A2C36",
+        backgroundCard: "#2A2C36",
 
         msgRed: "#E74A3B",
         msgGreen: "#3CBC81",
@@ -55,9 +57,11 @@ export const themeDark = {
 
         underline: "rgba(250, 250, 250, 0.2)",
         pagination: "rgba(250, 250, 250, 0.6)",
+        errorMsg: "#FAFAFA",
+        paginationActive: "#8BAA36",
     },
 
-    radii: {
+    radius: {
         none: "0",
         regular: "8px",
         small: "6px",

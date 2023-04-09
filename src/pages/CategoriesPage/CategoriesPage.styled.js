@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const Section = styled.section`
     padding-top: ${(p) => p.theme.space[1] * 12.5}px;
-    padding-bottom: ${(p) => p.theme.space[1] * 25}px;
 
     @media (min-width: 768px) {
-        padding-bottom: ${(p) => p.theme.space[1] * 50}px;
+        padding-top: ${(p) => p.theme.space[1] * 17.5}px;
     }
 
     @media (min-width: 1440px) {
@@ -28,7 +27,7 @@ export const Error = styled.div`
     font-size: ${(p) => p.theme.fontSizes.l}px;
     line-height: ${(p) => p.theme.lineHeights.heading};
     letter-spacing: -0.02em;
-    color: ${(p) => p.theme.colors.mainDark};
+    color: ${(p) => p.theme.colors.errorMsg};
 
     width: 206px;
 

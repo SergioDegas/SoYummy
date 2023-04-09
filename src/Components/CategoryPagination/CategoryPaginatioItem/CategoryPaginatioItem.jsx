@@ -18,6 +18,7 @@ export const PaginationItem = ({
                     type="button"
                     disabled={disabled}
                     onClick={() => onPageChange(page)}
+                    aria-label="pagination button"
                 >
                     {page}
                 </ActivePaginationButton>
@@ -26,6 +27,7 @@ export const PaginationItem = ({
                     type="button"
                     disabled={disabled}
                     onClick={() => onPageChange(page)}
+                    aria-label="pagination button"
                 >
                     {page}
                 </PaginationButton>

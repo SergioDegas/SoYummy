@@ -8,7 +8,6 @@ import RecipePreparation from "Components/RecipePreparation/RecipePreparation";
 
 //TO DO
 //додати лоадер
-//якщо айді не правильний чи не передали доробити
 
 const RecipePage = () => {
   const { recipeId } = useParams();
