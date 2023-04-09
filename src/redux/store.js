@@ -1,6 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
-
     persistStore,
     persistReducer,
     FLUSH,
@@ -15,7 +14,11 @@ import { authReducer } from "./auth/slice";
 import { shoppingListReducer } from "./shoppingList/slice";
 import { ownRecipeReduser } from "./recipes/slice";
 import { categoriesReducer } from "./categories/slice";
-
+import { favoritesReducer } from "./favorite/slice";
+import { searchSlice } from "./search/slice";
+import { ingredientsReducer } from "./ingredients/slice";
+import { recipesReducer } from "./popular-recipes/slice";
+import { themeReducer } from "./theme/slice";
 
 const middleware = [
     ...getDefaultMiddleware({
@@ -30,17 +33,27 @@ const authPersistConfig = {
     storage,
     whitelist: ["token"],
 };
+
+const themePersistConfig = {
+    key: "theme",
+    storage,
+    whitelist: ["light"],
+};
+
 export const store = configureStore({
     reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
         shoppingList: shoppingListReducer,
-        categories: categoriesReducer,
         ownRecipe: ownRecipeReduser,
-
-        // search: searchSlice,
-  },
-  middleware,
-  devTools: process.env.NODE_ENV === 'development',
+        categories: categoriesReducer,
+        favorite: favoritesReducer,
+        ingredients: ingredientsReducer,
+        recipes: recipesReducer,
+        theme: persistReducer(themePersistConfig, themeReducer),
+        search: searchSlice,
+    },
+    middleware,
+    devTools: process.env.NODE_ENV === "development",
 
 });
 

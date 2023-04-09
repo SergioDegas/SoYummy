@@ -5,7 +5,7 @@ export const Item = styled.li`
     display: flex;
     gap: ${(p) => p.theme.space[1] * 3.5}px;
     padding: ${(p) => p.theme.space[1] * 3.5}px;
-    background: ${(p) => p.theme.colors.mainLight};
+    background: ${(p) => p.theme.colors.backgroundCard};
 
     @media (min-width: 768px) {
         gap: ${(p) => p.theme.space[1] * 6}px;

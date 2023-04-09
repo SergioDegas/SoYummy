@@ -50,4 +50,11 @@ export const Button = styled(NavLink)`
     font-weight: ${(p) => p.theme.fontWeights.regular};
     font-size: ${(p) => p.theme.fontSizes.s}px;
     line-height: ${(p) => p.theme.lineHeights.heading};
+
+    transition: background 0.25s ease-out;
+
+    &:hover,
+    &:focus {
+        background: ${(p) => p.theme.colors.backgroundSecondary};
+    }
 `;

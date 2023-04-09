@@ -1,7 +1,7 @@
 import { Title, Wrap, SideWrap } from "./AddRecipePage.styled";
 import Container from "Components/Container/Container.styled";
 import { AddRecipeForm } from "../../Components/AddRecipeForm/AddRecipeForm";
-import { Popular } from "../../Components/PopularPreview/PopularPreview";
+import { PopularRecipes } from "../../Components/PopularPreview/PopularPreview";
 import { FollowLinks } from "../../Components/FollowLinks/FollowLinks";
 
 const AddRecipePage = () => {
@@ -12,7 +12,7 @@ const AddRecipePage = () => {
         <AddRecipeForm />
         <SideWrap>
           <FollowLinks />
-          <Popular />
+          <PopularRecipes />
         </SideWrap>
       </Wrap>
     </Container>

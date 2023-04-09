@@ -1,21 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewRecipe } from "../../redux/recipes/operation";
+import { getError } from "../../redux/recipes/selectors";
 import { nanoid } from "nanoid";
 import { schema } from "./schema";
 import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
 import { RecipeIngredients } from "./RecipeIngredients/RecipeIngredients";
 import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
+import { GiConsoleController } from "react-icons/gi";
 
 export const AddRecipeForm = () => {
-  const [ingredients, setIngredients] = useState([
-    { id: nanoid(), unitValue: "tbs", unitNumber: "", ingredient: "" },
-  ]);
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [cookingTime, setCookingTime] = useState("30 min");
   const [category, setCategory] = useState("Breakfast");
+  const [cookingTime, setCookingTime] = useState("30 min");
+  const [ingredients, setIngredients] = useState([
+    { id: nanoid(), unitValue: "tbs", unitNumber: "", ingredient: "" },
+  ]);
   const [preparation, setPreparation] = useState("");
 
   // validation errors
@@ -26,25 +31,25 @@ export const AddRecipeForm = () => {
   //
 
   const onFileInputChange = (event) => {
-    // const file = event.target.files[0];
-    // const reader = new FileReader();
-    // reader.addEventListener("load", (event) => {
-    //   const buffer = event.target.result;
-    //   const blob = new Blob([buffer], { type: file.type });
-    //   const url = URL.createObjectURL(blob);
-    //   setImage(url);
-    // });
-    // reader.readAsArrayBuffer(file);
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", (event) => {
+      const buffer = event.target.result;
+      const blob = new Blob([buffer], { type: file.type });
+      const url = URL.createObjectURL(blob);
+      setImage(url);
+      console.log(url);
+    });
+    reader.readAsArrayBuffer(file);
 
-    const formData = new FormData();
+    // const formData = new FormData();
 
-    formData.append("image", event.target.files[0]);
+    // formData.append("image", event.target.files[0]);
 
-    const imageFile = formData.get("image");
-    const imageUrl = URL.createObjectURL(imageFile);
+    // const imageFile = formData.get("image");
+    // const imageUrl = URL.createObjectURL(imageFile);
 
-    console.log(imageUrl);
-    setImage(imageUrl);
+    // setImage(imageUrl);
   };
 
   const onTitleChange = (value) => {
@@ -98,7 +103,7 @@ export const AddRecipeForm = () => {
     updateErrors("preparation");
   };
 
-  // validation 
+  // validation
   const initialValues = {
     image,
     title,
@@ -109,12 +114,31 @@ export const AddRecipeForm = () => {
     preparation,
   };
 
+  // submit data
+  const navigate = useNavigate();
+
+  const formData = new FormData();
+  formData.append("image", image);
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("category", category);
+  formData.append("cookingTime", cookingTime);
+  formData.append("ingredients", JSON.stringify(ingredients));
+  formData.append("preparation", preparation);
+
+  const dispatch = useDispatch();
+  const error = useSelector(getError);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     schema
       .validate(initialValues, { abortEarly: false })
       .then(() => {
-        console.log(initialValues);
+        dispatch(addNewRecipe(formData));
+        console.log(error);
+        if (!error) {
+          navigate("/my", { replace: true });
+        }
       })
       .catch((err) => {
         const errors = err.inner.reduce(

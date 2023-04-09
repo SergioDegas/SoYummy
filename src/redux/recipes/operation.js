@@ -1,8 +1,9 @@
 import axios from "axios";
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-hot-toast";
 
 export const fetchRecipes = createAsyncThunk(
+
 	'user/own-recipes',
 	async (_, thunkAPI) => {
 		try {
@@ -37,4 +38,5 @@ export const removeRecipe = createAsyncThunk(
 			return thunkApi.rejectWithValue(error.message)
 		};
 	}
+
 );
