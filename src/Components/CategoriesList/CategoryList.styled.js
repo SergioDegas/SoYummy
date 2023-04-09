@@ -42,6 +42,8 @@ export const NavLinkStyled = styled(NavLink)`
     line-height: ${(p) => p.theme.lineHeights.single};
     color: ${(p) => p.theme.colors.textGrey};
 
+    transition: all 0.25s ease-out;
+
     &.active {
         color: ${(p) => p.theme.colors.accent};
 
@@ -69,5 +71,14 @@ export const NavLinkStyled = styled(NavLink)`
         transform: scaleX(0);
 
         transition: transform 0.25s ease-out;
+    }
+
+    :hover,
+    :focus {
+        color: ${(p) => p.theme.colors.accent};
+        ::after,
+        ::after {
+            transform: scaleX(1);
+        }
     }
 `;
