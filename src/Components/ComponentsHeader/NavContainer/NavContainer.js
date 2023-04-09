@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import {
     Link,
-    LogoContainer,
-    LogoIcon,
+
     NavigationContainer,
     NavLinksContainer,
     SearchIcon,
@@ -10,33 +9,47 @@ import {
 
 export const NavContainer = () => {
     return (
-        <>
-         
-            <NavigationContainer>
-                <NavLinksContainer>
-                    <div>
-                        <Link to="/categories/Beef">Categories</Link>
-                    </div>
-                    <div>
-                        <Link to="/add">Add Recipe</Link>
-                    </div>
-                    <div>
-                        <Link to="/my">My Recipes</Link>
-                    </div>
-                    <div>
-                        <Link to="/favorite">Favorites</Link>
-                    </div>
-                    <div>
-                        <Link to="/shopping-list">Shopping List</Link>
-                    </div>
-                    <div>
-                        <Link
-                            to="/search">
-                            <SearchIcon />
-                        </Link>
-                    </div>
-                </NavLinksContainer>
-            </NavigationContainer>
-        </>
+      <>
+        <NavigationContainer>
+          <NavLinksContainer>
+            <li>
+              <Link  to="/categories/Beef">
+                Categories
+              </Link>
+            </li>
+            <li>
+              <Link  to="/add">
+                Add Recipe
+              </Link>
+            </li>
+            <li>
+              <Link  to="/my">
+                My Recipes
+              </Link>
+            </li>
+            <li>
+              <Link  to="/favorite">
+                Favorites
+              </Link>
+            </li>
+            <li>
+              <Link  to="/shopping-list">
+                Shopping List
+              </Link>
+            </li>
+            <li>
+              <Link
+              
+                to={{
+                  pathname: "/SearchPage",
+                  search: "?type=query",
+                }}
+              >
+                <SearchIcon /> Search
+              </Link>
+            </li>
+          </NavLinksContainer>
+        </NavigationContainer>
+      </>
     );
 };

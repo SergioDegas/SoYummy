@@ -2,15 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewRecipe } from "../../redux/recipes/operation";
-import { getError } from "../../redux/recipes/selectors";
+import { addRecipe } from "../../redux/recipes/operation";
+import { isError } from "../../redux/recipes/selectors";
 import { nanoid } from "nanoid";
 import { schema } from "./schema";
 import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
 import { RecipeIngredients } from "./RecipeIngredients/RecipeIngredients";
 import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
-import { GiConsoleController } from "react-icons/gi";
+// import { GiConsoleController } from "react-icons/gi";
 
 export const AddRecipeForm = () => {
   const [image, setImage] = useState("");
@@ -127,14 +127,14 @@ export const AddRecipeForm = () => {
   formData.append("preparation", preparation);
 
   const dispatch = useDispatch();
-  const error = useSelector(getError);
+  const error = useSelector(isError);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     schema
       .validate(initialValues, { abortEarly: false })
       .then(() => {
-        dispatch(addNewRecipe(formData));
+        dispatch(addRecipe(formData));
         console.log(error);
         if (!error) {
           navigate("/my", { replace: true });
