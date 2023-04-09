@@ -40,6 +40,8 @@ export const themeLight = {
         backgroundSecondary: "#22252A",
         backgroundAccent: "#EBF3D4",
         backgroundButton: "#D9D9D9",
+        backgroundPagination: "#FAFAFA",
+        backgroundCard: "#ffffff",
 
         msgRed: "#E74A3B",
         msgGreen: "#3CBC81",
@@ -56,6 +58,7 @@ export const themeLight = {
         underline: "#e0e0e0",
         pagination: "#656565",
         errorMsg: "#000000",
+        paginationActive: "#EBF3D4",
     },
 
     radius: {

@@ -7,7 +7,7 @@ export const PaginationButton = styled.button`
     width: 27px;
     height: 27px;
 
-    background: ${(p) => p.theme.colors.backgroundPrimary};
+    background: ${(p) => p.theme.colors.backgroundPagination};
     border-radius: ${(p) => p.theme.radius.round};
     border: transparent;
 
@@ -32,7 +32,7 @@ export const ActivePaginationButton = styled.button`
     width: 28px;
     height: 28px;
 
-    background: ${(p) => p.theme.colors.backgroundAccent};
+    background: ${(p) => p.theme.colors.paginationActive};
     border-radius: ${(p) => p.theme.radius.round};
     border: transparent;
 

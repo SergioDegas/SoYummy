@@ -18,8 +18,10 @@ const FavoritesPage = () => {
     const error = useSelector(selectError);
 
     useEffect(() => {
-        dispatch(fetchFavoriteRecipesList());
-    }, [dispatch]);
+        if (!favoriteRecipes) {
+            dispatch(fetchFavoriteRecipesList());
+        }
+    }, [dispatch, favoriteRecipes]);
 
     return (
         <main>

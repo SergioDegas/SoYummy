@@ -9,7 +9,7 @@ export const PaginationList = styled.ul`
     padding: ${(p) => p.theme.space[1] * 3.5}px ${(p) => p.theme.space[1] * 6}px;
     margin: 0 auto;
 
-    background: ${(p) => p.theme.colors.backgroundPrimary};
+    background: ${(p) => p.theme.colors.backgroundPagination};
     box-shadow: ${(p) => p.theme.shadows.pagination};
     border-radius: 26px;
 
