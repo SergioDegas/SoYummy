@@ -8,6 +8,7 @@ export const PictureTitle = styled.h2`
     color: ${(p) => p.theme.colors.textSubTitle};
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 
     transition: color 0.25s ease-out;
 `;
