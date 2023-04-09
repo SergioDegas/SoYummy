@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCategoryList } from "../../../redux/categories/selectors";
+import { selectCategoryList } from "../../../redux/categories/selectors";
 import { fetchCategoryList } from "../../../redux/categories/operations";
 import cookingTime from "../../AddRecipeForm/cookingTime.json";
 import imageS from "../../../images/file-input-mob.png";
@@ -40,7 +40,7 @@ export const RecipeDescrFields = ({
     errors,
 }) => {
     const dispatch = useDispatch();
-    const categoriesList = useSelector(getCategoryList);
+    const categoriesList = useSelector(selectCategoryList);
 
     useEffect(() => {
         dispatch(fetchCategoryList());
