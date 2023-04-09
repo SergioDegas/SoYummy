@@ -32,7 +32,7 @@ export const Hero = () => {
               type="search" 
               placeholder="Search recipe..."
               />
-              <HeroBtn type="submit">Search</HeroBtn>
+              <HeroBtn  type="submit">Search</HeroBtn>
             </HeroForm>
             <HeroRecipe>
               <RecipeText><RecipeSpan>Delicious and healthy</RecipeSpan>way to enjoy<br/> 
