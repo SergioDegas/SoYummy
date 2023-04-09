@@ -4,7 +4,7 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://backend-x5bd.onrender.com';
 
 export const searchRecipes = createAsyncThunk(
-  "search",
+  "/search",
   async ({searchTerm, page, limit, searchBy}, thunkAPI) => {
     try {
       const {recipes} = await axios.get(`/search`, {

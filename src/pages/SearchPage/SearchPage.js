@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
+import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { PageTitle } from "Components/PageTitle/PageTitle";
 import SearchBar from "../../Components/SearchBar/";
@@ -14,15 +15,21 @@ import { selectRecipes, selectSearchStatus, selectSearchError } from "../../redu
 
 const SearchPage = () => {
   const dispatch = useDispatch();
+
   const recipes = useSelector(selectRecipes);
-  const searchStatus = useSelector(selectSearchStatus);
-  const searchError = useSelector(selectSearchError);
+  const isLoading = useSelector(selectSearchStatus);
+  const error = useSelector(selectSearchError);
+
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event) => {
     event.preventDefault();
     dispatch(searchRecipes({ searchTerm }));
   };
+
+  useEffect(() => {
+    dispatch(searchRecipes());
+}, [dispatch]);
 
   return (
     <Container>
@@ -31,9 +38,14 @@ const SearchPage = () => {
                 <PageTitle>Search</PageTitle>
             </WrapperTitle>
             <SearchBar handleSearch={handleSearch} setSearchTerm={setSearchTerm} />
-            {searchStatus === "loading" && <p>Loading...</p>}
-            {searchError && <p>Error: {searchError}</p>}
-            {recipes.length > 0 && <SearchedRecipesList recipes={recipes} />}
+           
+            {recipes.length > 0 && !isLoading && !error && (
+                        <SearchedRecipesList recipes={recipes} />
+                    )}
+           
+            <Suspense fallback={null}>
+                <Outlet />
+            </Suspense>
         </Section>
     </Container>
   );

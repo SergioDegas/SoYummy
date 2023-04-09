@@ -57,10 +57,7 @@ export const DropDownMenu = ({ onClose }) => {
             <li>
               <Link
                 onClick={onClose}
-                to={{
-                  pathname: "/SearchPage",
-                  search: "?type=query",
-                }}
+                to="/search"
               >
                 <SearchIcon /> Search
               </Link>

@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import SearchForm from '../SearchForm';
 import SearchTypeSelector from '../SearchTypeSelector';
 import { searchRecipes } from '../../redux/search/operation';
 
-const SearchBar = ({ handleSearch, setSearchTerm }) => {
+const SearchBar = ({ setSearchTerm }) => {
   const dispatch = useDispatch();
 
   const handleSelectChange = (e) => {
@@ -19,7 +20,7 @@ const SearchBar = ({ handleSearch, setSearchTerm }) => {
 
   return (
     <div>
-      <SearchForm searchBy="default" onChange={handleInputChange} onSubmit={handleSearch} />
+      <SearchForm searchBy="default" onChange={handleInputChange} />
       <SearchTypeSelector onChange={handleSelectChange} />
     </div>
   );

@@ -2,13 +2,15 @@ import React from "react";
 import { useLocation } from "react-router";
 import { useSelector } from 'react-redux';
 import  {selectRecipes}  from '../../redux/search/selectors';
-import { MainRecipeCard } from "Components/MainRecipeCard/MainRecipeCard";
+import  SearchRecipePage  from "../SearchedRecipesList/SearchRecipePage";
 import { ItemStyled, LinkStyled, ListStyled } from "./SearchedRecipesList.styled";
 
 const SearchedRecipesList = () => {
     const location = useLocation();
     const recipes = useSelector(selectRecipes);
-    console.log(recipes)
+    console.log("recipes", recipes);
+    
+   
     return (
         <ListStyled>
             {recipes.map((recipe) => {
@@ -18,7 +20,7 @@ const SearchedRecipesList = () => {
                             to={`/search/${recipe._id}`}
                             state={{ from: location }}
                         >
-                            <MainRecipeCard recipe={recipe} />
+                            <SearchRecipePage recipe={recipe} />
                         </LinkStyled>
                     </ItemStyled>
                 );
