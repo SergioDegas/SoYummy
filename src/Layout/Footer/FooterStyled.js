@@ -100,7 +100,7 @@ font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
 font-size: ${({ theme }) => `${theme.fontSizes.l}`};
 line-height: ${({ theme }) => `${theme.lineHeights.regular}`};
 letter-spacing: -0.02em;
-color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+// color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
 word-break: break-all;
 &:not(:last-child){
 margin-bottom:12px;
