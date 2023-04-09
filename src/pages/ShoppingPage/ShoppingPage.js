@@ -1,19 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectShoppingList } from "redux/shoppingList/selectors";
-import {
-  fetchShoppingList,
-  updateShoppingList,
-} from "redux/shoppingList/operation";
+import { fetchShoppingList } from "redux/shoppingList/operation";
+import { selectError, selectIsLoading } from "redux/shoppingList/selectors";
 import Container from "Components/Container";
 import { PageTitle } from "Components/PageTitle/PageTitle";
 import IngredientsTitle from "Components/IngredientsTitle/IngredientsTitle";
-import { SectionShoppingList, CloseIcon } from "./ShoppingPage.styled";
-
+import IngredientsShoppingList from "Components/IngredientsShoppingList";
+import { SectionShoppingList, PageTitleWrap } from "./ShoppingPage.styled";
 
 const ShoppingPage = () => {
-  const shoppingList = useSelector(selectShoppingList);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchShoppingList());
@@ -22,20 +20,13 @@ const ShoppingPage = () => {
   return (
     <SectionShoppingList>
       <Container>
-        <PageTitle children="Shopping list" />
+        <PageTitleWrap>
+          <PageTitle children="Shopping list" />
+        </PageTitleWrap>
         <IngredientsTitle title="Product" action="Remove" />
-        <ul>
-          {shoppingList.map(({ id, name, image, measure }) => {
-            return <li key={id}>
-              <img src={image} alt="Ingredient" />
-              <p>{name}</p>
-              <span>{measure}</span>
-              <button type="button">
-                <CloseIcon/>
-              </button>
-            </li>
-          })}
-        </ul>
+        {isLoading && !error && <p>Loading..</p>}
+        {error && <p>{error}</p>}
+        {!isLoading && <IngredientsShoppingList />}
       </Container>
     </SectionShoppingList>
   );

@@ -15,7 +15,7 @@ import { authReducer } from "./auth/slice";
 import { shoppingListReducer } from "./shoppingList/slice";
 import { ownRecipeReduser } from "./recipes/slice";
 import { categoriesReducer } from "./categories/slice";
-
+ import {searchSlice} from "./search/slice";                                                                                                                                       
 
 const middleware = [
     ...getDefaultMiddleware({

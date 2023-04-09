@@ -1,10 +1,11 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchShoppingList, updateShoppingList } from './operation';
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { fetchShoppingList, updateShoppingList } from "./operation";
 
-const extraActions = [ fetchShoppingList ];
-const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
+const extraActions = [fetchShoppingList];
+const getActions = (type) =>
+  isAnyOf(...extraActions.map((action) => action[type]));
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.isLoading = true;
 };
 
@@ -13,7 +14,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleFullfilled = state => {
+const handleFullfilled = (state) => {
   state.isLoading = false;
   state.error = null;
 };
@@ -22,32 +23,34 @@ const fetchShoppingListFulfilledReducer = (state, action) => {
   state.items = action.payload;
 };
 
-// const addContactFulfilledReducer = (state, action) => {
-//   state.items.push(action.payload);
-// };
+const updateShoppingListFulfilledReducer = (state, action) => {
+  //пофіксити додавання, як додавати якщо в action.payload не приходить об'єкт
 
-// const deleteContactFulfilledReducer = (state, action) => {
-//   const index = state.items.findIndex(
-//     task => task.id === action.payload.id
-//   );
-//   state.items.splice(index, 1);
-// };
+  //   if (action.payload.message === "Successfully added to shopping list") {
+  //     state.items.push();
+  //   }
+  if (action.payload.message === "Successfully removed from shopping list") {
+    const index = state.items.findIndex(
+      (item) => item.id === action.payload.id
+    );
+    state.items.splice(index, 1);
+  }
+};
 
 const shoppingListSlice = createSlice({
-  name: 'shoppingList',
+  name: "shoppingList",
   initialState: {
     items: [],
     isLoading: false,
     error: null,
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchShoppingList.fulfilled, fetchShoppingListFulfilledReducer)
-    //   .addCase(getShoppingList.fulfilled, addContactFulfilledReducer)
-    //   .addCase(getShoppingList.fulfilled, deleteContactFulfilledReducer)
-      .addMatcher(getActions('pending'), handlePending)
-      .addMatcher(getActions('rejected'), handleRejected)
-      .addMatcher(getActions('fulfilled'), handleFullfilled);
+      .addCase(updateShoppingList.fulfilled, updateShoppingListFulfilledReducer)
+      .addMatcher(getActions("pending"), handlePending)
+      .addMatcher(getActions("rejected"), handleRejected)
+      .addMatcher(getActions("fulfilled"), handleFullfilled);
   },
 });
 

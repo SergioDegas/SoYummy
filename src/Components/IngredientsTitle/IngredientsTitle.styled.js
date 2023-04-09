@@ -18,15 +18,12 @@ export const TitleWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
   padding: 12px 14px;
   @media (min-width: 768px) {
-    margin-bottom: 32px;
     padding: 21px 32px;
   }
   @media (min-width: 1440px) {
     padding: 21px 40px;
-    margin-bottom: 50px;
   }
 `;
 

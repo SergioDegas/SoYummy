@@ -12,8 +12,13 @@ export const IngedientsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-top: 24px;
   @media (min-width: 768px) {
     gap: 24px;
+    margin-top: 32px;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 50px;
   }
 `;
 
