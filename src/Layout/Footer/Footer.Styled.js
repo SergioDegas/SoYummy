@@ -13,12 +13,12 @@ export const FooterContainer = styled.div`
 `;
 
 export const MainBox = styled.div`
-@media (min-width: 1440px) {
-  padding-top: 64px;
-  display: flex;
-  justify-content: space-between;
+  @media (min-width: 1440px) {
+    padding-top: 64px;
+    display: flex;
+    justify-content: space-between;
   }
-`
+`;
 
 export const MainContainer = styled.div`
   @media (min-width: 768px) {
@@ -26,15 +26,13 @@ export const MainContainer = styled.div`
     display: flex;
     justify-content: space-between;
   }
-  
+
   @media (min-width: 1440px) {
     padding-top: 0;
     display: flex;
     justify-content: none;
   }
 `;
-
-
 
 export const TitleContainer = styled.div``;
 export const TitleBox = styled.div`
@@ -87,12 +85,30 @@ export const LogoContainer = styled.div`
   }
 `;
 
-
 export const LogoIcon = styled(GiEvilFork)`
   width: 30px;
   height: 30px;
   color: ${({ theme }) => `${theme.colors.mainLight}`};
-`
+`;
+
+export const BenefitsItem = styled.li`
+  font-family: ${({ theme }) => `${theme.fonts.main}`};
+  font-style: normal;
+  font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+  font-size: ${({ theme }) => `${theme.fontSizes.l}`};
+  line-height: ${({ theme }) => `${theme.lineHeights.regular}`};
+  letter-spacing: -0.02em;
+  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  word-break: break-all;
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+  @media (min-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+`;
 
 export const MenuList = styled.ul`
   display: block;
@@ -143,7 +159,6 @@ export const EmailForm = styled.form`
   @media (min-width: 1440px) {
     display: block;
     margin-top: 0;
-    
   }
 `;
 export const EmailBox = styled.div`
@@ -157,34 +172,33 @@ export const EmailBox = styled.div`
 `;
 
 export const EmailTitle = styled.h2`
-display: none;
-@media (min-width: 1440px) {
+  display: none;
+  @media (min-width: 1440px) {
     display: flex;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 27px;
-    color: #FAFAFA;
+    color: #fafafa;
     margin-bottom: 14px;
-
   }
-`
+`;
 
 export const EmailText = styled.p`
-display: none;
-@media (min-width: 1440px) {
-  display: flex;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 18px;
-letter-spacing: -0.02em;
-color: #FAFAFA;
-margin-bottom: 28px;
+  display: none;
+  @media (min-width: 1440px) {
+    display: flex;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    color: #fafafa;
+    margin-bottom: 28px;
   }
-`
+`;
 
 export const EmailInput = styled.input`
   width: 204px;
@@ -211,25 +225,25 @@ export const EmailInput = styled.input`
     color: ${({ theme }) => `${theme.colors.accent}`};
   }
   &:not(:placeholder-shown) {
-    color: #FAFAFA
+    color: #fafafa;
   }
   @media (min-width: 768px) {
     width: 259px;
     height: 50px;
     font-size: 14px;
-    padding-right:40px;
-    padding-left:51px;
-    padding-top:15px;
-    padding-bottom:15px;
+    padding-right: 40px;
+    padding-left: 51px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
   @media (min-width: 1440px) {
     width: 339px;
     height: 59px;
     font-size: 18px;
-    padding-right:70px;
-    padding-left:50px;
-    padding-top:18px;
-    padding-bottom:18px;
+    padding-right: 70px;
+    padding-left: 50px;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 `;
 export const EmailIcon = styled(MdOutlineEmail)`
@@ -239,12 +253,12 @@ export const EmailIcon = styled(MdOutlineEmail)`
   color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   @media (min-width: 768px) {
     top: 34%;
-    left:11%;
-  };
+    left: 11%;
+  }
   @media (min-width: 1440px) {
     top: 35%;
     left: 7%;
-  };
+  } ;
 `;
 export const EmailBtn = styled.button`
   cursor: pointer;
@@ -272,8 +286,8 @@ export const EmailBtn = styled.button`
     color: ${({ theme }) => `${theme.colors.accent}`};
     background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
-  background-color: ${props => props.disabled ? 'grey' : '#8BAA36'};
-  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  background-color: ${(props) => (props.disabled ? "grey" : "#8BAA36")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   &:disabled {
     opacity: 0.5;
   }
@@ -286,7 +300,7 @@ export const EmailBtn = styled.button`
   @media (min-width: 1440px) {
     width: 339px;
     height: 60px;
-    margin-top:16px;
+    margin-top: 16px;
     margin-left: 0;
     font-size: 16px;
     line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
@@ -382,27 +396,13 @@ export const BenefitsList = styled.ul`
     display: block;
   }
 `;
-export const BenefitsItem = styled.li`
-  font-family: ${({ theme }) => `${theme.fonts.main}`};
-  font-style: normal;
-  font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
-  font-size: 14px;
-  line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
-  letter-spacing: -0.02em;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
-  @media (min-width: 768px) {
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-  }
-`;
 
 export const BenefitText = styled.span`
-@media (min-width: 768px) {
+  @media (min-width: 768px) {
     white-space: nowrap;
   }
   @media (min-width: 1440px) {
     display: block;
     text-indent: 13px;
   }
-`
+`;
