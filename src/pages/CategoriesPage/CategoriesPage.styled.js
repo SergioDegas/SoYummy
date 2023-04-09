@@ -35,12 +35,3 @@ export const Error = styled.div`
         width: 428px;
     }
 `;
-
-export const WrapperPagination = styled.div`
-    display: flex;
-    margin-top: ${(p) => p.theme.space[1] * 10}px;
-
-    @media (min-width: 768px) {
-        margin-top: ${(p) => p.theme.space[1] * 12.5}px;
-    }
-`;
