@@ -11,12 +11,7 @@ import {
 export const NavContainer = () => {
     return (
         <>
-            <NavLink to="/">
-                <LogoContainer>
-                    <LogoIcon />
-                </LogoContainer>
-            </NavLink>
-
+         
             <NavigationContainer>
                 <NavLinksContainer>
                     <div>

@@ -18,7 +18,7 @@ export const Switch = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #efefef;
+    background-color: ${({ theme }) => theme.colors.textWhite};
     box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
     transition: 0.4s;
     border-radius: 20px;
@@ -35,10 +35,10 @@ export const Switch = styled.label`
     }
   }
   input:checked + span {
-    background-color: #8baa36;
+    background-color: ${({ theme }) => theme.colors.accent};
   }
   input:focus + span {
-    box-shadow: 0 0 1px #8baa36;
+    box-shadow: 0 0 1px ${({ theme }) => theme.colors.accent};
   }
   input:checked + span:before {
     transform: translateX(34px);
@@ -83,7 +83,7 @@ export const LogOutText = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  color: white;
+  color: ${({ theme }) => theme.colors.textWhite};
   transform: skewX(-10deg);
   padding: 12px 20px;
 `;

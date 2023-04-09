@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Switch } from "./SwitchToggleStyled";
 
-const SwitchToggle = ({ isOn, handleToggle }) => {
+const SwitchToggle = ({ isOn, handleToggle ,styles}) => {
   const [on, setOn] = useState(isOn);
 
   const handleSwitch = () => {
@@ -10,7 +10,7 @@ const SwitchToggle = ({ isOn, handleToggle }) => {
   };
 
   return (
-    <Switch>
+    <Switch style={ styles }>
       <input type="checkbox" checked={on} onChange={handleSwitch} />
       <span />
     </Switch>
