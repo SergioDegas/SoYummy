@@ -57,7 +57,6 @@ export const CategoryPagePagination = ({
                 page={<BsChevronLeft size={18} />}
                 onPageChange={() => onPageChange(1)}
                 disabled={isFirstPage}
-                aria-label="go to start button"
             />
 
             {pages.map((page) => (
@@ -73,7 +72,6 @@ export const CategoryPagePagination = ({
                 page={<BsChevronRight size={18} />}
                 onPageChange={() => onPageChange(totalPages)}
                 disabled={isLastPage}
-                aria-label="go to end button"
             />
         </PaginationList>
     );
