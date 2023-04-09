@@ -33,8 +33,19 @@ const CategoriesRecipes = () => {
         }
 
         setCurrentCategory(category);
-        dispatch(fetchRecipesByCategory({ category, page }));
-    }, [dispatch, category, page, currentCategory, error]);
+        dispatch(fetchRecipesByCategory({ category }));
+    }, [dispatch, category, currentCategory]);
+
+    const pageChangeHandler = (page) => {
+        setPage(page);
+
+        dispatch(
+            fetchRecipesByCategory({
+                category,
+                page,
+            })
+        );
+    };
 
     return (
         <>
@@ -52,7 +63,7 @@ const CategoriesRecipes = () => {
                     <CategoryPagePagination
                         currentPage={page}
                         totalPages={totalPages}
-                        onPageChange={(page) => setPage(page)}
+                        onPageChange={(page) => pageChangeHandler(page)}
                     />
                 </WrapperPagination>
             )}
