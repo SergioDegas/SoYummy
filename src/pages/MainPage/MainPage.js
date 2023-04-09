@@ -1,3 +1,4 @@
+import Hero from "Components/HeroMainPage/Hero";
 import { PreviewCategories } from "Components/PreviewCategories/PreviewCategories";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +21,7 @@ const MainPage = () => {
 
     return (
         <>
-            <div>MainPage</div>
+            <Hero/>
             {recipes.length > 0 && !isLoading && !error && (
                 <PreviewCategories recipes={recipes} />
             )}
