@@ -23,6 +23,13 @@ export const PaginationButton = styled.button`
     &:disabled {
         opacity: 0.6;
     }
+
+    transition: background 0.25s ease-out;
+
+    &:hover,
+    &:focus {
+        background: ${(p) => p.theme.colors.paginationActive};
+    }
 `;
 
 export const ActivePaginationButton = styled.button`
