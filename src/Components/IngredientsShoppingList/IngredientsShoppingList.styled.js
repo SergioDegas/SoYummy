@@ -8,8 +8,7 @@ export const IngedientsItem = styled.li`
   padding: 35px 19px 24px 0;
   border-bottom: 1px solid ${({ theme }) => `${theme.colors.underline}`};
   @media (min-width: 768px) {
-  }
-  @media (min-width: 768px) {
+    padding: 50px 45px 105px 0px;
   }
 `;
 
@@ -25,6 +24,13 @@ export const IngedientsImgThumb = styled.div`
   margin-right: 10px;
   background-color: ${({ theme }) => `${theme.colors.backgroundAccent}`};
   border-radius: 6px;
+  @media (min-width: 768px) {
+      width: 93px;
+  height: 97px;
+  padding: 8px;
+  margin-right: 16px;
+  }
+
 `;
 
 export const Img = styled.img`
@@ -41,6 +47,8 @@ export const IngedientsTitle = styled.p`
   line-height: 1.2;
   color: ${({ theme }) => `${theme.colors.textSubTitle}`};
   @media (min-width: 768px) {
+    font-size: 16px;
+  line-height: 1.5;
   }
   @media (min-width: 1440px) {
   }
@@ -60,7 +68,7 @@ export const IngedientsMeasure = styled.span`
     font-size: 18px;
     line-height: 1.5;
     padding: 4px 8px;
-    margin-right: 78px;
+    margin-right: 110px;
   }
   @media (min-width: 1440px) {
     margin-right: 151px;
@@ -79,9 +87,11 @@ export const Button = styled.button`
 export const CloseIcon = styled(GrFormClose)`
   width: 18px;
   height: 18px;
+    color: ${({ theme }) => `${theme.colors.textSubTitle}`};
+
   @media (min-width: 768px) {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
   }
 `;
 
