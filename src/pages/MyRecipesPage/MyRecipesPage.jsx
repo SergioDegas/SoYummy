@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchRecipes, removeRecipe } from "redux/recipes/operation";
 import { getRecipes, isError, isLoading } from "redux/recipes/selectors";
@@ -13,32 +13,35 @@ const MyRecipesPage = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() =>{
-        dispatch(fetchRecipes())
+    useEffect(() => {
+        dispatch(fetchRecipes());
     }, [dispatch]);
 
-    const removeOwnRecipe =(id) => {
-        dispatch(removeRecipe(id))
+    const removeOwnRecipe = (id) => {
+        dispatch(removeRecipe(id));
     };
 
     return (
         <main>
-        <Container>
-            <Section>
-            <Wrapper>
-            <PageTitle>My recipes</PageTitle>
-            </Wrapper>
-            {recipes.length > 0 && isError &&   (
-                <RecipesList recipes={recipes} page="my" onDeleteOwnRecipe={removeOwnRecipe}/>
-            )}
-               {recipes.length === 0  && (
+            <Container>
+                <Section>
+                    <Wrapper>
+                        <PageTitle>My recipes</PageTitle>
+                    </Wrapper>
+                    {recipes.length > 0 && isError && (
+                        <RecipesList
+                            recipes={recipes}
+                            page="my"
+                            onDeleteOwnRecipe={removeOwnRecipe}
+                        />
+                    )}
+                    {recipes.length === 0 && (
                         <Error>
-                            We are sorry, but the recipes in the category you
-                            are looking can’t be found.
+                            We are sorry, but You do not have own recipes.
                         </Error>
                     )}
-            </Section>
-        </Container>
+                </Section>
+            </Container>
         </main>
     );
 };
