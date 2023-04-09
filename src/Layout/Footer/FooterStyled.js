@@ -92,7 +92,8 @@ export const LogoIcon = styled(GiEvilFork)`
   width: 30px;
   height: 30px;
   color: ${({ theme }) => `${theme.colors.mainLight}`};
-=======
+` 
+
 export const BenefitsItem = styled.li`
 font-family: ${({ theme }) => `${theme.fonts.main}`};
 font-style: normal;
@@ -105,7 +106,11 @@ word-break: break-all;
 &:not(:last-child){
 margin-bottom:12px;
 }
-
+@media (min-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 
 `;
 
@@ -395,20 +400,6 @@ export const BenefitsList = styled.ul`
   display: none;
   @media (min-width: 768px) {
     display: block;
-  }
-`;
-export const BenefitsItem = styled.li`
-  font-family: ${({ theme }) => `${theme.fonts.main}`};
-  font-style: normal;
-  font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
-  font-size: 14px;
-  line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
-  letter-spacing: -0.02em;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
-  @media (min-width: 768px) {
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
   }
 `;
 

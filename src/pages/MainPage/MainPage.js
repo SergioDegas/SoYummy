@@ -1,4 +1,5 @@
 import { PreviewCategories } from "Components/PreviewCategories/PreviewCategories";
+import Hero from "Components/HeroMainPage/Hero"; 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRecipesBySet } from "redux/categories/operations";
@@ -21,6 +22,7 @@ const MainPage = () => {
     return (
         <>
             <div>MainPage</div>
+            <Hero/>
             {recipes.length > 0 && !isLoading && !error && (
                 <PreviewCategories recipes={recipes} />
             )}
