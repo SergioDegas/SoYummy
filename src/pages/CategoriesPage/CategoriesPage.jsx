@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -34,6 +34,8 @@ const CategoriesPage = () => {
     const { categoryName: category } = useParams();
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const categoryList = useSelector(selectCategoryList);
     const recipes = useSelector(selectCategoryRecipes);
     const totalPages = useSelector(selectCategoryTotalPages);
@@ -46,10 +48,13 @@ const CategoriesPage = () => {
         if (category !== currentCategory) {
             setPage(1);
         }
-        setCurrentCategory(category);
+        if (error) {
+            navigate("/not-found");
+        }
 
+        setCurrentCategory(category);
         dispatch(fetchRecipesByCategory({ category, page }));
-    }, [dispatch, category, page, currentCategory]);
+    }, [dispatch, category, page, currentCategory, error, navigate]);
 
     return (
         <main>

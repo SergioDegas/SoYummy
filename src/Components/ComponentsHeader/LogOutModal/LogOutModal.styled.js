@@ -7,7 +7,7 @@ export const LogOutContainer = styled.div`
   width: 500px;
   height: 215px;
 
-  background: #fafafa;
+  background: ${({ theme }) => theme.colors.mainLight};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 50px;
@@ -33,7 +33,7 @@ export const LogOutText = styled.p`
   text-align: center;
   letter-spacing: -0.02em;
 
-  color: #23262a;
+
 `;
 export const LogOutButton = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ export const LogOutButton = styled.div`
   padding: 21px 39px;
   gap: 8px;
 
-  background: #8baa36;
+  background: ${({ theme }) => theme.colors.accent};
   border-radius: 6px;
 
   font-family: "Poppins";
@@ -56,7 +56,7 @@ export const LogOutButton = styled.div`
   align-items: center;
   text-align: center;
 
-  color: #fafafa;
+  color: ${({ theme }) => theme.colors.textTitle};
 `;
 
 export const ButtonList = styled.div`

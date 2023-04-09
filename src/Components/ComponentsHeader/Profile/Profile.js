@@ -1,5 +1,5 @@
 import { HoverText } from "Components/ComponentsHeader/HoverText/HoverText";
-import SwitchToggle from "../SwitchToggle/SwitchToggle";
+
 import {
   ProfileContainer,
   ProfileDetailsContainer,
@@ -15,22 +15,25 @@ export const Profile = ({
   openEditModal,
   openLogoutModal,
 }) => {
-  console.log(photoUrl);
-  return (
-    <ProfileContainer>
-      <ProfileDetailsContainer onClick={handleHover}>
-        <ProfileImage style={{ backgroundImage: `url(${photoUrl})` }} />
-        <ProfileName>{ProfilesName}</ProfileName>
 
-        {hovered && (
-          <HoverText
-            hovered={hovered}
-            openEditModal={openEditModal}
-            openLogoutModal={openLogoutModal}
-          />
-        )}
-      </ProfileDetailsContainer>
-      <SwitchToggle />
-    </ProfileContainer>
+  
+  return (
+    <>
+      <ProfileContainer>
+        <ProfileDetailsContainer onClick={handleHover}>
+          <ProfileImage style={{ backgroundImage: `url(${photoUrl})` }} />
+          <ProfileName>{ProfilesName}</ProfileName>
+
+          {hovered && (
+            <HoverText
+              hovered={hovered}
+              openEditModal={openEditModal}
+              openLogoutModal={openLogoutModal}
+            />
+          )}
+        </ProfileDetailsContainer>
+      </ProfileContainer>
+      
+    </>
   );
 };

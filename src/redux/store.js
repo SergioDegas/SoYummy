@@ -15,9 +15,10 @@ import { shoppingListReducer } from "./shoppingList/slice";
 import { ownRecipeReduser } from "./recipes/slice";
 import { categoriesReducer } from "./categories/slice";
 import { favoritesReducer } from "./favorite/slice";
-import {searchReducer} from "./search/slice";                                                                                                                                       
+import { searchSlice } from "./search/slice";
 import { ingredientsReducer } from "./ingredients/slice";
 import { recipesReducer } from "./popular-recipes/slice";
+import { themeReducer } from "./theme/slice";
 
 const middleware = [
     ...getDefaultMiddleware({
@@ -28,23 +29,32 @@ const middleware = [
 ];
 
 const authPersistConfig = {
-  key: "auth",
-  storage,
-  whitelist: ["token"],
+    key: "auth",
+    storage,
+    whitelist: ["token"],
 };
+
+const themePersistConfig = {
+    key: "theme",
+    storage,
+    whitelist: ["light"],
+};
+
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    shoppingList: shoppingListReducer,
-    ownRecipe: ownRecipeReduser,
-    categories: categoriesReducer,
-    favorite: favoritesReducer,
-    ingredients: ingredientsReducer,
-    recipes: recipesReducer,
-    search: searchReducer,
-  },
-  middleware,
-  devTools: process.env.NODE_ENV === "development",
+    reducer: {
+        auth: persistReducer(authPersistConfig, authReducer),
+        shoppingList: shoppingListReducer,
+        ownRecipe: ownRecipeReduser,
+        categories: categoriesReducer,
+        favorite: favoritesReducer,
+        ingredients: ingredientsReducer,
+        recipes: recipesReducer,
+        theme: persistReducer(themePersistConfig, themeReducer),
+        search: searchSlice,
+    },
+    middleware,
+    devTools: process.env.NODE_ENV === "development",
+
 });
 
 export const persistor = persistStore(store);
