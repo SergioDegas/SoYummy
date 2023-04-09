@@ -10,7 +10,7 @@ export const EditContainer = styled.div`
   width: 500px;
   height: 425px;
 
-  background: #fafafa;
+  background: ${({ theme }) => theme.colors.textTitle};
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 50px;
@@ -42,18 +42,18 @@ export const AddPhotoButton = styled.label`
   justify-content: center;
   width: 24px;
   height: 24px;
-  background-color: #8baa36;
+  background-color: ${({ theme }) => theme.colors.accent};
   border-radius: 50%;
   font-size: 14px;
   line-height: 21px;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.textTitle};
   cursor: pointer;
 `;
 
 export const StyledInput = styled.input`
   margin-top: 16px;
   padding: 8px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid ${({ theme }) => theme.colors.textTitle};
   border-radius: 8px;
   width: 100%;
 
@@ -87,7 +87,7 @@ export const IconPen = styled(HiOutlinePencil)`
 
 export const Input = styled.input`
   padding: 8px 8px 8px 36px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid ${({ theme }) => theme.colors.textTitle};
   border-radius: 8px;
   width: 400px;
   height: 59px;
@@ -96,7 +96,7 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border: 2px solid #8baa36;
+    border: 2px solid ${({ theme }) => theme.colors.accent};
     size: 18px;
   }
   ::placeholder {
@@ -108,7 +108,7 @@ export const Input = styled.input`
     font-size: 18px;
     line-height: 27px;
     letter-spacing: -0.02em;
-    color: #23262a;
+
     opacity: 0.8;
     flex: none;
     order: 1;
@@ -123,13 +123,13 @@ export const Button = styled.button`
   height: 60px;
   border: none;
   border-radius: 8px;
-  background-color: #8baa36;
+  background-color: ${({ theme }) => theme.colors.accent};
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
-  color: #fafafa;
+  color: ${({ theme }) => theme.colors.accent};
   cursor: pointer;
 `;
 export const ButtonClose = styled(AiOutlineClose)`

@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const HoveredText = styled.div`
   opacity: 0;
   background-color: #fafafa;
-  position: absolute;
+
+position: absolute;
   width: 177px;
   height: 134px;
-  right: 20px;
-  top: 53px;
+top: 63px;
+right: 35px;
   border-radius: 8px;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -37,7 +38,7 @@ export const LogOut = styled.div`
   border-radius: 30px;
   transform: skewX(10deg);
   display: inline-block;
-  background-color: #8baa36;
+  background-color: ${({ theme }) => theme.colors.accent};
   color: white;
   border: none;
   display: flex;

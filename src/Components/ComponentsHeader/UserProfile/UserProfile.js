@@ -1,4 +1,5 @@
-import axios from "axios";
+import { setUserData } from "api";
+
 import { useState } from "react";
 import { AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import {
@@ -15,60 +16,26 @@ import {
 
 export const UserProfile = ({ onClose, photoUrl, userName }) => {
   const [newName, setNewName] = useState(userName);
-  console.log(newName);
-  
+  const [file, setFile] = useState();
 
-  const handleChange = async (event) => {
+  const uploadContent = (e) => {
+    if (e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleChange = async () => {
     const formData = new FormData();
-  
-    formData.append("image", event.target.files[0]);
-  
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        return;
-      }
+    formData.append("image", file);
+    formData.append("name", newName);
 
-      const res = await axios.post(
-        "http://localhost:4000/user/updateAvatar",
-        formData,
-        
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-         
-          },
-        }
-      );
-      console.log(res.data);
+    try {
+      setUserData(formData);
     } catch (error) {
       console.log(error);
     }
-  }
-   const handleNameChange = async () => {
-   
-     try {
-       const token = localStorage.getItem("token");
-       if (!token) {
-         return;
-       }
+  };
 
-       const res = await axios.post(
-         "http://localhost:4000/user/updateAvatar",
-    
-
-         {
-           headers: {
-             Authorization: `Bearer ${token}`,
-           name: newName
-           },
-         }
-       );
-       console.log(res.data);
-     } catch (error) {
-       console.log(error);
-     }
-   };
   return (
     <EditContainer>
       <CircleImage style={{ backgroundImage: `url(${photoUrl})` }}>
@@ -79,7 +46,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
               height: "18px",
             }}
           />
-          <input type="file" accept="image/*" onChange={handleChange} hidden />
+          <input type="file" accept="image/*" onChange={uploadContent} hidden />
         </AddPhotoButton>
       </CircleImage>
 
@@ -103,7 +70,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
         </InputIcon>
         <IconPen />
       </InputContainer>
-      <Button onClick={handleNameChange}>Save changes</Button>
+      <Button onClick={handleChange}>Save changes</Button>
       <ButtonClose onClick={onClose} />
     </EditContainer>
   );

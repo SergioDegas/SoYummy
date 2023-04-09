@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "redux/theme/slice";
 import { selectTheme } from "redux/theme/selectors";
 
-const SwitchToggle = () => {
-    const [on, setOn] = useState(false);
+const SwitchToggle = ({ isOn, handleToggle ,styles}) => {
+  const [on, setOn] = useState(isOn);
+
 
     const dispatch = useDispatch();
     const theme = useSelector(selectTheme);
+
 
     useEffect(() => {
         if (!theme) {
@@ -22,11 +24,12 @@ const SwitchToggle = () => {
     };
 
     return (
-        <Switch>
+       <Switch style={ styles }>
             <input type="checkbox" checked={on} onChange={handleSwitch} />
             <span />
         </Switch>
     );
+
 };
 
 export default SwitchToggle;

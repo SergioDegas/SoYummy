@@ -10,6 +10,18 @@ import { LogoutModal } from "Components/ComponentsHeader/LogOutModal/LogOutModal
 import { Profile } from "Components/ComponentsHeader/Profile/Profile";
 import { NavContainer } from "Components/ComponentsHeader/NavContainer/NavContainer";
 import nonePhoto from "../../images/recipe-photo-small.png";
+import { getUserData } from "api";
+import SwitchToggle from "Components/ComponentsHeader/SwitchToggle/SwitchToggle";
+
+import {
+  LogoContainer,
+  LogoIcon,
+  LogoLink,
+} from "Components/ComponentsHeader/NavContainer/NavContainer.styled";
+import { useMedia } from "hooks";
+
+import { DropDownMenu } from "Components/ComponentsHeader/DropDownMenu/DropDownMenu";
+import { DropMenuButton } from "./Header.styled";
 const Header = () => {
   const [name, setName] = useState("Name");
   const [photoUrl, setPhotoUrl] = useState("");
@@ -22,42 +34,52 @@ const Header = () => {
 
   const openEditModal = () => setActiveModal("edit");
   const openLogoutModal = () => setActiveModal("logout");
+    const openMenu = () => setActiveModal("Menu");
   const closeModal = () => setActiveModal(null);
 
- useEffect(() => {
-   const token = localStorage.getItem("token");
-   if (!token) {
-     return;
-   }
+useEffect(() => {
+ const UserData = async () => {
+   try {
+     const { name, avatarURL } = await getUserData();
 
-   const fetchUserData = async () => {
-     try {
-       const res = await fetch("http://localhost:4000/user/current", {
-         headers: {
-           Authorization: `Bearer ${token}`,
-         },
-       });
-
-       const { name, avatarURL } = await res.json();
-
-       setName(name);
-       if (avatarURL) {
-         setPhotoUrl(avatarURL);
-       } else {
-         setPhotoUrl(nonePhoto);
-       }
-     } catch (error) {
-       console.error(error);
+     setName(name);
+     if (avatarURL) {
+       setPhotoUrl(avatarURL);
+       return;
+     } else {
+       setPhotoUrl(nonePhoto);
+       return;
      }
-   };
-   fetchUserData();
- }, []);
+   } catch (error) {
+     console.error(error);
+   }
+ };
 
+ UserData();
+}, [])
+
+  
+    const { isDesktopScreen, isTabletScreen, isMobileScreen } = useMedia(); 
+
+  const switchToggleStyle = { marginLeft: "50px" };
   return (
     <header>
       <ContainerFor>
         <HeaderContainer>
-          <NavContainer />
+          <LogoLink to="/">
+            <LogoContainer>
+              <LogoIcon />
+            </LogoContainer>
+          </LogoLink>
+
+          {isDesktopScreen && <NavContainer />}
+
+          {activeModal === "Menu" && (
+            <CustomModal onClose={closeModal}>
+              <DropDownMenu onClose={closeModal} />
+            </CustomModal>
+          )}
+
           <Profile
             handleHover={handleHover}
             photoUrl={photoUrl}
@@ -66,6 +88,10 @@ const Header = () => {
             openLogoutModal={openLogoutModal}
             openEditModal={openEditModal}
           />
+          {isTabletScreen || isMobileScreen ? (
+            <DropMenuButton onClick={openMenu} />
+          ) : null}
+          {isDesktopScreen && <SwitchToggle styles={switchToggleStyle} />}
 
           {activeModal === "edit" && (
             <CustomModal onClose={closeModal}>

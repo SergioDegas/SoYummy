@@ -22,6 +22,9 @@ export const ProfileImage = styled.div`
   height: 44px;
   border-radius: 50%;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  
   &::before {
     content: "";
     display: block;

@@ -17,7 +17,10 @@ export const LogoutModal = ({ onClose }) => {
       <ButtonList>
         {" "}
         <LogOutButton
-          style={{ background: "#D9D9D9", color: "#23262A" }}
+          style={{
+            background: `${({ theme }) => theme.colors.textWhite}`,
+            color: `${({ theme }) => theme.colors.backgroundPrimary};`,
+          }}
           onClick={handleLogout}
         >
           Log out
