@@ -14,7 +14,8 @@ import { authReducer } from "./auth/slice";
 import { shoppingListReducer } from "./shoppingList/slice";
 import { ownRecipeReduser } from "./recipes/slice";
 import { categoriesReducer } from "./categories/slice";
- import {searchSlice} from "./search/slice";                                                                                                                                       
+import { favoritesReducer } from "./favorite/slice";
+import {searchSlice} from "./search/slice";                                                                                                                                       
 import { ingredientsReducer } from "./ingredients/slice";
 import { recipesReducer } from "./popular-recipes/slice";
 
@@ -37,6 +38,7 @@ export const store = configureStore({
     shoppingList: shoppingListReducer,
     ownRecipe: ownRecipeReduser,
     categories: categoriesReducer,
+    favorite: favoritesReducer,
     ingredients: ingredientsReducer,
     recipes: recipesReducer,
     search: searchSlice,
