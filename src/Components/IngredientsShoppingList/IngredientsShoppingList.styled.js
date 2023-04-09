@@ -90,6 +90,7 @@ width: 208px;
 height: 133px;
     margin: 0 auto;
     margin-bottom: 24px;
+    margin-top: 24px;
 `;
 
 export const Text = styled.p`
