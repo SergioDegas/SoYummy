@@ -37,7 +37,7 @@ export const store = configureStore({
         categories: categoriesReducer,
         ownRecipe: ownRecipeReduser,
 
-        search: searchSlice,
+        // search: searchSlice,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

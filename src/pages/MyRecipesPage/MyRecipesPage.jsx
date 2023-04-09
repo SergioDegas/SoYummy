@@ -1,40 +1,15 @@
 import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchRecipes, removeRecipe } from "redux/recipes/operation";
-import { getRecipes, isError } from "redux/recipes/selectors";
+import { getRecipes, isError, isLoading } from "redux/recipes/selectors";
 import Container from "Components/Container/Container.styled";
 import { Wrapper, Section } from "pages/FavoritesPage/FavoritesPage.styled";
+import { Error } from "pages/CategoriesPage/CategoriesPage.styled";
 import { RecipesList } from "Components/RecipesList/RecipesList";
 import { PageTitle } from "Components/PageTitle/PageTitle";
 
 const MyRecipesPage = () => {
-    // const recipes = useSelector(getRecipes);
-    const recipes = [
-        {
-            _id: "1",
-            title: "Mediterranean Pasta Salad",
-            description:
-                "A salad made with pasta, vegetables (such as tomatoes, cucumbers, and olives), feta cheese, and a dressing made with olive oil and lemon juice.\nA salad made with pasta, vegetables (such as tomatoes, cucumbers, and olives), feta cheese, and a dressing made with olive oil and lemon juice.",
-            thumb: "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg",
-            time: "27",
-        },
-        {
-            _id: "2",
-            title: "Mediterranean Pasta Salad",
-            description:
-                "A salad made with pasta, vegetables (such as tomatoes, cucumbers, and olives), feta cheese, and a dressing made with olive oil and lemon juice.",
-            thumb: "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg",
-            time: "27",
-        },
-        {
-            _id: "3",
-            title: "Mediterranean Pasta Salad",
-            description:
-                "A salad made with pasta, vegetables (such as tomatoes, cucumbers, and olives), feta cheese, and a dressing made with olive oil and lemon juice.",
-            thumb: "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg",
-            time: "27",
-        },
-    ]
+    const recipes = useSelector(getRecipes);
 
     const dispatch = useDispatch();
 
@@ -53,10 +28,15 @@ const MyRecipesPage = () => {
             <Wrapper>
             <PageTitle>My recipes</PageTitle>
             </Wrapper>
-            {recipes &&  (
+            {recipes.length > 0 && isError &&   (
                 <RecipesList recipes={recipes} page="my" onDeleteOwnRecipe={removeOwnRecipe}/>
             )}
-            
+               {recipes.length === 0  && (
+                        <Error>
+                            We are sorry, but the recipes in the category you
+                            are looking can’t be found.
+                        </Error>
+                    )}
             </Section>
         </Container>
         </main>
