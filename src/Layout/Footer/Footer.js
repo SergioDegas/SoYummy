@@ -29,7 +29,7 @@ import {
   EmailText,
   BenefitText,
   EmailForm,
-} from "./FooterStyled";
+} from "./Footer.Styled";
 import { useState } from "react";
 import { useEffect } from "react";
 

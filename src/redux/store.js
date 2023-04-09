@@ -14,6 +14,7 @@ import { authReducer } from "./auth/slice";
 import { shoppingListReducer } from "./shoppingList/slice";
 import { ownRecipeReduser } from "./recipes/slice";
 import { categoriesReducer } from "./categories/slice";
+ import {searchSlice} from "./search/slice";                                                                                                                                       
 import { ingredientsReducer } from "./ingredients/slice";
 import { recipesReducer } from "./popular-recipes/slice";
 
@@ -38,6 +39,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     ingredients: ingredientsReducer,
     recipes: recipesReducer,
+    search: searchSlice,
   },
   middleware,
   devTools: process.env.NODE_ENV === "development",
