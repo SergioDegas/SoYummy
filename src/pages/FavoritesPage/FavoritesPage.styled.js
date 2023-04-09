@@ -31,7 +31,7 @@ export const Error = styled.div`
     font-size: ${(p) => p.theme.fontSizes.l}px;
     line-height: ${(p) => p.theme.lineHeights.heading};
     letter-spacing: -0.02em;
-    color: ${(p) => p.theme.colors.mainDark};
+    color: ${(p) => p.theme.colors.errorMsg};
 
     width: 206px;
 

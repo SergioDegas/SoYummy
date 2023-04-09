@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavoriteRecipes } from "redux/favorite/selectors";
@@ -18,8 +18,10 @@ const FavoritesPage = () => {
     const error = useSelector(selectError);
 
     useEffect(() => {
-        dispatch(fetchFavoriteRecipesList());
-    }, [dispatch]);
+        if (!favoriteRecipes) {
+            dispatch(fetchFavoriteRecipesList());
+        }
+    }, [dispatch, favoriteRecipes]);
 
     return (
         <main>
