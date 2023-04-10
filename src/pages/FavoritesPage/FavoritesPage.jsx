@@ -32,7 +32,7 @@ const FavoritesPage = () => {
 
     useEffect(() => {
         dispatch(fetchFavoriteRecipesList({ limit: 4 }));
-    }, [dispatch, favoriteRecipes]);
+    }, [dispatch]);
 
     const deleteRecipeFromFavorites = (id) => {
         dispatch(addToFavoriteList({ recipeId: id }));
