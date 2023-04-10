@@ -51,17 +51,18 @@ export const Title = styled.h2`
 
     font-weight: ${(p) => p.theme.fontWeights.medium};
     font-size: ${(p) => p.theme.fontSizes.s}px;
-    line-height: ${(p) => p.theme.lineHeights.single};
+    line-height: ${(p) => p.theme.lineHeights.heading};
     letter-spacing: -0.02em;
     color: ${(p) => p.theme.colors.textSubTitle};
 
     @media (min-width: 768px) {
         margin-bottom: ${(p) => p.theme.space[1] * 7}px;
-        max-width: none;
+        max-width: 350px;
         font-size: ${(p) => p.theme.fontSizes.xll}px;
     }
 
     @media (min-width: 1440px) {
+        max-width: 710px;
         margin-bottom: ${(p) => p.theme.space[1] * 10}px;
     }
 `;
