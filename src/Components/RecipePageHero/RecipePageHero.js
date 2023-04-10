@@ -1,10 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "redux/auth/selectors";
-import { selectFavoriteRecipes } from "redux/favorite/selectors";
-import Container from "../Container";
-import {addToFavoriteList} from "redux/favorite/operations";
+import React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+// import { selectFavoriteRecipes } from "redux/favorite/selectors";
+import Container from '../Container';
+import { addToFavoriteList } from 'redux/favorite/operations';
 import {
   SectionHero,
   SectionHeroTitle,
@@ -12,17 +12,16 @@ import {
   SectionHeroBtn,
   TimeBlock,
   TimeText,
-} from "./RecipePageHero.styled";
-import { BsClock } from "react-icons/bs";
+} from './RecipePageHero.styled';
+import { BsClock } from 'react-icons/bs';
 
 const RecipePageHero = ({ id, title, description, favorites, time }) => {
   const [favorite, setFavorite] = useState(false);
   const dispatch = useDispatch();
-  const favoriteRecipes = useSelector(selectFavoriteRecipes);
+  // const favoriteRecipes = useSelector(selectFavoriteRecipes);
   // console.log(favoriteRecipes);
   // const {_id} = useSelector(selectUser);
   // console.log(_id);
-
 
   //TO DO
   //порівняти айді юзера з айді овнерів з масиву favorites і від того рендерити кнопку
@@ -33,11 +32,11 @@ const RecipePageHero = ({ id, title, description, favorites, time }) => {
   //Якщо такий рецепт вже є в списку улюблених, то на місці AddtoFavorite повинна бути кнопка RemoveFromFavorite,
   const credentials = {
     recipeId: id,
-}
+  };
 
   const addToFavorite = () => {
-    setFavorite(favorite => !favorite);
-      dispatch(addToFavoriteList(credentials))
+    setFavorite((favorite) => !favorite);
+    dispatch(addToFavoriteList(credentials));
   };
 
   return (
@@ -54,8 +53,8 @@ const RecipePageHero = ({ id, title, description, favorites, time }) => {
             }}
           >
             {favorite
-              ? "Remove from favorite recipes"
-              : "Add to favorite recipes"}
+              ? 'Remove from favorite recipes'
+              : 'Add to favorite recipes'}
           </SectionHeroBtn>
         )}
         <TimeBlock>
