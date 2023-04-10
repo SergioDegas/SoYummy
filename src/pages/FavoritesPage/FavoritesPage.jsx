@@ -3,7 +3,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavoriteRecipes } from "redux/favorite/selectors";
 import { selectError, selectIsLoading } from "redux/categories/selectors";
-import { fetchFavoriteRecipesList } from "redux/favorite/operations";
+import {
+    addToFavoriteList,
+    fetchFavoriteRecipesList,
+} from "redux/favorite/operations";
 
 import { PageTitle } from "Components/PageTitle/PageTitle";
 import { RecipesList } from "Components/RecipesList/RecipesList";
@@ -18,10 +21,12 @@ const FavoritesPage = () => {
     const error = useSelector(selectError);
 
     useEffect(() => {
-        if (!favoriteRecipes) {
-            dispatch(fetchFavoriteRecipesList());
-        }
-    }, [dispatch, favoriteRecipes]);
+        dispatch(fetchFavoriteRecipesList());
+    }, [dispatch]);
+
+    const deleteRecipeFromFavorite = (id) => {
+        dispatch(addToFavoriteList({ recipeId: id }));
+    };
 
     return (
         <main>
@@ -42,6 +47,7 @@ const FavoritesPage = () => {
                         <RecipesList
                             recipes={favoriteRecipes}
                             page="favorite"
+                            onDelete={deleteRecipeFromFavorite}
                         />
                     )}
                 </Section>

@@ -57,11 +57,12 @@ export const Title = styled.h2`
 
     @media (min-width: 768px) {
         margin-bottom: ${(p) => p.theme.space[1] * 7}px;
-        max-width: none;
+        max-width: 350px;
         font-size: ${(p) => p.theme.fontSizes.xll}px;
     }
 
     @media (min-width: 1440px) {
+        max-width: 710px;
         margin-bottom: ${(p) => p.theme.space[1] * 10}px;
     }
 `;

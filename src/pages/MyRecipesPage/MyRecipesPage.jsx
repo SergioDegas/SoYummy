@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchRecipes, removeRecipe } from "redux/recipes/operation";
-import { getRecipes, isError,  } from "redux/recipes/selectors";
+import { getRecipes, isError } from "redux/recipes/selectors";
 import Container from "Components/Container/Container.styled";
 import { Wrapper, Section } from "pages/FavoritesPage/FavoritesPage.styled";
 import { Error } from "pages/CategoriesPage/CategoriesPage.styled";
@@ -32,7 +32,7 @@ const MyRecipesPage = () => {
                         <RecipesList
                             recipes={recipes}
                             page="my"
-                            onDeleteOwnRecipe={removeOwnRecipe}
+                            onDelete={removeOwnRecipe}
                         />
                     )}
                     {recipes.length === 0 && (
