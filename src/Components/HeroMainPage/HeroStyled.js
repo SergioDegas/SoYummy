@@ -11,10 +11,11 @@ import bgGreensMobX1 from "images/bg-MainHero/MainHero-bg-greens-1x-mob.png"
 import bgGreensMobX2 from "images/bg-MainHero/MainHero-bg-greens-2x-mob.png"
 import bgDishMobX1 from "images/bg-MainHero/MainHero-bg-dish-1x-mob.png"
 import bgDishMobX2 from "images/bg-MainHero/MainHero-bg-dish-2x-mob.png"
+
 export const SectionHero = styled.section`
   background-image: url(${bgDishMobX1}),url(${bgGreensMobX1}), url(${bgMobX1});
   background-repeat: no-repeat;
-  background-position: 50% 63%, 85% 55px, 115px 10px;
+  background-position: 50% 50%, 85% -45px, 150px -150px;
   background-size: 320px 296px, cover, cover;
   text-align: center;
   @media (min-device-pixel-ratio: 2),
@@ -44,7 +45,7 @@ export const SectionHero = styled.section`
 `;
 
 export const HeroTitle = styled.h1`
-padding-top: 132px;
+margin-top: 71px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
@@ -84,6 +85,7 @@ padding-top: 17px;
 padding-right: 113px;
 padding-bottom: 17px;
 padding-left: 32px;
+margin-bottom: 147px;
 ::placeholder {
     color: #BDBDBD;
   }
@@ -119,7 +121,7 @@ height: 92px;
 border-radius:8px;
 background: #FAFAFA;
 position: absolute;
-top: 47%;
+top: 63%;
 left: 31%;
 `
 export const RecipeText = styled.p`

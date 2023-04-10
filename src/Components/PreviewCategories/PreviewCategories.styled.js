@@ -50,11 +50,13 @@ export const Button = styled(NavLink)`
     font-weight: ${(p) => p.theme.fontWeights.regular};
     font-size: ${(p) => p.theme.fontSizes.s}px;
     line-height: ${(p) => p.theme.lineHeights.heading};
+    opacity: 1;
 
-    transition: background 0.25s ease-out;
+    transition: all 0.25s ease-out;
 
     &:hover,
     &:focus {
         background: ${(p) => p.theme.colors.backgroundSecondary};
+        opacity: 0.9;
     }
 `;
