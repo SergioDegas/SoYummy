@@ -28,33 +28,31 @@ export const PreviewCategories = ({ recipes }) => {
     };
 
     return (
-        <section>
-            <Container>
-                {recipes && (
-                    <StyledList>
-                        {recipes.map(({ _id, recipes }) => {
-                            return (
-                                <StyledItem key={_id}>
-                                    <PageTitle>{_id}</PageTitle>
-                                    <Wrapper>
-                                        <MainRecipesList
-                                            recipes={recipeListByMediaHandle(
-                                                recipes
-                                            )}
-                                        />
-                                    </Wrapper>
-                                    <Button
-                                        to={`/categories/${_id}`}
-                                        state={{ from: location }}
-                                    >
-                                        See all
-                                    </Button>
-                                </StyledItem>
-                            );
-                        })}
-                    </StyledList>
-                )}
-            </Container>
-        </section>
+        <Container>
+            {recipes && (
+                <StyledList>
+                    {recipes.map(({ _id, recipes }) => {
+                        return (
+                            <StyledItem key={_id}>
+                                <PageTitle>{_id}</PageTitle>
+                                <Wrapper>
+                                    <MainRecipesList
+                                        recipes={recipeListByMediaHandle(
+                                            recipes
+                                        )}
+                                    />
+                                </Wrapper>
+                                <Button
+                                    to={`/categories/${_id}`}
+                                    state={{ from: location }}
+                                >
+                                    See all
+                                </Button>
+                            </StyledItem>
+                        );
+                    })}
+                </StyledList>
+            )}
+        </Container>
     );
 };
