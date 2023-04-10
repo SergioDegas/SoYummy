@@ -3,11 +3,11 @@ import { List } from "./RecipeList.styled";
 
 export const RecipesList = ({ recipes, page, onDelete }) => {
     return (
-        <List key={recipes}>
+        <List>
             {recipes.map((recipe) => {
                 return (
                     <RecipeItem
-                        key={recipe}
+                        key={recipe._id}
                         recipe={recipe}
                         page={page}
                         onDelete={onDelete}
