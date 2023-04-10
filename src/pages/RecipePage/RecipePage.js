@@ -6,9 +6,6 @@ import RecipePageHero from "Components/RecipePageHero";
 import RecipeIngredientsList from "Components/RecipeIngredientsList/RecipeIngredientsList";
 import RecipePreparation from "Components/RecipePreparation/RecipePreparation";
 
-//TO DO
-//додати лоадер
-
 const RecipePage = () => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState([]);
@@ -16,14 +13,11 @@ const RecipePage = () => {
   useEffect(() => {
     async function getRecipe() {
       try {
-        // setIsLoading(true);
         const { recipe } = await getRecipeById(recipeId);
-        // const resipeResult = recipe[0];
         if (!recipe) {
-          return; //якщо айді не правильний чи не передали
+          return;
         }
         setRecipe(recipe);
-        // setIsLoading(false);
       } catch (error) {
         toast.error("Oops! Something went wrong! Please try again.");
       }
@@ -35,19 +29,17 @@ const RecipePage = () => {
     _id,
     title,
     description,
-    favorites,
     time,
     instructions,
     thumb,
     ingredients,
   } = recipe;
-
+  
   return (
     <>
       <RecipePageHero
         title={title}
         description={description}
-        favorites={favorites}
         time={time}
         id={_id}
       />

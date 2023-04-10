@@ -1,10 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { selectUser } from 'redux/auth/selectors';
-// import { selectFavoriteRecipes } from "redux/favorite/selectors";
-import Container from '../Container';
-import { addToFavoriteList } from 'redux/favorite/operations';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "redux/auth/selectors";
+import { getRecipes } from "redux/recipes/selectors";
+import Container from "../Container";
+import { addToFavoriteList } from "redux/favorite/operations";
 import {
   SectionHero,
   SectionHeroTitle,
@@ -12,30 +12,27 @@ import {
   SectionHeroBtn,
   TimeBlock,
   TimeText,
-} from './RecipePageHero.styled';
-import { BsClock } from 'react-icons/bs';
+} from "./RecipePageHero.styled";
+import { BsClock } from "react-icons/bs";
 
-const RecipePageHero = ({ id, title, description, favorites, time }) => {
+const RecipePageHero = ({ id, title, description, time }) => {
   const [favorite, setFavorite] = useState(false);
-  const dispatch = useDispatch();
-  // const favoriteRecipes = useSelector(selectFavoriteRecipes);
-  // console.log(favoriteRecipes);
-  // const {_id} = useSelector(selectUser);
-  // console.log(_id);
 
-  //TO DO
-  //порівняти айді юзера з айді овнерів з масиву favorites і від того рендерити кнопку
-  //можливо робити в головному компоненті ресіпіпейдж, бо проблеми з рендером
-  //логіка додавання в фейворіт
-  //якщо рецепт власний то кнопку не показувати взагалі
-  //Клік по кнопці AddtoFavorite повинен виконувати запит і додавати даний рецепт в список улюблених
-  //Якщо такий рецепт вже є в списку улюблених, то на місці AddtoFavorite повинна бути кнопка RemoveFromFavorite,
-  const credentials = {
-    recipeId: id,
-  };
+  const ownRecipes = useSelector(getRecipes);
+  const isOwnRecipe = ownRecipes.includes(id);
+  const { favoriteRecipes } = useSelector(selectUser);
+
+  useEffect(() => {
+    const isRecipeFavorite = favoriteRecipes.includes(id);
+    setFavorite(isRecipeFavorite);
+  }, [id, favoriteRecipes]);
+  const dispatch = useDispatch();
 
   const addToFavorite = () => {
     setFavorite((favorite) => !favorite);
+    const credentials = {
+      recipeId: id,
+    };
     dispatch(addToFavoriteList(credentials));
   };
 
@@ -44,7 +41,7 @@ const RecipePageHero = ({ id, title, description, favorites, time }) => {
       <Container>
         <SectionHeroTitle children={title} />
         <SectionHeroDesc>{description}</SectionHeroDesc>
-        {favorites && (
+        {!isOwnRecipe && (
           <SectionHeroBtn
             type="button"
             aria-label="Add to favorite"
@@ -53,8 +50,8 @@ const RecipePageHero = ({ id, title, description, favorites, time }) => {
             }}
           >
             {favorite
-              ? 'Remove from favorite recipes'
-              : 'Add to favorite recipes'}
+              ? "Remove from favorite recipes"
+              : "Add to favorite recipes"}
           </SectionHeroBtn>
         )}
         <TimeBlock>
