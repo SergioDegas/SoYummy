@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
+
 import {
     selectFavoriteRecipes,
     selectTotalItems,
 } from "redux/favorite/selectors";
 import { selectError, selectIsLoading } from "redux/categories/selectors";
-import {
-    addToFavoriteList,
-    fetchFavoriteRecipesList,
-} from "redux/favorite/operations";
+
+import { fetchFavoriteRecipesList } from "redux/favorite/operations";
+import { addToFavoriteList } from "redux/auth/operation";
 
 import { PageTitle } from "Components/PageTitle/PageTitle";
 import { RecipesList } from "Components/RecipesList/RecipesList";
 import Container from "Components/Container/Container.styled";
+import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
 
 import { Error, Section, Wrapper } from "./FavoritesPage.styled";
 import { WrapperPagination } from "Components/CategoriesRecipes/CategoriesRecipes.styled";
-import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
 
 const FavoritesPage = () => {
     const [page, setPage] = useState(1);
