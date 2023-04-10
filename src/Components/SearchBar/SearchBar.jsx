@@ -1,27 +1,40 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchRecipes } from "../../redux/search/operation";
+import SearchForm from "Components/SearchForm/SearchForm";
+import SearchTypeSelector from "../../Components/SearchTypeSelector";
 
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import SearchForm from '../SearchForm';
-import SearchTypeSelector from '../SearchTypeSelector';
-import { searchRecipes } from '../../redux/search/operation';
-
-const SearchBar = ({ setSearchTerm }) => {
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchBy, setSearchBy] = useState("name");
   const dispatch = useDispatch();
 
-  const handleSelectChange = (e) => {
-    const searchBy = e.target.value;
-    dispatch(searchRecipes({ searchTerm: '', page: 1, limit: 8, searchBy }));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim() === "") {
+      alert("Please enter a search term");
+      return;
+    }
+    dispatch(searchRecipes({searchTerm, page: 1, limit: 8, searchBy}));
+    setSearchTerm("");
   };
 
-  const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
-    setSearchTerm(searchTerm);
+  const handleSearchByChange = (searchBy) => {
+    setSearchBy(searchBy);
   };
 
   return (
     <div>
-      <SearchForm searchBy="default" onChange={handleInputChange} />
-      <SearchTypeSelector onChange={handleSelectChange} />
+      <SearchForm
+        searchTerm={searchTerm}
+        onSubmit={handleSubmit}
+        onChange={(value) => setSearchTerm(value)}
+        searchBy={searchBy} // Додайте проп searchBy в SearchForm
+      />
+      <SearchTypeSelector
+        value={searchBy}
+        onSearchByChange={handleSearchByChange}
+      />
     </div>
   );
 };

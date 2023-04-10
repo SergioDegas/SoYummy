@@ -7,6 +7,7 @@ const searchSlice = createSlice({
     recipes: [],
     isLoading: false,
     error: null,
+    
   },
   extraReducers: (builder) => {
     builder
@@ -17,7 +18,7 @@ const searchSlice = createSlice({
       })
       .addCase(searchRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.recipes = action.payload;
+        state.recipes = action.payload.data.data.recipes;
         state.error = null;
       })
       .addCase(searchRecipes.rejected, (state, action) => {
@@ -27,5 +28,4 @@ const searchSlice = createSlice({
       });
   },
 });
-
 export const searchReducer = searchSlice.reducer;

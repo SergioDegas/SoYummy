@@ -7,8 +7,8 @@ import { ItemStyled, LinkStyled, ListStyled } from "./SearchedRecipesList.styled
 
 const SearchedRecipesList = () => {
     const location = useLocation();
-    const recipes = useSelector(selectRecipes);
-    console.log("recipes", recipes);
+    const recipes = useSelector(selectRecipes());
+    console.log("RecipesList", recipes);
     
    
     return (
@@ -17,7 +17,7 @@ const SearchedRecipesList = () => {
                 return (
                     <ItemStyled key={recipe._id}>
                         <LinkStyled
-                            to={`/search/${recipe._id}`}
+                            to={`/recipe/${recipe._id}`}
                             state={{ from: location }}
                         >
                             <SearchRecipePage recipe={recipe} />
