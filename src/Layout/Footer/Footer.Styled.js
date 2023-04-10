@@ -1,11 +1,12 @@
-import styled from "styled-components";
-import { MdOutlineEmail } from "react-icons/md";
-import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from "react-icons/si";
-import { GiEvilFork } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { MdOutlineEmail } from 'react-icons/md';
+import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from 'react-icons/si';
+import { GiEvilFork } from 'react-icons/gi';
+import { NavLink } from 'react-router-dom';
 export const FooterContainer = styled.div`
   background-color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
   height: 435px;
+  margin-top: 0;
   width: 100%;
   @media (min-width: 768px) {
     height: 425px;
@@ -175,7 +176,7 @@ export const EmailTitle = styled.h2`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -189,7 +190,7 @@ export const EmailText = styled.p`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -286,8 +287,8 @@ export const EmailBtn = styled.button`
     color: ${({ theme }) => `${theme.colors.accent}`};
     background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
-  background-color: ${(props) => (props.disabled ? "grey" : "#8BAA36")};
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  background-color: ${(props) => (props.disabled ? 'grey' : '#8BAA36')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   &:disabled {
     opacity: 0.5;
   }
