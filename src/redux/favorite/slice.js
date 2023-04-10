@@ -3,6 +3,7 @@ import { addToFavoriteList, fetchFavoriteRecipesList } from "./operations";
 
 const initialState = {
     recipes: [],
+    totalItems: null,
     isLoading: false,
     error: null,
 };
@@ -12,7 +13,8 @@ const getActions = (type) =>
     isAnyOf(...extraActions.map((action) => action[type]));
 
 const fetchFavoritRecipesFulfilledReducer = (state, action) => {
-    state.recipes = action.payload;
+    state.recipes = action.payload.recipes;
+    state.totalItems = action.payload.totalItems;
 };
 
 const addToFavoriteListFulfilledReducer = (state, action) => {
@@ -22,7 +24,7 @@ const addToFavoriteListFulfilledReducer = (state, action) => {
 
     if (action.payload.message.includes("removed")) {
         const index = state.recipes.findIndex(
-            (recipe) => recipe._id === action.payload._id
+            (recipe) => recipe._id === action.payload.recipeId
         );
         state.recipes.splice(index, 1);
     }
