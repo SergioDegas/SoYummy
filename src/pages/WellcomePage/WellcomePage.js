@@ -31,7 +31,7 @@ const WellcomePage = () => {
           </p>
         </Text>
         <li>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/register">Sign Up</Link>
           <Link to="/signin">Sign In</Link>
         </li>
       </List>
