@@ -34,39 +34,38 @@ const Header = () => {
 
   const openEditModal = () => setActiveModal("edit");
   const openLogoutModal = () => setActiveModal("logout");
-    const openMenu = () => setActiveModal("Menu");
+  const openMenu = () => setActiveModal("Menu");
   const closeModal = () => setActiveModal(null);
 
-useEffect(() => {
- const UserData = async () => {
-   try {
-     const { name, avatarURL } = await getUserData();
+  useEffect(() => {
+    const UserData = async () => {
+      try {
+        const { name, avatarURL } = await getUserData();
 
-     setName(name);
-     if (avatarURL) {
-       setPhotoUrl(avatarURL);
-       return;
-     } else {
-       setPhotoUrl(nonePhoto);
-       return;
-     }
-   } catch (error) {
-     console.error(error);
-   }
- };
+        setName(name);
+        if (avatarURL) {
+          setPhotoUrl(avatarURL);
+          return;
+        } else {
+          setPhotoUrl(nonePhoto);
+          return;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
- UserData();
-}, [])
+    UserData();
+  }, []);
 
-  
-    const { isDesktopScreen, isTabletScreen, isMobileScreen } = useMedia(); 
+  const { isDesktopScreen, isTabletScreen, isMobileScreen } = useMedia();
 
   const switchToggleStyle = { marginLeft: "50px" };
   return (
-    <header>
+    <header style={{position:'absolute',width:"100%"}}>
       <ContainerFor>
         <HeaderContainer>
-          <LogoLink to="/">
+          <LogoLink to="/">     
             <LogoContainer>
               <LogoIcon />
             </LogoContainer>

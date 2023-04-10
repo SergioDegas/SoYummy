@@ -27,13 +27,13 @@ export const Profile = ({
           {hovered && (
             <HoverText
               hovered={hovered}
+              handleHover={handleHover}
               openEditModal={openEditModal}
               openLogoutModal={openLogoutModal}
             />
           )}
         </ProfileDetailsContainer>
       </ProfileContainer>
-      
     </>
   );
 };
