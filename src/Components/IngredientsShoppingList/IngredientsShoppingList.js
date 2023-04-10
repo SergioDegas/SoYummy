@@ -11,9 +11,9 @@ import {
   IngedientsTitle,
   IngedientsMeasure,
   Button,
-    CloseIcon,
-    ImgEmptyPageThumb,
-  Text
+  CloseIcon,
+  ImgEmptyPageThumb,
+  Text,
 } from "./IngredientsShoppingList.styled.js";
 import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
 import EmptyPageImg from "images/skeleton/vegetable-fruit-basket-mob.png";
@@ -48,7 +48,10 @@ const IngredientsShoppingList = () => {
                 </Wrap>
                 <Wrap>
                   <IngedientsMeasure>{measure}</IngedientsMeasure>
-                  <Button type="button" onClick={() => handleDeleteIngredient(id, measure)}>
+                  <Button
+                    type="button"
+                    onClick={() => handleDeleteIngredient(id, measure)}
+                  >
                     <CloseIcon />
                   </Button>
                 </Wrap>
@@ -57,11 +60,11 @@ const IngredientsShoppingList = () => {
           })}
         </ul>
       ) : (
-                  <>
-                      <ImgEmptyPageThumb>
-                          <Img src={EmptyPageImg} alt="Friut Basket" />
-                      </ImgEmptyPageThumb>
-          
+        <>
+          <ImgEmptyPageThumb>
+            <Img src={EmptyPageImg} alt="Friut Basket" />
+          </ImgEmptyPageThumb>
+
           <Text>You don't have any products in your shopping list yet...</Text>
         </>
       )}

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { getRecipeById } from "api";
 import RecipePageHero from "Components/RecipePageHero";
-import RecipeIngredientsList from "Components/RecipeIngredientsList";
+import RecipeIngredientsList from "Components/RecipeIngredientsList/RecipeIngredientsList";
 import RecipePreparation from "Components/RecipePreparation/RecipePreparation";
 
 //TO DO
@@ -32,6 +32,7 @@ const RecipePage = () => {
   }, [recipeId]);
 
   const {
+    _id,
     title,
     description,
     favorites,
@@ -48,6 +49,7 @@ const RecipePage = () => {
         description={description}
         favorites={favorites}
         time={time}
+        id={_id}
       />
       <RecipeIngredientsList ingredients={ingredients} />
       <RecipePreparation description={instructions} foto={thumb} />
