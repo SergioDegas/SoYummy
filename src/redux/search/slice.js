@@ -1,32 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { searchRecipes } from "./operation";
 
+const searchSlice = createSlice({
+  name: "search",
+  initialState: {
+    recipes: [],
+    isLoading: false,
+    error: null,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(searchRecipes.pending, (state) => {
+        state.isLoading = true;
+        state.recipes = [];
+        state.error = null;
+      })
+      .addCase(searchRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.recipes = action.payload;
+        state.error = null;
+      })
+      .addCase(searchRecipes.rejected, (state, action) => {
+        state.isLoading = false;
+        state.recipes = [];
+        state.error = action.error.message;
+      });
+  },
+});
 
-export const searchSlice = createSlice({
-    name: "search",
-    initialState: {
-      recipes: [],
-      status: "idle",
-      error: null,
-    },
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
-        .addCase(searchRecipes.pending, (state) => {
-          state.status = "loading";
-          state.recipes = [];
-          state.error = null;
-        })
-        .addCase(searchRecipes.fulfilled, (state, action) => {
-          state.status = "succeeded";
-          state.recipes = action.payload;
-          state.error = null;
-        })
-        .addCase(searchRecipes.rejected, (state, action) => {
-          state.status = "failed";
-          state.recipes = [];
-          state.error = action.error.message;
-        });
-    },
-  });
-  
+export const searchReducer = searchSlice.reducer;

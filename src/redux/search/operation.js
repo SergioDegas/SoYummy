@@ -4,12 +4,20 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://backend-x5bd.onrender.com';
 
 export const searchRecipes = createAsyncThunk(
-  "search",
-  async (searchData) => {
-    const { searchTerm, page, limit, searchBy } = searchData;
-    const response = await axios.get(`/api/search`, {
-      params: { searchTerm, page, limit, searchBy },
-    });
-    return response.data.data.recipes;
+  "/search",
+  async ({searchTerm, page, limit, searchBy}, thunkAPI) => {
+    try {
+      const {recipes} = await axios.get(`/search`, {
+        params: {
+          searchTerm, 
+          page, 
+          limit, 
+          searchBy
+        }
+      });
+      return {recipes};
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

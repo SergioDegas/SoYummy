@@ -40,10 +40,7 @@ export const NavContainer = () => {
             <li>
               <Link
               
-                to={{
-                  pathname: "/SearchPage",
-                  search: "?type=query",
-                }}
+                to="/search"
               >
                 <SearchIcon /> Search
               </Link>
