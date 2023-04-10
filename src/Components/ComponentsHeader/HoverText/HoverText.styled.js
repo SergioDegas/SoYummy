@@ -1,4 +1,5 @@
 
+import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import styled from "styled-components";
 
@@ -8,7 +9,7 @@ export const HoveredText = styled.div`
 
   position: absolute;
   width: 177px;
-  height: 134px;
+  height: 160px;
   top: 63px;
   right: 35px;
   border-radius: 8px;
@@ -25,7 +26,7 @@ export const HoveredText = styled.div`
 
 export const HoverContainer = styled.div`
   width: 177px;
-  height: 134px;
+  height: 170px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -72,5 +73,13 @@ export const LogOutText = styled.p`
 `;
 
 export const Pen = styled(HiOutlinePencil)`
-  color: ${({ theme }) => theme.colors.textWhite};
+  color: ${({ theme }) => theme.colors.textPrimary};
+`;
+export const ButtonClose = styled(AiOutlineClose)`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
