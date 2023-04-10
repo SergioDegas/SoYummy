@@ -43,8 +43,8 @@ export const NavLinksContainer = styled.ul`
   gap: 30px;
 `;
 
-const activeClassName = 'active';
-export const Link = styled(NavLink).attrs({ activeClassName })`
+
+export const Link = styled(NavLink)`
   text-decoration: none;
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
@@ -60,7 +60,7 @@ export const Link = styled(NavLink).attrs({ activeClassName })`
   :hover {
     color: ${({ theme }) => theme.colors.accent};
   }
-  &.${activeClassName} {
+  &.active {
     color: ${({ theme }) => theme.colors.accent};
   }
 `;
