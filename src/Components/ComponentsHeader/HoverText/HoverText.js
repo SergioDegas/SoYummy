@@ -1,5 +1,5 @@
 import { BsArrowRightShort } from "react-icons/bs";
-import { HiOutlinePencil } from "react-icons/hi";
+
 import {
   EditContainer,
   EditText,

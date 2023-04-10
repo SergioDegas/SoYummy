@@ -47,7 +47,9 @@ export const RecipeIngredients = ({
   );
 
   const ingredientsBaseList = ingrList.map((item) => item.ttl);
-  const [ingredientsList, setIngredientsList] = useState(ingredientsBaseList);
+  const [ingredientsList, setIngredientsList] = useState();
+  setIngredientsList(ingredientsBaseList);
+
   const [filteredIngredients, setFilteredIngredients] =
     useState(ingredientsList);
 

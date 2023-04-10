@@ -1,5 +1,5 @@
-import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
+
+import toast  from 'react-hot-toast';
 import Container from "Components/Container/Container.styled";
 import {
   LogoContainer,
