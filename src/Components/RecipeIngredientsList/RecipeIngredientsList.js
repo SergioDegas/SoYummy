@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectShoppingList } from "redux/shoppingList/selectors";
 import {
@@ -24,38 +24,21 @@ import {
 import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
 
 const RecipeIngredientsList = ({ ingredients }) => {
-  const [selectedIngredientIds, setSelectedIngredientIds] = useState([]);
-  const shoppingList = useSelector(selectShoppingList);
-  const ids = useMemo(
-    () => shoppingList.map((item) => item._id),
-    [shoppingList]
-  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchShoppingList());
   }, [dispatch]);
 
-  useEffect(() => {
-    setSelectedIngredientIds(ids);
-  }, [ids]);
+  const shoppingList = useSelector(selectShoppingList);
 
-  const handleInputChange = async (evt) => {
-    const { id, checked } = evt.target;
-    await setSelectedIngredientIds((prevSelectedIds) => {
-      if (checked) {
-        return [...prevSelectedIds, id];
-      } else {
-        return prevSelectedIds.filter((selectedId) => selectedId !== id);
-      }
-    });
-    
-
+  const handleInputChange =  (evt) => {
+    const { id } = evt.target;
     const currentIngredient = ingredients.find((item) => item._id === id);
     if (currentIngredient) {
-  const { measure, _id } = currentIngredient;
-  const credentials = { measure: measure, ingredientId: _id };
-  dispatch(updateShoppingList(credentials));
-}
+      const { measure, _id } = currentIngredient;
+      const credentials = { measure: measure, ingredientId: _id };
+      dispatch(updateShoppingList(credentials));
+    }
   };
 
   return (
@@ -81,7 +64,7 @@ const RecipeIngredientsList = ({ ingredients }) => {
                     <CheckBoxLabel htmlFor={_id}>
                       <IngedientsCheck
                         type="checkbox"
-                        checked={selectedIngredientIds.includes(_id)}
+                        checked={!!shoppingList.find(item => item.id === _id)}
                         id={_id}
                         value={_id}
                         onChange={handleInputChange}
