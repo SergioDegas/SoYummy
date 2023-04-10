@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { useDispatch } from 'react-redux';
+// import { selectUser } from 'redux/auth/selectors';
 // import { selectFavoriteRecipes } from "redux/favorite/selectors";
 import Container from '../Container';
 import { addToFavoriteList } from 'redux/favorite/operations';
