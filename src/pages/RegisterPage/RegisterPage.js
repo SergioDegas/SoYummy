@@ -1,10 +1,10 @@
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "redux/auth/operation";
-import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container } from "./SingUpPage.styled";
+import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container } from "./RegisterPage.styled";
 
 
-const SingUpPage = () => {
+const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -63,4 +63,4 @@ const SingUpPage = () => {
   )
 };
 
-export default SingUpPage;
+export default RegisterPage;
