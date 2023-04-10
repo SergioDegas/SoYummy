@@ -23,8 +23,10 @@ const CategoriesPage = () => {
     const error = useSelector(selectError);
 
     useEffect(() => {
-        dispatch(fetchCategoryList());
-    }, [dispatch]);
+        if (!categoryList) {
+            dispatch(fetchCategoryList());
+        }
+    }, [categoryList, dispatch]);
 
     return (
         <main>

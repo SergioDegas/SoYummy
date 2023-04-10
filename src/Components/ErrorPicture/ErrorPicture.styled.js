@@ -6,7 +6,6 @@ export const Picture = styled.img`
 
     margin-left: auto;
     margin-right: auto;
-    margin-top: ${(p) => p.theme.space[1] * 25}px;
     margin-bottom: ${(p) => p.theme.space[1] * 3.5}px;
 
     @media (min-width: 768px) {
@@ -14,9 +13,5 @@ export const Picture = styled.img`
         height: 331px;
 
         margin-bottom: ${(p) => p.theme.space[1] * 8}px;
-    }
-
-    @media (min-width: 1440px) {
-        margin-top: ${(p) => p.theme.space[1] * 37.5}px;
     }
 `;

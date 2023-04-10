@@ -3,12 +3,15 @@ import { ErrorPicture } from "Components/ErrorPicture/ErrorPicture";
 
 import notFoundImage from "../../images/error/404-not-found.svg";
 import { ErrorMessage } from "Components/ErrorMessage/ErrorMessage";
+import { Section } from "pages/FavoritesPage/FavoritesPage.styled";
 
 const NotFoundPage = () => {
     return (
         <Container>
-            <ErrorPicture image={notFoundImage} />
-            <ErrorMessage />
+            <Section>
+                <ErrorPicture image={notFoundImage} />
+                <ErrorMessage />
+            </Section>
         </Container>
     );
 };
