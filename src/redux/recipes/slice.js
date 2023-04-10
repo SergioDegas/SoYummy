@@ -35,32 +35,33 @@ const ownRecipeSlice = createSlice({
 			state.currentPage = action.payload;
 		},
 	},
-	extraReducers: {
-		[fetchRecipes.pending]: handlePending,
-		[fetchRecipes.fulfilled] (state, action) {
-			state.isLoading = false;
-			state.error = null;
-			state.recipes = action.payload;
-		},
-		[fetchRecipes.rejected]: handleRejected,
+	extraReducers: builder => {
+		builder
+			.addCase(fetchRecipes.pending, handlePending)
+			.addCase(fetchRecipes.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.error = null;
+				state.recipes = action.payload;
+			})
+			.addCase(fetchRecipes.rejected, handleRejected)
 
-		[addRecipe.pending]: handlePending,
-		[addRecipe.fulfilled](state, action ) {
-			console.log(action.payload)
-			state.isLoading = false;
-			state.error = null;
-			state.recipes.push(action.payload);
-		},
-		[addRecipe.rejected]: handleRejected,
+			.addCase(addRecipe.pending, handlePending)
+			.addCase(addRecipe.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.error = null;
+				state.recipes.push(action.payload);
+			})
+			.addCase(addRecipe.rejected, handleRejected)
 
-		[removeRecipe.pending]: handlePending,
-		[removeRecipe.fulfilled] (state, action) {
-			state.isLoading = false;
-			state.error = null;
-			const index = state.recipes.findIndex (recipe => recipe.id === action.payload.id);
-			state.recipes.splice(index, 1);
-},
-	},
+			.addCase(removeRecipe.pending, handlePending)
+			.addCase(removeRecipe.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.error = null;
+				const index = state.recipes.findIndex((recipe) => recipe.id === action.payload.id);
+				state.recipes.splice(index, 1);
+			})
+			.addCase(removeRecipe.rejected, handleRejected);
+		},
 
 })
 
