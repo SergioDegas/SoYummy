@@ -11,6 +11,7 @@ import { fetchFavoriteRecipesList } from "redux/favorite/operations";
 import { addToFavoriteList } from "redux/auth/operation";
 
 import { PageTitle } from "Components/PageTitle/PageTitle";
+import Loader from "Components/Loader/Loader";
 import { RecipesList } from "Components/RecipesList/RecipesList";
 import Container from "Components/Container/Container.styled";
 import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
@@ -54,6 +55,8 @@ const FavoritesPage = () => {
                     <Wrapper>
                         <PageTitle>Favorites</PageTitle>
                     </Wrapper>
+
+                    {isLoading && !error && <Loader />}
 
                     {favoriteRecipes.length === 0 && !isLoading && !error && (
                         <Error>

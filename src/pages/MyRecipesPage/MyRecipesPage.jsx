@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { fetchRecipes, removeRecipe } from "redux/recipes/operation";
+
 import { getRecipes, isError } from "redux/recipes/selectors";
+
 import Container from "Components/Container/Container.styled";
 import { Wrapper, Section } from "pages/FavoritesPage/FavoritesPage.styled";
 import { Error } from "pages/CategoriesPage/CategoriesPage.styled";
@@ -10,12 +13,14 @@ import { PageTitle } from "Components/PageTitle/PageTitle";
 
 const MyRecipesPage = () => {
     const recipes = useSelector(getRecipes);
+    const error = useSelector(isError)
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchRecipes());
-    }, [dispatch]);
+    }, [dispatch,]);
+
 
     const removeOwnRecipe = (id) => {
         dispatch(removeRecipe(id));
@@ -28,12 +33,13 @@ const MyRecipesPage = () => {
                     <Wrapper>
                         <PageTitle>My recipes</PageTitle>
                     </Wrapper>
-                    {recipes.length > 0 && isError && (
+                    {recipes.length > 0 && !error && (
                         <RecipesList
                             recipes={recipes}
                             page="my"
+
                             onDelete={removeOwnRecipe}
-                        />
+                        />  
                     )}
                     {recipes.length === 0 && (
                         <Error>

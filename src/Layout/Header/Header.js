@@ -25,12 +25,10 @@ import { DropMenuButton } from "./Header.styled";
 const Header = () => {
   const [name, setName] = useState("Name");
   const [photoUrl, setPhotoUrl] = useState("");
-  const [hovered, setHovered] = useState(false);
+
   const [activeModal, setActiveModal] = useState(null);
 
-  const handleHover = () => {
-    setHovered(!hovered);
-  };
+ 
 
   const openEditModal = () => setActiveModal("edit");
   const openLogoutModal = () => setActiveModal("logout");
@@ -43,7 +41,7 @@ const Header = () => {
         const { name, avatarURL } = await getUserData();
 
         setName(name);
-        if (avatarURL) {
+        if (avatarURL ) {
           setPhotoUrl(avatarURL);
           return;
         } else {
@@ -80,10 +78,10 @@ const Header = () => {
           )}
 
           <Profile
-            handleHover={handleHover}
+           
             photoUrl={photoUrl}
             ProfilesName={name}
-            hovered={hovered}
+        
             openLogoutModal={openLogoutModal}
             openEditModal={openEditModal}
           />

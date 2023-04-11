@@ -4,27 +4,19 @@ import { HiOutlinePencil } from "react-icons/hi";
 import styled from "styled-components";
 
 export const HoveredText = styled.div`
-  opacity: 0;
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
-  position: absolute;
   width: 177px;
   height: 160px;
-  top: 63px;
-  right: 35px;
+
+
   border-radius: 8px;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-  &.active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-    pointer-events: auto;
-  }
 `;
 
 export const HoverContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   width: 177px;
   height: 170px;
   display: flex;
