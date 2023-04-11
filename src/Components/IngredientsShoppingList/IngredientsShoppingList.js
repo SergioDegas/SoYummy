@@ -1,7 +1,6 @@
 import React from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-import { selectShoppingList } from "redux/shoppingList/selectors";
+import { useDispatch } from "react-redux";
+import { useMedia } from "hooks/useMedia.js";
 import { updateShoppingList } from "redux/shoppingList/operation";
 import {
   IngedientsItem,
@@ -16,11 +15,12 @@ import {
   Text,
 } from "./IngredientsShoppingList.styled.js";
 import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
-import EmptyPageImg from "images/skeleton/vegetable-fruit-basket-mob.png";
+import EmptyPageImgMob from "images/skeleton/vegetable-fruit-basket-mob.png";
+import EmptyPageImgTab from "images/skeleton/vegetable-fruit-basket-tab.png";
 
-const IngredientsShoppingList = () => {
-  const shoppingList = useSelector(selectShoppingList);
+const IngredientsShoppingList = ({shoppingList}) => {
   const dispatch = useDispatch();
+  const { isMobileScreen } = useMedia();
 
   const handleDelete = (id, measure) => {
     const credentials = { measure: measure, ingredientId: id };
@@ -62,7 +62,7 @@ const IngredientsShoppingList = () => {
       ) : (
         <>
           <ImgEmptyPageThumb>
-            <Img src={EmptyPageImg} alt="Friut Basket" />
+            <Img src={isMobileScreen ? EmptyPageImgMob : EmptyPageImgTab} alt="Friut Basket" />
           </ImgEmptyPageThumb>
 
           <Text>You don't have any products in your shopping list yet...</Text>

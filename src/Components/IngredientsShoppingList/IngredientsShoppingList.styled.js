@@ -25,12 +25,11 @@ export const IngedientsImgThumb = styled.div`
   background-color: ${({ theme }) => `${theme.colors.backgroundAccent}`};
   border-radius: 6px;
   @media (min-width: 768px) {
-      width: 93px;
-  height: 97px;
-  padding: 8px;
-  margin-right: 16px;
+    width: 93px;
+    height: 97px;
+    padding: 8px;
+    margin-right: 16px;
   }
-
 `;
 
 export const Img = styled.img`
@@ -48,9 +47,7 @@ export const IngedientsTitle = styled.p`
   color: ${({ theme }) => `${theme.colors.textSubTitle}`};
   @media (min-width: 768px) {
     font-size: 16px;
-  line-height: 1.5;
-  }
-  @media (min-width: 1440px) {
+    line-height: 1.5;
   }
 `;
 
@@ -87,7 +84,7 @@ export const Button = styled.button`
 export const CloseIcon = styled(GrFormClose)`
   width: 18px;
   height: 18px;
-    color: ${({ theme }) => `${theme.colors.textSubTitle}`};
+  color: ${({ theme }) => `${theme.colors.textSubTitle}`};
 
   @media (min-width: 768px) {
     width: 30px;
@@ -96,22 +93,26 @@ export const CloseIcon = styled(GrFormClose)`
 `;
 
 export const ImgEmptyPageThumb = styled.div`
-width: 208px;
-height: 133px;
-    margin: 0 auto;
-    margin-bottom: 24px;
-    margin-top: 24px;
+  width: 208px;
+  height: 133px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+    @media (min-width: 768px) {
+  width: 350px;
+  height: 225px;
+  margin-bottom: 44px;
+  }
 `;
 
 export const Text = styled.p`
-text-align: center;
+  text-align: center;
   font-family: "Poppins";
   font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
   font-size: 10px;
   line-height: 1.2;
   color: ${({ theme }) => `${theme.colors.textSubTitle}`};
   @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.5;
   }
-  @media (min-width: 1440px) {
-  }
-`
+`;
