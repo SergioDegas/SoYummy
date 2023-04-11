@@ -133,7 +133,6 @@ export const AddRecipeForm = () => {
         schema
             .validate(initialValues, { abortEarly: false })
             .then(() => {
-                console.log(formData)
                 dispatch(addRecipe(formData));
                 console.log(error);
                 if (!error) {
