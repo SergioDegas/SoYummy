@@ -32,7 +32,7 @@ export const removeRecipe = createAsyncThunk(
 	'remove/own-recipes',
 	async (recipeId, thunkApi) => {
 		try {
-			const {data} = await axios.delete(`/recipes${recipeId}`);
+			const {data} = await axios.delete(`/recipes/${recipeId}`);
 			return data;
 		} catch (error) {
 			return thunkApi.rejectWithValue(error.message)
