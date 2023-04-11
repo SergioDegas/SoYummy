@@ -19,7 +19,7 @@ export const getUserData = async () => {
 };
 export const setUserData = async (data) => {
   try {
-    axios.post("/user/update", data);
+    await axios.put("/user/update", data);
   } catch (error) {
     console.error(error);
   }
