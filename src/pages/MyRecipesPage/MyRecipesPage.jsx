@@ -13,6 +13,7 @@ import { PageTitle } from "Components/PageTitle/PageTitle";
 
 const MyRecipesPage = () => {
     const recipes = useSelector(getRecipes);
+    const error = useSelector(isError)
 
     const dispatch = useDispatch();
 
@@ -32,7 +33,7 @@ const MyRecipesPage = () => {
                     <Wrapper>
                         <PageTitle>My recipes</PageTitle>
                     </Wrapper>
-                    {recipes.length > 0 && isError && (
+                    {recipes.length > 0 && !error && (
                         <RecipesList
                             recipes={recipes}
                             page="my"
