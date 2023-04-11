@@ -1,5 +1,4 @@
-import Container from "Components/Container/Container.styled";
-import SearchForm from "../SearchForm";
+import Container from "Components/Container/Container.styled"; 
 import { 
   SectionHero,
   HeroText,
@@ -18,7 +17,7 @@ import {
  import { useMedia } from "hooks";
 
 export const Hero = () => {
-  const { isDesktopScreen, isTabletScreen, isMobileScreen } = useMedia();
+  const { isMobileScreen } = useMedia();
     return (
         <SectionHero>
           <Container>
