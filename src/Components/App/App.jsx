@@ -19,7 +19,7 @@ import { RestrictedRoute } from 'Components/RestrictedRoute';
 import { PrivateRoute } from 'Components/PrivateRoute';
 import Loader from 'Components/Loader';
 
-const WelcomePage = lazy(() => import('pages/WellcomePage'));
+const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 

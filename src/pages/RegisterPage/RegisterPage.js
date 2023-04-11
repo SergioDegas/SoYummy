@@ -1,105 +1,168 @@
-import { Formik, Form, ErrorMessage, Field } from "formik";
-import { useDispatch } from "react-redux";
-import { register } from "redux/auth/operation";
-import { RiLockPasswordLine } from 'react-icons/ri';
-import { AiOutlineUser } from 'react-icons/ai';
-import { HiOutlineMail } from 'react-icons/hi';
- import * as Yup from 'yup';
-import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container, InputContainer, InputSt } from "./RegisterPage.styled";
-import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
+import {
+  FormAuth,
+  TitleForm,
+  BoxForForm,
+  BoxForField,
+  FormField,
+  Button,
+  Warning,
+  BoxForIcon,
+  EmailIcon,
+  NameIcon,
+  PassIcon,
+  Page,
+  Container,
+  Img,
+  Background,
+
+
+} from './RegisterPage.styled';
+import { register } from 'redux/auth/operation';
+import { Link } from 'react-router-dom';
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export const schemaRegValidation = yup.object().shape({
+  name: yup
+    .string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('This field is required'),
+  email: yup
+    .string()
+    .matches(emailRegex, 'Invalid email address, try again')
+    .required('This field is required'),
+  password: yup
+    .string()
+    .min(8, 'Your password is short')
+    .max(16, 'Your password is to long')
+    .required('This field is required'),
+});
+
+export const schemaLoginValidation = yup.object().shape({
+  email: yup
+    .string()
+    .matches(emailRegex, 'Invalid email address, try again')
+    .required('This field is required'),
+  password: yup
+    .string()
+    .min(6, 'Your password is short')
+    .max(16, 'Your password is to long')
+    .required('This field is required'),
+});
+
+const getColor = (
+  errors,
+  touched,
+  defaultColor = 'rgba(255, 255, 255, 0.8)'
+) => {
+  if (
+    errors === 'Your password is short' ||
+    errors === 'Your password is too long'
+  ) {
+    return '#F6C23E';
+  }
+  return touched ? (errors && '#E74A3B') || '#3CBC81' : defaultColor;
+};
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
-  
-  const handleSubmit = e => {
-    const { name, email, password } = e;
-    // dispatch(
-    //   register({
-    //     name: name,
-    //     email: email,
-    //     password: password,
-    //   })
-    // )
-  }
+  const handleSubmit = (values, actions) => {
+    const authData = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    };
+    console.log(authData)
+    dispatch(
+      register(authData));
+    actions.resetForm();
+  };
   return (
     <Page>
-      <div style={{height: 305}}>
+      <div style={{ height: 305 }}>
         <Container>
-          <Img/>
-          <SingUpForm>
-            <Title>Registration</Title>
-            <Formik
-              initialValues={{ name: '', email: '', password: '' }}
-              validationSchema={Yup.object().shape({
-              name: Yup.string().required("Name is required"),
-              email: Yup.string()
-                .email("Invalid email")
-                .required("Email is required"),
-              password: Yup.string()
-                .required("Password is required")
-                .min(8, "Password must be at least 8 characters"),
-              })}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                  console.log(values)
-                }, 400);
-              }}
-            >
-              {({ isSubmitting }) => (
-                <Form style={{ display: "flex", flexDirection: "column" }}>
-                <InputContainer>
-                  <Field
-                    name='name'
-                    >
-                      {({ field }) => (<InputSt>
-                        <AiOutlineUser style={{ position: 'absolute', left: 15, top: 15, width: 24, height: 24 }} />
-                        <Input type="text" id="name" autoComplete="off" placeholder="Name" {...field} />
-                      </InputSt>)}
-                    </Field>
-                    <ErrorMessage name="name"/>
-                </InputContainer>
-                <InputContainer>
-                  <Field
-                    name='email'
-                    >
-                      {({ field }) => (<InputSt>
-                        <HiOutlineMail style={{ position: 'absolute', left: 15, top: 15, width: 24, height: 24 }} />
-                        <Input type="email" id="email" autoComplete="off" placeholder="Email" {...field} />
-                      </InputSt>)}
-                    </Field>
-                    <ErrorMessage name="email" render={msg => <div style={{color: "red"}}>{msg}</div>}/>
-                  </InputContainer>
-                <InputContainer>
-                  <Field
-                    name='password'
-                    >
-                      {({ field }) => (<InputSt>
-                        <RiLockPasswordLine style={{ position: 'absolute', left: 15, top: 15, width: 24, height: 24, color: "currentcolor" }} />
-                        <Input type="password" id="password" autoComplete="off" placeholder="Password"{...field} />
-                      </InputSt>)}
-                    </Field>
-                    <ErrorMessage name="password" />
-                  </InputContainer>
-                  <Button
-                  type="submit"
-                  >Sign up
-                  </Button>
-                </Form>
-              )}
+          <Img />
+             <Formik
+        initialValues={{name: '', email: '', password: ''}}
+        validationSchema={schemaRegValidation}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched }) => (
+          <FormAuth>
+            <TitleForm>Registration</TitleForm>
+            <BoxForForm>
+              <BoxForField>
+                <BoxForIcon>
+                  <NameIcon stroke={getColor(errors.name, touched.name)} />
+                </BoxForIcon>
+                <FormField
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  color={getColor(errors.name, touched.name)}
+                />
+                {errors.name && touched.name ? (
+                  <Warning color={getColor(errors.name, touched.name)}>
+                    {errors.name}
+                  </Warning>
+                ) : null}
+              </BoxForField>
+              <BoxForField>
+                <BoxForIcon>
+                  <EmailIcon
+                    stroke={getColor(errors.email, touched.email)}
+                  />
+                </BoxForIcon>
+                <FormField
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  color={getColor(errors.email, touched.email)}
+                />
+                {errors.email && touched.email ? (
+                  <Warning color={getColor(errors.email, touched.email)}>
+                    {errors.email}
+                  </Warning>
+                ) : null}
+              </BoxForField>
+              <BoxForField>
+                <BoxForIcon>
+                  <PassIcon
+                    stroke={getColor(errors.password, touched.password)}
+                  />
+                </BoxForIcon>
+                <FormField
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  color={getColor(errors.password, touched.password)}
+                />
+                {errors.password && touched.password ? (
+                  <Warning
+                    color={getColor(errors.password, touched.password)}
+                  >
+                    {errors.password}
+                  </Warning>
+                ) : null}
+              </BoxForField>
+            </BoxForForm>
+            <Button type="submit">Sign up</Button>
+            <Link to="/signin" style={{color: "white", textDecoration: 'underline', marginLeft: "auto", marginRight: "auto"}}>Sign In</Link>
+
+          </FormAuth>
+        )}
               </Formik>
-              <LinkContainer>
-              <Link to='/signin'>Sign in</Link>
-              </LinkContainer>
-        </SingUpForm>
         </Container>
       </div>
-      <Background>
-      </Background>
+      <Background></Background>
     </Page>
-  )
+  );
 };
+
 
 export default RegisterPage;
