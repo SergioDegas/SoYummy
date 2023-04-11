@@ -1,12 +1,13 @@
 import Container from "Components/Container/Container.styled";
+import SearchForm from "../SearchForm";
 import { 
   SectionHero,
   HeroText,
   HeroTitle,
   HeroSpan,
-  HeroInput,
-  HeroForm,
-  HeroBtn,
+  // HeroInput,
+  // HeroForm,
+  // HeroBtn,
   HeroRecipe,
   RecipeText,
   RecipeSpan,
@@ -27,13 +28,14 @@ export const Hero = () => {
               can add your own recipes to save<br />
               them for the future.
             </HeroText>
-            <HeroForm>
+            <SearchForm />
+            {/* <HeroForm>
               <HeroInput 
               type="search" 
               placeholder="Search recipe..."
               />
               <HeroBtn  type="submit">Search</HeroBtn>
-            </HeroForm>
+            </HeroForm> */}
             <HeroRecipe>
               <RecipeText><RecipeSpan>Delicious and healthy</RecipeSpan>way to enjoy<br/> 
               a variety of fresh ingredients in one<br/> 
