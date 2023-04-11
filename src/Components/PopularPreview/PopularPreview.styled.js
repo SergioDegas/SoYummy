@@ -20,6 +20,7 @@ export const PopularList = styled.ul`
   @media screen and (min-width: 768px) {
     width: 704px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 
@@ -83,7 +84,8 @@ export const PopularText = styled.p`
   color: ${(p) => p.theme.colors.textSecondary};
 
   width: 212px;
-  height: 56px;
+  height: 50px;
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
     width: 208px;

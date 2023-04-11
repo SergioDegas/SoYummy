@@ -28,11 +28,13 @@ export const FileInputWrap = styled.div`
 
 export const FileInput = styled.input`
   width: 279px;
-  height: 268px;
+  height: 260px;
+  margin-top: 8px;
 
   @media screen and (min-width: 1440px) {
     width: 357px;
-    height: 344px;
+    height: 335px;
+    margin-top: 9px;
   }
 `;
 
