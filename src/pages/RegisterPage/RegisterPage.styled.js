@@ -94,19 +94,27 @@ margin-bottom: 40px;
   margin-bottom: 50px;
 }
 `
-export const Input = styled(Field)`
+export const InputContainer = styled.div`
+
+height: 83px;
+`
+
+export const Input = styled.input`
 height: 45px;
 background-color: transparent;
 border: 1px solid grey;
 border-radius: 5px;
-margin-bottom: 12px;
 padding-left: 40px;
-color: ${p => p.theme.colors.textWhite};
+color: currentcolor;
+outline: none;
 ::placeholder {
-  color: ${p => p.theme.colors.textWhite};
+  color: currentcolor;
+}
+&:hover,
+&:focus {
+  border: 1px solid white;
 }
 @media (min-width: 768px) {
-  margin-bottom: 24px;
   height: 59px;
 }
 @media (min-width: 768px) {
@@ -141,4 +149,14 @@ export const Link = styled(NavLink)`
 color: ${p => p.theme.colors.textWhite};
 text-decoration: underline;
 
+`
+
+
+export const InputSt = styled.div`
+color: grey;
+position: relative;
+&:hover,
+&:focus {
+  color: white;
+}
 `

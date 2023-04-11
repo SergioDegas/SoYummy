@@ -26,6 +26,7 @@ const gradient = (img) => {
 export const Page = styled.div`
 display: flex;
 height: 100vh;
+width: 100vw;
 background: ${gradient(bgMobile1x)};
 @media (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
@@ -100,7 +101,9 @@ list-style-type: none;
 display: flex;
 flex-direction: column;
 align-items: center;
+justify-content: center;
 text-align: center;
+width: 100vw;
 margin: 0 35px;
 @media (min-width: 767px) {
   margin: 0 134px;

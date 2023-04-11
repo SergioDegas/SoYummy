@@ -1,7 +1,7 @@
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from 'styled-components';
 
-import { lazy, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ import { themeLight } from 'themes/themeLight';
 import { themeDark } from 'themes/themeDark';
 import { RestrictedRoute } from 'Components/RestrictedRoute';
 import { PrivateRoute } from 'Components/PrivateRoute';
+import Loader from 'Components/Loader';
 
 const WelcomePage = lazy(() => import('pages/WellcomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -47,7 +48,7 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={theme ? themeLight : themeDark}>
-      <>
+      <Suspense fallback={<Loader/>}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route
@@ -124,7 +125,7 @@ export const App = () => {
           </Route>
         </Routes>
         <Toaster position="top-right" />
-      </>
+      </Suspense>
 
       <GlobalStyle />
     </ThemeProvider>
