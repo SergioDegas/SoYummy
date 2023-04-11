@@ -13,9 +13,21 @@ export const SectionShoppingList = styled.section`
   }
 `;
 
-export const PageTitleWrap = styled.div`
+export const Wrap = styled.div`
   margin-bottom: 50px;
   @media (min-width: 768px) {
     margin-bottom: 72px;
   }
 `;
+
+export const Info = styled.p`
+  font-family: "Poppins";
+  font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
+  font-size: 10px;
+  line-height: 1.2;
+  color: ${({ theme }) => `${theme.colors.textSubTitle}`};
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+`
