@@ -19,7 +19,6 @@ const SearchPage = () => {
   const recipes = useSelector(selectRecipes);
   const isLoading = useSelector(selectSearchStatus);
   const error = useSelector(selectSearchError);
-  console.log("up", recipes)
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event) => {
@@ -40,7 +39,7 @@ const SearchPage = () => {
                 <PageTitle>Search</PageTitle>
             </WrapperTitle>
             <SearchBar handleSearch={handleSearch} setSearchTerm={setSearchTerm} />
-            {console.log("SearchBar",recipes)}
+            {console.log("SearchPage", recipes)}
             
             {recipes.length > 0 && !isLoading && !error && (
                         <SearchedRecipesList recipes={ recipes } />

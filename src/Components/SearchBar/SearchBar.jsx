@@ -29,7 +29,7 @@ const SearchBar = () => {
         searchTerm={searchTerm}
         onSubmit={handleSubmit}
         onChange={(value) => setSearchTerm(value)}
-        searchBy={searchBy} // Додайте проп searchBy в SearchForm
+        searchBy={searchBy}
       />
       <SearchTypeSelector
         value={searchBy}

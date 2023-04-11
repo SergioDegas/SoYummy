@@ -18,7 +18,7 @@ const searchSlice = createSlice({
       })
       .addCase(searchRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.recipes = action.payload.data.data.recipes;
+        state.recipes = action.payload;
         state.error = null;
       })
       .addCase(searchRecipes.rejected, (state, action) => {
