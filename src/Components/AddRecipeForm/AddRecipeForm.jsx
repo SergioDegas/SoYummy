@@ -58,14 +58,14 @@ export const AddRecipeForm = () => {
         ]);
     };
 
-  const decrementIngrList = () => {
-    const lastItem = ingredients[ingredients.length - 1];
-    setIngredients((prevState) =>
-      prevState.filter((item) => {
-        return item.id !== lastItem.id;
-      })
-    );
-  };
+    const decrementIngrList = () => {
+        const lastItem = ingredients[ingredients.length - 1];
+        setIngredients((prevState) =>
+            prevState.filter((item) => {
+                return item.id !== lastItem.id;
+            })
+        );
+    };
 
     const deleteIngr = (itemId) => {
         setIngredients(ingredients.filter((item) => item.id !== itemId));
@@ -99,7 +99,7 @@ export const AddRecipeForm = () => {
     const navigate = useNavigate();
 
     const formData = new FormData();
-    formData.append("imageURL", imageURL);
+    formData.append("image", imageURL);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
