@@ -13,8 +13,7 @@ export const RecipeText = styled.textarea`
   min-height: 154px;
   padding: 10px 16px;
   margin: 24px 0 18px;
-  /* background-color: rgba(217, 217, 217, 0.16); */
-  background-color: rgba(245, 245, 245, 1);
+  background-color: ${(p) => p.theme.colors.inputBackground};
   outline: none;
   border: none;
   border-radius: ${(p) => p.theme.radius.small};

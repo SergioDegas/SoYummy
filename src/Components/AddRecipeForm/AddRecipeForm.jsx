@@ -10,7 +10,6 @@ import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
 import { RecipeIngredients } from "./RecipeIngredients/RecipeIngredients";
 import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
-// import { GiConsoleController } from "react-icons/gi";
 
 export const AddRecipeForm = () => {
     const [image, setImage] = useState("");
@@ -19,7 +18,7 @@ export const AddRecipeForm = () => {
     const [category, setCategory] = useState("Breakfast");
     const [cookingTime, setCookingTime] = useState("30 min");
     const [ingredients, setIngredients] = useState([
-        { id: nanoid(), unitValue: "tbs", unitNumber: "", ingredient: "" },
+        { id: nanoid(), unitValue: "tbs", unitNumber: "", name: "" },
     ]);
     const [preparation, setPreparation] = useState("");
 
@@ -38,9 +37,9 @@ export const AddRecipeForm = () => {
             const blob = new Blob([buffer], { type: file.type });
             const url = URL.createObjectURL(blob);
             setImage(url);
-            console.log(url);
         });
         reader.readAsArrayBuffer(file);
+        
 
         // const formData = new FormData();
 
@@ -73,7 +72,7 @@ export const AddRecipeForm = () => {
     const incrementIngrList = () => {
         setIngredients((prevState) => [
             ...prevState,
-            { id: nanoid(), unitValue: "tbs", unitNumber: "", ingredient: "" },
+            { id: nanoid(), unitValue: "tbs", unitNumber: "", name: "" },
         ]);
     };
 

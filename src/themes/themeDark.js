@@ -60,6 +60,15 @@ export const themeDark = {
         pagination: "rgba(250, 250, 250, 0.6)",
         errorMsg: "#FAFAFA",
         paginationActive: "#8BAA36",
+
+        inputText: "rgba(255, 255, 255, 0.8)",
+        inputBackground: "#f5f5f5",
+        measure: "rgba(255, 255, 255, 0.5)",
+    unit:"rgba(245, 245, 245, 0)",
+    counter:"#ffffff",
+    deleteBtn: "#D9D9D9"
+
+
     },
 
     radius: {

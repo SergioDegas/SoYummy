@@ -35,7 +35,7 @@ export const Counter = styled.div`
   justify-content: space-evenly;
   width: 92px;
   height: 28px;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border: 1px solid ${(p) => p.theme.colors.counter};
   border-radius: 18px;
 
   @media screen and (min-width: 768px) {
@@ -54,7 +54,7 @@ export const MinusButton = styled.button`
   svg {
     height: 14px;
     width: 14px;
-    color: rgba(51, 51, 51, 0.3);
+    color: ${(p) => p.theme.colors.counter};
 
     @media screen and (min-width: 768px) {
       width: 18px;
@@ -85,7 +85,7 @@ export const PlusButton = styled.button`
 export const Number = styled.p`
   font-size: ${(p) => p.theme.fontSizes.s}px;
   line-height: ${(p) => p.theme.lineHeights.heading};
-  color: #333333;
+  color: ${(p) => p.theme.colors.textTitle};
 
   @media screen and (min-width: 768px) {
     font-size: ${(p) => p.theme.fontSizes.m}px;
@@ -124,8 +124,7 @@ export const IngrInput = styled.input`
   height: 53px;
   margin-right: 14px;
   padding: 16px;
-  /* background-color: rgba(245, 245, 245, 1); */
-  background-color: rgba(217, 217, 217, 0.25);
+  background-color: ${(p) => p.theme.colors.inputBackground};
   border-radius: ${(p) => p.theme.radius.small};
   border: none;
   outline: none;
@@ -204,7 +203,8 @@ export const NumberInput = styled.input`
   width: 84px;
   height: 53px;
   padding: 16px 0 16px 10px;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  background-color: ${(p) => p.theme.colors.measure};
   outline: none;
   border: none;
   border-radius: ${(p) => p.theme.radius.small};
@@ -233,7 +233,7 @@ export const UnitSelect = styled.div`
 
   width: 50px;
   height: 53px;
-  background-color: #f5f5f5;
+  background-color: ${(p) => p.theme.colors.unit};
   outline: none;
   border: none;
   border-radius: ${(p) => p.theme.radius.small};
@@ -308,16 +308,16 @@ export const DeleteButton = styled.button`
   display: flex;
   align-items: center;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: none;
   border-radius: ${(p) => p.theme.radius.round};
   cursor: pointer;
 
   svg {
-    color: #1f242e;
+    color: ${(p) => p.theme.colors.deleteBtn};
 
     @media screen and (min-width: 768px) {
       width: 20px;
-      height: 60px;
+      height: 30px;
     }
   }
 `;
