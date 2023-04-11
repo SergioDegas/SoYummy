@@ -1,13 +1,13 @@
 import * as yup from "yup";
 
 export const schema = yup.object().shape({
-  image: yup.string(),
+  imageURL: yup.string(),
   title: yup.string().typeError("Write a string").required("Enter title"),
   description: yup
     .string()
     .typeError("Write a string")
     .required("Enter about recipe"),
-  cookingTime: yup.string(),
+  time: yup.string(),
   category: yup.string(),
   ingredients: yup
     .array()
@@ -20,5 +20,5 @@ export const schema = yup.object().shape({
       })
     )
     .required("Ingredients is required"),
-  preparation: yup.string().required("Preparation is required"),
+    instructions: yup.string().required("Preparation is required"),
 });

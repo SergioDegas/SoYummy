@@ -12,15 +12,15 @@ import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
 
 export const AddRecipeForm = () => {
-    const [image, setImage] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("Breakfast");
-    const [cookingTime, setCookingTime] = useState("30 min");
+    const [time, setTime] = useState("30 min");
     const [ingredients, setIngredients] = useState([
         { id: nanoid(), unitValue: "tbs", unitNumber: "", name: "" },
     ]);
-    const [preparation, setPreparation] = useState("");
+    const [instructions, setInstructions] = useState("");
 
     // validation errors
     const [errors, setErrors] = useState({});
@@ -29,26 +29,8 @@ export const AddRecipeForm = () => {
     };
     //
 
-    const onFileInputChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.addEventListener("load", (event) => {
-            const buffer = event.target.result;
-            const blob = new Blob([buffer], { type: file.type });
-            const url = URL.createObjectURL(blob);
-            setImage(url);
-        });
-        reader.readAsArrayBuffer(file);
-        
-
-        // const formData = new FormData();
-
-        // formData.append("image", event.target.files[0]);
-
-        // const imageFile = formData.get("image");
-        // const imageUrl = URL.createObjectURL(imageFile);
-
-        // setImage(imageUrl);
+    const onInputImageSet = (event) => {
+        setImageURL(event.target.files[0]);
     };
 
     const onTitleChange = (value) => {
@@ -62,7 +44,7 @@ export const AddRecipeForm = () => {
     };
 
     const onTimeSet = (value) => {
-        setCookingTime(value);
+        setTime(value);
     };
 
     const onCategorySet = (value) => {
@@ -98,32 +80,32 @@ export const AddRecipeForm = () => {
     };
 
     const onPreparationSet = (data) => {
-        setPreparation(data);
+        setInstructions(data);
         updateErrors("preparation");
     };
 
     // validation
     const initialValues = {
-        image,
+        imageURL,
         title,
         description,
-        cookingTime,
+        time,
         category,
         ingredients,
-        preparation,
+        instructions,
     };
 
     // submit data
     const navigate = useNavigate();
 
     const formData = new FormData();
-    formData.append("image", image);
+    formData.append("imageURL", imageURL);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
-    formData.append("cookingTime", cookingTime);
+    formData.append("time", time);
     formData.append("ingredients", JSON.stringify(ingredients));
-    formData.append("preparation", preparation);
+    formData.append("instructions", instructions);
 
     const dispatch = useDispatch();
     const error = useSelector(isError);
@@ -152,12 +134,11 @@ export const AddRecipeForm = () => {
         <AddRecipeSection>
             <Form onSubmit={handleSubmit}>
                 <RecipeDescrFields
-                    image={image}
                     title={title}
                     description={description}
-                    time={cookingTime}
+                    time={time}
                     category={category}
-                    onFileInputChange={onFileInputChange}
+                    onInputImageSet={onInputImageSet}
                     onTitleChange={onTitleChange}
                     onDescriptionChange={onDescriptionChange}
                     onTimeSet={onTimeSet}
@@ -176,7 +157,7 @@ export const AddRecipeForm = () => {
 
                 <RecipePreparation
                     onPreparationSet={onPreparationSet}
-                    preparation={preparation}
+                    instructions={instructions}
                     errors={errors}
                 />
                 <AddButton type="submit">Add</AddButton>

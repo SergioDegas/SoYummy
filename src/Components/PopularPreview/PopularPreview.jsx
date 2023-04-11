@@ -27,7 +27,7 @@ export const PopularRecipes = () => {
       <Title>Popular recipe</Title>
       {popularRecipes.length > 0 ? (
         <PopularList>
-          {popularRecipes.map(recipe =>  <PopularItem to={`/recipe/${recipe._id}`}>
+          {popularRecipes.map(recipe =>  <PopularItem to={`/recipe/${recipe._id}`} key={recipe._id}>
             <PopularImage src={recipe.preview || recipePhoto} alt="dish" />
             <div>
               <PopularSubtitle>{recipe.title}</PopularSubtitle>

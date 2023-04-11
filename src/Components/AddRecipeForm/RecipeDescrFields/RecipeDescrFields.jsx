@@ -29,10 +29,9 @@ import {
 export const RecipeDescrFields = ({
     title,
     description,
-    image,
     time,
     category,
-    onFileInputChange,
+    onInputImageSet,
     onTitleChange,
     onDescriptionChange,
     onTimeSet,
@@ -46,8 +45,23 @@ export const RecipeDescrFields = ({
         dispatch(fetchCategoryList());
     }, [dispatch]);
 
+    const [image, setImage] = useState("")
     const [timeIsActive, setTimeIsActive] = useState(false);
     const [categoryIsActive, setCategoryIsActive] = useState(false);
+
+    const onFileInputChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.addEventListener("load", (event) => {
+            const buffer = event.target.result;
+            const blob = new Blob([buffer], { type: file.type });
+            const url = URL.createObjectURL(blob);
+            setImage(url);
+        });
+        reader.readAsArrayBuffer(file);
+
+        onInputImageSet(event);
+    };
 
     const toggleTimeList = () => {
         setTimeIsActive(!timeIsActive);
@@ -69,7 +83,7 @@ export const RecipeDescrFields = ({
 
     return (
         <DescrWrap>
-            <FileInputWrap onChange={onFileInputChange}>
+            <FileInputWrap onChange={(event)=> onFileInputChange(event)}>
                 <label htmlFor="photo">
                     <Image>
                         <source srcSet={imageS} media="(max-width: 1439px)" />
