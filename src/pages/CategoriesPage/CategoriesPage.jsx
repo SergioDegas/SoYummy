@@ -14,6 +14,7 @@ import { CategoriesList } from "Components/CategoriesList/CategoriesList";
 
 import Container from "Components/Container/Container.styled";
 import { Section, WrapperTitle } from "./CategoriesPage.styled";
+import Loader from "Components/Loader/Loader";
 
 const CategoriesPage = () => {
     const dispatch = useDispatch();
@@ -33,11 +34,14 @@ const CategoriesPage = () => {
                     <WrapperTitle>
                         <PageTitle>Categories</PageTitle>
                     </WrapperTitle>
+
+                    {isLoading && !error && <Loader />}
+
                     {categoryList.length > 0 && !isLoading && !error && (
                         <CategoriesList categories={categoryList} />
                     )}
 
-                    <Suspense fallback={null}>
+                    <Suspense fallback={<Loader />}>
                         <Outlet />
                     </Suspense>
                 </Section>

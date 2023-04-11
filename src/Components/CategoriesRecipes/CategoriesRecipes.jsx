@@ -14,6 +14,7 @@ import { MainRecipesList } from "Components/MainRecipesList/MainRecipesList";
 import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
 
 import { Error, WrapperPagination } from "./CategoriesRecipes.styled";
+import Loader from "Components/Loader/Loader";
 
 const CategoriesRecipes = () => {
     const [page, setPage] = useState(1);
@@ -49,6 +50,7 @@ const CategoriesRecipes = () => {
 
     return (
         <>
+            {isLoading && !error && <Loader />}
             {recipes.length === 0 && !isLoading && !error && (
                 <Error>
                     We are sorry, but the recipes in the category you are

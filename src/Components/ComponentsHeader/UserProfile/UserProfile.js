@@ -16,36 +16,36 @@ import {
 
 export const UserProfile = ({ onClose, photoUrl, userName }) => {
   const [newName, setNewName] = useState(userName);
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(photoUrl);
 
   const uploadContent = (e) => {
     if (e.target.files[0]) {
-      setFile(e.target.files[0]);
+      const objectUrl = URL.createObjectURL(e.target.files[0]);
+
+      setFile(objectUrl);
     }
   };
 
   const handleChange = async () => {
     const formData = new FormData();
-    formData.append("image", file);
     formData.append("name", newName);
+    formData.append("image", file);
 
     try {
-      setUserData(formData);
+      await setUserData(formData);
     } catch (error) {
       console.log(error);
     }
   };
 
-
   return (
     <EditContainer>
-      <CircleImage style={{ backgroundImage: `url(${photoUrl})` }}>
+      <CircleImage style={{ backgroundImage: `url(${file})` }}>
         <AddPhotoButton>
           <AiOutlinePlus
             style={{
               width: "18px",
               height: "18px",
-               
             }}
           />
           <input type="file" accept="image/*" onChange={uploadContent} hidden />
@@ -67,7 +67,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
             style={{
               width: "24px",
               height: "24px",
-              color: `${({ theme }) => theme.colors.textPrimary}`
+              color: `${({ theme }) => theme.colors.textPrimary}`,
             }}
           />
         </InputIcon>

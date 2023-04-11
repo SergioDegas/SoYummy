@@ -113,9 +113,9 @@ export const RecipeDescrFields = ({
                     </DescrSelect>
                     {categoryIsActive && (
                         <CategoryList>
-                            {categoriesList.map((item) => (
+                            {categoriesList.map((item, index) => (
                                 <CategoryItem
-                                    key={item}
+                                    key={index}
                                     onClick={() => setCategory(item)}
                                 >
                                     {item}

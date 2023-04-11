@@ -1,66 +1,168 @@
-import { Formik, Form } from "formik";
-import { useDispatch } from "react-redux";
-import { register } from "redux/auth/operation";
-import { Page, SingUpForm, Title, Input, Button, Link, LinkContainer, Background, Img, Container } from "./RegisterPage.styled";
+import { useDispatch } from 'react-redux';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
+import {
+  FormAuth,
+  TitleForm,
+  BoxForForm,
+  BoxForField,
+  FormField,
+  Button,
+  Warning,
+  BoxForIcon,
+  EmailIcon,
+  NameIcon,
+  PassIcon,
+  Page,
+  Container,
+  Img,
+  Background,
+
+
+} from './RegisterPage.styled';
+import { register } from 'redux/auth/operation';
+import { Link } from 'react-router-dom';
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export const schemaRegValidation = yup.object().shape({
+  name: yup
+    .string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('This field is required'),
+  email: yup
+    .string()
+    .matches(emailRegex, 'Invalid email address, try again')
+    .required('This field is required'),
+  password: yup
+    .string()
+    .min(8, 'Your password is short')
+    .max(16, 'Your password is to long')
+    .required('This field is required'),
+});
+
+export const schemaLoginValidation = yup.object().shape({
+  email: yup
+    .string()
+    .matches(emailRegex, 'Invalid email address, try again')
+    .required('This field is required'),
+  password: yup
+    .string()
+    .min(6, 'Your password is short')
+    .max(16, 'Your password is to long')
+    .required('This field is required'),
+});
+
+const getColor = (
+  errors,
+  touched,
+  defaultColor = 'rgba(255, 255, 255, 0.8)'
+) => {
+  if (
+    errors === 'Your password is short' ||
+    errors === 'Your password is too long'
+  ) {
+    return '#F6C23E';
+  }
+  return touched ? (errors && '#E74A3B') || '#3CBC81' : defaultColor;
+};
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
-
-  const handleSubmit = e => {
-    const { name, email, password } = e;
+  const handleSubmit = (values, actions) => {
+    const authData = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    };
+    console.log(authData)
     dispatch(
-      register({
-        name: name,
-        email: email,
-        password: password,
-      })
-    )
-  }
+      register(authData));
+    actions.resetForm();
+  };
   return (
     <Page>
-      <div style={{height: 305}}>
+      <div style={{ height: 305 }}>
         <Container>
-          <Img/>
-          <SingUpForm>
-            <Title>Registration</Title>
-            <Formik
-              initialValues={{ name: '', email: '', password: '' }}
-              onSubmit={handleSubmit}
-            >
-              
-              <Form style={{ display: "flex", flexDirection: "column" }}>
-                <Input
-                    type='text'
-                    name='name'
-                    placeholder='Name'
+          <Img />
+             <Formik
+        initialValues={{name: '', email: '', password: ''}}
+        validationSchema={schemaRegValidation}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched }) => (
+          <FormAuth>
+            <TitleForm>Registration</TitleForm>
+            <BoxForForm>
+              <BoxForField>
+                <BoxForIcon>
+                  <NameIcon stroke={getColor(errors.name, touched.name)} />
+                </BoxForIcon>
+                <FormField
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  color={getColor(errors.name, touched.name)}
+                />
+                {errors.name && touched.name ? (
+                  <Warning color={getColor(errors.name, touched.name)}>
+                    {errors.name}
+                  </Warning>
+                ) : null}
+              </BoxForField>
+              <BoxForField>
+                <BoxForIcon>
+                  <EmailIcon
+                    stroke={getColor(errors.email, touched.email)}
                   />
-                  <Input
-                    type='email'
-                    name='email'
-                    placeholder='Email'
+                </BoxForIcon>
+                <FormField
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  color={getColor(errors.email, touched.email)}
+                />
+                {errors.email && touched.email ? (
+                  <Warning color={getColor(errors.email, touched.email)}>
+                    {errors.email}
+                  </Warning>
+                ) : null}
+              </BoxForField>
+              <BoxForField>
+                <BoxForIcon>
+                  <PassIcon
+                    stroke={getColor(errors.password, touched.password)}
                   />
-                  <Input
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                  />
-                  <Button
-                  type="submit"
-                  >Sign up
-                  </Button>
-                </Form>
+                </BoxForIcon>
+                <FormField
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  color={getColor(errors.password, touched.password)}
+                />
+                {errors.password && touched.password ? (
+                  <Warning
+                    color={getColor(errors.password, touched.password)}
+                  >
+                    {errors.password}
+                  </Warning>
+                ) : null}
+              </BoxForField>
+            </BoxForForm>
+            <Button type="submit">Sign up</Button>
+            <Link to="/signin" style={{color: "white", textDecoration: 'underline', marginLeft: "auto", marginRight: "auto"}}>Sign In</Link>
+
+          </FormAuth>
+        )}
               </Formik>
-              <LinkContainer>
-              <Link to='/signin'>Sign in</Link>
-              </LinkContainer>
-        </SingUpForm>
         </Container>
       </div>
-      <Background>
-      </Background>
+      <Background></Background>
     </Page>
-  )
+  );
 };
+
 
 export default RegisterPage;

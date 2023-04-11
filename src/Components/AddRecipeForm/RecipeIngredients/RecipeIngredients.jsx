@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getIngredientsList } from "../../../redux/ingredients/selectors";
+import { fetchIngredientsList } from "../../../redux/ingredients/operation";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { IoIosArrowDown } from "react-icons/io";
-import ingrList from "../../../db/ingredients.json";
 
 import {
   IngredientsWrap,
@@ -46,12 +48,16 @@ export const RecipeIngredients = ({
     new Array(ingredients.length).fill(false)
   );
 
-  const ingredientsBaseList = ingrList.map((item) => item.ttl);
-  const [ingredientsList, setIngredientsList] = useState();
-  setIngredientsList(ingredientsBaseList);
+  const dispatch = useDispatch();
+  const ingredientsList = useSelector(getIngredientsList).map(ingr => ingr.name);
 
+  useEffect(() => {
+    dispatch(fetchIngredientsList());
+  }, [dispatch]);
+
+  
   const [filteredIngredients, setFilteredIngredients] =
-    useState(ingredientsList);
+  useState(ingredientsList);
 
   const incrementCount = () => {
     incrementIngrList();
@@ -107,7 +113,7 @@ export const RecipeIngredients = ({
     updateIngr(index, "ingredient", value);
 
     setFilteredIngredients(
-      ingredientsList.filter((item) => item.includes(value))
+      ingredientsList.filter((item) => item.toLowerCase().includes(value.toLowerCase()))
     );
 
     updateErrors([`ingredients[${index}].ingredient`]);
