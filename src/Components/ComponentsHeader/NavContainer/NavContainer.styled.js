@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { GiEvilFork } from 'react-icons/gi';
 import { FiSearch } from 'react-icons/fi';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 export const LogoLink = styled(NavLink)`
   margin-right: auto;
@@ -44,6 +44,7 @@ export const NavLinksContainer = styled.ul`
 `;
 
 
+
 export const Link = styled(NavLink)`
   text-decoration: none;
   font-family: ${({ theme }) => theme.fonts.main};
@@ -63,10 +64,42 @@ export const Link = styled(NavLink)`
   &.active {
     color: ${({ theme }) => theme.colors.accent};
   }
+
+  ${({ theme }) => {
+    const location = useLocation();
+    if (location.pathname.includes("/recipe/")) {
+      return `
+        color: black;
+
+        :hover {
+          color: ${theme.colors.accent};
+        }
+        &.active {
+          color: ${theme.colors.accent};
+        }
+      `;
+    }
+  }}
 `;
+
 
 export const SearchIcon = styled(FiSearch)`
   color: ${({ theme }) => theme.colors.textPrimary};
   width: ${({ theme }) => `${theme.fontSizes.xll}px`};
-  height: ${({ theme }) => `${theme.fontSizes.xll}px`}; ;
+  height: ${({ theme }) => `${theme.fontSizes.xll}px`};
+  ${({ theme }) => {
+    const location = useLocation();
+    if (location.pathname.includes("/recipe/")) {
+      return `
+        color: black;
+
+        :hover {
+          color: ${theme.colors.accent};
+        }
+        &.active {
+          color: ${theme.colors.accent};
+        }
+      `;
+    }
+  }}
 `;
