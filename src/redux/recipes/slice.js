@@ -12,9 +12,6 @@ const initialState = {
 	recipes: [],
 	isLoading: false,
 	error: null,
-	currentPage: 1,
-	perPage: 5,
-
 };
 
 const handlePending = (state) => {
@@ -30,11 +27,6 @@ const ownRecipeSlice = createSlice({
 
 	name: 'recipes',
 	initialState,
-	reducers: {
-		setCurrentPage: (state, action) => {
-			state.currentPage = action.payload;
-		},
-	},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchRecipes.pending, handlePending)
