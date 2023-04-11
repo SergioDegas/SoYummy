@@ -22,33 +22,23 @@ export const PopularRecipes = () => {
     dispatch(fetchPopularRecipes());
   }, [dispatch]);
 
+  console.log(popularRecipes)
+
   return (
     <div>
       <Title>Popular recipe</Title>
       {popularRecipes.length > 0 ? (
         <PopularList>
-          <PopularItem to="/">
-            {/* По кліку на посилання потрібно переадресувати на сторінку 
-            з описом відповідного рецепту RecipePage" */}
-            <PopularImage src={recipePhoto} alt="dish" />
+          {popularRecipes.map(recipe =>  <PopularItem to={`/recipe/${recipe._id}`}>
+            <PopularImage src={recipe.preview || recipePhoto} alt="dish" />
             <div>
-              <PopularSubtitle>Banana Pancakes</PopularSubtitle>
+              <PopularSubtitle>{recipe.title}</PopularSubtitle>
               <PopularText>
-                In a bowl, mash the banana with a fork until it resembles a
-                thick purée...
+              {recipe.instructions}
               </PopularText>
             </div>
-          </PopularItem>
-          <PopularItem to="/">
-            <PopularImage src={recipePhoto} alt="dish" />
-            <div>
-              <PopularSubtitle>Banana Pancakes</PopularSubtitle>
-              <PopularText>
-                In a bowl, mash the banana with a fork until it resembles a
-                thick purée...
-              </PopularText>
-            </div>
-          </PopularItem>
+          </PopularItem>)}
+         
         </PopularList>
       ) : (
         <NotFound>No popular recipes yet</NotFound>

@@ -25,7 +25,7 @@ const ingredientsSlice = createSlice({
     [fetchIngredientsList.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.categories = action.payload;
+      state.ingredients = action.payload;
     },
     [fetchIngredientsList.rejected]: handleRejected,
   },

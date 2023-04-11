@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const Section = styled.section`  
+padding-top: 114px;
+padding-bottom: 100px;
+
+@media  screen and (min-width: 1440px) {
+  padding-top: 136px;
+  padding-bottom: 200px;
+}
+
+@media  screen and (min-width: 1440px) {
+  padding-top: 164px;
+}
+`;
+
 export const Title = styled.h2`
   font-weight: ${(p) => p.theme.fontWeights.semibold};
   font-size: 28px;
