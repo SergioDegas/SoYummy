@@ -1,5 +1,5 @@
-import toast from 'react-hot-toast';
-import Container from 'Components/Container/Container.styled';
+import toast from "react-hot-toast";
+import Container from "Components/Container/Container.styled";
 import {
   LogoContainer,
   LogoIcon,
@@ -28,16 +28,18 @@ import {
   EmailText,
   BenefitText,
   EmailForm,
-} from './Footer.Styled';
-import { useState } from 'react';
-import { useEffect } from 'react';
+  PolicyWrap,
+  StyledLink,
+} from "./Footer.Styled";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Footer = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   useEffect(() => {
-    if (email.trim() !== '') {
+    if (email.trim() !== "") {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
@@ -50,18 +52,18 @@ const Footer = () => {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (emailRegex.test(email)) {
-      toast.success('Email was successfully submitted!');
+      toast.success("Email was successfully submitted!");
       return;
     }
-    toast.error('Please enter a valid email!');
+    toast.error("Please enter a valid email!");
     //   axios.patch('http://localhost:4000/user/subscription', { email })
     // .then(response => {
     //   toast.success('Email was successfully asdasdasdasdas!');
@@ -90,7 +92,7 @@ const Footer = () => {
                 <BenefitsList>
                   <BenefitsItem>
                     <Dot>&#8226;</Dot>Database of recipes that can be
-                    replenished{' '}
+                    replenished{" "}
                   </BenefitsItem>
                   <BenefitsItem>
                     <Dot>&#8226;</Dot>Flexible search for desired and unwanted
@@ -165,6 +167,10 @@ const Footer = () => {
               </li>
             </SocialList>
           </Container>
+          <PolicyWrap style={{marginTop: '58px'}}>
+            <p>© 2023 All Rights Reserved.</p>
+            <StyledLink>Terms of Service</StyledLink>
+          </PolicyWrap>
         </FooterContainer>
       </>
     );
@@ -183,7 +189,7 @@ const Footer = () => {
               </TitleBox>
               <BenefitsList>
                 <BenefitsItem>
-                  <Dot>&#8226;</Dot>Database of recipes that can be replenished{' '}
+                  <Dot>&#8226;</Dot>Database of recipes that can be replenished{" "}
                 </BenefitsItem>
                 <BenefitsItem>
                   <Dot>&#8226;</Dot>Flexible search for desired and unwanted
@@ -250,6 +256,10 @@ const Footer = () => {
             </li>
           </SocialList>
         </Container>
+        <PolicyWrap>
+          <p>© 2023 All Rights Reserved.</p>
+          <StyledLink>Terms of Service</StyledLink>
+        </PolicyWrap>
       </FooterContainer>
     </>
   );

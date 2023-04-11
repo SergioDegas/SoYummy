@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const ListStyled = styled.ul`
+export const List = styled.ul`
     display: flex;
     flex-direction: column;
     gap: ${(p) => p.theme.space[1] * 7}px;
@@ -17,7 +17,7 @@ export const ListStyled = styled.ul`
     }
 `;
 
-export const ItemStyled = styled.li`
+export const Item = styled.li`
     flex-basis: 100%;
 
     @media (min-width: 768px) {
@@ -29,6 +29,6 @@ export const ItemStyled = styled.li`
     }
 `;
 
-export const LinkStyled = styled(Link)`
+export const LinkStyle = styled(Link)`
     outline-color: ${(p) => p.theme.colors.accent};
 `;

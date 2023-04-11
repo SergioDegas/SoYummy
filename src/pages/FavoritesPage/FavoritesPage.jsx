@@ -22,6 +22,9 @@ const FavoritesPage = () => {
     const [page, setPage] = useState(1);
 
     const dispatch = useDispatch();
+    const favoriteRecipesId = useSelector(
+        (state) => state.auth.user.favoriteRecipes
+    );
     const favoriteRecipes = useSelector(selectFavoriteRecipes);
     const totalItems = useSelector(selectTotalItems);
     const isLoading = useSelector(selectIsLoading);
@@ -30,8 +33,10 @@ const FavoritesPage = () => {
     const totalPages = Math.ceil(totalItems / 4);
 
     useEffect(() => {
-        dispatch(fetchFavoriteRecipesList({ limit: 4 }));
-    }, [dispatch]);
+        if (favoriteRecipesId) {
+            dispatch(fetchFavoriteRecipesList({ limit: 4 }));
+        }
+    }, [dispatch, favoriteRecipesId]);
 
     const deleteRecipeFromFavorites = (id) => {
         dispatch(addToFavoriteList({ recipeId: id }));

@@ -5,9 +5,9 @@ import { fetchRecipesByCategory } from "redux/categories/operations";
 
 import {
     selectCategoryRecipes,
-    selectCategoryTotalPages,
     selectError,
     selectIsLoading,
+    selectTotalPages,
 } from "redux/categories/selectors";
 
 import { MainRecipesList } from "Components/MainRecipesList/MainRecipesList";
@@ -23,7 +23,7 @@ const CategoriesRecipes = () => {
     const { categoryName: category } = useParams();
 
     const recipes = useSelector(selectCategoryRecipes);
-    const totalPages = useSelector(selectCategoryTotalPages);
+    const totalPages = useSelector(selectTotalPages);
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
 
