@@ -29,7 +29,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
   const handleChange = async () => {
     const formData = new FormData();
     formData.append("name", newName);
-    formData.append("avatar", file);
+    formData.append("image", file);
 
     try {
       await setUserData(formData);
