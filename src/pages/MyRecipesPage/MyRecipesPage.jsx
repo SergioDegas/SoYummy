@@ -37,7 +37,7 @@ const MyRecipesPage = () => {
                             recipes={recipes}
                             page="my"
 
-                            onDeleteOwnRecipe={removeOwnRecipe}
+                            onDelete={removeOwnRecipe}
                         />  
                     )}
                     {recipes.length === 0 && (
