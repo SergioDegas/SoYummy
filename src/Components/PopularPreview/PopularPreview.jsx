@@ -22,8 +22,6 @@ export const PopularRecipes = () => {
     dispatch(fetchPopularRecipes());
   }, [dispatch]);
 
-  console.log(popularRecipes)
-
   return (
     <div>
       <Title>Popular recipe</Title>
