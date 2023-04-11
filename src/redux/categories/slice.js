@@ -29,7 +29,8 @@ const fetchRecipesByCategoryFulfilledReducer = (state, action) => {
 };
 
 const fetchRecipesBySetFulfilledReducer = (state, action) => {
-    state.recipesSet = action.payload;
+    state.recipesSet.push(...action.payload.result);
+    state.totalPages = action.payload.totalPages;
 };
 
 const categoriesAnyPendingReducer = (state) => {
@@ -49,6 +50,11 @@ const categoriesAnyRejectedReducer = (state, action) => {
 const categoriesSlice = createSlice({
     name: "categories",
     initialState,
+    reducers: {
+        resetRecipesSet: (state) => {
+            state.recipesSet = [];
+        },
+    },
     extraReducers: (builder) =>
         builder
             .addCase(
@@ -71,4 +77,5 @@ const categoriesSlice = createSlice({
             ),
 });
 
+export const { resetRecipesSet } = categoriesSlice.actions;
 export const categoriesReducer = categoriesSlice.reducer;

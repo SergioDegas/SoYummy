@@ -30,11 +30,10 @@ export const fetchRecipesByCategory = createAsyncThunk(
 
 export const fetchRecipesBySet = createAsyncThunk(
     "recipes/fetchRecipesBySet",
-    async ({ page = 1 }, thunkAPI) => {
+    async (page = 1, thunkAPI) => {
         try {
             const { data } = await axios.get(`/recipes/main-page?page=${page}`);
-
-            return data.result;
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
