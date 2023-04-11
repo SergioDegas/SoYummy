@@ -76,14 +76,14 @@ export const DescrInput = styled.input`
   font-size: ${(p) => p.theme.fontSizes.s}px;
   line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
-  color: ${(p) => p.theme.colors.mainDark};
+  color: ${(p) => p.theme.colors.inputText};
   opacity: 0.5;
 
   ::placeholder {
     font-size: ${(p) => p.theme.fontSizes.s}px;
     line-height: ${(p) => p.theme.lineHeights.large};
     letter-spacing: -0.02em;
-    color: ${(p) => p.theme.colors.mainDark};
+    color: ${(p) => p.theme.colors.inputText};
     opacity: 1;
 
     @media screen and (min-width: 768px) {
@@ -121,7 +121,7 @@ export const DescrLabel = styled.div`
   font-size: ${(p) => p.theme.fontSizes.s}px;
   line-height: ${(p) => p.theme.lineHeights.large};
   letter-spacing: -0.02em;
-  color: ${(p) => p.theme.colors.mainDark};
+  color: ${(p) => p.theme.colors.inputText};
   opacity: 0.5;
 
   @media screen and (min-width: 768px) {
