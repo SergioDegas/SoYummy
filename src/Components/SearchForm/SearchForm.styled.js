@@ -15,10 +15,11 @@ export const SearchedForm = styled.form`
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
+
 `
 
 export const SearchInput = styled.input`
-width: 510px;
+width: 295px;
 height: 52px;
 position: relative;
 background: #FAFAFA;
@@ -28,13 +29,21 @@ padding-top: 17px;
 padding-right: 113px;
 padding-bottom: 17px;
 padding-left: 32px;
-margin-bottom: 147px;
+margin-bottom: 28px;
 ::placeholder {
     color: #BDBDBD;
   }
   &:not(:placeholder-shown) {
     color: #BDBDBD;
   }
+  @media (min-width: 768px) {
+    width: 362px;
+    height: 59px;
+    }
+    @media (min-width: 1440px) {
+    width: 510px;
+    height: 70px;
+    }
 `
 export const SearchBtn = styled.button`
 position: absolute;
@@ -58,4 +67,18 @@ color: #FAFAFA;
 &:hover {
     background-color: #8BAA36;
 }
+@media (min-width: 768px) {
+    width: 161px;
+    height: 59px;
+    top: 0;
+    left: 30%;
+    bottom: 0;
+    }
+    @media (min-width: 768px) {
+    width: 161px;
+    height: 70px;
+    top: 0;
+    left: 69%;
+    bottom: 0;
+    }
 `

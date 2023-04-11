@@ -1,1 +1,1 @@
-// export {default} from "./SearchedRecipesList";
+export {default} from "./SearchedRecipesList";

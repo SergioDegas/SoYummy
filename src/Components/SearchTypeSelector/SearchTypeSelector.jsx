@@ -1,20 +1,20 @@
 import React from "react";
+import { Wrapper, Label, SectionLabel } from "./SearchTypeSelector.styled";
 
 const SearchTypeSelector = ({ onSearchByChange, searchBy }) => {
   const handleSelectChange = (e) => {
     const searchBy = e.target.value;
     onSearchByChange(searchBy);
   };
-
   return (
-    <div>
-      <label htmlFor="searchBy">Search by:</label>
-      <select id="searchBy" name="searchBy" value={searchBy} onChange={handleSelectChange}>
+    <Wrapper>
+      <Label htmlFor="searchBy">Search by:</Label>
+      <SectionLabel id="searchBy" name="searchBy" value={searchBy} onChange={handleSelectChange}>
         <option value="name">title</option>
         <option value="ingredient">Ingredient</option>
         <option value="family">Family</option>
-      </select>
-    </div>
+      </SectionLabel>
+    </Wrapper>
   );
 };
 
