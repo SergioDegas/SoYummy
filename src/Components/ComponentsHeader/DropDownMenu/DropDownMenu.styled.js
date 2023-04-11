@@ -52,11 +52,12 @@ export const NavLinksContainer = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
   gap: ${({ theme }) => `${theme.space[4]}px`};
 `;
 
-const activeClassName = "active";
-export const Link = styled(NavLink).attrs({ activeClassName })`
+
+export const Link = styled(NavLink)`
   text-decoration: none;
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
@@ -72,7 +73,7 @@ export const Link = styled(NavLink).attrs({ activeClassName })`
   :hover {
     color: ${({ theme }) => theme.colors.accent};
   }
-  &.${activeClassName} {
+  &.active {
     color: ${({ theme }) => theme.colors.accent};
   }
 `;
@@ -112,6 +113,7 @@ export const ImageModal = styled.div`
   right: 0px;
  bottom:  0px; 
   filter: blur(2.5px);
+  z-index: -1;
 `;
 
 export const FrameSwitcher = styled.div`

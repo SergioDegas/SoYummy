@@ -1,94 +1,132 @@
-import { Toaster } from "react-hot-toast";
-import { ThemeProvider } from "styled-components";
+import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from 'styled-components';
 
-import { lazy, Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 
-import { refreshUser } from "redux/auth/operation";
-import { selectTheme } from "redux/theme/selectors";
+import { refreshUser } from 'redux/auth/operation';
+import { selectTheme } from 'redux/theme/selectors';
 
-import Layout from "Layout/SharedLayout";
+import Layout from 'Layout/SharedLayout/SharedLayout';
 
-import { useAuth } from "hooks";
+// import { useAuth } from 'hooks';
 
-import { GlobalStyle } from "Components/GlobalStyles";
-import { themeLight } from "themes/themeLight";
-import { themeDark } from "themes/themeDark";
+import { GlobalStyle } from 'Components/GlobalStyles';
+import { themeLight } from 'themes/themeLight';
+import { themeDark } from 'themes/themeDark';
+import { RestrictedRoute } from 'Components/RestrictedRoute';
+import { PrivateRoute } from 'Components/PrivateRoute';
 
-const WelcomePage = lazy(() => import("pages/WellcomePage/"));
-const SignUpPage = lazy(() => import("pages/SingUpPage"));
-const LoginPage = lazy(() => import("pages/LoginPage"));
+const WelcomePage = lazy(() => import('pages/WellcomePage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
 
-const MainPage = lazy(() => import("pages/MainPage"));
-const CategoriesPage = lazy(() => import("pages/CategoriesPage"));
-const AddRecipePage = lazy(() => import("pages/AddRecipePage/AddRecipePage"));
-const FavoritesPage = lazy(() => import("pages/FavoritesPage"));
-const RecipePage = lazy(() => import("pages/RecipePage"));
-const MyRecipesPage = lazy(() => import("pages/MyRecipesPage"));
-const ShoppingPage = lazy(() => import("pages/ShoppingPage"));
-const NotFoundPage = lazy(() => import("pages/NotFoundPage"));
-const SearchPage = lazy(() => import("pages/SearchPage"));
+const MainPage = lazy(() => import('pages/MainPage'));
+const CategoriesPage = lazy(() => import('pages/CategoriesPage'));
+const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'));
+const FavoritesPage = lazy(() => import('pages/FavoritesPage'));
+const RecipePage = lazy(() => import('pages/RecipePage'));
+const MyRecipesPage = lazy(() => import('pages/MyRecipesPage'));
+const ShoppingPage = lazy(() => import('pages/ShoppingPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const SearchPage = lazy(() => import('pages/SearchPage'));
 const CategoriesRecipes = lazy(() =>
-    import("Components/CategoriesRecipes/CategoriesRecipes")
+  import('Components/CategoriesRecipes/CategoriesRecipes')
 );
 
 export const App = () => {
-    const dispatch = useDispatch();
-    const { isLoggedIn } = useAuth();
+  const dispatch = useDispatch();
+  // const { isLoggedIn } = useAuth();
 
-    const theme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme);
 
-    useEffect(() => {
-        dispatch(refreshUser());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-    return (
-        <ThemeProvider theme={theme ? themeLight : themeDark}>
-            {!isLoggedIn ? (
-                <Suspense>
-                    <Routes>
-                        <Route index element={<WelcomePage />} />
-                        <Route path="/register" element={<SignUpPage />} />
-                        <Route path="/signin" element={<LoginPage />} />
-                    </Routes>
-                </Suspense>
-            ) : (
-                <>
-                    <Routes>
-                        <Route path="/" element={<Layout />}>
-                            <Route path="/main" element={<MainPage />} />
-                            <Route
-                                path="/categories"
-                                element={<CategoriesPage />}
-                            >
-                                <Route
-                                    path=":categoryName"
-                                    element={<CategoriesRecipes />}
-                                />
-                            </Route>
-                            <Route path="/add" element={<AddRecipePage />} />
-                            <Route
-                                path="/favorite"
-                                element={<FavoritesPage />}
-                            />
-                            <Route
-                                path="/recipe/:recipeId"
-                                element={<RecipePage />}
-                            />
-                            <Route path="/my" element={<MyRecipesPage />} />
-                            <Route
-                                path="/shopping-list"
-                                element={<ShoppingPage />}
-                            />
-                            <Route path="/search" element={<SearchPage />} />
-                            <Route path="*" element={<NotFoundPage />} />
-                        </Route>
-                    </Routes>
-                    <Toaster position="top-right" />
-                </>
-            )}
-            <GlobalStyle />
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={theme ? themeLight : themeDark}>
+      <>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              path="/"
+              index
+              element={
+                <RestrictedRoute component={WelcomePage} redirectTo="/main" />
+              }
+            />
+            <Route
+              path="/main"
+              element={<PrivateRoute component={MainPage} redirectTo="/" />}
+            />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  component={RegisterPage}
+                  redirectTo="/main"
+                  replace={true}
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <RestrictedRoute
+                  component={LoginPage}
+                  redirectTo="/main"
+                  replace={true}
+                />
+              }
+            />
+            <Route
+              path="/categories"
+              element={
+                <PrivateRoute component={CategoriesPage} redirectTo="/" />
+              }
+            >
+              {/* TODO: CHECK PRIVACY */}
+              <Route path=":categoryName" element={<CategoriesRecipes />} />
+            </Route>
+            <Route
+              path="/add"
+              element={
+                <PrivateRoute component={AddRecipePage} redirectTo="/" />
+              }
+            />
+            <Route
+              path="/favorite"
+              element={
+                <PrivateRoute component={FavoritesPage} redirectTo="/" />
+              }
+            />
+            <Route
+              path="/recipe/:recipeId"
+              element={<PrivateRoute component={RecipePage} redirectTo="/" />}
+            />
+            <Route
+              path="/my"
+              element={
+                <PrivateRoute component={MyRecipesPage} redirectTo="/" />
+              }
+            />
+            <Route
+              path="/shopping-list"
+              element={<PrivateRoute component={ShoppingPage} redirectTo="/" />}
+            />
+            <Route
+              path="/search"
+              element={<PrivateRoute component={SearchPage} redirectTo="/" />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+        <Toaster position="top-right" />
+      </>
+
+      <GlobalStyle />
+    </ThemeProvider>
+  );
 };

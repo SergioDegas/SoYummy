@@ -36,6 +36,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
     }
   };
 
+
   return (
     <EditContainer>
       <CircleImage style={{ backgroundImage: `url(${photoUrl})` }}>

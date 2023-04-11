@@ -24,14 +24,12 @@ const fetchShoppingListFulfilledReducer = (state, action) => {
 };
 
 const updateShoppingListFulfilledReducer = (state, action) => {
-  //пофіксити додавання, як додавати якщо в action.payload не приходить об'єкт
-
-  //   if (action.payload.message === "Successfully added to shopping list") {
-  //     state.items.push();
-  //   }
+    if (action.payload.message === "Successfully added to shopping list") {
+      state.items.push(action.payload.addedIngredient);
+  }
   if (action.payload.message === "Successfully removed from shopping list") {
     const index = state.items.findIndex(
-      (item) => item.id === action.payload.id
+      (item) => item.id === action.payload.removedIngredientId
     );
     state.items.splice(index, 1);
   }

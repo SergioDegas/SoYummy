@@ -1,12 +1,11 @@
-import styled from "styled-components";
-import { GiEvilFork } from "react-icons/gi";
-import { FiSearch } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { GiEvilFork } from 'react-icons/gi';
+import { FiSearch } from 'react-icons/fi';
+import { NavLink } from 'react-router-dom';
 
 export const LogoLink = styled(NavLink)`
-margin-right: auto;
-
-`
+  margin-right: auto;
+`;
 export const LogoContainer = styled.div`
   width: ${({ theme }) => `${theme.fontSizes.xxxxl}px`};
   height: ${({ theme }) => `${theme.fontSizes.xxxxl}px`};
@@ -27,10 +26,10 @@ export const LogoContainer = styled.div`
 export const LogoIcon = styled(GiEvilFork)`
   width: ${({ theme }) => `${theme.fontSizes.xxxl}px`};
   height: ${({ theme }) => `${theme.fontSizes.xxxl}px`};
-  color: "inherit";
+  color: 'inherit';
 
   :hover {
-    color: "inherit";
+    color: 'inherit';
   }
 `;
 
@@ -44,8 +43,8 @@ export const NavLinksContainer = styled.ul`
   gap: 30px;
 `;
 
-const activeClassName = "active";
-export const Link = styled(NavLink).attrs({ activeClassName })`
+
+export const Link = styled(NavLink)`
   text-decoration: none;
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
@@ -61,7 +60,7 @@ export const Link = styled(NavLink).attrs({ activeClassName })`
   :hover {
     color: ${({ theme }) => theme.colors.accent};
   }
-  &.${activeClassName} {
+  &.active {
     color: ${({ theme }) => theme.colors.accent};
   }
 `;

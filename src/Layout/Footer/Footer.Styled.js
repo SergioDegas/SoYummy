@@ -1,11 +1,17 @@
-import styled from "styled-components";
-import { MdOutlineEmail } from "react-icons/md";
-import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from "react-icons/si";
-import { GiEvilFork } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { MdOutlineEmail } from 'react-icons/md';
+import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from 'react-icons/si';
+import { GiEvilFork } from 'react-icons/gi';
+import { NavLink } from 'react-router-dom';
+import bgRightSideM from 'images/bg-common/bg-right-mob.png';
+import bgRightSideT from 'images/bg-common/bg-right-tab.png';
+import bgRightSideD from 'images/bg-common/bg-right-desk.png';
+
 export const FooterContainer = styled.div`
   background-color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
   height: 435px;
+  margin-top: 0;
   width: 100%;
   @media (min-width: 768px) {
     height: 425px;
@@ -154,7 +160,7 @@ export const EmailForm = styled.form`
   @media (min-width: 768px) {
     display: flex;
     justify-content: center;
-    margin-top: 72px;
+    margin-top: 52px;
   }
   @media (min-width: 1440px) {
     display: block;
@@ -175,7 +181,7 @@ export const EmailTitle = styled.h2`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -189,7 +195,7 @@ export const EmailText = styled.p`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -286,8 +292,8 @@ export const EmailBtn = styled.button`
     color: ${({ theme }) => `${theme.colors.accent}`};
     background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
-  background-color: ${(props) => (props.disabled ? "grey" : "#8BAA36")};
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  background-color: ${(props) => (props.disabled ? 'grey' : '#8BAA36')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   &:disabled {
     opacity: 0.5;
   }
@@ -312,8 +318,10 @@ export const SocialList = styled.ul`
   gap: 16px;
   justify-content: center;
   margin-top: 44px;
+  margin-bottom: 12px;
   @media (min-width: 768px) {
     margin-top: 40px;
+    margin-bottom: 18px;
   }
 `;
 export const FacebookIcon = styled(SiFacebook)`
@@ -363,30 +371,7 @@ export const InstIcon = styled(SiInstagram)`
     color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
 `;
-export const Copyright = styled.p`
-  display: flex;
-  justify-content: center;
-  margin-top: 28px;
-  font-family: ${({ theme }) => `${theme.fonts.main}`};
-  font-style: normal;
-  font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
-  font-size: 10px;
-  line-height: ${({ theme }) => `${theme.lineHeights.single}`};
-  letter-spacing: -0.01em;
-  color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
-  opacity: 0.5;
-`;
-export const CopyrightText = styled.span`
-  margin-left: 14px;
-  font-family: ${({ theme }) => `${theme.fonts.main}`};
-  font-style: normal;
-  font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
-  font-size: 10px;
-  line-height: ${({ theme }) => `${theme.lineHeights.single}`};
-  letter-spacing: -0.01em;
-  color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
-  opacity: 0.5;
-`;
+
 export const Dot = styled.span`
   margin-right: 5px;
 `;
@@ -405,4 +390,38 @@ export const BenefitText = styled.span`
     display: block;
     text-indent: 13px;
   }
+`;
+
+export const PolicyWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 0;
+  color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+    background-image:  url(${bgRightSideM});
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom right;
+  @media (min-width: 768px) {
+    padding: 32px 0 46px 0;
+    background-image:  url(${bgRightSideT});
+    background-position:  bottom right;
+  }
+  @media (min-width: 1440px) {
+    padding: 50px 0;
+    background-image:  url(${bgRightSideD});
+    background-position:  bottom right;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
 `;

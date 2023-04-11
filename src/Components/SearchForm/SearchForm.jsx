@@ -1,34 +1,31 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { searchRecipes } from "../../redux/search/operation";
+import React from "react";
+import {
+  SearchInput,
+  SearchedForm,
+  SearchBtn,
+  SearchLabel,
+} from "./SearchForm.styled";
 
-const SearchForm = ({ searchBy }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const dispatch = useDispatch();
-
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(searchRecipes({ searchTerm, page: 1, limit: 8, searchBy }));
+const SearchForm = ({ onSubmit, onChange, searchTerm, searchBy }) => {
+  const handleChange = (e) => {
+    const { value } = e.target;
+    onChange(value, searchBy);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="searchTerm">{`Search by ${searchBy}`}</label>
-      <input
-        type="text"
-        id="searchTerm"
-        name="searchTerm"
-        value={searchTerm}
-        onChange={handleInputChange}
-        required
-      />
-      <button type="submit">Search</button>
-    </form>
+    <SearchedForm onSubmit={onSubmit}>
+      <SearchLabel>
+        <SearchInput
+          type="text"
+          id="searchTerm"
+          name="searchTerm"
+          value={searchTerm}
+          onChange={handleChange}
+          required
+        />
+        <SearchBtn type="submit">Search</SearchBtn>
+      </SearchLabel>
+    </SearchedForm>
   );
 };
 

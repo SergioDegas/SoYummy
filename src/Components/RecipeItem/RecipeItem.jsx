@@ -16,8 +16,8 @@ import {
 } from "./RecipeItem.styled";
 import notFound from "../../images/picture-not-found_300 .jpg";
 
-export const RecipeItem = ({ recipe, page, onDeleteOwnRecipe }) => {
-    const { thumb, title, description, time } = recipe;
+export const RecipeItem = ({ recipe, page, onDelete }) => {
+    const { _id, thumb, title, description, time } = recipe;
 
     const splitDescription = description.split("\n");
 
@@ -59,7 +59,7 @@ export const RecipeItem = ({ recipe, page, onDeleteOwnRecipe }) => {
                 <Text>{time} min</Text>
             </Wrapper>
             {page === "favorite" && (
-                <DeleteButtonFav type="button">
+                <DeleteButtonFav type="button" onClick={() => onDelete(_id)}>
                     <RiDeleteBinLine size={iconSize()} />
                 </DeleteButtonFav>
             )}
@@ -72,7 +72,7 @@ export const RecipeItem = ({ recipe, page, onDeleteOwnRecipe }) => {
 
             {page === "my" && (
                 <>
-                    <DeleteButtonMy type="button" onClick={onDeleteOwnRecipe}>
+                    <DeleteButtonMy type="button" onClick={() => onDelete(_id)}>
                         <RiDeleteBinLine size={iconSize()} />
                     </DeleteButtonMy>
                     <RecipeButtonMy type="button" onClick={handleSubmit}>
