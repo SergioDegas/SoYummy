@@ -19,9 +19,8 @@ const ShoppingPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
-
   useEffect(() => {
-    if (!shoppingList) {
+    if (shoppingList.length === 0) {
       dispatch(fetchShoppingList());
     }
   }, [dispatch, shoppingList]);
