@@ -42,7 +42,7 @@ export const NavContainer = () => {
               
                 to="/search"
               >
-                <SearchIcon /> Search
+                <SearchIcon /> 
               </Link>
             </li>
           </NavLinksContainer>

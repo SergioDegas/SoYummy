@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { GiEvilFork } from 'react-icons/gi';
 import { FiSearch } from 'react-icons/fi';
-import { NavLink, useLocation } from 'react-router-dom';
-
+import { NavLink, useLocation,  } from 'react-router-dom';
 export const LogoLink = styled(NavLink)`
   margin-right: auto;
 `;
@@ -88,7 +87,7 @@ export const SearchIcon = styled(FiSearch)`
   width: ${({ theme }) => `${theme.fontSizes.xll}px`};
   height: ${({ theme }) => `${theme.fontSizes.xll}px`};
   ${({ theme }) => {
-    const location = useLocation();
+     const location = useLocation();
     if (location.pathname.includes("/recipe/")) {
       return `
         color: black;
