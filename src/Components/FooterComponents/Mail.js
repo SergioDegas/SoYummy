@@ -9,6 +9,7 @@ import {
 } from "Layout/Footer/Footer.Styled";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { toast } from "react-hot-toast";
 
 export const Mail = () => {
   const [email, setEmail] = useState("");
@@ -22,24 +23,25 @@ export const Mail = () => {
   }, [email]);
 
  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    if (emailRegex.test(email)) {
-      toast.success("Email was successfully submitted!");
-    } else {toast.error("Please enter a valid email!")
-    return}
-   
+ const handleSubmit = (event) => {
+   event.preventDefault();
+   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+   if (emailRegex.test(email)) {
+     toast.success("Email was successfully submitted!");
+   } else {
+     toast.error("Please enter a valid email!");
+     return;
+   }
 
-      axios.patch('http://localhost:4000/subscribe', { inputEmail: email })
-    .then(response => {
-      toast.success('Email was successfully asdasdasdasdas!');
-    })
-    .catch(error => {
-      toast.error('Something went wrong. Please try again later!');
-    });
-
-  };
+   axios
+     .patch("/user/subscription", { inputEmail: email })
+     .then((response) => {
+       toast.success("Email was successfully asdasdasdasdas!");
+     })
+     .catch((error) => {
+       toast.error("Something went wrong. Please try again later!");
+     });
+ };
   const onChange = (event) => {
     setEmail(event.target.value);
   };
