@@ -7,29 +7,53 @@ export const EditContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 425px;
 
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
-  padding: 50px;
+
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 375px) {
+    width: 330px;
+    height: 327px;
+    padding: 24px;
+  }
+  @media (min-width: 768px) {
+    width: 480px;
+    height: 402px;
+  }
+  @media (min-width: 1440px) {
+    width: 500px;
+    height: 425px;
+    padding: 50px;
+  }
 `;
 
 export const CircleImage = styled.div`
   position: relative;
   margin-top: 10px;
-  width: 103px;
-  height: 103px;
+
   border-radius: 50%;
 
   background-size: cover;
   /* background-size: contain; */
   background-position: center;
+  @media (min-width: 375px) {
+    width: 88px;
+    height: 88px;
+  }
+  @media (min-width: 768px) {
+    width: 103px;
+    height: 103px;
+  }
+  @media (min-width: 1440px) {
+    width: 103px;
+    height: 103px;
+  }
 `;
 
 export const AddPhotoButton = styled.label`
@@ -90,8 +114,7 @@ export const Input = styled.input`
   padding: 8px 8px 8px 36px;
   border: 1px solid ${({ theme }) => theme.colors.textTitle};
   border-radius: 8px;
-  width: 400px;
-  height: 59px;
+  
   font-size: 14px;
   line-height: 21px;
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
@@ -116,23 +139,50 @@ export const Input = styled.input`
     order: 1;
     flex-grow: 0;
   }
+  @media (min-width: 375px) {
+    width: 282px;
+    height: 49px;
+  }
+  @media (min-width: 768px) {
+    width: 400px;
+    height: 59px;
+  }
+  @media (min-width: 1440px) {
+    width: 400px;
+    height: 60px;
+  }
 `;
 
 export const Button = styled.button`
   margin-top: 32px;
   padding: 21px 138px;
-  width: 400px;
-  height: 60px;
+  display: flex;
   border: none;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.accent};
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+
   line-height: 18px;
   color: ${({ theme }) => theme.colors.textWhite};
   cursor: pointer;
+  @media (min-width: 375px) {
+    width: 282px;
+    height: 49px;
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    width: 400px;
+    height: 59px;
+    font-size: 16px;
+  }
+  @media (min-width: 1440px) {
+    width: 400px;
+    height: 60px;
+  }
 `;
 export const ButtonClose = styled(AiOutlineClose)`
   position: absolute;

@@ -8,7 +8,6 @@ import {
 } from "./operation";
 
 const initialState = {
-
 	recipes: [],
 	isLoading: false,
 	error: null,
@@ -20,7 +19,7 @@ const handlePending = (state) => {
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
-  state.error = action.payoad;
+  state.error = action.payload;
 };
 
 const ownRecipeSlice = createSlice({

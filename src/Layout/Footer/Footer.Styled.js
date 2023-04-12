@@ -393,6 +393,7 @@ export const BenefitText = styled.span`
 `;
 
 export const PolicyWrap = styled.div`
+  margin-top: 58px;
   display: flex;
   justify-content: center;
   align-items: center;

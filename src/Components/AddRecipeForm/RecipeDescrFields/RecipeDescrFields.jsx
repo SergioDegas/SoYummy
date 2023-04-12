@@ -158,6 +158,7 @@ export const RecipeDescrFields = ({
                     )}
                 </SelectWrap>
             </InputWrap>
+            {errors.image && <Error>{errors.image}</Error>}
         </DescrWrap>
     );
 };
