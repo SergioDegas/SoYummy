@@ -19,8 +19,9 @@ import {
 export const Hero = () => {
   const { isMobileScreen } = useMedia();
     return (
-        <SectionHero>
+      <SectionHero>
           <Container>
+        
             <HeroTitle><HeroSpan>So</HeroSpan>Yummy</HeroTitle>
             {isMobileScreen && <HeroText>
               "What to cook?" is not only a recipe<br />
@@ -55,8 +56,10 @@ export const Hero = () => {
             }
               <RecipeSecondaryText>See recipes <RecipeSecondarySpan><RecipeIcon/></RecipeSecondarySpan></RecipeSecondaryText>
             </HeroRecipe>
+           
           </Container>
-        </SectionHero>
+          </SectionHero>
+      
       );
     }
 export default Hero;
