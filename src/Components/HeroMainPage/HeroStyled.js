@@ -82,6 +82,8 @@ margin-bottom: 14px;
     }
 @media (min-width: 1440px) {
   padding-top: 226px;
+font-size: 100px;
+line-height: 100px;
 }
 `
 
@@ -102,13 +104,17 @@ letter-spacing: -0.02em;
     text-align:start;
     margin-bottom: 32px;
     }
+  @media (min-width: 1440px){
+     font-size: 18px;
+    line-height: 24px;
+  
+  }
 
 `
 export const HeroForm = styled.form`
 position: relative;
 `
 export const HeroInput = styled.input`
-
 width: 295px;
 height: 52px;
 background: #FAFAFA;
@@ -210,6 +216,9 @@ margin-bottom: 7px;
    padding-left:12px;
    padding-right: 12px;
     }
+  @media (min-width:1440px) {
+   
+  }
 `
 export const RecipeIcon = styled(BsArrowRight)`
 color: #3E4462;
