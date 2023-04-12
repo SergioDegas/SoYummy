@@ -74,6 +74,7 @@ export const IngedientsMeasure = styled.span`
 
 export const Button = styled.button`
   background-color: transparent;
+    color: ${({ theme }) => `${theme.colors.iconClose}`};
   cursor: pointer;
   border: none;
   outline: none;
@@ -84,7 +85,7 @@ export const Button = styled.button`
 export const CloseIcon = styled(GrFormClose)`
   width: 18px;
   height: 18px;
-  color: ${({ theme }) => `${theme.colors.textSubTitle}`};
+fill: currentColor;
 
   @media (min-width: 768px) {
     width: 30px;

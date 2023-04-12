@@ -50,6 +50,7 @@ export const themeDark = {
 
         textWhite: "#FAFAFA",
         textPrimary: "#FAFAFA",
+        textSubtitle: "#23262A",
         textSecondary: "rgba(250, 250, 250, 0.6)",
         textTitle: "#FAFAFA",
         textSubTitle: "#FAFAFA",
@@ -64,9 +65,10 @@ export const themeDark = {
         inputText: "rgba(255, 255, 255, 0.8)",
         inputBackground: "#f5f5f5",
         measure: "rgba(255, 255, 255, 0.5)",
-        unit: "rgba(245, 245, 245, 0)",
-        counter: "#ffffff",
+    unit:"rgba(245, 245, 245, 0)",
+    counter:"#ffffff",
         deleteBtn: "#D9D9D9",
+    iconClose: "#FAFAFA",
     },
 
     radius: {
