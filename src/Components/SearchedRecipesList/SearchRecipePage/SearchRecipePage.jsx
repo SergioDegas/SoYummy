@@ -8,7 +8,7 @@ import {
 
 import notFound from "../../../images/picture-not-found_300 .jpg";
 
-export const SearchRecipePage = ({ recipe }) => {
+const SearchRecipePage = ({ recipe }) => {
     const { thumb, title } = recipe;
 
     return (
@@ -21,3 +21,4 @@ export const SearchRecipePage = ({ recipe }) => {
     );
 };
 
+export default SearchRecipePage;

@@ -16,7 +16,8 @@ const SearchForm = ({ onSubmit, onChange, searchTerm, searchBy }) => {
     <SearchedForm onSubmit={onSubmit}>
       <SearchLabel>
         <SearchInput
-          type="text"
+          type="search" 
+          placeholder="Search recipe..."
           id="searchTerm"
           name="searchTerm"
           value={searchTerm}

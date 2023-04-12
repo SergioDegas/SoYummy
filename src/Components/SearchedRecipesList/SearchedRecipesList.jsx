@@ -8,7 +8,6 @@ import { Item, LinkStyle, List } from "./SearchedRecipesList.styled";
 const SearchedRecipesList = () => {
     const location = useLocation();
     const recipes = useSelector(selectRecipes);
-    console.log("RecipesList", recipes);
     
    
     return (

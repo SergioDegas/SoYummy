@@ -32,3 +32,4 @@ export const Item = styled.li`
 export const LinkStyle = styled(Link)`
     outline-color: ${(p) => p.theme.colors.accent};
 `;
+
