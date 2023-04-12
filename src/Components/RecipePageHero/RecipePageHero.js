@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "redux/auth/selectors";
-import { getRecipes } from "redux/recipes/selectors";
+import { selectRecipes } from "redux/recipes/selectors";
 import Container from "../Container";
 
 import {
@@ -19,7 +19,7 @@ import { addToFavoriteList } from "redux/auth/operation";
 const RecipePageHero = ({ id, title, description, time }) => {
     const [favorite, setFavorite] = useState(false);
 
-    const ownRecipes = useSelector(getRecipes);
+    const ownRecipes = useSelector(selectRecipes);
     const isOwnRecipe = ownRecipes.includes(id);
     const { favoriteRecipes } = useSelector(selectUser);
 
