@@ -10,8 +10,8 @@ import {
     EmailTitle,
 } from "Layout/Footer/Footer.Styled";
 import { useState, useEffect } from "react";
-import axios from 'axios';
-import { toast } from "react-hot-toast";
+
+
 
 export const Mail = () => {
     const [email, setEmail] = useState("");
