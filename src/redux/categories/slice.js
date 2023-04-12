@@ -15,7 +15,12 @@ const initialState = {
     error: null,
 };
 
-const extraActions = [fetchCategoryList, fetchRecipesByCategory];
+const extraActions = [
+    fetchCategoryList,
+    fetchRecipesByCategory,
+    fetchRecipesBySet,
+];
+
 const getActions = (type) =>
     isAnyOf(...extraActions.map((action) => action[type]));
 

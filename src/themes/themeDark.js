@@ -69,8 +69,6 @@ export const themeDark = {
     counter:"#ffffff",
         deleteBtn: "#D9D9D9",
     iconClose: "#FAFAFA",
-
-
     },
 
     radius: {
