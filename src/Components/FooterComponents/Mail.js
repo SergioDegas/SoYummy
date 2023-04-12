@@ -1,26 +1,29 @@
+import axios from "axios";
+import { toast } from "react-hot-toast";
 import {
-  EmailBox,
-  EmailBtn,
-  EmailForm,
-  EmailIcon,
-  EmailInput,
-  EmailText,
-  EmailTitle,
+    EmailBox,
+    EmailBtn,
+    EmailForm,
+    EmailIcon,
+    EmailInput,
+    EmailText,
+    EmailTitle,
 } from "Layout/Footer/Footer.Styled";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { toast } from "react-hot-toast";
 
 export const Mail = () => {
-  const [email, setEmail] = useState("");
-  const [isDisabled, setIsDisabled] = useState(true);
-  useEffect(() => {
-    if (email.trim() !== "") {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
-    }
-  }, [email]);
+    const [email, setEmail] = useState("");
+    const [isDisabled, setIsDisabled] = useState(true);
+    useEffect(() => {
+        if (email.trim() !== "") {
+            setIsDisabled(false);
+        } else {
+            setIsDisabled(true);
+        }
+    }, [email]);
+
 
  
  const handleSubmit = (event) => {
@@ -68,4 +71,5 @@ export const Mail = () => {
       </EmailForm>
     </>
   );
+
 };
