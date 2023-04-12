@@ -56,7 +56,7 @@ export const RecipeItem = ({ recipe, page, onDelete }) => {
                         )}
                     </div>
                 </div>
-                <Text>{time} min</Text>
+                <Text>{time}</Text>
             </Wrapper>
             {page === "favorite" && (
                 <DeleteButtonFav type="button" onClick={() => onDelete(_id)}>

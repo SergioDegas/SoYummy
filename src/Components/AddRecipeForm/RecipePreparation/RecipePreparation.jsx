@@ -3,7 +3,7 @@ import { FormSubtitle, RecipeText, Error } from "./RecipePreparation.styled";
 
 export const RecipePreparation = ({
   onPreparationSet,
-  instructions,
+  preparation,
   errors,
 }) => {
   const [text, setText] = useState("");
@@ -31,7 +31,7 @@ export const RecipePreparation = ({
         onChange={handleChange}
         value={text}
       ></RecipeText>
-      {errors.instructions && <Error>{errors.instructions}</Error>}
+      {errors.preparation && <Error>{errors.preparation}</Error>}
     </>
   );
 };
