@@ -9,6 +9,7 @@ import {
 } from "Layout/Footer/Footer.Styled";
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 export const Mail = () => {
   const [email, setEmail] = useState("");
@@ -27,16 +28,18 @@ export const Mail = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (emailRegex.test(email)) {
       toast.success("Email was successfully submitted!");
-      return;
-    }
-    toast.error("Please enter a valid email!");
-    //   axios.patch('http://localhost:4000/user/subscription', { email })
-    // .then(response => {
-    //   toast.success('Email was successfully asdasdasdasdas!');
-    // })
-    // .catch(error => {
-    //   toast.error('Something went wrong. Please try again later!');
-    // });
+    } else {toast.error("Please enter a valid email!")
+    return}
+   
+
+      axios.patch('http://localhost:4000/subscribe', { inputEmail: email })
+    .then(response => {
+      toast.success('Email was successfully asdasdasdasdas!');
+    })
+    .catch(error => {
+      toast.error('Something went wrong. Please try again later!');
+    });
+
   };
   const onChange = (event) => {
     setEmail(event.target.value);
