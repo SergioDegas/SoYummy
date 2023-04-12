@@ -64,7 +64,7 @@ export const SectionHeroDesc = styled.p`
   margin-bottom: 24px;
   font-size: 12px;
   line-height: 1.33;
-  color: ${({ theme }) => `${theme.colors.textPrimary}`};
+  color: ${({ theme }) => `${theme.colors.textSubtitle}`};
   @media (min-width: 768px) {
     max-width: 506px;
     font-size: 18px;
@@ -77,7 +77,7 @@ export const SectionHeroDesc = styled.p`
 
 export const SectionHeroBtn = styled.button`
   background-color: transparent;
-  color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
+  color: ${({ theme }) => `${theme.colors.textSubtitle}`};
   border-radius: 24px 44px;
   border: 1px solid ${({ theme }) => `${theme.colors.accent}`};
   padding: 10px 18px;

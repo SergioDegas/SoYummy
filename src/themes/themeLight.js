@@ -50,9 +50,10 @@ export const themeLight = {
 
     textWhite: "#FAFAFA",
     textPrimary: "#23262A",
+    textSubtitle: "#23262A",
     textSecondary: "#7E7E7E",
     textTitle: "#001833",
-    textSubTitle: "#3E4462",
+    textSubTitle: "#23262A",
     textGrey: "#BDBDBD",
     textDarckGrey: "#22252A",
 
@@ -66,7 +67,8 @@ export const themeLight = {
     measure: "#f5f5f5",
     unit:"#f5f5f5",
     counter:"rgba(51, 51, 51, 0.3)",
-    deleteBtn: "#1f242e"
+    deleteBtn: "#1f242e",
+    iconClose: "#333333",
   },
 
   radius: {
