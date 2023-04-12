@@ -10,17 +10,19 @@ import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
 import { RecipeIngredients } from "./RecipeIngredients/RecipeIngredients";
 import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
+// import recipeImg from "images/recipe-img.png"
 
+    
 export const AddRecipeForm = () => {
-    const [imageURL, setImageURL] = useState("");
+    const [image, setImage] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("Breakfast");
-    const [time, setTime] = useState("30 min");
+    const [cookingTime , setCookingTime ] = useState("30 min");
     const [ingredients, setIngredients] = useState([
         { id: nanoid(), unitValue: "tbs", unitNumber: "", name: "" },
     ]);
-    const [instructions, setInstructions] = useState("");
+    const [preparation , setPreparation ] = useState("");
 
     // validation errors
     const [errors, setErrors] = useState({});
@@ -30,7 +32,7 @@ export const AddRecipeForm = () => {
     //
 
     const onInputImageSet = (event) => {
-        setImageURL(event.target.files[0]);
+        setImage(event.target.files[0]);
     };
 
     const onTitleChange = (value) => {
@@ -44,7 +46,7 @@ export const AddRecipeForm = () => {
     };
 
     const onTimeSet = (value) => {
-        setTime(value);
+        setCookingTime(value);
     };
 
     const onCategorySet = (value) => {
@@ -79,33 +81,48 @@ export const AddRecipeForm = () => {
         });
     };
 
+    const updateIngredient = (index, value, id) =>{
+        setIngredients((prevState) => {
+            const newState = [...prevState];
+            newState[index].name = value;
+            newState[index].id = id;
+            return newState;
+        });
+    }
+
     const onPreparationSet = (data) => {
-        setInstructions(data);
+        setPreparation(data);
         updateErrors("preparation");
     };
 
+    const updatedIngredients = ingredients.map(ingredient => {
+        const { id, unitValue, unitNumber } = ingredient;
+        const measure = `${unitNumber} ${unitValue}`;
+        return { "measure": measure, "id": id};
+      });
+
     // validation
     const initialValues = {
-        imageURL,
+        image,
         title,
         description,
-        time,
+        cookingTime,
         category,
         ingredients,
-        instructions,
+        preparation,
     };
 
     // submit data
     const navigate = useNavigate();
 
     const formData = new FormData();
-    formData.append("image", imageURL);
+    formData.append("image", image);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
-    formData.append("time", time);
-    formData.append("ingredients", JSON.stringify(ingredients));
-    formData.append("instructions", instructions);
+    formData.append("time", cookingTime);
+    formData.append("ingredients", JSON.stringify(updatedIngredients));
+    formData.append("instructions", preparation);
 
     const dispatch = useDispatch();
     const error = useSelector(isError);
@@ -116,8 +133,8 @@ export const AddRecipeForm = () => {
             .validate(initialValues, { abortEarly: false })
             .then(() => {
                 dispatch(addRecipe(formData));
-                console.log(error);
-                if (!error) {
+                console.log(error)
+                if (error !== null) {
                     navigate("/my", { replace: true });
                 }
             })
@@ -136,7 +153,7 @@ export const AddRecipeForm = () => {
                 <RecipeDescrFields
                     title={title}
                     description={description}
-                    time={time}
+                    time={cookingTime}
                     category={category}
                     onInputImageSet={onInputImageSet}
                     onTitleChange={onTitleChange}
@@ -151,13 +168,14 @@ export const AddRecipeForm = () => {
                     decrementIngrList={decrementIngrList}
                     deleteIngr={deleteIngr}
                     updateIngr={updateIngr}
+                    updateIngredient={updateIngredient}
                     errors={errors}
                     updateErrors={updateErrors}
                 />
 
                 <RecipePreparation
                     onPreparationSet={onPreparationSet}
-                    instructions={instructions}
+                    preparation={preparation}
                     errors={errors}
                 />
                 <AddButton type="submit">Add</AddButton>

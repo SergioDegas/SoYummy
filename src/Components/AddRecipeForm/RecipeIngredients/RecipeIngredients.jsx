@@ -36,6 +36,7 @@ export const RecipeIngredients = ({
   decrementIngrList,
   deleteIngr,
   updateIngr,
+  updateIngredient,
   errors,
   updateErrors,
 }) => {
@@ -49,7 +50,7 @@ export const RecipeIngredients = ({
   );
 
   const dispatch = useDispatch();
-  const ingredientsList = useSelector(getIngredientsList).map(ingr => ingr.name);
+  const ingredientsList = useSelector(getIngredientsList);
 
   useEffect(() => {
     dispatch(fetchIngredientsList());
@@ -75,10 +76,6 @@ export const RecipeIngredients = ({
   const deleteItem = (itemId) => {
     deleteIngr(itemId);
     setCount((prevState) => prevState - 1);
-    localStorage.setItem(
-      "count",
-      setCount((prevState) => prevState + 1)
-    );
   };
 
   const toggleUnit = (index) => {
@@ -103,24 +100,24 @@ export const RecipeIngredients = ({
     updateErrors([`ingredients[${index}].unitNumber`]);
   };
 
-  const onInputChange = (index, value) => {
+  const onInputChange = (index, value, id) => {
     setIngrIsActive((prevState) => {
       const newState = [...prevState];
       newState[index] = true;
       return newState;
     });
 
-    updateIngr(index, "ingredient", value);
-
     setFilteredIngredients(
-      ingredientsList.filter((item) => item.toLowerCase().includes(value.toLowerCase()))
+      ingredientsList.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
     );
 
-    updateErrors([`ingredients[${index}].ingredient`]);
+    updateIngredient(index, value, id);
+
+    updateErrors([`ingredients[${index}].name`]);
   };
 
-  const setIngredient = (index, value) => {
-    updateIngr(index, "ingredient", value);
+  const setIngredient = (index, value, id) => {
+    updateIngredient(index, value, id);
 
     setIngrIsActive((prevState) => {
       const newState = [...prevState];
@@ -160,21 +157,21 @@ export const RecipeIngredients = ({
               <InputWrap>
                 <div>
                   <IngrInput
-                    value={ingredients[index].ingredient}
+                    value={ingredients[index].name}
                     onChange={(e) => onInputChange(index, e.target.value)}
                     onBlur={() => onInputFocusOut(index)}
                   />
-                  {errors[`ingredients[${index}].ingredient`] && (
-                    <Error>{errors[`ingredients[${index}].ingredient`]}</Error>
+                  {errors[`ingredients[${index}].name`] && (
+                    <Error>{errors[`ingredients[${index}].name`]}</Error>
                   )}
                   {ingrIsActive[index] && (
                     <IngrList>
                       {filteredIngredients.map((item) => (
                         <IngrItem
-                          key={item}
-                          onClick={() => setIngredient(index, item)}
+                          key={item.name}
+                          onClick={() => setIngredient(index, item.name, item._id )}
                         >
-                          {item}
+                          {item.name}
                         </IngrItem>
                       ))}
                     </IngrList>
