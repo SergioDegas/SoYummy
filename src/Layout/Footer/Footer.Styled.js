@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { MdOutlineEmail } from 'react-icons/md';
-import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from 'react-icons/si';
-import { GiEvilFork } from 'react-icons/gi';
-import { NavLink } from 'react-router-dom';
-import bgRightSideM from 'images/bg-common/bg-right-mob.png';
-import bgRightSideT from 'images/bg-common/bg-right-tab.png';
-import bgRightSideD from 'images/bg-common/bg-right-desk.png';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { MdOutlineEmail } from "react-icons/md";
+import { SiFacebook, SiYoutube, SiTwitter, SiInstagram } from "react-icons/si";
+import { GiEvilFork } from "react-icons/gi";
+import { NavLink } from "react-router-dom";
+import bgRightSideM from "images/bg-common/bg-right-mob.png";
+import bgRightSideT from "images/bg-common/bg-right-tab.png";
+import bgRightSideD from "images/bg-common/bg-right-desk.png";
 
 export const FooterContainer = styled.div`
   background-color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
@@ -181,7 +181,7 @@ export const EmailTitle = styled.h2`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -195,7 +195,7 @@ export const EmailText = styled.p`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -292,8 +292,8 @@ export const EmailBtn = styled.button`
     color: ${({ theme }) => `${theme.colors.accent}`};
     background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
   }
-  background-color: ${(props) => (props.disabled ? 'grey' : '#8BAA36')};
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  background-color: ${(props) => (props.disabled ? "grey" : "#8BAA36")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   &:disabled {
     opacity: 0.5;
   }
@@ -393,29 +393,29 @@ export const BenefitText = styled.span`
 `;
 
 export const PolicyWrap = styled.div`
-  margin-top: 58px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 14px;
   padding: 28px 0;
   color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: 500;
   font-size: 10px;
   line-height: 1;
-    background-image:  url(${bgRightSideM});
+  background-image: url(${bgRightSideM});
   background-repeat: no-repeat, no-repeat;
   background-position: bottom right;
   @media (min-width: 768px) {
     padding: 32px 0 46px 0;
-    background-image:  url(${bgRightSideT});
-    background-position:  bottom right;
+    background-image: url(${bgRightSideT});
+    background-position: bottom right;
   }
   @media (min-width: 1440px) {
     padding: 50px 0;
-    background-image:  url(${bgRightSideD});
-    background-position:  bottom right;
+    margin-top: 59px;
+    background-image: url(${bgRightSideD});
+    background-position: bottom right;
   }
 `;
 

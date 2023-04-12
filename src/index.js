@@ -6,14 +6,12 @@ import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { App } from "./Components/App/App";
-import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <BrowserRouter basename="/">
-                    <Toaster />
                     <App />
                 </BrowserRouter>
             </PersistGate>

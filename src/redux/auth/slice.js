@@ -40,7 +40,6 @@ const addFavoriteFulfilledReducer = (state, action) => {
     if (action.payload.message.includes("added")) {
         state.user.favoriteRecipes.unshift(action.payload.recipeId);
     }
-
     if (action.payload.message.includes("removed")) {
         const index = state.user.favoriteRecipes.findIndex(
             (recipe) => recipe._id === action.payload.recipeId
