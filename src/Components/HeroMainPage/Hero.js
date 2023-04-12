@@ -27,14 +27,6 @@ export const Hero = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   dispatch(searchRecipes(searchTerm));
-  //   setSearchTerm('');
-  //   
-  //   // redirect to search page
-  // };
-
   const handleSearch = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
@@ -48,8 +40,6 @@ export const Hero = () => {
     
   };
 
-
-  
   return (
     <SectionHero>
       <Container>
@@ -76,8 +66,6 @@ export const Hero = () => {
         )}
         <HeroForm onSubmit={handleSearch}>
           <HeroInput 
-          
-          value={searchTerm}
           onChange={handleChange}
           />
           <HeroBtn type="submit">Search</HeroBtn>
