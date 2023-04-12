@@ -3,9 +3,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchRecipes = createAsyncThunk(
     "user/own-recipes",
-    async (_, thunkAPI) => {
+    async ({page = 1, limit}, thunkAPI) => {
         try {
-            const { data } = await axios.get("user/own-recipes");
+            const { data } = await axios.get(`user/own-recipes?page=${page}&limit=${limit}`);
             console.log(data);
             return data.result;
         } catch (error) {
