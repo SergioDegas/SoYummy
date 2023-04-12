@@ -18,7 +18,7 @@ import DefaultIngredientsImg from "images/skeleton/ingredient-img.svg";
 import EmptyPageImgMob from "images/skeleton/vegetable-fruit-basket-mob.png";
 import EmptyPageImgTab from "images/skeleton/vegetable-fruit-basket-tab.png";
 
-const IngredientsShoppingList = ({shoppingList}) => {
+const IngredientsShoppingList = ({ shoppingList }) => {
   const dispatch = useDispatch();
   const { isMobileScreen } = useMedia();
 
@@ -64,7 +64,6 @@ const IngredientsShoppingList = ({shoppingList}) => {
           <ImgEmptyPageThumb>
             <Img src={isMobileScreen ? EmptyPageImgMob : EmptyPageImgTab} alt="Friut Basket" />
           </ImgEmptyPageThumb>
-
           <Text>You don't have any products in your shopping list yet...</Text>
         </>
       )}
