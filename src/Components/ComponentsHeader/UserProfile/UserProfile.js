@@ -37,6 +37,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
     } catch (error) {
       console.log(error);
     }
+     window.location.reload();
   };
 
   return (
@@ -74,7 +75,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
         </InputIcon>
         <IconPen />
       </InputContainer>
-      <Button onClick={handleChange}>Save changes</Button>
+      <Button type="submit" onClick={handleChange}>Save changes</Button>
       <ButtonClose onClick={onClose} />
     </EditContainer>
   );

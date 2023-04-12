@@ -4,8 +4,6 @@ export const LogOutContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 215px;
 
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
@@ -15,6 +13,18 @@ export const LogOutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 375px) {
+    width: 330px;
+    height: 179px;
+  }
+  @media (min-width: 768px) {
+    width: 480px;
+    height: 215px;
+  }
+  @media (min-width: 1440px) {
+    width: 500px;
+    height: 215px;
+  }
 `;
 export const LogOutText = styled.p`
   width: 288px;
@@ -40,8 +50,9 @@ export const LogOutButton = styled.div`
   align-items: center;
   padding: 21px 39px;
   gap: 8px;
-
+  color: ${({ theme }) => theme.colors.textTitle};
   background: ${({ theme }) => theme.colors.accent};
+
   border-radius: 6px;
 
   font-family: "Poppins";
@@ -54,7 +65,22 @@ export const LogOutButton = styled.div`
   align-items: center;
   text-align: center;
 
-  color: ${({ theme }) => theme.colors.textTitle};
+  @media (min-width: 375px) {
+    width: 137px;
+    height: 49px;
+  }
+  @media (min-width: 768px) {
+    width: 192px;
+    height: 59px;
+  }
+  @media (min-width: 1440px) {
+    width: 192px;
+    height: 59px;
+  }
+  &.Primary {
+    background: ${({ theme }) => theme.colors.backgroundButton};
+    color: ${({ theme }) => theme.colors.textPrimary};
+  }
 `;
 
 export const ButtonList = styled.div`
