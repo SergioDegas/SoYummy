@@ -28,16 +28,7 @@ export const ProfileImage = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
-  
-  &::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    /* background-color: gray; */
-
-    border-radius: 50%;
-  }
+  align-items: center;
 `;
 
 export const ProfileName = styled(Button)`
@@ -70,6 +61,18 @@ export const ProfileName = styled(Button)`
       `;
       }
     }}
+
+    @media (min-width: 1440px) {
+      ${({ theme }) => {
+        const location = useLocation();
+        if (location.pathname.includes("/main")) {
+          return `
+        color: black;
+
+      `;
+        }
+      }}
+    }
   }
 `;
 export const MenuHovered = styled(Menu)`

@@ -37,7 +37,6 @@ const refreshUserToggleReducer = (state) => {
 };
 
 const addFavoriteFulfilledReducer = (state, action) => {
-    console.log(action.payload);
     if (action.payload.message.includes("added")) {
         state.user.favoriteRecipes.unshift(action.payload.recipeId);
     }

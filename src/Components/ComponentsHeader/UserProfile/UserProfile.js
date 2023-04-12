@@ -13,12 +13,16 @@ import {
   InputContainer,
   InputIcon,
 } from "./UserProfile.styled";
+import Loader from "Components/Loader/Loader";
+import { useSelector } from "react-redux";
+import { selectError, selectIsLoading } from "redux/categories/selectors";
 
 export const UserProfile = ({ onClose, photoUrl, userName }) => {
   const [newName, setNewName] = useState(userName);
   const [avatar, setAvatar] = useState(photoUrl);
   const [file, setFile] = useState()
-
+  const isLoading = useSelector(selectIsLoading);
+   const error = useSelector(selectError);
   const uploadContent = (e) => {
     if (e.target.files[0]) {
       const objectUrl = URL.createObjectURL(e.target.files[0]);
@@ -34,9 +38,11 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
 
     try {
       await setUserData(formData);
+
     } catch (error) {
       console.log(error);
     }
+     window.location.reload();
   };
 
   return (
@@ -74,8 +80,11 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
         </InputIcon>
         <IconPen />
       </InputContainer>
-      <Button onClick={handleChange}>Save changes</Button>
+      <Button type="submit" onClick={handleChange}>
+        Save changes
+      </Button>
       <ButtonClose onClick={onClose} />
+      {isLoading && !error && <Loader />}
     </EditContainer>
   );
 };

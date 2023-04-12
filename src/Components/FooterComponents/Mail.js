@@ -7,7 +7,6 @@ import {
   EmailText,
   EmailTitle,
 } from "Layout/Footer/Footer.Styled";
-import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
@@ -22,7 +21,7 @@ export const Mail = () => {
     }
   }, [email]);
 
-  
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
