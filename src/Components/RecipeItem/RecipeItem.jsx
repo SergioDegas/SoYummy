@@ -40,6 +40,24 @@ export const RecipeItem = ({ recipe, page, onDelete }) => {
         navigate(`/recipe/${recipe._id}`);
     };
 
+    const timeConvert = (time) => {
+        const cookingTime = parseInt(time);
+        const hours = Math.floor(cookingTime / 60);
+        const minutes = cookingTime - hours * 60;
+
+        const timeLabel = hours > 1 ? "hours" : "hour";
+
+        if (hours && !minutes) {
+            return `${hours} ${timeLabel}`;
+        }
+
+        if (hours && minutes) {
+            return `${hours} ${timeLabel} ${minutes} min`;
+        }
+
+        return `${time}`;
+    };
+
     return (
         <Item>
             <Picture src={thumb ? thumb : notFound} alt={title} />
@@ -56,8 +74,9 @@ export const RecipeItem = ({ recipe, page, onDelete }) => {
                         )}
                     </div>
                 </div>
-                <Text>{time}</Text>
+                <Text>{timeConvert(time)}</Text>
             </Wrapper>
+
             {page === "favorite" && (
                 <DeleteButtonFav type="button" onClick={() => onDelete(_id)}>
                     <RiDeleteBinLine size={iconSize()} />

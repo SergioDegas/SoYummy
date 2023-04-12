@@ -2,7 +2,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchCategoryList = createAsyncThunk(
-    "recipes/fetchCategoryList",
+    "categories/fetchCategoryList",
     async (_, thunkAPI) => {
         try {
             const { data } = await axios.get(`/recipes/category-list`);
@@ -14,7 +14,7 @@ export const fetchCategoryList = createAsyncThunk(
 );
 
 export const fetchRecipesByCategory = createAsyncThunk(
-    "recipes/fetchRecipesByCategory",
+    "categories/fetchRecipesByCategory",
     async ({ category, page = 1 }, thunkAPI) => {
         try {
             const { data } = await axios.get(
@@ -29,7 +29,7 @@ export const fetchRecipesByCategory = createAsyncThunk(
 );
 
 export const fetchRecipesBySet = createAsyncThunk(
-    "recipes/fetchRecipesBySet",
+    "categories/fetchRecipesBySet",
     async (page = 1, thunkAPI) => {
         try {
             const { data } = await axios.get(`/recipes/main-page?page=${page}`);

@@ -8,14 +8,15 @@ import {
     selectRecipesSet,
     selectTotalPages,
 } from "redux/categories/selectors";
+import { resetRecipesSet } from "redux/categories/slice";
 
 import Hero from "Components/HeroMainPage/Hero";
 import { PreviewCategories } from "Components/PreviewCategories/PreviewCategories";
-import { WrapperPagination } from "Components/CategoriesRecipes/CategoriesRecipes.styled";
+import Loader from "Components/Loader/Loader";
 import { MainButton } from "Components/MainButton/MainButton";
 
+import { WrapperPagination } from "Components/CategoriesRecipes/CategoriesRecipes.styled";
 import { Section } from "./MainPage.styled";
-import { resetRecipesSet } from "redux/categories/slice";
 
 const MainPage = () => {
     const [page, setPage] = useState(1);
@@ -42,6 +43,8 @@ const MainPage = () => {
         <main>
             <Hero />
             <Section>
+                {isLoading && !error && <Loader />}
+
                 {recipes.length > 0 && !isLoading && !error && (
                     <PreviewCategories recipes={recipes} />
                 )}
