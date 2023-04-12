@@ -211,8 +211,11 @@ margin-bottom: 7px;
    padding-right: 12px;
     }
 `
-export const RecipeSecondaryText = styled.p`
-  font-family: 'Poppins';
+export const RecipeIcon = styled(BsArrowRight)`
+color: #3E4462;
+`
+export const RecipeSecondaryText = styled(NavLink)`
+ font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -224,9 +227,19 @@ export const RecipeSecondaryText = styled.p`
   letter-spacing: 0.2px;
   color: #3E4462;
   padding-bottom: 11px;
+  cursor: pointer;
+
+  &:hover {
+    color: green;
+
+    ${RecipeIcon} {
+      color: green;
+    }
+  }
+
   @media (min-width: 768px) {
     padding-bottom: 15px;
-    }
+  }
 `;
 export const RecipeSpan = styled.span`
 color: #8baa36;
@@ -237,7 +250,3 @@ export const RecipeSecondarySpan = styled(NavLink)`
   margin-left: 7px;
   padding-right: 13px;
 `;
-
-export const RecipeIcon = styled(BsArrowRight)`
-color: #3E4462;
-`
