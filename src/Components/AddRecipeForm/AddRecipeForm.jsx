@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addRecipe } from "../../redux/recipes/operation";
 import { isError, isLoading } from "../../redux/recipes/selectors";
+import { selectError } from "../../redux/recipes/selectors";
 import { nanoid } from "nanoid";
 import { schema } from "./schema";
 import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
