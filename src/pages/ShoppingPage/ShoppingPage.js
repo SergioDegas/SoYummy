@@ -8,6 +8,7 @@ import {
   selectIsLoading,
 } from "redux/shoppingList/selectors";
 import Container from "Components/Container";
+import Loader from "Components/Loader/Loader";
 import { PageTitle } from "Components/PageTitle/PageTitle";
 import IngredientsTitle from "Components/IngredientsTitle/IngredientsTitle";
 import IngredientsShoppingList from "Components/IngredientsShoppingList";
@@ -34,7 +35,7 @@ const ShoppingPage = () => {
         <Wrap>
           <IngredientsTitle title="Product" action="Remove" />
         </Wrap>
-        {isLoading && !error && <Info>Loading..</Info>}
+        {isLoading && !error && <Loader />}
         {error && <Info>{error}</Info>}
         {!isLoading && <IngredientsShoppingList shoppingList={shoppingList} />}
       </Container>

@@ -7,7 +7,7 @@ export const SectionShoppingList = styled.section`
     padding-top: 136px;
     padding-bottom: 200px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1440px) {
     padding-top: 164px;
     padding-bottom: 195px;
   }

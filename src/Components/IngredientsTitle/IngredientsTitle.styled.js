@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Title = styled.h2`
   font-family: "Poppins";
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  color: ${({ theme }) => `${theme.colors.textWhite}`};
   font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
   font-size: 10px;
   line-height: 1.5;
@@ -29,7 +29,7 @@ export const TitleWrap = styled.div`
 
 export const TitleText = styled.p`
   font-family: "Poppins";
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  color: ${({ theme }) => `${theme.colors.textWhite}`};
   font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
   font-size: 10px;
   line-height: 1.5;
