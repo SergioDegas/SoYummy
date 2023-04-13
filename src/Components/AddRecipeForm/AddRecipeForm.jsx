@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addRecipe } from "../../redux/recipes/operation";
-import { isError, isLoading } from "../../redux/recipes/selectors";
+import { selectLoading , selectError  } from "../../redux/recipes/selectors";
 import { nanoid } from "nanoid";
 import { schema } from "./schema";
 import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
@@ -128,8 +128,8 @@ export const AddRecipeForm = () => {
     formData.append("instructions", preparation);
 
     const dispatch = useDispatch();
-    const error = useSelector(isError);
-    const isLoad = useSelector(isLoading);
+    const error = useSelector(selectError);
+    const isLoad = useSelector(selectLoading );
 
     const handleSubmit = (e) => {
         e.preventDefault();
