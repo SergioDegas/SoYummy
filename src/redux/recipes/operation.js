@@ -6,8 +6,7 @@ export const fetchRecipes = createAsyncThunk(
     async ({page = 1, limit}, thunkAPI) => {
         try {
             const { data } = await axios.get(`user/own-recipes?page=${page}&limit=${limit}`);
-            console.log(data);
-            return data.result;
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
