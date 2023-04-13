@@ -55,7 +55,7 @@ const MyRecipesPage = () => {
 
                     {isLoading && !error && <Loader />}
 
-                    {recipes.length > 0 && !error && (
+                    {recipes.length > 0 && !error && !isLoading && (
                         <RecipesList
                             recipes={recipes}
                             page="my"
@@ -63,7 +63,7 @@ const MyRecipesPage = () => {
                         />
                     )}
 
-                    {recipes.length === 0 && (
+                    {recipes.length === 0 && !error && !isLoading && (
                         <Error>
                             We are sorry, but You do not have own recipes.
                         </Error>
