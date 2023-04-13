@@ -3,13 +3,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addRecipe } from "../../redux/recipes/operation";
-import { selectError } from "../../redux/recipes/selectors";
+import { selectLoading , selectError  } from "../../redux/recipes/selectors";
 import { nanoid } from "nanoid";
 import { schema } from "./schema";
 import { RecipeDescrFields } from "./RecipeDescrFields/RecipeDescrFields";
 import { RecipeIngredients } from "./RecipeIngredients/RecipeIngredients";
 import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
+import Loader from "Components/Loader/Loader";
+import { toast } from "react-hot-toast";
 // import recipeImg from "images/recipe-img.png"
 
     
@@ -33,6 +35,7 @@ export const AddRecipeForm = () => {
 
     const onInputImageSet = (event) => {
         setImage(event.target.files[0]);
+        updateErrors("image");
     };
 
     const onTitleChange = (value) => {
@@ -126,6 +129,7 @@ export const AddRecipeForm = () => {
 
     const dispatch = useDispatch();
     const error = useSelector(selectError);
+    const isLoad = useSelector(selectLoading );
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -133,10 +137,12 @@ export const AddRecipeForm = () => {
             .validate(initialValues, { abortEarly: false })
             .then(() => {
                 dispatch(addRecipe(formData));
-                console.log(error)
+                navigate("/my", { replace: true });
                 if (error !== null) {
-                    navigate("/my", { replace: true });
+                    toast.error("Something went wrong... Please, try again");
+                    return;
                 }
+                navigate("/my", { replace: true });
             })
             .catch((err) => {
                 const errors = err.inner.reduce(
@@ -180,6 +186,7 @@ export const AddRecipeForm = () => {
                 />
                 <AddButton type="submit">Add</AddButton>
             </Form>
+            {isLoad && <Loader/>}
         </AddRecipeSection>
     );
 };

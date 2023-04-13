@@ -95,7 +95,9 @@ export const RecipeDescrFields = ({
                 {image && (
                     <RecipeImage src={image} alt="recipeImage"></RecipeImage>
                 )}
+                 {errors.image && <Error>{errors.image}</Error>}
             </FileInputWrap>
+           
             <InputWrap>
                 <OneInputWrap>
                     <DescrInput
@@ -158,7 +160,6 @@ export const RecipeDescrFields = ({
                     )}
                 </SelectWrap>
             </InputWrap>
-            {errors.image && <Error>{errors.image}</Error>}
         </DescrWrap>
     );
 };
