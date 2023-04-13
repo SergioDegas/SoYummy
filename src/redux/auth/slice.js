@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
     register,
     logIn,
@@ -8,11 +8,18 @@ import {
 } from "./operation";
 
 const initialState = {
-    user: { name: null, email: null },
-    token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+  isLoading: false,
+  error: null
 };
+
+const extraActions = [register, logIn];
+
+const getActions = (type) =>
+    isAnyOf(...extraActions.map((action) => action[type]));
 
 const registerFulfilledReducer = (state, action) => {
     state.user = action.payload.user;
@@ -48,19 +55,38 @@ const addFavoriteFulfilledReducer = (state, action) => {
     }
 };
 
+const authAnyPendingReducer = (state) => {
+    state.isLoading = true;
+};
+
+const authAnyFullfilledReducer = (state) => {
+    state.isLoading = false;
+    state.error = null;
+};
+
+const authAnyRejectedReducer = (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+};
+
 const authSlice = createSlice({
     name: "auth",
     initialState,
     extraReducers: (builder) => {
-        builder
-            .addCase(register.fulfilled, registerFulfilledReducer)
-            .addCase(logIn.fulfilled, registerFulfilledReducer)
-            .addCase(logOut.fulfilled, logOutFulfilledReducer)
-            .addCase(addToFavoriteList.fulfilled, addFavoriteFulfilledReducer)
-            .addCase(refreshUser.pending, refreshUserToggleReducer)
-            .addCase(refreshUser.fulfilled, refreshUserFulfilledReducer)
-            .addCase(refreshUser.rejected, refreshUserToggleReducer);
+      builder
+        .addCase(register.fulfilled, registerFulfilledReducer)
+        .addCase(logIn.fulfilled, registerFulfilledReducer)
+        .addCase(logOut.fulfilled, logOutFulfilledReducer)
+        .addCase(addToFavoriteList.fulfilled, addFavoriteFulfilledReducer)
+        .addCase(refreshUser.pending, refreshUserToggleReducer)
+        .addCase(refreshUser.fulfilled, refreshUserFulfilledReducer)
+        .addCase(refreshUser.rejected, refreshUserToggleReducer)
+        .addMatcher(getActions("pending"), authAnyPendingReducer)
+        .addMatcher(getActions("rejected"), authAnyRejectedReducer)
+        .addMatcher(getActions("fulfilled"),authAnyFullfilledReducer
+        );
     },
 });
+
 
 export const authReducer = authSlice.reducer;

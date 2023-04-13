@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-hot-toast";
 
 axios.defaults.baseURL = "https://backend-x5bd.onrender.com";
 
@@ -21,6 +22,7 @@ export const register = createAsyncThunk(
             setAuthHeader(responce.data.token);
             return responce.data;
         } catch (e) {
+            toast.error("Email in use");
             return thunkAPI.rejectWithValue(e.message);
         }
     }
@@ -34,8 +36,9 @@ export const logIn = createAsyncThunk(
             setAuthHeader(responce.data.token);
             return responce.data;
         } catch (e) {
-            return thunkAPI.rejectWithValue(e.message);
-        }
+          toast.error("Email or password is wrong");
+          return thunkAPI.rejectWithValue(e.message);
+      }
     }
 );
 

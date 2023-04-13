@@ -9,7 +9,10 @@ import {
 
 export const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const handleLogout = () => dispatch(logOut());
+  const handleLogout = () => {
+    dispatch(logOut());
+    localStorage.clear();
+  }
 
   return (
     <LogOutContainer>
