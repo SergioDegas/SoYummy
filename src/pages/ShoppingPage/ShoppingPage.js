@@ -1,12 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchShoppingList } from "redux/shoppingList/operation";
-import {
-  selectShoppingList,
-  selectError,
-  selectIsLoading,
-} from "redux/shoppingList/selectors";
+import { selectError, selectIsLoading } from "redux/shoppingList/selectors";
 import Container from "Components/Container";
 import Loader from "Components/Loader/Loader";
 import { PageTitle } from "Components/PageTitle/PageTitle";
@@ -15,15 +11,17 @@ import IngredientsShoppingList from "Components/IngredientsShoppingList";
 import { SectionShoppingList, Wrap, Info } from "./ShoppingPage.styled";
 
 const ShoppingPage = () => {
-  const shoppingList = useSelector(selectShoppingList);
+  const isMountedRef = useRef(false);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (shoppingList.length === 0) {
+    if (!isMountedRef.current) {
       dispatch(fetchShoppingList());
+      isMountedRef.current = true;
     }
-  }, [dispatch, shoppingList]);
+  }, [dispatch, isMountedRef]);
 
   return (
     <SectionShoppingList>
@@ -36,7 +34,7 @@ const ShoppingPage = () => {
         </Wrap>
         {isLoading && !error && <Loader />}
         {error && <Info>{error}</Info>}
-        {!isLoading && <IngredientsShoppingList shoppingList={shoppingList} />}
+        {!isLoading && <IngredientsShoppingList />}
       </Container>
     </SectionShoppingList>
   );
