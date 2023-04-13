@@ -54,7 +54,7 @@ export const PictureThumb = styled.div`
         color: ${(p) => p.theme.colors.accent};
     }
 
-    @-webkit-keyframes shine {
+    @keyframes shine {
         100% {
             left: 125%;
         }

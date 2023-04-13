@@ -15,9 +15,12 @@ import Loader from "Components/Loader/Loader";
 import { RecipesList } from "Components/RecipesList/RecipesList";
 import Container from "Components/Container/Container.styled";
 import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
+import { StyledSquares } from "Components/StyledSquares/StyledSquares";
 
 import { Error, Section, Wrapper } from "./FavoritesPage.styled";
 import { WrapperPagination } from "Components/CategoriesRecipes/CategoriesRecipes.styled";
+
+const PAGE_LIMIT = 4;
 
 const FavoritesPage = () => {
     const [page, setPage] = useState(1);
@@ -31,13 +34,15 @@ const FavoritesPage = () => {
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
 
-    const totalPages = Math.ceil(totalItems / 4);
+    const totalPages = Math.ceil(totalItems / PAGE_LIMIT);
 
     useEffect(() => {
-        if (favoriteRecipesId) {
-            dispatch(fetchFavoriteRecipesList({ limit: 4 }));
+        if (favoriteRecipesId.length <= PAGE_LIMIT) {
+            setPage(1);
         }
-    }, [dispatch, favoriteRecipesId]);
+
+        dispatch(fetchFavoriteRecipesList({ page, limit: PAGE_LIMIT }));
+    }, [dispatch, page, favoriteRecipesId]);
 
     const deleteRecipeFromFavorites = (id) => {
         dispatch(addToFavoriteList({ recipeId: id }));
@@ -45,13 +50,14 @@ const FavoritesPage = () => {
 
     const pageChangeHandler = (page) => {
         setPage(page);
-        dispatch(fetchFavoriteRecipesList({ page, limit: 4 }));
     };
 
     return (
         <main>
             <Container>
                 <Section>
+                    <StyledSquares />
+
                     <Wrapper>
                         <PageTitle>Favorites</PageTitle>
                     </Wrapper>
