@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
@@ -20,6 +20,8 @@ import {
 } from './LoginPage.styled';
 import { logIn } from 'redux/auth/operation';
 import { Link } from 'react-router-dom';
+import { selectIsLoading } from 'redux/auth/selectors';
+import Loader from 'Components/Loader';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -30,8 +32,7 @@ export const schemaRegValidation = yup.object().shape({
     .required('This field is required'),
   password: yup
     .string()
-    .min(6, 'Your password is short')
-    .max(16, 'Your password is to long')
+    .min(3, 'Your password is short')
     .required('This field is required'),
 });
 
@@ -42,8 +43,7 @@ export const schemaLoginValidation = yup.object().shape({
     .required('This field is required'),
   password: yup
     .string()
-    .min(8, 'Your password is short')
-    .max(16, 'Your password is to long')
+    .min(3, 'Your password is short')
     .required('This field is required'),
 });
 
@@ -63,6 +63,7 @@ const getColor = (
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
   const handleSubmit = (values, actions) => {
     const authData = {
       email: values.email,
@@ -74,9 +75,11 @@ const LoginPage = () => {
   return (
     <Page>
       <div style={{ height: 305 }}>
-        <Container>
+        {isLoading && <Loader />}
+        {!isLoading && (
+          <Container>
           <Img />
-             <Formik
+          <Formik
         initialValues={{email: '', password: ''}}
         validationSchema={schemaRegValidation}
         onSubmit={handleSubmit}
@@ -130,6 +133,7 @@ const LoginPage = () => {
             )}
           </Formik>
         </Container>
+        )}
       </div>
       <Background></Background>
     </Page>
