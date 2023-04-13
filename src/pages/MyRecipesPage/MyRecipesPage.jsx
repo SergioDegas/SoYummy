@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchRecipes, removeRecipe } from "redux/recipes/operation";
 
-import { selectRecipes, selectError, selectLoading, } from "redux/recipes/selectors";
+import { selectRecipes, selectError, selectLoading, selectTotalItems} from "redux/recipes/selectors";
 
 import Container from "Components/Container/Container.styled";
 import { Wrapper, Section } from "pages/FavoritesPage/FavoritesPage.styled";
@@ -19,9 +19,10 @@ const MyRecipesPage = () => {
     const recipes = useSelector(selectRecipes);
     const error = useSelector(selectError);
     const isLoading = useSelector(selectLoading);
+    const totalItems = useSelector(selectTotalItems);
 
     const [page, setPage] = useState(1)
-    const totalPages = Math.ceil(recipes.length / 5);
+    const totalPages = Math.ceil(totalItems / 5);
 
 
     const dispatch = useDispatch();
