@@ -67,7 +67,6 @@ export const themeDark = {
         measure: "rgba(255, 255, 255, 0.5)",
     unit:"rgba(245, 245, 245, 0)",
     counter:"#ffffff",
-        deleteBtn: "#D9D9D9",
     iconClose: "#FAFAFA",
     },
 

@@ -65,7 +65,6 @@ export const themeLight = {
     measure: "#f5f5f5",
     unit:"#f5f5f5",
     counter:"rgba(51, 51, 51, 0.3)",
-    deleteBtn: "#1f242e",
     iconClose: "#333333",
   },
 

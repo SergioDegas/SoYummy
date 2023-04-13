@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getIngredientsList } from "../../../redux/ingredients/selectors";
 import { fetchIngredientsList } from "../../../redux/ingredients/operation";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { GrClose } from "react-icons/gr";
-import { IoIosArrowDown } from "react-icons/io";
+import { VscChromeClose } from "react-icons/vsc";
+import { IoIosArrowDown} from "react-icons/io";
 
 import {
   IngredientsWrap,
@@ -207,7 +207,7 @@ export const RecipeIngredients = ({
                 </IngrNumberLabel>
               </InputWrap>
               <DeleteButton type="button" onClick={() => deleteItem(item.id)}>
-                <GrClose />
+                <VscChromeClose size="20px"/>
               </DeleteButton>
             </IngredientItem>
           );
