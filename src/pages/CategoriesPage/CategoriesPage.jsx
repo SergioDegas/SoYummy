@@ -11,6 +11,7 @@ import { fetchCategoryList } from "redux/categories/operations";
 
 import { PageTitle } from "Components/PageTitle/PageTitle";
 import { CategoriesList } from "Components/CategoriesList/CategoriesList";
+import { StyledSquares } from "Components/StyledSquares/StyledSquares";
 
 import Container from "Components/Container/Container.styled";
 import { Section, WrapperTitle } from "./CategoriesPage.styled";
@@ -31,6 +32,8 @@ const CategoriesPage = () => {
         <main>
             <Container>
                 <Section>
+                    <StyledSquares />
+
                     <WrapperTitle>
                         <PageTitle>Categories</PageTitle>
                     </WrapperTitle>
