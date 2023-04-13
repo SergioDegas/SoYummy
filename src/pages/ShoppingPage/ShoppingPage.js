@@ -9,6 +9,7 @@ import { PageTitle } from "Components/PageTitle/PageTitle";
 import IngredientsTitle from "Components/IngredientsTitle/IngredientsTitle";
 import IngredientsShoppingList from "Components/IngredientsShoppingList";
 import { SectionShoppingList, Wrap, Info } from "./ShoppingPage.styled";
+import { StyledSquares } from "Components/StyledSquares/StyledSquares";
 
 const ShoppingPage = () => {
   const isMountedRef = useRef(false);
@@ -26,6 +27,8 @@ const ShoppingPage = () => {
   return (
     <SectionShoppingList>
       <Container>
+        <StyledSquares />
+
         <Wrap>
           <PageTitle children="Shopping list" />
         </Wrap>
