@@ -4,98 +4,80 @@ export const SquaresWrapper = styled.div`
   position: relative;
 `;
 
-export const LeftSquare = styled.div`
+const Square = styled.div`
   position: absolute;
   width: 8px;
   height: 8px;
-  top: -38px;
-  left: 112px;
 
-  background: ${(p) => p.theme.colors.squaresAccent};
   border-radius: 3px;
   transform: rotate(-25deg);
-
-  animation: pulse 3000ms infinite 1000ms;
+  animation: ping 1500ms ease-out infinite;
 
   @media (min-width: 768px) {
     width: 14px;
     height: 14px;
+  }
+
+  @keyframes ping {
+    0% {
+      transform: rotate(-25deg);
+      opacity: 1;
+    }
+
+    50% {
+      transform: rotate(-25deg) scale(1.5);
+      opacity: 0;
+    }
+
+    100% {
+      transform: rotate(-25deg);
+      opacity: 1;
+    }
+  }
+`;
+
+export const LeftSquare = styled(Square)`
+  top: -38px;
+  left: 112px;
+  background: ${(p) => p.theme.colors.squaresAccent};
+  animation-delay: 0;
+
+  @media (min-width: 768px) {
     top: -51px;
     left: 187px;
   }
 
   @media (min-width: 1440px) {
-    width: 14px;
-    height: 14px;
     top: -47px;
     left: 228px;
   }
-
-  @keyframes pulse {
-    0% {
-      transform: rotate(-25deg) scale(1);
-    }
-    50% {
-      transform: rotate(25deg) scale(1.25);
-    }
-    100% {
-      transform: rotate(-25deg) scale(1);
-    }
-  }
 `;
 
-export const RightSquare = styled.div`
+export const RightSquare = styled(Square)`
   position: absolute;
-  width: 8px;
-  height: 8px;
   top: -6px;
   right: 0;
-
   background: ${(p) => p.theme.colors.squaresAccent};
-  border-radius: 3px;
-  transform: rotate(-25deg);
-
-  animation: pulse 3000ms infinite 1000ms;
+  animation-delay: 250ms;
 
   @media (min-width: 768px) {
-    width: 14px;
-    height: 14px;
     top: -40px;
     right: -9px;
   }
 
   @media (min-width: 1440px) {
-    width: 14px;
-    height: 14px;
     top: -34px;
     right: 72px;
   }
-
-  @keyframes pulse {
-    0% {
-      transform: rotate(-25deg) scale(1);
-    }
-    50% {
-      transform: rotate(25deg) scale(1.25);
-    }
-    100% {
-      transform: rotate(-25deg) scale(1);
-    }
-  }
 `;
 
-export const CentralSquare = styled.div`
-  position: absolute;
+export const CentralSquare = styled(Square)`
   width: 6px;
   height: 6px;
   top: 27px;
   right: 104px;
-
   background: ${(p) => p.theme.colors.squares};
-  border-radius: 3px;
-  transform: rotate(-25deg);
-
-  animation: pulse 3000ms infinite 1000ms;
+  animation-delay: 500ms;
 
   @media (min-width: 768px) {
     width: 12px;
@@ -105,21 +87,7 @@ export const CentralSquare = styled.div`
   }
 
   @media (min-width: 1440px) {
-    width: 14px;
-    height: 14px;
     top: 36px;
     right: 518px;
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: rotate(-25deg) scale(1);
-    }
-    50% {
-      transform: rotate(25deg) scale(1.25);
-    }
-    100% {
-      transform: rotate(-25deg) scale(1);
-    }
   }
 `;
