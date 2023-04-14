@@ -33,8 +33,17 @@ const RecipePage = () => {
     getRecipe();
   }, [recipeId]);
 
-  const { _id, title, description, time, instructions, thumb, ingredients } =
-    recipe;
+  const {
+    _id,
+    title,
+    description,
+    time,
+    instructions,
+    thumb,
+    ingredients,
+    owner,
+    favorites
+  } = recipe;
 
   return (
     <>
@@ -44,6 +53,8 @@ const RecipePage = () => {
         description={description}
         time={time}
         id={_id}
+        owner={owner}
+        favorites={favorites}
       />
       <RecipeIngredientsList ingredients={ingredients} />
       <RecipePreparation description={instructions} foto={thumb} />

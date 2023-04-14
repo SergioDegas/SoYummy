@@ -36,7 +36,7 @@ export const Text = styled.p`
   margin-left: 14px;
   font-size: 12px;
   line-height: 1.33;
-  color: ${({ theme }) => `${theme.colors.mainDark}`};
+  color: ${({ theme }) => `${theme.colors.textSubTitle}`};
   @media (min-width: 768px) {
     font-size: 14px;
     line-height: 1.2;

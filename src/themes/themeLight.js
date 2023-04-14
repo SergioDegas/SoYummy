@@ -1,52 +1,58 @@
 export const themeLight = {
-    space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
 
-    fonts: {
-        main: "Poppins, sans-serif",
-    },
+  fonts: {
+    main: "Poppins, sans-serif",
+  },
 
-    fontSizes: {
-        xs: 8,
-        s: 14,
-        m: 16,
-        l: 18,
-        xl: 22,
-        xll: 24,
-        xxl: 28,
-        xxxl: 32,
-        xxxxl: 44,
-    },
+  fontSizes: {
+    xs: 8,
+    s: 14,
+    m: 16,
+    l: 18,
+    xl: 22,
+    xll: 24,
+    xxl: 28,
+    xxxl: 32,
+    xxxxl: 44,
+  },
 
-    fontWeights: {
-        regular: 400,
-        medium: 500,
-        semibold: 600,
-        bold: 700,
-    },
+  fontWeights: {
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+  },
 
-    lineHeights: {
-        single: 1,
-        regular: 1.33,
-        heading: 1.29,
-        large: 1.43,
-    },
+  lineHeights: {
+    single: 1,
+    regular: 1.33,
+    heading: 1.29,
+    large: 1.43,
+  },
 
-    colors: {
-        mainLight: "#ffffff",
-        mainDark: "rgba(0, 0, 0, 0.8)",
-        accent: "#8BAA36",
+  colors: {
+    mainLight: "#ffffff",
+    mainDark: "rgba(0, 0, 0, 0.8)",
+    accent: "#8BAA36",
 
-        backgroundPrimary: "#FAFAFA",
-        backgroundSecondary: "#22252A",
-        backgroundAccent: "#EBF3D4",
-        modal: "#EBF3D4",
-        backgroundButton: "#D9D9D9",
-        backgroundPagination: "#FAFAFA",
-        backgroundCard: "#ffffff",
+    FooterIcon:"#8BAA36",
+    backgroundHover:"#8BAA36",
+    footerTextColor:"#FAFAFA",
+    heroTextColor:"#3E4462",
+    titleColor: "#22252A",
+    backgroundPrimary: "#FAFAFA",
+    backgroundSecondary: "#22252A",
+    backgroundAccent: "#EBF3D4",
+    modal: "#EBF3D4",
+    backgroundButton: "#D9D9D9",
+    backgroundPagination: "#FAFAFA",
+    backgroundCard: "#ffffff",
+    backgroundCardIngredients: "#EBF3D4",
 
-        msgRed: "#E74A3B",
-        msgGreen: "#3CBC81",
-        msgOrange: "#F6C23E",
+    msgRed: "#E74A3B",
+    msgGreen: "#3CBC81",
+    msgOrange: "#F6C23E",
     textWhite: "#FAFAFA",
     textPrimary: "#23262A",
     textSubtitle: "#23262A",
@@ -56,28 +62,31 @@ export const themeLight = {
     textGrey: "#BDBDBD",
     textDarckGrey: "#22252A",
 
-        underline: "#e0e0e0",
-        pagination: "#656565",
-        errorMsg: "#000000",
-        paginationActive: "#EBF3D4",
+    underline: "#e0e0e0",
+    pagination: "#656565",
+    errorMsg: "#000000",
+    paginationActive: "#EBF3D4",
     inputText: "rgba(0, 0, 0, 0.8)",
     inputBackground: "rgba(217, 217, 217, 0.25)",
     measure: "#f5f5f5",
-    unit:"#f5f5f5",
-    counter:"rgba(51, 51, 51, 0.3)",
-    deleteBtn: "#1f242e",
+    unit: "#f5f5f5",
+    counter: "rgba(51, 51, 51, 0.3)",
     iconClose: "#333333",
+    iconBg: "transparent",
+
+    squaresAccent: "#8BAA36",
+    squares: "#22252A",
   },
 
-    radius: {
-        none: "0",
-        regular: "8px",
-        small: "6px",
-        round: "50%",
-    },
+  radius: {
+    none: "0",
+    regular: "8px",
+    small: "6px",
+    round: "50%",
+  },
 
-    shadows: {
-        simple: "0px 4px 48px rgba(0, 0, 0, 0.1)",
-        pagination: "0px 4px 4px rgba(135, 135, 135, 0.2)",
-    },
+  shadows: {
+    simple: "0px 4px 48px rgba(0, 0, 0, 0.1)",
+    pagination: "0px 4px 4px rgba(135, 135, 135, 0.2)",
+  },
 };

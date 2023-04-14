@@ -29,5 +29,10 @@ export const LinksList = styled.ul`
 export const LinkItem = styled.li`
   svg {
     color: ${(p) => p.theme.colors.accent};
+    transition: color 250ms linear;
+
+    :hover{
+      color: ${(p) => p.theme.colors.textTitle}
+    }
   }
 `;

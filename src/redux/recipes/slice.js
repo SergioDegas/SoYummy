@@ -11,6 +11,7 @@ const initialState = {
 	recipes: [],
 	isLoading: false,
 	error: null,
+	totalItems: 0,
 };
 
 const handlePending = (state) => {
@@ -32,7 +33,8 @@ const ownRecipeSlice = createSlice({
 			.addCase(fetchRecipes.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.error = null;
-				state.recipes = action.payload;
+				state.recipes = action.payload.result;
+				state.totalItems = action.payload.totalItems;
 			})
 			.addCase(fetchRecipes.rejected, handleRejected)
 

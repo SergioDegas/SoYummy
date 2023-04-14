@@ -20,5 +20,5 @@ export const schema = yup.object().shape({
       })
     )
     .required("Ingredients is required"),
-    preparation: yup.string().required("Preparation is required"),
+    preparation: yup.string().required("Enter recipe"),
 });

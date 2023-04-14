@@ -130,7 +130,7 @@ export const DescrLabel = styled.div`
 `;
 
 export const DescrSelect = styled.div`
-  width: 85px;
+  width: 120px;
   height: 43px;
   padding-bottom: 18px;
   display: flex;
@@ -150,7 +150,7 @@ export const DescrSelect = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 94px;
+    width: 140px;
     font-size: ${(p) => p.theme.fontSizes.s}px;
   }
 `;
@@ -208,7 +208,7 @@ export const CategoryItem = styled.li`
 `;
 
 export const TimeList = styled.ul`
-  width: 85px;
+  width: 98px;
   height: 144px;
   background-color: ${(p) => p.theme.colors.mainLight};
   position: absolute;
@@ -221,7 +221,7 @@ export const TimeList = styled.ul`
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    width: 93px;
+    width: 110px;
     height: 162px;
   }
 `;

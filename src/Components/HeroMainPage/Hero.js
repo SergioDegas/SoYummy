@@ -1,4 +1,9 @@
 import Container from "Components/Container/Container.styled";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { searchRecipes } from '../../redux/search/operation';
+
 import {
   SectionHero,
   HeroText,
@@ -18,6 +23,23 @@ import { useMedia } from "hooks";
 
 export const Hero = () => {
   const { isMobileScreen } = useMedia();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    setSearchTerm(event.target.value);
+
+    dispatch(searchRecipes({searchTerm, page: 1}));
+    navigate(`/search`);
+  };
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    
+  };
+
   return (
     <SectionHero>
       <Container>
@@ -42,8 +64,10 @@ export const Hero = () => {
             <br /> save them for the future.
           </HeroText>
         )}
-        <HeroForm>
-          <HeroInput type="search" placeholder="Search recipe..." />
+        <HeroForm onSubmit={handleSearch}>
+          <HeroInput 
+          onChange={handleChange}
+          />
           <HeroBtn type="submit">Search</HeroBtn>
         </HeroForm>
         <HeroRecipe>

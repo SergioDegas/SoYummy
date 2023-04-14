@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchRecipes, removeRecipe } from "redux/recipes/operation";
 
-import { selectRecipes, selectError, selectLoading, } from "redux/recipes/selectors";
+import {
+    selectRecipes,
+    selectError,
+    selectLoading,
+    selectTotalItems,
+} from "redux/recipes/selectors";
 
 import Container from "Components/Container/Container.styled";
 import { Wrapper, Section } from "pages/FavoritesPage/FavoritesPage.styled";
@@ -13,27 +18,26 @@ import { PageTitle } from "Components/PageTitle/PageTitle";
 import { WrapperPagination } from "Components/CategoriesRecipes/CategoriesRecipes.styled";
 import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
 import Loader from "Components/Loader/Loader";
-
+import { StyledSquares } from "Components/StyledSquares/StyledSquares";
 
 const MyRecipesPage = () => {
     const recipes = useSelector(selectRecipes);
     const error = useSelector(selectError);
     const isLoading = useSelector(selectLoading);
+    const totalItems = useSelector(selectTotalItems);
 
-    const [page, setPage] = useState(1)
-    const totalPages = Math.ceil(recipes.length / 5);
-
+    const [page, setPage] = useState(1);
+    const totalPages = Math.ceil(totalItems / 5);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchRecipes({page, limit: 5}));
-    }, [dispatch,page]);
+        dispatch(fetchRecipes({ page, limit: 5 }));
+    }, [dispatch, page]);
 
     const pageChangeHandler = (page) => {
-        setPage(page)
+        setPage(page);
     };
-
 
     const removeOwnRecipe = (id) => {
         dispatch(removeRecipe(id));
@@ -43,27 +47,29 @@ const MyRecipesPage = () => {
         <main>
             <Container>
                 <Section>
+                    <StyledSquares />
+
                     <Wrapper>
                         <PageTitle>My recipes</PageTitle>
                     </Wrapper>
 
-                    {isLoading && !error && <Loader/>}
+                    {isLoading && !error && <Loader />}
 
-                    {recipes.length > 0 && !error && (
+                    {recipes.length > 0 && !error && !isLoading && (
                         <RecipesList
                             recipes={recipes}
                             page="my"
                             onDelete={removeOwnRecipe}
-                        />  
+                        />
                     )}
 
-                    {recipes.length === 0 && (
+                    {recipes.length === 0 && !error && !isLoading && (
                         <Error>
                             We are sorry, but You do not have own recipes.
                         </Error>
                     )}
-                    
-                        {totalPages > 1 && !isLoading && !error && (
+
+                    {totalPages > 1 && !isLoading && !error && (
                         <WrapperPagination>
                             <CategoryPagePagination
                                 currentPage={page}
