@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-    selectFavoriteRecipes,
-    selectTotalItems,
+  selectFavoriteRecipes,
+  selectTotalItems,
 } from "redux/favorite/selectors";
 import { selectError, selectIsLoading } from "redux/categories/selectors";
 
@@ -23,75 +23,78 @@ import { WrapperPagination } from "Components/CategoriesRecipes/CategoriesRecipe
 const PAGE_LIMIT = 4;
 
 const FavoritesPage = () => {
-    const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
 
-    const dispatch = useDispatch();
-    const favoriteRecipesId = useSelector(
-        (state) => state.auth.user.favoriteRecipes
-    );
-    const favoriteRecipes = useSelector(selectFavoriteRecipes);
-    const totalItems = useSelector(selectTotalItems);
-    const isLoading = useSelector(selectIsLoading);
-    const error = useSelector(selectError);
+  const dispatch = useDispatch();
+  const favoriteRecipesId = useSelector(
+    (state) => state.auth.user.favoriteRecipes
+  );
+  const favoriteRecipes = useSelector(selectFavoriteRecipes);
+  const totalItems = useSelector(selectTotalItems);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
-    const totalPages = Math.ceil(totalItems / PAGE_LIMIT);
+  const totalPages = Math.ceil(totalItems / PAGE_LIMIT);
 
-    useEffect(() => {
-        if (favoriteRecipesId.length <= PAGE_LIMIT) {
-            setPage(1);
-        }
+  console.log(favoriteRecipesId);
 
-        dispatch(fetchFavoriteRecipesList({ page, limit: PAGE_LIMIT }));
-    }, [dispatch, page, favoriteRecipesId]);
+  useEffect(() => {
+    dispatch(fetchFavoriteRecipesList({ page, limit: PAGE_LIMIT }));
+  }, [dispatch, page]);
 
-    const deleteRecipeFromFavorites = (id) => {
-        dispatch(addToFavoriteList({ recipeId: id }));
-    };
+  useEffect(() => {
+    if (favoriteRecipesId && favoriteRecipesId.length <= PAGE_LIMIT) {
+      setPage(1);
+    }
+  }, [favoriteRecipesId]);
 
-    const pageChangeHandler = (page) => {
-        setPage(page);
-    };
+  const deleteRecipeFromFavorites = (id) => {
+    dispatch(addToFavoriteList({ recipeId: id }));
+  };
 
-    return (
-        <main>
-            <Container>
-                <Section>
-                    <StyledSquares />
+  const pageChangeHandler = (page) => {
+    setPage(page);
+  };
 
-                    <Wrapper>
-                        <PageTitle>Favorites</PageTitle>
-                    </Wrapper>
+  return (
+    <main>
+      <Container>
+        <Section>
+          <StyledSquares />
 
-                    {isLoading && !error && <Loader />}
+          <Wrapper>
+            <PageTitle>Favorites</PageTitle>
+          </Wrapper>
 
-                    {favoriteRecipes.length === 0 && !isLoading && !error && (
-                        <Error>
-                            We are sorry, but You do not have any favorite
-                            recipes yet.
-                        </Error>
-                    )}
+          {isLoading && !error && <Loader />}
 
-                    {favoriteRecipes.length > 0 && !error && !isLoading && (
-                        <RecipesList
-                            recipes={favoriteRecipes}
-                            page="favorite"
-                            onDelete={deleteRecipeFromFavorites}
-                        />
-                    )}
+          {favoriteRecipes.length === 0 && !isLoading && !error && (
+            <Error>
+              We are sorry, but You do not have any favorite recipes yet.
+            </Error>
+          )}
 
-                    {totalPages > 1 && !isLoading && !error && (
-                        <WrapperPagination>
-                            <CategoryPagePagination
-                                currentPage={page}
-                                totalPages={totalPages}
-                                onPageChange={(page) => pageChangeHandler(page)}
-                            />
-                        </WrapperPagination>
-                    )}
-                </Section>
-            </Container>
-        </main>
-    );
+          {favoriteRecipes.length > 0 && !error && !isLoading && (
+            <RecipesList
+              recipes={favoriteRecipes}
+              page="favorite"
+              onDelete={deleteRecipeFromFavorites}
+            />
+          )}
+
+          {totalPages > 1 && !isLoading && !error && (
+            <WrapperPagination>
+              <CategoryPagePagination
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={(page) => pageChangeHandler(page)}
+              />
+            </WrapperPagination>
+          )}
+        </Section>
+      </Container>
+    </main>
+  );
 };
 
 export default FavoritesPage;
