@@ -10,6 +10,7 @@ import {
   Input,
   InputContainer,
   InputIcon,
+  UserIcon,
 } from "./UserProfile.styled";
 import Loader from "Components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
@@ -96,13 +97,7 @@ export const UserProfile = ({ onClose, photoURL, userName, handleChange }) => {
         />
 
         <InputIcon>
-          <AiOutlineUser
-            style={{
-              width: "24px",
-              height: "24px",
-              color: `${({ theme }) => theme.colors.textPrimary}`,
-            }}
-          />
+          <UserIcon />
         </InputIcon>
         <IconPen />
       </InputContainer>
