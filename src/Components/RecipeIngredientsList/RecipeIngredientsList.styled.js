@@ -25,9 +25,10 @@ export const IngedientsList = styled.ul`
 export const IngedientsItem = styled.li`
   display: flex;
   width: 100%;
-  background-color: ${({ theme }) => `${theme.colors.backgroundAccent}`};
+  background-color: ${({ theme }) => `${theme.colors.backgroundCardIngredients}`};
   padding: 14px 29px 14px 14px;
   justify-content: space-between;
+  border-radius: 8px;
   @media (min-width: 768px) {
     padding: 33px 58px 33px 40px;
   }
@@ -125,6 +126,7 @@ export const IngedientsCheck = styled.input`
 
 export const CheckBoxLabel = styled.label`
   display: flex;
+  cursor: pointer;
   ${IngedientsCheck}:checked + ${CheckBoxWrap} {
     color: ${({ theme }) => `${theme.colors.accent}`};
   }

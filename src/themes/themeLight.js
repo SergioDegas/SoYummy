@@ -43,6 +43,7 @@ export const themeLight = {
     backgroundButton: "#D9D9D9",
     backgroundPagination: "#FAFAFA",
     backgroundCard: "#ffffff",
+    backgroundCardIngredients: "#EBF3D4",
 
     msgRed: "#E74A3B",
     msgGreen: "#3CBC81",
@@ -63,9 +64,10 @@ export const themeLight = {
     inputText: "rgba(0, 0, 0, 0.8)",
     inputBackground: "rgba(217, 217, 217, 0.25)",
     measure: "#f5f5f5",
-    unit:"#f5f5f5",
-    counter:"rgba(51, 51, 51, 0.3)",
+    unit: "#f5f5f5",
+    counter: "rgba(51, 51, 51, 0.3)",
     iconClose: "#333333",
+    iconBg: "transparent",
 
     squaresAccent: "#8BAA36",
     squares: "#22252A",

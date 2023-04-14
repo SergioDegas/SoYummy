@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GrFormClose } from "react-icons/gr";
+import { GrClose } from "react-icons/gr";
 
 export const IngedientsItem = styled.li`
   display: flex;
@@ -22,7 +22,8 @@ export const IngedientsImgThumb = styled.div`
   height: 60px;
   padding: 6px;
   margin-right: 10px;
-  background-color: ${({ theme }) => `${theme.colors.backgroundAccent}`};
+  background-color: ${({ theme }) =>
+    `${theme.colors.backgroundCardIngredients}`};
   border-radius: 6px;
   @media (min-width: 768px) {
     width: 93px;
@@ -73,8 +74,13 @@ export const IngedientsMeasure = styled.span`
 `;
 
 export const Button = styled.button`
-  background-color: transparent;
-    color: ${({ theme }) => `${theme.colors.iconClose}`};
+  background-color: ${({ theme }) => `${theme.colors.iconBg}`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 4px;
+  color: ${({ theme }) => `${theme.colors.iconClose}`};
   cursor: pointer;
   border: none;
   outline: none;
@@ -82,14 +88,14 @@ export const Button = styled.button`
   margin: 0;
 `;
 
-export const CloseIcon = styled(GrFormClose)`
+export const CloseIcon = styled(GrClose)`
   width: 18px;
   height: 18px;
-fill: currentColor;
+  fill: currentColor;
 
   @media (min-width: 768px) {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 `;
 
@@ -98,10 +104,10 @@ export const ImgEmptyPageThumb = styled.div`
   height: 133px;
   margin: 0 auto;
   margin-bottom: 24px;
-    @media (min-width: 768px) {
-  width: 350px;
-  height: 225px;
-  margin-bottom: 44px;
+  @media (min-width: 768px) {
+    width: 350px;
+    height: 225px;
+    margin-bottom: 44px;
   }
 `;
 
