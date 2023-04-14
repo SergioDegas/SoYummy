@@ -36,6 +36,11 @@ export const themeDark = {
     mainDark: "#000000",
     accent: "#8BAA36",
 
+    FooterIcon:"#FAFAFA",
+    backgroundHover:"#1E1F28",
+    footerTextColor:"#FAFAFA",
+    heroTextColor:"#FAFAFA",
+    titleColor: "#FAFAFA",
     backgroundPrimary: "#1E1F28",
     backgroundSecondary: "#8BAA36",
     backgroundAccent: "#1E1F28",

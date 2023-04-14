@@ -36,6 +36,11 @@ export const themeLight = {
     mainDark: "rgba(0, 0, 0, 0.8)",
     accent: "#8BAA36",
 
+    FooterIcon:"#8BAA36",
+    backgroundHover:"#8BAA36",
+    footerTextColor:"#FAFAFA",
+    heroTextColor:"#3E4462",
+    titleColor: "#22252A",
     backgroundPrimary: "#FAFAFA",
     backgroundSecondary: "#22252A",
     backgroundAccent: "#EBF3D4",

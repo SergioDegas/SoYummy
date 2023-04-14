@@ -26,25 +26,23 @@ export const Mail = () => {
 
 
  
- const handleSubmit = (event) => {
-   event.preventDefault();
-   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-   if (emailRegex.test(email)) {
-     toast.success("Email was successfully submitted!");
-   } else {
-     toast.error("Please enter a valid email!");
-     return;
-   }
-
-   axios
-     .patch("/user/subscription", { inputEmail: email })
-     .then((response) => {
-       toast.success("Email was successfully asdasdasdasdas!");
-     })
-     .catch((error) => {
-       toast.error("Something went wrong. Please try again later!");
-     });
- };
+//  
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  if (emailRegex.test(email)) {
+    axios
+      .patch("/user/subscription", { inputEmail: email })
+      .then((response) => {
+        toast.success("Email was successfully submitted!");
+      })
+      .catch((error) => {
+        toast.error("Something went wrong. Please try again later!");
+      });
+  } else {
+    toast.error("Please enter a valid email!");
+  }
+};
   const onChange = (event) => {
     setEmail(event.target.value);
   };
