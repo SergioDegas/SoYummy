@@ -1,5 +1,3 @@
-import { setUserData } from "api";
-
 import { useState } from "react";
 import { AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import {
@@ -14,35 +12,63 @@ import {
   InputIcon,
 } from "./UserProfile.styled";
 import Loader from "Components/Loader/Loader";
-import { useSelector } from "react-redux";
-import { selectError, selectIsLoading } from "redux/categories/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { selectError, selectIsLoading } from "redux/user/selectors";
+import { updateUserData } from "redux/user/operation";
 
-export const UserProfile = ({ onClose, photoUrl, userName }) => {
+import { updateUserSuccess } from "redux/user/slice";
+
+export const UserProfile = ({ onClose, photoURL, userName, handleChange }) => {
+  const [avatar, setAvatar] = useState(photoURL);
+  const [file, setFile] = useState();
   const [newName, setNewName] = useState(userName);
-  const [avatar, setAvatar] = useState(photoUrl);
-  const [file, setFile] = useState()
+  const dispatch = useDispatch();
+
   const isLoading = useSelector(selectIsLoading);
-   const error = useSelector(selectError);
+  const error = useSelector(selectError);
+
   const uploadContent = (e) => {
     if (e.target.files[0]) {
       const objectUrl = URL.createObjectURL(e.target.files[0]);
       setAvatar(objectUrl);
-      setFile(e.target.files[0])
+      setFile(e.target.files[0]);
     }
   };
 
-  const handleChange = async () => {
+  const handleSubmit = async () => {
     const formData = new FormData();
-    formData.append("image", file);
-    formData.append("name", newName);
-
+    if (newName) {
+      formData.append("name", newName);
+    }
+    if (file) {
+      formData.append("image", file);
+    }
     try {
-      await setUserData(formData);
-
+      await dispatch(updateUserData(formData));
+      if (newName) {
+        dispatch(updateUserSuccess({ name: newName, avatarURL: avatar }));
+      }
+      if (file) {
+        dispatch(
+          updateUserSuccess({
+            name: newName,
+            avatarURL: URL.createObjectURL(file),
+          })
+        );
+      }
+      if (newName && file) {
+        dispatch(
+          updateUserSuccess({
+            name: newName,
+            avatarURL: URL.createObjectURL(file),
+          })
+        );
+      }
+      handleChange(formData);
+      onClose();
     } catch (error) {
       console.log(error);
     }
-     window.location.reload();
   };
 
   return (
@@ -80,7 +106,7 @@ export const UserProfile = ({ onClose, photoUrl, userName }) => {
         </InputIcon>
         <IconPen />
       </InputContainer>
-      <Button type="submit" onClick={handleChange}>
+      <Button type="submit" onClick={handleSubmit}>
         Save changes
       </Button>
       <ButtonClose onClick={onClose} />
