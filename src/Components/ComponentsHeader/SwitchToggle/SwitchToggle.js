@@ -19,7 +19,7 @@ const SwitchToggle = ({ isOn, handleToggle ,styles}) => {
     }, [theme]);
 
     const handleSwitch = () => {
-        setOn((prewState) => !prewState);
+        setOn((prevState) => !prevState);
         dispatch(toggleTheme());
     };
 

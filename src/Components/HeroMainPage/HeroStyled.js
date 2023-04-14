@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { BsArrowRight } from 'react-icons/bs';
 import bgMobX1 from "images/bg-MainHero/MainHero-bg-mobile1x.webp";
 import bgMobX2 from "images/bg-MainHero/MainHero-bg-mob-2x.webp";
@@ -16,25 +16,13 @@ import bgGreensDeskX2 from "images/bg-MainHero/MainHero-bg-greens-desktop-2x .we
 
 
 export const SectionHero = styled.section`
-width: 100%;
+  width: 100%;
   height: 777px;
   background-image: url(${bgGreensMobX1}), url(${bgMobX1});
   background-size: 55px auto, 375px auto;
   background-position: 0px 20px, 100% 58px;
   background-repeat: no-repeat;
   text-align: center;
-  /* &::before{
-  content: "";
-  position: absolute; 
-  top: 20px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(${bgGreensMobX1}); 
-  background-size: 55px auto;
-  background-repeat: no-repeat;
-  filter: blur(4.5px); 
-  } */
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
@@ -65,12 +53,12 @@ width: 100%;
 
 export const HeroTitle = styled.h1`
 padding-top: 132px;
-font-family: 'Poppins';
+font-family: ${({ theme }) => `${theme.fonts.main}`};
 font-style: normal;
-font-weight: 400;
+font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
 font-size: 60px;
 line-height: 60px;
-color: #22252a;
+color: ${({ theme }) => `${theme.colors.titleColor}`};
 text-align: center;
 letter-spacing: -0.005em;
 margin-bottom: 14px;
@@ -88,16 +76,17 @@ line-height: 100px;
 `
 
 export const HeroSpan = styled.span`
-color: #8BAA36;
+color: ${({ theme }) => `${theme.colors.accent}`};
 
 `
 export const HeroText = styled.p`
 margin-bottom: 364px;
-font-family: 'Poppins';
+color: ${({ theme }) => `${theme.colors.titleColor}`};
+font-family: ${({ theme }) => `${theme.fonts.main}`};
 font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 18px;
+font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+font-size: ${({ theme }) => `${theme.fontSizes.s}`};
+line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
 text-align: center;
 letter-spacing: -0.02em;
 @media (min-width: 768px) {
@@ -105,8 +94,8 @@ letter-spacing: -0.02em;
     margin-bottom: 32px;
     }
   @media (min-width: 1440px){
-     font-size: 18px;
-    line-height: 24px;
+     font-size:${({ theme }) => `${theme.fontSizes.l}`};
+    line-height: ${({ theme }) => `${theme.lineHeights.regular}`};
   
   }
 
@@ -117,7 +106,7 @@ position: relative;
 export const HeroInput = styled.input`
 width: 295px;
 height: 52px;
-background: #FAFAFA;
+background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
 border: 1px solid #F0F0F0;
 border-radius: 15px 50px;
 padding-top: 17px;
@@ -126,10 +115,10 @@ padding-bottom: 17px;
 padding-left: 32px;
 margin-bottom: 147px;
 ::placeholder {
-    color: #BDBDBD;
+    color: ${({ theme }) => `${theme.colors.textGrey}`};
   }
   &:not(:placeholder-shown) {
-    color: #BDBDBD;
+   color: ${({ theme }) => `${theme.colors.textGrey}`};
   }
   @media (min-width: 768px) {
     width: 362px;
@@ -150,17 +139,17 @@ background-color: #ccc;
 border: none;
 border-radius: 0 5px 5px 0;
 cursor: pointer;
-color: #fff;
+color: ${({ theme }) => `${theme.colors.mainLight}`};
 font-weight: bold;
-background: #22252A;
+background: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
 height:51px;
 border-radius: 15px 50px;
-font-family: 'Poppins';
+font-family: ${({ theme }) => `${theme.fonts.main}`};
 font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-color: #FAFAFA;
+font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+font-size: ${({ theme }) => `${theme.fontSizes.s}`};
+line-height: ${({ theme }) => `${theme.lineHeights.large}`};
+color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
 @media (min-width: 768px) {
     width: 161px;
     height: 59px;
@@ -168,11 +157,11 @@ color: #FAFAFA;
     left: 30%;
     bottom: 0;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 1440px) {
     width: 161px;
     height: 70px;
     top: 0;
-    left: 28%;
+    left: 29%;
     bottom: 0;
     }
 `
@@ -180,7 +169,7 @@ export const HeroRecipe = styled.div`
 width: 225px;
 height: 92px;
 border-radius:8px;
-background: #FAFAFA;
+background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
 position: absolute;
 top: 435px;
 right: 34px;
@@ -198,16 +187,16 @@ right: 34px;
   }
 `
 export const RecipeText = styled.p`
-font-family: 'Poppins';
+font-family: ${({ theme }) => `${theme.fonts.main}`};
 font-style: normal;
-font-weight: 500;
+font-weight: ${({ theme }) => `${theme.fontWeights.medium}`};
 font-size: 12px;
-line-height: 18px;
+line-height: ${({ theme }) => `${theme.lineHeights.large}`};
 letter-spacing: -0.24px;
 margin-left: auto;
 margin-right: auto;
 padding-top: 8px;
-color: #3E4462;
+color: ${({ theme }) => `${theme.colors.heroTextColor}`};
 margin-bottom: 7px;
 @media (min-width: 768px) {
    top: 45%;
@@ -221,20 +210,20 @@ margin-bottom: 7px;
   }
 `
 export const RecipeIcon = styled(BsArrowRight)`
-color: #3E4462;
+color: ${({ theme }) => `${theme.colors.heroTextColor}`};
 `
 export const RecipeSecondaryText = styled(NavLink)`
- font-family: 'Poppins';
+ font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
   font-size: 10px;
-  line-height: 12px;
+  line-height: 1.2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   text-align: center;
   letter-spacing: 0.2px;
-  color: #3E4462;
+  color: ${({ theme }) => `${theme.colors.heroTextColor}`};
   padding-bottom: 11px;
   cursor: pointer;
 
@@ -242,7 +231,7 @@ export const RecipeSecondaryText = styled(NavLink)`
     color: green;
 
     ${RecipeIcon} {
-      color: green;
+      color: ${({ theme }) => `${theme.colors.accent}`};
     }
   }
 
@@ -251,7 +240,7 @@ export const RecipeSecondaryText = styled(NavLink)`
   }
 `;
 export const RecipeSpan = styled.span`
-color: #8baa36;
+color: ${({ theme }) => `${theme.colors.accent}`};
 `
 export const RecipeSecondarySpan = styled(NavLink)`
   display: inline-flex;

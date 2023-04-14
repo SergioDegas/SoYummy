@@ -62,10 +62,10 @@ export const Title = styled.h1`
   font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
   font-weight: ${({ theme }) => `${theme.fontWeights.bold}`};
-  font-size: 18px;
+  font-size: ${({ theme }) => `${theme.fontSizes.l}`};
   line-height: ${({ theme }) => `${theme.lineHeights.single}`};
   letter-spacing: 0.015em;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   @media (min-width: 768px) {
     font-size: 28px;
   }
@@ -76,7 +76,7 @@ export const LogoContainer = styled.div`
   width: 32px;
   height: 32px;
   background-color: ${({ theme }) => `${theme.colors.accent}`};
-  border-radius: 6px;
+  border-radius: ${({ theme }) => `${theme.radius.small}`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,7 +104,7 @@ export const BenefitsItem = styled.li`
   font-size: ${({ theme }) => `${theme.fontSizes.l}`};
   line-height: ${({ theme }) => `${theme.lineHeights.regular}`};
   letter-spacing: -0.02em;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   word-break: break-all;
   &:not(:last-child) {
     margin-bottom: 12px;
@@ -146,11 +146,11 @@ export const MenuLink = styled(NavLink)`
   font-size: 14px;
   line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
   letter-spacing: -0.02em;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   transition: all 0.5s ease-in-out;
   &:hover {
     transition: all 0.5s ease-in-out;
-    color: ${({ theme }) => `${theme.colors.accent}`};
+    color: ${({ theme }) => `${theme.colors.backgroundHover}`};
   }
 `;
 
@@ -181,12 +181,12 @@ export const EmailTitle = styled.h2`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: "Poppins";
+    font-family: ${({ theme }) => `${theme.fonts.main}`};
     font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-    color: #fafafa;
+    font-weight: ${({ theme }) => `${theme.fontWeights.bold}`};
+    font-size: ${({ theme }) => `${theme.fontSizes.l}`};
+    line-height: ${({ theme }) => `${theme.lineHeights.large}`};
+    color: ${({ theme }) => `${theme.colors.footerTextColor}`};
     margin-bottom: 14px;
   }
 `;
@@ -195,13 +195,13 @@ export const EmailText = styled.p`
   display: none;
   @media (min-width: 1440px) {
     display: flex;
-    font-family: "Poppins";
+    font-family: ${({ theme }) => `${theme.fonts.main}`};
     font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
+    font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
+    font-size: ${({ theme }) => `${theme.fontSizes.s}`};
+    line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
     letter-spacing: -0.02em;
-    color: #fafafa;
+    color: ${({ theme }) => `${theme.colors.footerTextColor}`};
     margin-bottom: 28px;
   }
 `;
@@ -211,7 +211,7 @@ export const EmailInput = styled.input`
   height: 38px;
   border: 1px solid #fafafa;
   background-color: transparent;
-  border-radius: 6px;
+  border-radius: ${({ theme }) => `${theme.radius.small}`};
   font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
   font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
@@ -219,7 +219,7 @@ export const EmailInput = styled.input`
   line-height: ${({ theme }) => `${theme.lineHeights.large}`};
   letter-spacing: -0.02em;
   ::placeholder {
-    color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+    color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   }
   padding: 12px 42px;
   &:focus {
@@ -231,12 +231,12 @@ export const EmailInput = styled.input`
     color: ${({ theme }) => `${theme.colors.accent}`};
   }
   &:not(:placeholder-shown) {
-    color: #fafafa;
+    color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   }
   @media (min-width: 768px) {
     width: 259px;
     height: 50px;
-    font-size: 14px;
+    font-size: ${({ theme }) => `${theme.fontSizes.s}`};
     padding-right: 40px;
     padding-left: 51px;
     padding-top: 15px;
@@ -256,7 +256,7 @@ export const EmailIcon = styled(MdOutlineEmail)`
   position: absolute;
   top: 27%;
   left: 27%;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   @media (min-width: 768px) {
     top: 34%;
     left: 11%;
@@ -271,7 +271,7 @@ export const EmailBtn = styled.button`
   font-family: ${({ theme }) => `${theme.fonts.main}`};
   font-style: normal;
   font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
-  font-size: 14px;
+  font-size: ${({ theme }) => `${theme.fontSizes.s}`};
   line-height: ${({ theme }) => `${theme.lineHeights.single}`};
   display: flex;
   flex-direction: row;
@@ -285,12 +285,12 @@ export const EmailBtn = styled.button`
   border-radius: 6px;
   margin-right: auto;
   margin-left: auto;
-  color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+  color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   transition: all 0.5s ease-in-out;
   &:hover {
     transition: all 0.5s ease-in-out;
     color: ${({ theme }) => `${theme.colors.accent}`};
-    background: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+    background: ${({ theme }) => `${theme.colors.footerTextColor}`};
   }
   background-color: ${(props) => (props.disabled ? "grey" : "#8BAA36")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
@@ -325,50 +325,50 @@ export const SocialList = styled.ul`
   }
 `;
 export const FacebookIcon = styled(SiFacebook)`
-  color: ${({ theme }) => `${theme.colors.accent}`};
+  color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
   &:hover {
     transition: all 0.25s ease-in-out;
-    color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+    color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
 
 export const YTIcon = styled(SiYoutube)`
-  color: ${({ theme }) => `${theme.colors.accent}`};
+  color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
   &:hover {
     transition: all 0.25s ease-in-out;
-    color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+    color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
 
 export const TwitterIcon = styled(SiTwitter)`
-  color: ${({ theme }) => `${theme.colors.accent}`};
+  color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
   &:hover {
     transition: all 0.25s ease-in-out;
-    color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+    color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
 
 export const InstIcon = styled(SiInstagram)`
-  color: ${({ theme }) => `${theme.colors.accent}`};
+  color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
   &:hover {
     transition: all 0.25s ease-in-out;
-    color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+    color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
 
@@ -398,7 +398,7 @@ export const PolicyWrap = styled.div`
   align-items: center;
   gap: 14px;
   padding: 28px 0;
-  color: ${({ theme }) => `${theme.colors.backgroundSecondary}`};
+  color: ${({ theme }) => `${theme.colors.footerTextColor}`};
   font-family: "Poppins";
   font-weight: 500;
   font-size: 10px;

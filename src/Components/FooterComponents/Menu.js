@@ -5,7 +5,7 @@ export const Menu = () => {
     <>
       <MenuList>
         <MenuItem>
-          <MenuLink to="/">Ingredients</MenuLink>
+          <MenuLink to="/search">Ingredients</MenuLink>
         </MenuItem>
         <MenuItem>
           <MenuLink to="/add">Add recipes</MenuLink>
