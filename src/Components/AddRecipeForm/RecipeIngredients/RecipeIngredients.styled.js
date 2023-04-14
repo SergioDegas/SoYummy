@@ -309,16 +309,10 @@ export const DeleteButton = styled.button`
   align-items: center;
   background-color: transparent;
   border: none;
-  border-radius: ${(p) => p.theme.radius.round};
   cursor: pointer;
 
   svg {
-    color: ${(p) => p.theme.colors.deleteBtn};
-
-    @media screen and (min-width: 768px) {
-      width: 20px;
-      height: 30px;
-    }
+    color: ${(p) => p.theme.colors.textPrimary};
   }
 `;
 

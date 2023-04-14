@@ -62,12 +62,11 @@ export const themeDark = {
     errorMsg: "#FAFAFA",
     paginationActive: "#8BAA36",
 
-    inputText: "rgba(255, 255, 255, 0.8)",
-    inputBackground: "#f5f5f5",
-    measure: "rgba(255, 255, 255, 0.5)",
-    unit: "rgba(245, 245, 245, 0)",
-    counter: "#ffffff",
-    deleteBtn: "#D9D9D9",
+        inputText: "rgba(255, 255, 255, 0.8)",
+        inputBackground: "#f5f5f5",
+        measure: "rgba(255, 255, 255, 0.5)",
+    unit:"rgba(245, 245, 245, 0)",
+    counter:"#ffffff",
     iconClose: "#FAFAFA",
 
     squaresAccent: "#8BAA36",

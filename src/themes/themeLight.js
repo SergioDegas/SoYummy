@@ -63,9 +63,8 @@ export const themeLight = {
     inputText: "rgba(0, 0, 0, 0.8)",
     inputBackground: "rgba(217, 217, 217, 0.25)",
     measure: "#f5f5f5",
-    unit: "#f5f5f5",
-    counter: "rgba(51, 51, 51, 0.3)",
-    deleteBtn: "#1f242e",
+    unit:"#f5f5f5",
+    counter:"rgba(51, 51, 51, 0.3)",
     iconClose: "#333333",
 
     squaresAccent: "#8BAA36",
