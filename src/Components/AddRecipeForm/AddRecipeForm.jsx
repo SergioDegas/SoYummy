@@ -136,13 +136,15 @@ export const AddRecipeForm = () => {
         schema
             .validate(initialValues, { abortEarly: false })
             .then(() => {
-                dispatch(addRecipe(formData));
-                navigate("/my", { replace: true });
-                if (error !== null) {
-                    toast.error("Something went wrong... Please, try again");
-                    return;
-                }
-                navigate("/my", { replace: true });
+                dispatch(addRecipe(formData))
+                .unwrap()
+                .then(() => {
+                  navigate("/my", { replace: true });
+                  toast.success("Your recipe has been successfully added");
+                })
+                .catch((error) => {
+                  toast.error("Something went wrong... Please, try again");
+                })
             })
             .catch((err) => {
                 const errors = err.inner.reduce(
@@ -186,7 +188,7 @@ export const AddRecipeForm = () => {
                 />
                 <AddButton type="submit">Add</AddButton>
             </Form>
-            {isLoad && <Loader/>}
+            {isLoad && !error && <Loader/>}
         </AddRecipeSection>
     );
 };
