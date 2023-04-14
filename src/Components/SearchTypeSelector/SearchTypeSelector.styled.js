@@ -12,8 +12,8 @@ export const Label = styled.label`
 padding-right: 18px;
 font-style: normal;
 font-weight: 500;
-font-size: 14px;
-line-height: 18px;
+font-size: 18px;
+line-height: 24px;
 letter-spacing: -0.24px;
 color: #001833;
 `;
