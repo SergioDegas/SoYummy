@@ -43,6 +43,7 @@ export const themeDark = {
     backgroundButton: "#D9D9D9",
     backgroundPagination: "#2A2C36",
     backgroundCard: "#2A2C36",
+    backgroundCardIngredients: "#2A2C36",
 
     msgRed: "#E74A3B",
     msgGreen: "#3CBC81",
@@ -62,12 +63,13 @@ export const themeDark = {
     errorMsg: "#FAFAFA",
     paginationActive: "#8BAA36",
 
-        inputText: "rgba(255, 255, 255, 0.8)",
-        inputBackground: "#f5f5f5",
-        measure: "rgba(255, 255, 255, 0.5)",
-    unit:"rgba(245, 245, 245, 0)",
-    counter:"#ffffff",
-    iconClose: "#FAFAFA",
+    inputText: "rgba(255, 255, 255, 0.8)",
+    inputBackground: "#f5f5f5",
+    measure: "rgba(255, 255, 255, 0.5)",
+    unit: "rgba(245, 245, 245, 0)",
+    counter: "#ffffff",
+    iconClose: "#333333",
+    iconBg: "rgba(250, 250, 250, 0.2)",
 
     squaresAccent: "#8BAA36",
     squares: "#FAFAFA",

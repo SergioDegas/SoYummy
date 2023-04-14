@@ -112,7 +112,7 @@ export const TimeBlock = styled.div`
 export const TimeText = styled.span`
   font-size: 10px;
   line-height: 1.4;
-  color: ${({ theme }) => `${theme.colors.textPrimary}`};
+  color: ${({ theme }) => `${theme.colors.textSubtitle}`};
   margin-left: 4px;
   @media (min-width: 768px) {
     font-size: 14px;
