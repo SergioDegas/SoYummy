@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BsArrowRight } from 'react-icons/bs';
 import bgMobX1 from "images/bg-MainHero/MainHero-bg-mobile1x.webp";
 import bgMobX2 from "images/bg-MainHero/MainHero-bg-mob-2x.webp";
