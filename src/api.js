@@ -8,19 +8,4 @@ export const getRecipeById = async (id) => {
     console.log(error.message);
   }
 };
-export const getUserData = async () => {
-  try {
-    const { data } = await axios.get("/user/current");
-    const { name, avatarURL } = data;
-    return { name, avatarURL };
-  } catch (error) {
-    console.error(error);
-  }
-};
-export const setUserData = async (data) => {
-  try {
-    await axios.put("/user/update", data);
-  } catch (error) {
-    console.error(error);
-  }
-};
+

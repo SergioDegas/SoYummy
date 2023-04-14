@@ -87,7 +87,7 @@ export const SearchIcon = styled(FiSearch)`
   width: ${({ theme }) => `${theme.fontSizes.xll}px`};
   height: ${({ theme }) => `${theme.fontSizes.xll}px`};
   ${({ theme }) => {
-     const location = useLocation();
+    const location = useLocation();
     if (location.pathname.includes("/recipe/")) {
       return `
         color: black;
@@ -101,4 +101,16 @@ export const SearchIcon = styled(FiSearch)`
       `;
     }
   }}
+      @media (min-width: 1440px) {
+      ${({ theme }) => {
+        const location = useLocation();
+        if (location.pathname.includes("/main")) {
+          return `
+        color: black;
+
+      `;
+        }
+      }}
+    }
+  
 `;

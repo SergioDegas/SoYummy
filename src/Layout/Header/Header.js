@@ -10,7 +10,7 @@ import { LogoutModal } from "Components/ComponentsHeader/LogOutModal/LogOutModal
 import { Profile } from "Components/ComponentsHeader/Profile/Profile";
 import { NavContainer } from "Components/ComponentsHeader/NavContainer/NavContainer";
 import nonePhoto from "../../images/recipe-photo-small.png";
-import { getUserData } from "api";
+
 import SwitchToggle from "Components/ComponentsHeader/SwitchToggle/SwitchToggle";
 
 import {
@@ -22,48 +22,48 @@ import { useMedia } from "hooks";
 
 import { DropDownMenu } from "Components/ComponentsHeader/DropDownMenu/DropDownMenu";
 import { DropMenuButton } from "./Header.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserName, selectUserPhotoUrl } from "redux/user/selectors";
+import { fetchUserData, updateUserData } from "redux/user/operation";
 const Header = () => {
-  const [name, setName] = useState("Name");
-  const [photoUrl, setPhotoUrl] = useState("");
+  const dispatch = useDispatch();
 
+  const [photoUrl, setPhotoUrl] = useState(nonePhoto);
   const [activeModal, setActiveModal] = useState(null);
 
- 
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
+
+  const name = useSelector(selectUserName);
+  const avatarURL = useSelector(selectUserPhotoUrl);
+
+  console.log(avatarURL);
+  useEffect(() => {
+    setPhotoUrl(avatarURL);
+  }, [avatarURL]);
 
   const openEditModal = () => setActiveModal("edit");
   const openLogoutModal = () => setActiveModal("logout");
   const openMenu = () => setActiveModal("Menu");
   const closeModal = () => setActiveModal(null);
 
-  useEffect(() => {
-    const UserData = async () => {
-      try {
-        const { name, avatarURL } = await getUserData();
-
-        setName(name);
-        if (avatarURL ) {
-          setPhotoUrl(avatarURL);
-          return;
-        } else {
-          setPhotoUrl(nonePhoto);
-          return;
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    UserData();
-  }, []);
+  const handleChange = async (formData) => {
+    try {
+      dispatch(updateUserData(formData));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const { isDesktopScreen, isTabletScreen, isMobileScreen } = useMedia();
 
   const switchToggleStyle = { marginLeft: "50px" };
   return (
-    <header style={{position:'absolute',width:"100%"}}>
+    <header style={{ position: "absolute", width: "100%" }}>
       <ContainerFor>
         <HeaderContainer>
-          <LogoLink to="/">     
+          <LogoLink to="/">
             <LogoContainer>
               <LogoIcon />
             </LogoContainer>
@@ -78,10 +78,8 @@ const Header = () => {
           )}
 
           <Profile
-           
             photoUrl={photoUrl}
             ProfilesName={name}
-        
             openLogoutModal={openLogoutModal}
             openEditModal={openEditModal}
           />
@@ -93,9 +91,10 @@ const Header = () => {
           {activeModal === "edit" && (
             <CustomModal onClose={closeModal}>
               <UserProfile
-                photoUrl={photoUrl}
-                userName={name}
                 onClose={closeModal}
+                photoURL={photoUrl}
+                userName={name}
+                handleChange={handleChange}
               />
             </CustomModal>
           )}
