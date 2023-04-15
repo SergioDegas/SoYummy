@@ -154,6 +154,7 @@ const SearchTypeSelector = ({ onSearchByChange, searchBy }) => {
   const handleSelectChange = (selectedOption) => {
     onSearchByChange(selectedOption.value);
   };
+  
   return (
     <Wrapper>
       <Label htmlFor="searchBy">Search by:</Label>
