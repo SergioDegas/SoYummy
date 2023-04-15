@@ -3,6 +3,8 @@ import SwitchToggle from "../SwitchToggle/SwitchToggle";
 import {
   ButtonClose,
 
+  DropContainer,
+
   FrameLogoAndButtonClose,
   FrameSwitcher,
   ImageModal,
@@ -14,12 +16,11 @@ import {
   SearchIcon,
 } from "./DropDownMenu.styled";
 
-import Container from "Components/Container/Container.styled";
 
 export const DropDownMenu = ({ onClose }) => {
   return (
     <>
-      <Container>
+      <DropContainer>
         <FrameLogoAndButtonClose>
           <NavLink to="/" onClick={onClose}>
             <LogoContainer>
@@ -71,7 +72,7 @@ export const DropDownMenu = ({ onClose }) => {
         </FrameSwitcher>
 
         <ImageModal></ImageModal>
-      </Container>
+      </DropContainer>
     </>
   );
 };

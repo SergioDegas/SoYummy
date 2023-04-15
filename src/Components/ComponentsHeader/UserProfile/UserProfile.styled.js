@@ -1,4 +1,4 @@
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineUser } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import styled from "styled-components";
 
@@ -96,25 +96,55 @@ export const InputContainer = styled.div`
 export const InputIcon = styled.div`
   position: absolute;
   top: 50%;
-  left: 10px;
+
   transform: translateY(-50%);
-  color: ${({ theme }) => theme.colors.textPrimary}
+  color: ${({ theme }) => theme.colors.textPrimary};
+  @media (min-width: 375px) {
+    left: 10px;
+    width: 20px;
+  }
+  @media (min-width: 768px) {
+    left: 20px;
+    width: 30px;
+  }
+  @media (min-width: 1440px) {
+    left: 10px;
+    width: 20px;
+  }
 `;
 export const IconPen = styled(HiOutlinePencil)`
   position: absolute;
   top: 50%;
-  right: 10px;
-  width: 20px;
+
   height: 20px;
   transform: translateY(-50%);
-  color: ${({ theme }) => theme.colors.textPrimary}
+  color: ${({ theme }) => theme.colors.textPrimary};
+
+  @media (min-width: 375px) {
+    right: 20px;
+    width: 20px;
+  }
+  @media (min-width: 768px) {
+    right: 30px;
+    width: 30px;
+  }
+  @media (min-width: 1440px) {
+    right: 10px;
+    width: 20px;
+  }
+`;
+export const UserIcon = styled(AiOutlineUser)`
+  width: 24px;
+  height: 24px;
+  color: ${({ theme }) => theme.colors.textPrimary};
+
 `;
 
 export const Input = styled.input`
   padding: 8px 8px 8px 36px;
   border: 1px solid ${({ theme }) => theme.colors.textTitle};
   border-radius: 8px;
-  
+
   font-size: 14px;
   line-height: 21px;
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
