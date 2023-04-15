@@ -38,7 +38,7 @@ margin-bottom: 28px;
   }
   @media (min-width: 768px) {
     width: 362px;
-    height: 59px;
+    height: 57px;
     }
     @media (min-width: 1440px) {
     width: 510px;
@@ -69,12 +69,12 @@ color: #FAFAFA;
 }
 @media (min-width: 768px) {
     width: 161px;
-    height: 59px;
+    height: 57px;
     top: 0;
-    left: 30%;
+    left: 56%;
     bottom: 0;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 1440px) {
     width: 161px;
     height: 70px;
     top: 0;
