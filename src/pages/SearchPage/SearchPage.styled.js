@@ -70,8 +70,7 @@ export const NoRecipesText = styled.p`
   line-height: 24px;
   letter-spacing: -0.02em;
 
-  color: #000000;
-
+  color: ${({ theme }) => `${theme.colors.titleColor}`};
   opacity: 0.5;
   margin: 0;
 `;
