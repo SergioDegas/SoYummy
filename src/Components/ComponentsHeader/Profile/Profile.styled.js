@@ -29,6 +29,7 @@ export const ProfileImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-position: center;
 `;
 
 export const ProfileName = styled(Button)`

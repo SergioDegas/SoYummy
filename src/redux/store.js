@@ -19,6 +19,7 @@ import { searchReducer } from "./search/slice";
 import { ingredientsReducer } from "./ingredients/slice";
 import { recipesReducer } from "./popular-recipes/slice";
 import { themeReducer } from "./theme/slice";
+import { currentUserSlice } from "./user/slice";
 
 const middleware = [
     ...getDefaultMiddleware({
@@ -41,20 +42,20 @@ const themePersistConfig = {
 };
 
 export const store = configureStore({
-    reducer: {
-        auth: persistReducer(authPersistConfig, authReducer),
-        shoppingList: shoppingListReducer,
-        ownRecipe: ownRecipeReduser,
-        categories: categoriesReducer,
-        favorite: favoritesReducer,
-        ingredients: ingredientsReducer,
-        recipes: recipesReducer,
-        theme: persistReducer(themePersistConfig, themeReducer),
-        search: searchReducer,
-    },
-    middleware,
-    devTools: process.env.NODE_ENV === "development",
-
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    shoppingList: shoppingListReducer,
+    ownRecipe: ownRecipeReduser,
+    categories: categoriesReducer,
+    favorite: favoritesReducer,
+    ingredients: ingredientsReducer,
+    recipes: recipesReducer,
+    theme: persistReducer(themePersistConfig, themeReducer),
+    search: searchReducer,
+    user: currentUserSlice,
+  },
+  middleware,
+  devTools: process.env.NODE_ENV === "development",
 });
 
 export const persistor = persistStore(store);

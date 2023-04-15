@@ -2,7 +2,9 @@ import { NavLink } from "react-router-dom";
 import SwitchToggle from "../SwitchToggle/SwitchToggle";
 import {
   ButtonClose,
+
   DropContainer,
+
   FrameLogoAndButtonClose,
   FrameSwitcher,
   ImageModal,
@@ -13,6 +15,7 @@ import {
   NavLinksContainer,
   SearchIcon,
 } from "./DropDownMenu.styled";
+
 
 export const DropDownMenu = ({ onClose }) => {
   return (
