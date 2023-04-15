@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import {
   AddPhotoButton,
   Button,
