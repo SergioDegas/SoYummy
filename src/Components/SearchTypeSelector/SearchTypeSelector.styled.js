@@ -15,8 +15,13 @@ font-weight: 500;
 font-size: 18px;
 line-height: 24px;
 letter-spacing: -0.24px;
-color: #001833;
+/* color: #001833; */
+color: ${({ theme }) => `${theme.colors.titleColor}`};
 `;
+// titleColor: "#FAFAFA",
+//     font-weight: ${(p) => p.theme.fontWeights.medium};
+//     font-size: ${(p) => p.theme.fontSizes.l}px;
+//     line-height: ${(p) => p.theme.lineHeights.heading};
 
 export const SectionLabel = styled.select`
 height: 49px;
