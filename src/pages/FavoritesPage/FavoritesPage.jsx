@@ -16,8 +16,9 @@ import { RecipesList } from "Components/RecipesList/RecipesList";
 import Container from "Components/Container/Container.styled";
 import { CategoryPagePagination } from "Components/CategoryPagination/CategoryPagination";
 import { StyledSquares } from "Components/StyledSquares/StyledSquares";
+import { NoRecipeFound } from "Components/NoRecipeFound/NoRecipeFound";
 
-import { Error, Section, Wrapper } from "./FavoritesPage.styled";
+import { Section, Wrapper } from "./FavoritesPage.styled";
 import { WrapperPagination } from "Components/CategoriesRecipes/CategoriesRecipes.styled";
 
 const PAGE_LIMIT = 4;
@@ -36,11 +37,9 @@ const FavoritesPage = () => {
 
   const totalPages = Math.ceil(totalItems / PAGE_LIMIT);
 
-  console.log(favoriteRecipesId);
-
   useEffect(() => {
     dispatch(fetchFavoriteRecipesList({ page, limit: PAGE_LIMIT }));
-  }, [dispatch, page]);
+  }, [dispatch, page, favoriteRecipesId]);
 
   useEffect(() => {
     if (favoriteRecipesId && favoriteRecipesId.length <= PAGE_LIMIT) {
@@ -69,9 +68,9 @@ const FavoritesPage = () => {
           {isLoading && !error && <Loader />}
 
           {favoriteRecipes.length === 0 && !isLoading && !error && (
-            <Error>
+            <NoRecipeFound>
               We are sorry, but You do not have any favorite recipes yet.
-            </Error>
+            </NoRecipeFound>
           )}
 
           {favoriteRecipes.length > 0 && !error && !isLoading && (
