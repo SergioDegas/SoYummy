@@ -33,3 +33,11 @@ export const LinkStyle = styled(Link)`
     outline-color: ${(p) => p.theme.colors.accent};
 `;
 
+export const WrapperPagination = styled.div`
+  display: flex;
+  margin-top: ${(p) => p.theme.space[1] * 10}px;
+
+  @media (min-width: 768px) {
+    margin-top: ${(p) => p.theme.space[1] * 12.5}px;
+  }
+`;

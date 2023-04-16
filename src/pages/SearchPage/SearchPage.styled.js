@@ -74,3 +74,5 @@ export const NoRecipesText = styled.p`
   opacity: 0.5;
   margin: 0;
 `;
+
+
