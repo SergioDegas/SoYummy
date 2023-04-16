@@ -8,31 +8,33 @@ import { useMedia } from "hooks";
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchBy, setSearchBy] = useState("name");
-  
+
   const dispatch = useDispatch();
 
   const media = useMedia();
-    const limit = () => {
-        if (media.isMobileScreen) {
-            return 6;
-        }
-        if (media.isTabletScreen) {
-            return 6;
-        }
-        if (media.isDesktopScreen) {
-            return 12;
-        }
-    };
+  const limit = () => {
+    if (media.isMobileScreen) {
+      return 6;
+    }
+    if (media.isTabletScreen) {
+      return 6;
+    }
+    if (media.isDesktopScreen) {
+      return 12;
+    }
+  };
 
-    
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim() === "") {
       alert("Please enter a search term");
       return;
     }
-    dispatch(searchRecipes({searchTerm, page: 1, limit: limit(), searchBy}));
-    setSearchTerm("");
+    dispatch(searchRecipes({ searchTerm, page: 1, limit: limit(), searchBy }));
+    
+
+    localStorage.setItem("searchTerm", JSON.stringify(searchTerm));
+    localStorage.setItem("searchBy", JSON.stringify(searchBy));
   };
 
   const handleSearchByChange = (searchBy) => {

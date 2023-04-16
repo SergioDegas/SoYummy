@@ -7,7 +7,7 @@ const searchSlice = createSlice({
     recipes: [],
     isLoading: false,
     error: null,
-    
+    totalPage: null,
   },
   extraReducers: (builder) => {
     builder
@@ -15,10 +15,12 @@ const searchSlice = createSlice({
         state.isLoading = true;
         state.recipes = [];
         state.error = null;
+        state.totalPage = null;
       })
       .addCase(searchRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.recipes = action.payload;
+        state.recipes = action.payload.recipes;
+        state.totalPage = action.payload.totalPage
         state.error = null;
       })
       .addCase(searchRecipes.rejected, (state, action) => {
@@ -28,4 +30,5 @@ const searchSlice = createSlice({
       });
   },
 });
+
 export const searchReducer = searchSlice.reducer;

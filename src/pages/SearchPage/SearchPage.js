@@ -4,31 +4,68 @@ import { useSelector, useDispatch } from "react-redux";
 import { PageTitle } from "Components/PageTitle/PageTitle";
 import SearchBar from "../../Components/SearchBar/";
 import SearchedRecipesList from "../../Components/SearchedRecipesList";
+import SearchPagination from "../../Components/SearchPagination";
+import { useMedia } from "hooks";
+
 import Container from "../../Components/Container";
-import { NoRecipesImage, NoRecipesText } from "./SearchPage.styled";
-import { Section, WrapperTitle } from "../CategoriesPage/CategoriesPage.styled";
-import smallNoRecipesImage from "../../images/notPage/notPageSmal.png";
-import smallNoRecipesImage2x from "../../images/notPage/notPageSmal@2x.png";
-import mediumNoRecipesImage from "../../images/notPage/notPageMedium.png";
-import mediumNoRecipesImage2x from "../../images/notPage/notPageMedium@2x.png";
-
 import Loader from "Components/Loader/Loader";
-
 import { searchRecipes } from "../../redux/search/operation";
 import {
     selectRecipes,
     selectSearchStatus,
     selectSearchError,
+    selectTotalPage,
 } from "../../redux/search/selectors";
 import { StyledSquares } from "Components/StyledSquares/StyledSquares";
 
+
+
+import { NoRecipesImage, NoRecipesText, WrapperPagination } from "./SearchPage.styled";
+import { Section, WrapperTitle } from "../CategoriesPage/CategoriesPage.styled";
+
+
+
+
+import smallNoRecipesImage from "../../images/notPage/notPageSmal.png";
+import smallNoRecipesImage2x from "../../images/notPage/notPageSmal@2x.png";
+import mediumNoRecipesImage from "../../images/notPage/notPageMedium.png";
+import mediumNoRecipesImage2x from "../../images/notPage/notPageMedium@2x.png";
+
+
+
+
 const SearchPage = () => {
     const dispatch = useDispatch();
-
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState();
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchBy, setSearchBy] = useState("name")
     const recipes = useSelector(selectRecipes);
+    const totalPage = useSelector(selectTotalPage);
     const isLoading = useSelector(selectSearchStatus);
     const error = useSelector(selectSearchError);
-    const [searchTerm, setSearchTerm] = useState("");
+    const media = useMedia();
+
+    const pageChangeHandler = (newPage) => {
+        const limit = () => {
+            if (media.isMobileScreen) {
+                return 6;
+            }
+            if (media.isTabletScreen) {
+                return 6;
+            }
+            if (media.isDesktopScreen) {
+                return 12;
+            }
+        };
+        const searchTerm = JSON.parse(localStorage.getItem('searchTerm'));
+        const searchBy = JSON.parse(localStorage.getItem('searchBy'));
+        setPage(newPage);
+        setLimit(limit());
+        setSearchBy();
+        dispatch(searchRecipes({  searchTerm: searchTerm, page: newPage, limit: limit(), searchBy: searchBy }));
+        
+      };
 
     const smallImage = {
         src: smallNoRecipesImage,
@@ -53,13 +90,17 @@ const SearchPage = () => {
     const handleSearch = (event) => {
         event.preventDefault();
         dispatch(searchRecipes());
+        setSearchTerm("")
+
     };
 
     useEffect(() => {
         if (searchTerm !== "") {
-            dispatch(searchRecipes({ searchTerm }));
+            dispatch(searchRecipes({ searchTerm, page, limit, searchBy}));
         }
-    }, [dispatch, searchTerm]);
+    }, [dispatch, searchTerm, page, limit, searchBy]);
+
+   
 
     return (
         <Container>
@@ -74,8 +115,20 @@ const SearchPage = () => {
                 />
 
                 {recipes.length > 0 && !isLoading && !error && (
-                    <SearchedRecipesList recipes={recipes} />
+                <SearchedRecipesList recipes={recipes} />
+
+                
                 )}
+                {totalPage > 1 && !isLoading && !error && (
+                <WrapperPagination>
+                    <SearchPagination
+                        currentPage={page}
+                        totalPages={totalPage}
+                        onPageChange={(page) => pageChangeHandler(page)}
+                    />
+                </WrapperPagination>
+                )}
+                
                 {isLoading && !error && <Loader />}
                 {!isLoading && recipes.length === 0 && (
                     <>
@@ -99,5 +152,6 @@ const SearchPage = () => {
         </Container>
     );
 };
+
 
 export default SearchPage;
