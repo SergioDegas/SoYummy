@@ -18,6 +18,7 @@ export const Button = styled.button`
     border-radius: 24px 44px;
 
     transition: all 0.25s ease-out;
+    cursor: pointer;
 
     &:hover,
     &:focus {

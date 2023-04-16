@@ -118,6 +118,7 @@ export const DeleteButtonFav = styled.button`
     background: ${(p) => p.theme.colors.backgroundAccent};
     border-radius: 4px;
     border: transparent;
+    cursor: pointer;
 
     color: ${(p) => p.theme.colors.textDarckGrey};
 
@@ -161,6 +162,7 @@ export const DeleteButtonMy = styled.button`
     background: ${(p) => p.theme.colors.accent};
     border-radius: 4px;
     border: transparent;
+    cursor: pointer;
 
     color: ${(p) => p.theme.colors.textWhite};
 
@@ -205,6 +207,7 @@ export const RecipeButtonFav = styled.button`
     color: ${(p) => p.theme.colors.textWhite};
     border-radius: 24px 44px;
     border: transparent;
+    cursor: pointer;
 
     transition: background 0.25s ease-out;
 
@@ -252,6 +255,7 @@ export const RecipeButtonMy = styled.button`
     color: ${(p) => p.theme.colors.textWhite};
     border-radius: 24px 44px;
     border: transparent;
+    cursor: pointer;
 
     transition: background 0.25s ease-out;
 

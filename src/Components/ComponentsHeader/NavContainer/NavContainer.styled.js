@@ -56,6 +56,7 @@ export const Link = styled(NavLink)`
   align-items: center;
   letter-spacing: -0.02em;
   color: ${({ theme }) => theme.colors.textPrimary};
+  transition: 250ms linear;
 
   :hover {
     color: ${({ theme }) => theme.colors.accent};
