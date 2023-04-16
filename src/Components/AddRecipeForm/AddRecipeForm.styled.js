@@ -43,6 +43,11 @@ export const AddButton = styled.button`
   font-size: ${(p) => p.theme.fontSizes.m}px;
   line-height: ${(p) => p.theme.lineHeights.large};
   cursor: pointer;
+  transition: 250ms linear;
+
+  :hover, :focus{
+    background-color: ${(p) => p.theme.colors.accent};
+  }
 
   @media screen and (min-width: 768px) {
     width: 161px;
