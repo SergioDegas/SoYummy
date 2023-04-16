@@ -1,23 +1,27 @@
 import styled from "styled-components";
 
 export const NoRecipesImage = styled.img`
-  width: 100%;
+  width: 208px;
   margin: 0 auto;
-  max-width: 350px;
-  height: auto;
-  padding-bottom: 32px;
-  padding-top: 50px;
+  margin-bottom: ${(p) => p.theme.space[1] * 6}px;
+
+  @media (min-width: 768px) {
+    width: 350px;
+    margin-bottom: ${(p) => p.theme.space[1] * 8}px;
+  }
 `;
 
 export const NoRecipesText = styled.p`
-  font-style: normal;
   text-align: center;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 24px;
+  font-weight: ${(p) => p.theme.fontWeights.medium};
+  font-size: ${(p) => p.theme.fontSizes.s}px;
+  line-height: ${(p) => p.theme.lineHeights.single};
   letter-spacing: -0.02em;
 
-  color: ${({ theme }) => `${theme.colors.titleColor}`};
+  color: ${(p) => p.theme.colors.errorMsg};
   opacity: 0.5;
-  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: ${(p) => p.theme.fontSizes.xll}px;
+  }
 `;
