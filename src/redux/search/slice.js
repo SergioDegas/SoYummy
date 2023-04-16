@@ -8,7 +8,7 @@ const searchSlice = createSlice({
     isLoading: false,
     error: null,
     totalPage: null,
-    perPage: 10, // define perPage in initialState
+    perPage: 10,
   },
   extraReducers: (builder) => {
     builder
@@ -22,10 +22,8 @@ const searchSlice = createSlice({
         state.isLoading = false;
         state.recipes = action.payload.recipes;
         state.totalPage = action.payload.totalPage
-        console.log("action.reducer", action.payload.totalPage)
-        state.perPage = action.payload.limit; // update perPage here
+        state.perPage = action.payload.limit;
         state.error = null;
-        console.log("action.payload", action.payload);
       })
       .addCase(searchRecipes.rejected, (state, action) => {
         state.isLoading = false;
