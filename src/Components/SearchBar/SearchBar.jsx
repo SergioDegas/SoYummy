@@ -32,7 +32,11 @@ const SearchBar = () => {
       return;
     }
     dispatch(searchRecipes({searchTerm, page: 1, limit: limit(), searchBy}));
-    setSearchTerm("");
+    // setSearchTerm("");
+
+
+    localStorage.setItem('searchTerm', JSON.stringify(searchTerm));
+    localStorage.setItem('searchBy', JSON.stringify(searchBy));
   };
 
   const handleSearchByChange = (searchBy) => {
