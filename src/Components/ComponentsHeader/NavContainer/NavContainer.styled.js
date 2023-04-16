@@ -102,16 +102,26 @@ export const SearchIcon = styled(FiSearch)`
       `;
     }
   }}
-      @media (min-width: 1440px) {
-      ${({ theme }) => {
-        const location = useLocation();
-        if (location.pathname.includes("/main")) {
-          return `
+  @media (min-width: 1440px) , (max-width: 1560px) {
+    ${({ theme }) => {
+      const location = useLocation();
+      if (location.pathname.includes("/main")) {
+        return `
         color: black;
 
       `;
-        }
-      }}
-    }
-  
+      }
+    }}
+  }
+  @media (min-width: 1560px) {
+    ${({ theme }) => {
+      const location = useLocation();
+      if (location.pathname.includes("/main")) {
+        return `
+        color: white;
+
+      `;
+      }
+    }}
+  }
 `;
