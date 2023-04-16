@@ -166,6 +166,7 @@ export const IngrItem = styled.li`
   letter-spacing: -0.02em;
   color: #000000;
   opacity: 0.5;
+  cursor: pointer;
 
   :not(:last-child) {
     margin-bottom: 6px;

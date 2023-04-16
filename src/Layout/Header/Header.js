@@ -38,8 +38,10 @@ const Header = () => {
   const name = useSelector(selectUserName);
   const avatarURL = useSelector(selectUserPhotoUrl);
 
-  console.log(avatarURL);
   useEffect(() => {
+    if (!avatarURL) {
+      return;
+    }
     setPhotoUrl(avatarURL);
   }, [avatarURL]);
 
