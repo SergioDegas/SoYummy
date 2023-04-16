@@ -38,18 +38,18 @@ const Square = styled.div`
 
 export const LeftSquare = styled(Square)`
   top: -38px;
-  left: 112px;
+  right: 236px;
   background: ${(p) => p.theme.colors.squaresAccent};
   animation-delay: 0;
 
   @media (min-width: 768px) {
     top: -51px;
-    left: 187px;
+    right: 498px;
   }
 
   @media (min-width: 1440px) {
     top: -47px;
-    left: 228px;
+    right: 993px;
   }
 `;
 
