@@ -1,8 +1,8 @@
 import Container from "Components/Container/Container.styled";
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { searchRecipes } from '../../redux/search/operation';
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { searchRecipes } from "../../redux/search/operation";
 
 import {
   SectionHero,
@@ -25,19 +25,22 @@ export const Hero = () => {
   const { isMobileScreen } = useMedia();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState('');
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [limit, setLimit] = useState("");
+  const [searchBy, setSearchBy] = useState("name")
   const handleSearch = (event) => {
     event.preventDefault();
-    setSearchTerm(event.target.value);
-
-    dispatch(searchRecipes({searchTerm, page: 1}));
+    setSearchTerm(searchTerm);
+    setLimit(limit)
+    setSearchBy()
+    dispatch(searchRecipes({ searchTerm: searchTerm, page: 1, limit: 12, searchBy: searchBy  }));
+    localStorage.setItem('searchTerm', JSON.stringify(searchTerm));
+    localStorage.setItem('searchBy', JSON.stringify(searchBy));
     navigate(`/search`);
   };
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
-    
   };
 
   return (
@@ -65,9 +68,7 @@ export const Hero = () => {
           </HeroText>
         )}
         <HeroForm onSubmit={handleSearch}>
-          <HeroInput 
-          onChange={handleChange}
-          />
+          <HeroInput placeholder="Search recipe..." value={searchTerm} onChange={handleChange} />
           <HeroBtn type="submit">Search</HeroBtn>
         </HeroForm>
         <HeroRecipe>
