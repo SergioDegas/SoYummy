@@ -78,7 +78,7 @@ const RegisterPage = () => {
       email: values.email,
       password: values.password,
     };
-    console.log(authData)
+
     dispatch(
       register(authData));
     actions.resetForm();

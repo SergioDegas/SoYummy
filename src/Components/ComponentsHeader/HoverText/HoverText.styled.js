@@ -12,7 +12,7 @@ export const HoveredText = styled.div`
 
   border-radius: 8px;
   pointer-events: none;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const HoverContainer = styled.div`

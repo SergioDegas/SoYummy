@@ -24,7 +24,7 @@ export const PaginationButton = styled.button`
         opacity: 0.6;
     }
 
-    transition: background 0.25s ease-out;
+    transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
     &:focus {

@@ -138,7 +138,7 @@ export const BoxForField = styled.div`
   isolation: isolate;
   opacity: 0.8;
   height: 70px;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 250ms;
   &:hover {
     opacity: 1;
   }
@@ -183,7 +183,7 @@ export const Button = styled.button`
   border-radius: 10px;
   background-color: #8baa36;
   color: #fafafa;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 250ms;
   cursor: pointer;
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {

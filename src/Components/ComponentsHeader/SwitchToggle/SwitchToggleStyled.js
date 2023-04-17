@@ -20,7 +20,7 @@ export const Switch = styled.label`
     bottom: 0;
     background-color: ${({ theme }) => theme.colors.textWhite};
     box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
-    transition: 0.4s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 20px;
     ::before {
       position: absolute;
@@ -30,7 +30,7 @@ export const Switch = styled.label`
       left: 3px;
       bottom: 3px;
       background: linear-gradient(180deg, #ffffff 0%, #8baa36 100%);
-      transition: 0.4s;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 50%;
     }
   }
