@@ -88,9 +88,9 @@ export const Hero = () => {
               <br /> in one satisfying meal
             </RecipeText>
           )}
-          <RecipeSecondaryText to="/categories/Breakfast">
+          <RecipeSecondaryText to="/categories/Breakfast" >
             See recipes
-            <RecipeSecondarySpan>
+            <RecipeSecondarySpan aria-label="go to breakfast">
               <RecipeIcon />
             </RecipeSecondarySpan>
           </RecipeSecondaryText>

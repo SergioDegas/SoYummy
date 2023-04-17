@@ -5,22 +5,22 @@ return(
     <>
     <SocialList>
               <li>
-                <a href="/">
+                <a href="/" aria-label="go to facebook">
                   <FacebookIcon />
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/" aria-label="go to youtube">
                   <YTIcon />
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/" aria-label="go to twitter">
                   <TwitterIcon />
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/" aria-label="go to instagram">
                   <InstIcon />
                 </a>
               </li>

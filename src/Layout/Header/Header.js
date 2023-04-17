@@ -65,7 +65,7 @@ const Header = () => {
     <header style={{ position: "absolute", width: "100%" }}>
       <ContainerFor>
         <HeaderContainer>
-          <LogoLink to="/">
+          <LogoLink to="/" aria-label="go to main page">
             <LogoContainer>
               <LogoIcon />
             </LogoContainer>
