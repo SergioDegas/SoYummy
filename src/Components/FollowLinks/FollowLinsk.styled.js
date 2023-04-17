@@ -29,7 +29,7 @@ export const LinksList = styled.ul`
 export const LinkItem = styled.li`
   svg {
     color: ${(p) => p.theme.colors.accent};
-    transition: color 250ms linear;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     :hover{
       color: ${(p) => p.theme.colors.textTitle}

@@ -221,4 +221,5 @@ export const ButtonClose = styled(AiOutlineClose)`
   width: 24px;
   height: 24px;
   color: ${({ theme }) => theme.colors.textPrimary};
+  cursor: pointer;
 `;

@@ -52,7 +52,7 @@ export const Button = styled(NavLink)`
     line-height: ${(p) => p.theme.lineHeights.heading};
     opacity: 1;
 
-    transition: all 0.25s ease-out;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
     &:focus {

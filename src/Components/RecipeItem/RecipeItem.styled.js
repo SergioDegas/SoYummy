@@ -118,7 +118,7 @@ const DeleteButton = styled.button`
   border-radius: 4px;
   border: transparent;
 
-  transition: all 0.25s ease-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     top: 28px;
@@ -174,7 +174,7 @@ const RecipeButton = styled.button`
   border-radius: 24px 44px;
   border: transparent;
 
-  transition: background 0.25s ease-out;
+  transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     bottom: 28px;

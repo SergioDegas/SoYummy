@@ -10,7 +10,7 @@ export const PictureTitle = styled.h2`
     overflow: hidden;
     text-overflow: ellipsis;
 
-    transition: color 0.25s ease-out;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const PictureThumb = styled.div`

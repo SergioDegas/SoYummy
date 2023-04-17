@@ -150,6 +150,14 @@ font-weight: ${({ theme }) => `${theme.fontWeights.regular}`};
 font-size: ${({ theme }) => `${theme.fontSizes.s}`};
 line-height: ${({ theme }) => `${theme.lineHeights.large}`};
 color: ${({ theme }) => `${theme.colors.backgroundPrimary}`};
+
+transition: background cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+
+  &:hover, 
+  &:focus {
+    background: ${({ theme }) => `${theme.colors.accent}`};
+  }
+
 @media (min-width: 768px) {
     width: 161px;
     height: 59px;

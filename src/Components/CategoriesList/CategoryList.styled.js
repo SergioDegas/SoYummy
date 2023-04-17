@@ -47,7 +47,7 @@ export const NavLinkStyled = styled(NavLink)`
   line-height: ${(p) => p.theme.lineHeights.single};
   color: ${(p) => p.theme.colors.textGrey};
 
-  transition: all 0.25s ease-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.active {
     color: ${(p) => p.theme.colors.accent};
@@ -75,7 +75,7 @@ export const NavLinkStyled = styled(NavLink)`
 
     transform: scaleX(0);
 
-    transition: transform 0.25s ease-out;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :hover,

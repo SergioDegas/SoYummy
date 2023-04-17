@@ -50,10 +50,11 @@ export const LogOutButton = styled.div`
   align-items: center;
   padding: 21px 39px;
   gap: 8px;
-  color: ${({ theme }) => theme.colors.textTitle};
+  color: ${({ theme }) => theme.colors.textWhite};
   background: ${({ theme }) => theme.colors.accent};
 
   border-radius: 6px;
+  border: 1px solid transparent;
 
   font-family: "Poppins";
   font-style: normal;
@@ -64,6 +65,15 @@ export const LogOutButton = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
+
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+
+  &:hover, 
+  &:focus {
+    background: ${({ theme }) => `${theme.colors.titleColor}`};
+    color: ${({ theme }) => theme.colors.backgroundPrimary};
+  }
+
 
   @media (min-width: 375px) {
     width: 137px;
@@ -79,7 +89,16 @@ export const LogOutButton = styled.div`
   }
   &.Primary {
     background: ${({ theme }) => theme.colors.backgroundButton};
-    color: ${({ theme }) => theme.colors.textPrimary};
+    color: ${({ theme }) => theme.colors.textSubtitle};
+
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+
+    &:hover, 
+    &:focus {
+      background: ${({ theme }) => theme.colors.backgroundCard};
+      border: 1px solid ${({ theme }) => theme.colors.textPrimary};
+      color: ${({ theme }) => theme.colors.textPrimary};
+}
   }
 `;
 

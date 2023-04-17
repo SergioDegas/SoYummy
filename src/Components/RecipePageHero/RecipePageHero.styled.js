@@ -86,7 +86,7 @@ export const SectionHeroBtn = styled.button`
   line-height: 0.6;
   margin-bottom: 42px;
   cursor: pointer;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 250ms;
   @media (min-width: 768px) {
     font-size: 16px;
     padding: 18px 44px;

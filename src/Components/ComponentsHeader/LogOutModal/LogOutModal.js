@@ -18,13 +18,11 @@ export const LogoutModal = ({ onClose }) => {
     <LogOutContainer>
       <LogOutText>Are you sure you want to log out?</LogOutText>
       <ButtonList>
-        <LogOutButton
-          className="Primary"
-          onClick={handleLogout}
+        <LogOutButton onClick={handleLogout}
         >
           Log out
         </LogOutButton>
-        <LogOutButton onClick={onClose}>Cancel</LogOutButton>
+        <LogOutButton onClick={onClose} className="Primary">Cancel</LogOutButton>
       </ButtonList>
     </LogOutContainer>
   );

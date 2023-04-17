@@ -17,7 +17,7 @@ export const Button = styled.button`
     color: ${(p) => p.theme.colors.textDarckGrey};
     border-radius: 24px 44px;
 
-    transition: all 0.25s ease-out;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 
     &:hover,

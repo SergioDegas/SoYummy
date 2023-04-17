@@ -15,6 +15,7 @@ export const LogoContainer = styled.div`
   align-items: center;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.textWhite};
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover {
     background-color: ${({ theme }) => theme.colors.textWhite};
@@ -56,7 +57,7 @@ export const Link = styled(NavLink)`
   align-items: center;
   letter-spacing: -0.02em;
   color: ${({ theme }) => theme.colors.textPrimary};
-  transition: 250ms linear;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover {
     color: ${({ theme }) => theme.colors.accent};
@@ -112,6 +113,13 @@ export const SearchIcon = styled(FiSearch)`
       `;
       }
     }}
+  }
+  
+  transition: color cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+
+  &:hover, 
+  &:focus {
+    color: ${({ theme }) => `${theme.colors.accent}`};
   }
 
 `;

@@ -147,9 +147,9 @@ export const MenuLink = styled(NavLink)`
   line-height: ${({ theme }) => `${theme.lineHeights.heading}`};
   letter-spacing: -0.02em;
   color: ${({ theme }) => `${theme.colors.footerTextColor}`};
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     color: ${({ theme }) => `${theme.colors.backgroundHover}`};
   }
 `;
@@ -286,9 +286,9 @@ export const EmailBtn = styled.button`
   margin-right: auto;
   margin-left: auto;
   color: ${({ theme }) => `${theme.colors.footerTextColor}`};
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     color: ${({ theme }) => `${theme.colors.accent}`};
     background: ${({ theme }) => `${theme.colors.footerTextColor}`};
   }
@@ -328,10 +328,10 @@ export const FacebookIcon = styled(SiFacebook)`
   color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   &:hover {
-    transition: all 0.25s ease-in-out;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
@@ -340,10 +340,10 @@ export const YTIcon = styled(SiYoutube)`
   color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   &:hover {
-    transition: all 0.25s ease-in-out;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
@@ -352,10 +352,10 @@ export const TwitterIcon = styled(SiTwitter)`
   color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   &:hover {
-    transition: all 0.25s ease-in-out;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
@@ -364,10 +364,10 @@ export const InstIcon = styled(SiInstagram)`
   color: ${({ theme }) => `${theme.colors.FooterIcon}`};
   width: 20px;
   height: 20px;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   &:hover {
-    transition: all 0.25s ease-in-out;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: ${({ theme }) => `${theme.colors.backgroundPagination}`};
   }
 `;
