@@ -142,7 +142,7 @@ export const StyledLink = styled(Link)`
   background-color: transparent;
   text-decoration: none;
   color: #fafafa;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 250ms;
   &:hover {
     background-color: #fafafa;
     border: 2px solid #8baa36;

@@ -64,7 +64,7 @@ font-weight: 400;
 font-size: 14px;
 line-height: 21px;
 color: #FAFAFA;
-transition: 250ms linear;
+transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 &:hover {
     background-color: #8BAA36;

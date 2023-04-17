@@ -43,7 +43,7 @@ export const AddButton = styled.button`
   font-size: ${(p) => p.theme.fontSizes.m}px;
   line-height: ${(p) => p.theme.lineHeights.large};
   cursor: pointer;
-  transition: 250ms linear;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover, :focus{
     background-color: ${(p) => p.theme.colors.accent};
