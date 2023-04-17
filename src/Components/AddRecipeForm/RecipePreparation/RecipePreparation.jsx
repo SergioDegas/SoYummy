@@ -9,11 +9,11 @@ export const RecipePreparation = ({
   const [text, setText] = useState("");
 
   const handleKeyDown = (event) => {
+    let arrayText = text;
     if (event.key === "Enter") {
-      // const arrayText = text.split(/\r?\n/);
-      const arrayText = text.split("\n").join(", ");
-      onPreparationSet(arrayText);
+      arrayText = text.split("\n").join(", ");
     }
+    onPreparationSet(arrayText);
   };
 
   const handleChange = (event) => {

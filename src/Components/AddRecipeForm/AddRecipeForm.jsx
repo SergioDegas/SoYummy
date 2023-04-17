@@ -12,7 +12,6 @@ import { RecipePreparation } from "./RecipePreparation/RecipePreparation";
 import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
 import Loader from "Components/Loader/Loader";
 import { toast } from "react-hot-toast";
-// import recipeImg from "images/recipe-img.png"
 
     
 export const AddRecipeForm = () => {
