@@ -84,6 +84,7 @@ export const Link = styled(NavLink)`
 `;
 
 
+
 export const SearchIcon = styled(FiSearch)`
   color: ${({ theme }) => theme.colors.textPrimary};
   width: ${({ theme }) => `${theme.fontSizes.xll}px`};
@@ -103,29 +104,17 @@ export const SearchIcon = styled(FiSearch)`
       `;
     }
   }}
-  @media (min-width: 1440px) , (max-width: 1560px) {
+  @media (min-width: 1440px) and (max-width: 1520px) {
     ${({ theme }) => {
       const location = useLocation();
       if (location.pathname.includes("/main")) {
         return `
-        color: black;
-
+        color:black
       `;
       }
     }}
   }
-  @media (min-width: 1560px) {
-    ${({ theme }) => {
-      const location = useLocation();
-      if (location.pathname.includes("/main")) {
-        return `
-        color: white;
-
-      `;
-      }
-    }}
-  }
-
+  
   transition: color cubic-bezier(0.4, 0, 0.2, 1) 250ms;
 
   &:hover, 
