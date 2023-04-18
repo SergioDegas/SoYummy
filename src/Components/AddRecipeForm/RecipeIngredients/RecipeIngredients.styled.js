@@ -318,23 +318,23 @@ export const DeleteButton = styled.button`
 `;
 
 export const Error = styled.p`
-  margin-top: 8px;
+  margin-top: 4px;
   color: brown;
   font-size: ${(p) => p.theme.fontSizes.s}px;
 
   @media screen and (min-width: 768px) {
     font-size: ${(p) => p.theme.fontSizes.m}px;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 `;
 
 export const NumberError = styled.p`
-  margin-top: 8px;
+  margin-top: 4px;
   color: brown;
   font-size: 12px;
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 `;

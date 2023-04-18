@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addRecipe } from "../../redux/recipes/operation";
@@ -13,7 +13,6 @@ import { AddRecipeSection, Form, AddButton } from "./AddRecipeForm.styled";
 import Loader from "Components/Loader/Loader";
 import { toast } from "react-hot-toast";
 
-    
 export const AddRecipeForm = () => {
     const [image, setImage] = useState("");
     const [title, setTitle] = useState("");
@@ -97,11 +96,11 @@ export const AddRecipeForm = () => {
         updateErrors("preparation");
     };
 
-    const updatedIngredients = ingredients.map(ingredient => {
+    const updatedIngredients = useMemo(() => ingredients.map(ingredient => {
         const { id, unitValue, unitNumber } = ingredient;
         const measure = `${unitNumber} ${unitValue}`;
         return { "measure": measure, "id": id};
-      });
+    }), [ingredients]);
 
     // validation
     const initialValues = {
