@@ -73,9 +73,15 @@ export const RecipeIngredients = ({
     setCount((prevState) => prevState - 1);
   };
 
-  const deleteItem = (itemId) => {
+  const deleteItem = (itemId, index) => {
     deleteIngr(itemId);
     setCount((prevState) => prevState - 1);
+
+    setIngrIsActive((prevState) => {
+      const newState = [...prevState];
+      newState[index] = false;
+      return newState;
+    });
   };
 
   const toggleUnit = (index) => {
@@ -126,16 +132,6 @@ export const RecipeIngredients = ({
     });
   };
 
-  const onInputFocusOut = (index) => {
-    setTimeout(() => {
-      setIngrIsActive((prevState) => {
-        const newState = [...prevState];
-        newState[index] = false;
-        return newState;
-      });
-    }, 100);
-  };
-
   return (
     <IngredientsWrap>
       <CountWrap>
@@ -157,9 +153,9 @@ export const RecipeIngredients = ({
               <InputWrap>
                 <div>
                   <IngrInput
+                    autoFocus={true}
                     value={ingredients[index].name}
                     onChange={(e) => onInputChange(index, e.target.value)}
-                    onBlur={() => onInputFocusOut(index)}
                   />
                   {errors[`ingredients[${index}].name`] && (
                     <Error>{errors[`ingredients[${index}].name`]}</Error>
@@ -206,7 +202,7 @@ export const RecipeIngredients = ({
                   )}
                 </IngrNumberLabel>
               </InputWrap>
-              <DeleteButton type="button" onClick={() => deleteItem(item.id)}>
+              <DeleteButton type="button" onClick={() => deleteItem(item.id, index)}>
                 <VscChromeClose size="20px"/>
               </DeleteButton>
             </IngredientItem>
