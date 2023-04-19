@@ -4,8 +4,8 @@ Always appears a question "What to cook?" or "How to cook this dish?"?. So Ypu n
 
 ## So Yummy - Front-end
 
-[Link to site](https://cookbook-so-yummy.netlify.app/)
-[Link to repository](https://github.com/SergioDegas/SoYummy)
+- [Link to site](https://cookbook-so-yummy.netlify.app/)
+- [Link to repository](https://github.com/SergioDegas/SoYummy)
 
 This application saves Your time for finding exact recipe and providing the possibility to learn how to cook and become a Chef
 
@@ -40,8 +40,8 @@ The app created using [Create React App](https://github.com/facebook/create-reac
 
 ## So Yummy - Back-end
 
-[Link to docs](https://backend-x5bd.onrender.com/api-docs/)
-[Link to repository](https://github.com/SergioDegas/SoYummyBackend)
+- [Link to docs](https://backend-x5bd.onrender.com/api-docs/)
+- [Link to repository](https://github.com/SergioDegas/SoYummyBackend)
 
 The back-end part of the app is built using capabilities of Node.js. The API server developed with use of Express (create endpoints and authorization of the app), Cloudinary (save files/avatar), MongoDB (store information about user and all recipes) with library Mongoose.
 
